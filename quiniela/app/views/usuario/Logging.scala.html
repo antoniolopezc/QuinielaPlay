@@ -1,0 +1,10 @@
+@(Usuario: play.data.DynamicForm)
+@import helper._
+
+@implicitField = @{ FieldConstructor(FieldConstructorUsuario.f) }
+@form(action=controllers.routes.Usuario.login(),'onsubmit -> "return subtituirsubmit(this);") {
+@inputText(Usuario("Correo")) 
+@inputPassword(Usuario("Clave")) 
+<button class="logging" type="submit">entrar</button>
+<a href="/usuario/registra">registra</a>
+}

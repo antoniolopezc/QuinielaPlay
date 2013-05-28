@@ -1,0 +1,19 @@
+@(Usuario: Form[models.Usuario])
+
+@import helper._
+
+@main("Usuario") {
+@if(Usuario.hasErrors) {
+        <div class="alert-message error">
+            <p><strong>Oops</strong> Hay errores corrigalos por favor</p>
+        </div>
+    }
+@form(action=controllers.routes.Usuario.registrar()){
+	<h1>Nuevo Usuario</h1>
+		@inputText(Usuario("Correo"))
+		@inputText(Usuario("Alias"))
+		@inputPassword(Usuario("Clave"))
+ <button type="submit">Registrar</button>
+ <button type="reset">Limpiar</button>
+ }
+}

@@ -1,0 +1,24 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+
+# Refencias a Torneo
+GET		/torneo						controllers.torneo.Torneo.lista()
+POST    /torneo/guardar				controllers.torneo.Torneo.guardar()
+GET		/torneo/agregar				controllers.torneo.Torneo.agregar()
+GET		/torneo/:id					controllers.torneo.Torneo.breve(id:Long)
+
+# Refencias a Usuario
+GET		/usuario					controllers.Usuario.listar()	
+POST    /usuario/registrar			controllers.Usuario.registrar()
+GET		/usuario/registra			controllers.Usuario.registra()
+POST    /usuario/login				controllers.Usuario.login()
+GET		/usuario/logeado			controllers.Usuario.loggeado()
+GET		/usuario/salir				controllers.Usuario.salir()
+GET     /usuario/javascripts/routes controllers.Usuario.javascriptRoutes()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
