@@ -85,10 +85,6 @@ create table torneo (
 
 create table usuario (
   id                        bigint not null,
-  alias                     varchar(255),
-  correo                    varchar(255),
-  clave                     varchar(255),
-  constraint uq_usuario_alias unique (alias),
   constraint pk_usuario primary key (id))
 ;
 

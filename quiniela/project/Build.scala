@@ -12,7 +12,8 @@ object ApplicationBuild extends Build {
     javaCore,
     javaJdbc,
     javaEbean,
-    "org.jasypt" % "jasypt" % "1.9.0"
+    "org.jasypt" % "jasypt" % "1.9.0",
+    "com.micronautics" % "securesocial" % "2.1.0"
   )
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
