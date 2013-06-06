@@ -1,3 +1,4 @@
-@(Usuario: String)
-@Usuario 
-<button id="logeado-salir" type=button onclick='$("button#logeado-salir").parent().load("/logout")'>salir</button>
+@(Usuario: String, Imagen: String)
+<div><img class="Logeado" src="@Imagen" alt="@Usuario" height="60px" width="60px"></div>
+<div class="Logeado" >@Usuario</div>
+<button class="Logeado" id="logeado-salir" type=button onclick='$("button#logeado-salir").parent().load("/logout")'>salir</button>

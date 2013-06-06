@@ -23,8 +23,8 @@ public class Application extends Controller {
 			return ok(logear.render());
 		}
 		if(Usuario.fullName==null) {
-			return ok(Logeado.render(Usuario.firstName+" "+Usuario.lastName));
+			return ok(Logeado.render(Usuario.firstName+" "+Usuario.lastName, Usuario.avatarUrl));
 		}
-		return ok(Logeado.render(Usuario.fullName));
+		return ok(Logeado.render(Usuario.fullName, Usuario.avatarUrl));
 	}
 }

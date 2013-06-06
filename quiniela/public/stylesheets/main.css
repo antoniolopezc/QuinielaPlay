@@ -1,12 +1,19 @@
-#BarraSuperio {
+section#BarraSuperio {
+	width: 980px;
+	height: 93px;
+	margin: auto;
+	
+}
+section#Menu {
+	position: relative;
+	top: 60px;
+}
+section#logeado {
+	float: right;
+	display: inline;
 
 }
-#menu {
-
-}
-#logeado {
-	display:inline;
-}
-#content {
-
+section#content {
+	width: 980px;
+	margin: auto;
 }
