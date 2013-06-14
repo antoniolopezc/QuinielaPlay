@@ -27,4 +27,9 @@ public class Application extends Controller {
 		}
 		return ok(Logeado.render(Usuario.fullName, Usuario.avatarUrl));
 	}
+	
+	@SecureSocial.SecuredAction()
+	public static Result rloggeado() {
+		return loggeado();
+	}
 }

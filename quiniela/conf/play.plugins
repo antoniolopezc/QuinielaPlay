@@ -1,3 +1,4 @@
-9997:securesocial.controllers.DefaultTemplatesPlugin
-9998:controllers.ServicioUsuario
+9997:securesociallocal.TemplatesPluginLocal
+9998:securesociallocal.ServicioUsuario
+10001:securesocial.core.providers.FacebookProvider
 10002:securesocial.core.providers.GoogleProvider

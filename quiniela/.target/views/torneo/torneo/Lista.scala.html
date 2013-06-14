@@ -1,6 +1,6 @@
 @(Torneos: List[Torneo])
 
-@main("Torneos") {
+@base("Torneos") {
 	@Torneos.map{Torneo => @views.html.torneo.torneo.UnaLinea(Torneo) }
 	<a href="torneo/agregar">Agregar</a>
 }

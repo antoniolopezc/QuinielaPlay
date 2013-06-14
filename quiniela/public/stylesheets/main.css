@@ -10,7 +10,8 @@ section#Menu {
 }
 section#logeado {
 	float: right;
-	display: inline;
+	display: box;
+	
 
 }
 section#content {

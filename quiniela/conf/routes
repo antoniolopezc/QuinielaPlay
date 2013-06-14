@@ -37,6 +37,7 @@ GET		/torneo/:id					controllers.torneo.Torneo.breve(id:Long)
 
 # Refencias a Usuario
 GET		/logeado			controllers.Application.loggeado()
+GET		/rlogin				controllers.Application.rloggeado()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

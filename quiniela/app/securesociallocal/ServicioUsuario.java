@@ -1,7 +1,7 @@
 /**
  * 
  */
-package controllers;
+package securesociallocal;
 
 import java.util.HashMap;
 import java.util.Iterator;
