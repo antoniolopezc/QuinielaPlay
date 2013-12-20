@@ -1,0 +1,20 @@
+section#BarraSuperio {
+	width: 980px;
+	height: 93px;
+	margin: auto;
+	
+}
+section#Menu {
+	position: relative;
+	top: 60px;
+}
+section#logeado {
+	float: right;
+	display: box;
+	
+
+}
+section#content {
+	width: 980px;
+	margin: auto;
+}

@@ -8,7 +8,7 @@ resolvers += "securesocial" at "http://repo.scala-sbt.org/scalasbt/sbt-plugin-re
 
             
 // Use the Play sbt plugin for Play projects
-addSbtPlugin("play" % "sbt-plugin" % "2.1.1")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % System.getProperty("play.version"))
 
 libraryDependencies += "com.google.code.gson" % "gson" % "2.2"
 

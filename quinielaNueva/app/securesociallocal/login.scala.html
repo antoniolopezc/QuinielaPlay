@@ -1,0 +1,23 @@
+@(loginForm: play.api.data.Form[(String,String)], errorMsg: Option[String] = None)
+
+@import helper._
+@import securesocial.core.Registry
+@import securesocial.core.providers.utils.RoutesHelper
+
+<div id="login">
+	@for((name,provider) <- Registry.providers.all) {
+		@defining( "securesocial/images/providers/%s.png".format(provider.id) ) { imageUrl =>
+   				<a href="@provider.authenticationUrl"> <img src="@RoutesHelper.at(imageUrl)"/></a>
+		}
+    }
+</div>
+<script type="text/javascript">
+   	$(function() {
+		$( "#login" ).dialog({ title: "Ingrese",
+							   width: 100,
+							   minHeight: 100,
+							   appendTo: "#logeado"
+		});
+	});
+</script>
+

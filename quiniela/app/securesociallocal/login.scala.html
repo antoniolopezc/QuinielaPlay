@@ -1,0 +1,30 @@
+@(loginForm: play.api.data.Form[(String,String)], errorMsg: Option[String] = None)
+
+@import securesocial.core.AuthenticationMethod._
+@import securesocial.core.ProviderRegistry;
+@import securesocial.core.IdentityProvider;
+@import securesocial.core.providers.utils.RoutesHelper
+
+@defining( ProviderRegistry.all) { externalProviders =>
+		@if( externalProviders.size > 0 ) {
+			<div id="login">
+	            @for((name,provider) <- externalProviders) {
+	            	@if( provider.authMethod == OAuth1 || provider.authMethod == OAuth2 ) {
+	        			@defining( "securesocial/images/providers/%s.png".format(provider.providerId) ) { imageUrl =>
+	            			<a class="logeado"href="@provider.authenticationUrl"><img src="@RoutesHelper.at(imageUrl)"/></a>
+	        			}
+	    			}
+	            }
+	        </div>
+	        <script type="text/javascript">
+	        	$(function() {
+    				$( "#login" ).dialog({ title: "Ingrese",
+    									   width: 100,
+    									   minHeight: 100,
+    									   appendTo: "#logeado"
+    				});
+  				});
+  			</script>
+	}
+
+}

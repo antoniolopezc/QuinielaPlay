@@ -1,0 +1,23 @@
+@(Torneo: Form[Torneo])
+
+@import helper._
+
+@base("Torneo") {
+@if(Torneo.hasErrors) {
+        <div class="alert-message error">
+            <p><strong>Oops</strong> Hay errores corrigalos por favor</p>
+        </div>
+    }
+@form(action=controllers.torneo.routes.Torneo.guardar()){
+	<h1>Nuevo Torneo</h1>
+ 		<h2>Descrición:</h2>
+		@inputText(Torneo("Nombre"))
+		@inputText(Torneo("NombreCorto"))
+		@inputText(Torneo("Abreviatura"))
+		@inputText(Torneo("Descricion"))
+		@inputDate(Torneo("Inicio"))	
+		@inputDate(Torneo("Fin"));
+ <button type="submit">Agregar</button>
+ <button type="reset">Limpiar</button>
+ }
+}

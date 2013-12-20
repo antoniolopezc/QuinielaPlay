@@ -1,0 +1,14 @@
+div.Logeado {
+	height:12px;
+	max-height:12px;
+	width:60px;
+	max-width: 60px;
+	font-size:10px;
+	overflow:hidden;
+}
+
+button.Logeado {
+	height:12px;
+	max-height:12px;
+	font-size:8px;
+}

@@ -11,7 +11,7 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     javaCore,
     javaJdbc,
-    javaEbean,
+    javaEbean ,
     "org.jasypt" % "jasypt" % "1.9.0",
     "com.micronautics" % "securesocial" % "2.1.0"
   )
