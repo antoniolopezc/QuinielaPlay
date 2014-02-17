@@ -21,28 +21,10 @@ public class Resultado extends Model {
 
 	@Id
 	long Id;
+	
+	@ManyToOne
+	public DefinicionResultado Definicion;
 
-	/*
-	 * A quien Pertnece
-	 */
-	@ManyToOne
-	public Partido Partido;
-	
-	@ManyToOne
-	public Porcion Porcion;
-	
-	/*
-	 * Opcional si el Resultado esta asociado a Equipo que participa
-	 */
-	@ManyToOne
-	public Equipo Equipo;
-	
-	public String Nombre;
-	
-	public String NombreCorto;
-	
-	public String Abreviatura;
-	
 	enum Estado {
 		Nuevo,
 		Parcial,
@@ -51,13 +33,6 @@ public class Resultado extends Model {
 	
 	public Estado Estado;
 	
-	/*
-	 * Solo uno de los resultados estara lleno
-	 */
-	@ManyToOne
-	public Equipo ResultadoEquipo;
-	
-	public long ResultadoNumerico;
-
+	public long Resultado;
 
 }

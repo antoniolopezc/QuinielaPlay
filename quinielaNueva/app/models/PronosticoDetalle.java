@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package models;
 
 import java.util.*;
@@ -8,13 +9,15 @@ import java.util.*;
 import javax.persistence.*;
 
 import play.db.ebean.*;
+import play.data.validation.*;
+
 
 /**
  * @author alopez1
  *
  */
 @Entity
-public class Porcion extends Model {
+public class PronosticoDetalle extends Model {
 	/**
 	 * Agregado por Eclipse no se si sirve para algo
 	 */
@@ -23,25 +26,21 @@ public class Porcion extends Model {
 	@Id
 	public long id;
 	
-	public String Nombre;
-	
-	public String NombreCorto;
-	
-	public String Abreviatura;
-	
-	public String Descricion;
-	
-	public Date Inicio;
-	
-	public Date Fin;
+
+	@ManyToOne
+	public Pronostico Pronostico;
 	
 	@ManyToOne
-	public Torneo Torneo;
+	public Partido Partido;
 	
-	@ManyToMany
-	public List<Partido> Partidos;
-   	
+	@ManyToOne
+	public Porcion Porcion;
+	
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<Resultado> Resultados;
-
+	
+	
+	public static Finder<Long,PronosticoDetalle> find = new Finder<Long,PronosticoDetalle>(
+			    Long.class, PronosticoDetalle.class
+			  );
 }

@@ -1,0 +1,327 @@
+- &Mudial2014 !!models.Torneo
+    Nombre: Mudial 2014 Brasil
+    NombreCorto: Mundial 
+    Abreviatura: M2014
+    Descricion: Mudial 2014 Brasil
+    Inicio: 2014-06-12
+    Fin: 2014-07-13
+    Equipos:  
+        - &ALE !!models.Equipo
+             Nombre: Alemania
+             NombreCorto: Alemania
+             Abreviatura: ALE
+        
+        - &ARL !!models.Equipo
+             Nombre: Argelia
+             NombreCorto: Argelia
+             Abreviatura: ARL
+        
+        - &ARG !!models.Equipo
+             Nombre: Argentina
+             NombreCorto: Argentina
+             Abreviatura: ARG
+        
+        - &AUS !!models.Equipo
+             Nombre: Australia
+             NombreCorto: Australia
+             Abreviatura: AUS
+        
+        - &BEL !!models.Equipo
+             Nombre: Bélgica
+             NombreCorto: Bélgica
+             Abreviatura: BEL
+        
+        - &BOS !!models.Equipo
+             Nombre: Bosnia y Herzegovina
+             NombreCorto: Bosnia
+             Abreviatura: BOS
+        
+        - &BRA !!models.Equipo
+             Nombre: Brasil
+             NombreCorto: Brasil
+             Abreviatura: BRA
+        
+        - &CAM !!models.Equipo
+             Nombre: Camerún
+             NombreCorto: Camerún
+             Abreviatura: CAM
+        
+        - &CHI !!models.Equipo
+             Nombre: Chile
+             NombreCorto: Chile
+             Abreviatura: CHI
+        
+        - &COL !!models.Equipo
+             Nombre: Colombia
+             NombreCorto: Colombia
+             Abreviatura: COL
+        
+        - &CMA !!models.Equipo
+             Nombre: Costa de Marfil
+             NombreCorto: Cta Marfil
+             Abreviatura: CMA
+        
+        - &CTR !!models.Equipo
+             Nombre: Costa Rica
+             NombreCorto: Cta Rica
+             Abreviatura: CTR
+        
+        - &CRO !!models.Equipo
+             Nombre: Croacia
+             NombreCorto: Croacia
+             Abreviatura: CRO
+        
+        - &ECU !!models.Equipo
+             Nombre: Ecuador
+             NombreCorto: Ecuador
+             Abreviatura: ECU
+        
+        - &USA !!models.Equipo
+             Nombre: EEUU
+             NombreCorto: EEUU
+             Abreviatura: USA
+        
+        - &ESP !!models.Equipo
+             Nombre: España
+             NombreCorto: España
+             Abreviatura: ESP
+        
+        - &FRA !!models.Equipo
+             Nombre: Francia
+             NombreCorto: Francia
+             Abreviatura: FRA
+        
+        - &GHA !!models.Equipo
+             Nombre: Ghana
+             NombreCorto: Ghana
+             Abreviatura: GHA
+        
+        - &GRE !!models.Equipo
+             Nombre: Grecia
+             NombreCorto: Grecia
+             Abreviatura: GRE
+        
+        - &HOL !!models.Equipo
+             Nombre: Holanda
+             NombreCorto: Holanda
+             Abreviatura: HOL
+        
+        - &HON !!models.Equipo
+             Nombre: Honduras
+             NombreCorto: Honduras
+             Abreviatura: HON
+        
+        - &ING !!models.Equipo
+             Nombre: Inglaterra
+             NombreCorto: Inglaterra
+             Abreviatura: ING
+        
+        - &IRA !!models.Equipo
+             Nombre: Irán
+             NombreCorto: Irán
+             Abreviatura: IRA
+        
+        - &ITA !!models.Equipo
+             Nombre: Italia
+             NombreCorto: Italia
+             Abreviatura: ITA
+        
+        - &JAP !!models.Equipo
+             Nombre: Japón
+             NombreCorto: Japón
+             Abreviatura: JAP
+        
+        - &MEX !!models.Equipo
+             Nombre: México
+             NombreCorto: México
+             Abreviatura: MÉX
+        
+        - &NIG !!models.Equipo
+             Nombre: Nigeria
+             NombreCorto: Nigeria
+             Abreviatura: NIG
+        
+        - &POR !!models.Equipo
+             Nombre: Portugal
+             NombreCorto: Portugal
+             Abreviatura: POR
+        
+        - &COR !!models.Equipo
+             Nombre: República de Corea
+             NombreCorto: Corea
+             Abreviatura: COR
+        
+        - &RUS !!models.Equipo
+             Nombre: Rusia
+             NombreCorto: Rusia
+             Abreviatura: RUS
+        
+        - &SUI !!models.Equipo
+             Nombre: Suiza
+             NombreCorto: Suiza
+             Abreviatura: SUI
+        
+        - &URU !!models.Equipo
+             Nombre: Uruguay
+             NombreCorto: Uruguay
+             Abreviatura: URU
+        - &1A !!models.Equipo
+             Nombre: Primero Grupo A
+             NombreCorto: 1A
+             Abreviatura: 1A
+
+        - &1C !!models.Equipo
+             Nombre: Primero Grupo C
+             NombreCorto: 1C
+             Abreviatura: 1C
+
+        - &1B !!models.Equipo
+             Nombre: Primero Grupo B
+             NombreCorto: 1B
+             Abreviatura: 1B
+
+        - &1D !!models.Equipo
+             Nombre: Primero Grupo D
+             NombreCorto: 1D
+             Abreviatura: 1D
+
+        - &1E !!models.Equipo
+             Nombre: Primero Grupo E
+             NombreCorto: 1E
+             Abreviatura: 1E
+
+        - &1G !!models.Equipo
+             Nombre: Primero Grupo G
+             NombreCorto: 1G
+             Abreviatura: 1G
+
+        - &1F !!models.Equipo
+             Nombre: Primero Grupo F
+             NombreCorto: 1F
+             Abreviatura: 1F
+
+        - &1H !!models.Equipo
+             Nombre: Primero Grupo H
+             NombreCorto: 1H
+             Abreviatura: 1H
+
+        - &W49 !!models.Equipo
+             Nombre: Ganador del Partido 49
+             NombreCorto: Gan 49
+             Abreviatura: W49
+
+        - &W53 !!models.Equipo
+             Nombre: Ganador del Partido 53
+             NombreCorto: Gan 53
+             Abreviatura: W53
+
+        - &W51 !!models.Equipo
+             Nombre: Ganador del Partido 51
+             NombreCorto: Gan 51
+             Abreviatura: W51
+
+        - &W55 !!models.Equipo
+             Nombre: Ganador del Partido 55
+             NombreCorto: Gan 55
+             Abreviatura: W55
+
+        - &W57 !!models.Equipo
+             Nombre: Ganador del Partido 57
+             NombreCorto: Gan 57
+             Abreviatura: W57
+
+        - &W59 !!models.Equipo
+             Nombre: Ganador del Partido 59
+             NombreCorto: Gan 59
+             Abreviatura: W59
+
+        - &L61 !!models.Equipo
+             Nombre: Perdedor del Partido 61
+             NombreCorto: PER 61
+             Abreviatura: L61
+
+        - &W61 !!models.Equipo
+             Nombre: Ganador del Partido 61
+             NombreCorto: Gan 61
+             Abreviatura: W61
+
+        - &2B !!models.Equipo
+             Nombre: Segundo Grupo B
+             NombreCorto: 2B
+             Abreviatura: 2B
+
+        - &2D !!models.Equipo
+             Nombre: Segundo Grupo D
+             NombreCorto: 2D
+             Abreviatura: 2D
+
+        - &2A !!models.Equipo
+             Nombre: Segundo Grupo A
+             NombreCorto: 2A
+             Abreviatura: 2A
+
+        - &2C !!models.Equipo
+             Nombre: Segundo Grupo C
+             NombreCorto: 2C
+             Abreviatura: 2C
+
+        - &2F !!models.Equipo
+             Nombre: Segundo Grupo F
+             NombreCorto: 2F
+             Abreviatura: 2F
+
+        - &2H !!models.Equipo
+             Nombre: Segundo Grupo H
+             NombreCorto: 2H
+             Abreviatura: 2H
+
+        - &2E !!models.Equipo
+             Nombre: Segundo Grupo E
+             NombreCorto: 2E
+             Abreviatura: 2E
+
+        - &2G !!models.Equipo
+             Nombre: Segundo Grupo G
+             NombreCorto: 2G
+             Abreviatura: 2G
+
+        - &W50 !!models.Equipo
+             Nombre: Ganador del Partido 50
+             NombreCorto: Gan 50
+             Abreviatura: W50
+
+        - &W54 !!models.Equipo
+             Nombre: Ganador del Partido 54
+             NombreCorto: Gan 54
+             Abreviatura: W54
+
+        - &W52 !!models.Equipo
+             Nombre: Ganador del Partido 52
+             NombreCorto: Gan 52
+             Abreviatura: W52
+
+        - &W56 !!models.Equipo
+             Nombre: Ganador del Partido 56
+             NombreCorto: Gan 56
+             Abreviatura: W56
+
+        - &W58 !!models.Equipo
+             Nombre: Ganador del Partido 58
+             NombreCorto: Gan 58
+             Abreviatura: W58
+
+        - &W60 !!models.Equipo
+             Nombre: Ganador del Partido 60
+             NombreCorto: Gan 60
+             Abreviatura: W60
+
+        - &L62 !!models.Equipo
+             Nombre: Perdedor del Partido 62
+             NombreCorto: PER 62
+             Abreviatura: L62
+
+        - &W62 !!models.Equipo
+             Nombre: Ganador del Partido 62
+             NombreCorto: Gan 62
+             Abreviatura: W62
+

@@ -46,19 +46,19 @@ public class Torneo extends Model {
 	public byte[] Imagen;
 	
 	
-	@OneToMany
+	@OneToMany(cascade={CascadeType.ALL})
 	public List<Equipo> Equipos;
 	
 	@ManyToMany 
 	public List<Regla> Reglas;
 	
-	@OneToMany
+	@OneToMany(cascade={CascadeType.ALL})
 	public List<Partido> Partidos;
 	
 	/*
 	 * Representa las fases o agrupaciones de partidos del torneo
 	 */
-	@OneToMany
+	@OneToMany(cascade={CascadeType.ALL})
 	public List<Porcion> Porciones;
 	
 	@ManyToOne

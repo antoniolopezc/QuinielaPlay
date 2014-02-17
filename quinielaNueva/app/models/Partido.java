@@ -4,6 +4,7 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -50,21 +51,13 @@ public class Partido extends Model {
 	@ManyToOne
 	public Torneo Torneo;
 	
-	
-	@OneToOne(cascade={CascadeType.ALL})
-	public Resultado ResultadoEquipoA;
-	
 	@ManyToOne
 	public Equipo EquipoA;
 	
-	@OneToOne(cascade={CascadeType.ALL})
-	public Resultado ResultadoEquipoB;
-	
 	@ManyToOne
 	public Equipo EquipoB;
-
-	@OneToMany(cascade={CascadeType.ALL}) 
-	public List<Resultado> Resultados;
 	
+	@OneToMany(cascade={CascadeType.ALL})
+	public List<Resultado> Resultados;
 
 }

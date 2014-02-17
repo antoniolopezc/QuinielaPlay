@@ -9,30 +9,30 @@ import play.db.ebean.*;
 
 /**
  * @author alopez1
- * Contiene los equipos que participan en un torneo
+ * No tiene el resultado por que lo hay de varios tipos revisar 
+ *
  */
 @Entity
-public class Equipo extends Model {
+public class DefinicionResultado extends Model {
 	/**
-	 * Agregado por Eclipse no estoy seguro si sirve de algo
+	 * Agregado por Eclipse no se si sirve para algo
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long id;
-	
+	long Id;
+
 	public String Nombre;
 	
 	public String NombreCorto;
 	
 	public String Abreviatura;
 	
-	@Lob
-	public byte[] Escudo;
+	enum Tipo {
+		Entero,
+		Equipo
+	}
 	
-	@Lob
-	public byte[] Bandera;
-	
-	@ManyToOne
-	public Equipo Final;
+	public Tipo Estado;
+
 }

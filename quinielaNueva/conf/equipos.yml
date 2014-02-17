@@ -1,0 +1,160 @@
+- &ALE !!models.Equipo
+ Nombre: Alemania
+ NombreCorto: Alemania
+ Abreviatura: ALE
+
+- &ARL !!models.Equipo
+ Nombre: Argelia
+ NombreCorto: Argelia
+ Abreviatura: ARL
+
+- &ARG !!models.Equipo
+ Nombre: Argentina
+ NombreCorto: Argentina
+ Abreviatura: ARG
+
+- &AUS !!models.Equipo
+ Nombre: Australia
+ NombreCorto: Australia
+ Abreviatura: AUS
+
+- &BEL !!models.Equipo
+ Nombre: Bélgica
+ NombreCorto: Bélgica
+ Abreviatura: BEL
+
+- &BOS !!models.Equipo
+ Nombre: Bosnia y Herzegovina
+ NombreCorto: Bosnia
+ Abreviatura: BOS
+
+- &BRA !!models.Equipo
+ Nombre: Brasil
+ NombreCorto: Brasil
+ Abreviatura: BRA
+
+- &CAM !!models.Equipo
+ Nombre: Camerún
+ NombreCorto: Camerún
+ Abreviatura: CAM
+
+- &CHI !!models.Equipo
+ Nombre: Chile
+ NombreCorto: Chile
+ Abreviatura: CHI
+
+- &COL !!models.Equipo
+ Nombre: Colombia
+ NombreCorto: Colombia
+ Abreviatura: COL
+
+- &CMA !!models.Equipo
+ Nombre: Costa de Marfil
+ NombreCorto: Cta Marfil
+ Abreviatura: CMA
+
+- &CTR !!models.Equipo
+ Nombre: Costa Rica
+ NombreCorto: Cta Rica
+ Abreviatura: CTR
+
+- &CRO !!models.Equipo
+ Nombre: Croacia
+ NombreCorto: Croacia
+ Abreviatura: CRO
+
+- &ECU !!models.Equipo
+ Nombre: Ecuador
+ NombreCorto: Ecuador
+ Abreviatura: ECU
+
+- &USA !!models.Equipo
+ Nombre: EEUU
+ NombreCorto: EEUU
+ Abreviatura: USA
+
+- &ESP !!models.Equipo
+ Nombre: España
+ NombreCorto: España
+ Abreviatura: ESP
+
+- &FRA !!models.Equipo
+ Nombre: Francia
+ NombreCorto: Francia
+ Abreviatura: FRA
+
+- &GHA !!models.Equipo
+ Nombre: Ghana
+ NombreCorto: Ghana
+ Abreviatura: GHA
+
+- &GRE !!models.Equipo
+ Nombre: Grecia
+ NombreCorto: Grecia
+ Abreviatura: GRE
+
+- &HOL !!models.Equipo
+ Nombre: Holanda
+ NombreCorto: Holanda
+ Abreviatura: HOL
+
+- &HON !!models.Equipo
+ Nombre: Honduras
+ NombreCorto: Honduras
+ Abreviatura: HON
+
+- &ING !!models.Equipo
+ Nombre: Inglaterra
+ NombreCorto: Inglaterra
+ Abreviatura: ING
+
+- &IRA !!models.Equipo
+ Nombre: Irán
+ NombreCorto: Irán
+ Abreviatura: IRA
+
+- &ITA !!models.Equipo
+ Nombre: Italia
+ NombreCorto: Italia
+ Abreviatura: ITA
+
+- &JAP !!models.Equipo
+ Nombre: Japón
+ NombreCorto: Japón
+ Abreviatura: JAP
+
+- &MEX !!models.Equipo
+ Nombre: México
+ NombreCorto: México
+ Abreviatura: MÉX
+
+- &NIG !!models.Equipo
+ Nombre: Nigeria
+ NombreCorto: Nigeria
+ Abreviatura: NIG
+
+- &POR !!models.Equipo
+ Nombre: Portugal
+ NombreCorto: Portugal
+ Abreviatura: POR
+
+- &COR !!models.Equipo
+ Nombre: República de Corea
+ NombreCorto: Corea
+ Abreviatura: COR
+
+- &RUS !!models.Equipo
+ Nombre: Rusia
+ NombreCorto: Rusia
+ Abreviatura: RUS
+
+- &SUI !!models.Equipo
+ Nombre: Suiza
+ NombreCorto: Suiza
+ Abreviatura: SUI
+
+- &URU !!models.Equipo
+ Nombre: Uruguay
+ NombreCorto: Uruguay
+ Abreviatura: URU
+
