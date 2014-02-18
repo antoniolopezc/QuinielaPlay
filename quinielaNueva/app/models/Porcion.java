@@ -35,9 +35,6 @@ public class Porcion extends Model {
 	
 	public Date Fin;
 	
-	@ManyToOne
-	public Torneo Torneo;
-	
 	@ManyToMany
 	public List<Partido> Partidos;
    	

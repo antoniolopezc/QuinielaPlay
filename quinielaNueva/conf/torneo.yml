@@ -1,3 +1,45 @@
+- &GA !!models.DefinicionResultado
+    Nombre: Goles de Equipo A
+    NombreCorto: Goles A 
+    Abreviatura: GA
+    Tipo: Entero
+
+- &GB !!models.DefinicionResultado
+    Nombre: Goles de Equipo B
+    NombreCorto: Goles B 
+    Abreviatura: GB
+    Tipo: Entero
+
+- &Paso !!models.DefinicionResultado
+    Nombre: Equipo Que Paso
+    NombreCorto: Paso 
+    Abreviatura: Paso
+    Tipo: Equipo
+
+- &P1 !!models.DefinicionResultado
+    Nombre: Equipo que Quedo Primero
+    NombreCorto: Primero 
+    Abreviatura: 1
+    Tipo: Equipo
+
+- &P2 !!models.DefinicionResultado
+    Nombre: Equipo que Quedo Segundo
+    NombreCorto: Segundo 
+    Abreviatura: 2
+    Tipo: Equipo
+
+- &P3 !!models.DefinicionResultado
+    Nombre: Equipo que Quedo Tercero
+    NombreCorto: Tercero 
+    Abreviatura: 4
+    Tipo: Equipo
+
+- &P4 !!models.DefinicionResultado
+    Nombre: Equipo que Quedo Cuarto
+    NombreCorto: Cuarto
+    Abreviatura: 4
+    Tipo: Equipo
+
 - &Mudial2014 !!models.Torneo
     Nombre: Mudial 2014 Brasil
     NombreCorto: Mundial 
@@ -205,46 +247,6 @@
              NombreCorto: 1H
              Abreviatura: 1H
 
-        - &W49 !!models.Equipo
-             Nombre: Ganador del Partido 49
-             NombreCorto: Gan 49
-             Abreviatura: W49
-
-        - &W53 !!models.Equipo
-             Nombre: Ganador del Partido 53
-             NombreCorto: Gan 53
-             Abreviatura: W53
-
-        - &W51 !!models.Equipo
-             Nombre: Ganador del Partido 51
-             NombreCorto: Gan 51
-             Abreviatura: W51
-
-        - &W55 !!models.Equipo
-             Nombre: Ganador del Partido 55
-             NombreCorto: Gan 55
-             Abreviatura: W55
-
-        - &W57 !!models.Equipo
-             Nombre: Ganador del Partido 57
-             NombreCorto: Gan 57
-             Abreviatura: W57
-
-        - &W59 !!models.Equipo
-             Nombre: Ganador del Partido 59
-             NombreCorto: Gan 59
-             Abreviatura: W59
-
-        - &L61 !!models.Equipo
-             Nombre: Perdedor del Partido 61
-             NombreCorto: PER 61
-             Abreviatura: L61
-
-        - &W61 !!models.Equipo
-             Nombre: Ganador del Partido 61
-             NombreCorto: Gan 61
-             Abreviatura: W61
-
         - &2B !!models.Equipo
              Nombre: Segundo Grupo B
              NombreCorto: 2B
@@ -285,6 +287,46 @@
              NombreCorto: 2G
              Abreviatura: 2G
 
+        - &W49 !!models.Equipo
+             Nombre: Ganador del Partido 49
+             NombreCorto: Gan 49
+             Abreviatura: W49
+
+        - &W53 !!models.Equipo
+             Nombre: Ganador del Partido 53
+             NombreCorto: Gan 53
+             Abreviatura: W53
+
+        - &W51 !!models.Equipo
+             Nombre: Ganador del Partido 51
+             NombreCorto: Gan 51
+             Abreviatura: W51
+
+        - &W55 !!models.Equipo
+             Nombre: Ganador del Partido 55
+             NombreCorto: Gan 55
+             Abreviatura: W55
+
+        - &W57 !!models.Equipo
+             Nombre: Ganador del Partido 57
+             NombreCorto: Gan 57
+             Abreviatura: W57
+
+        - &W59 !!models.Equipo
+             Nombre: Ganador del Partido 59
+             NombreCorto: Gan 59
+             Abreviatura: W59
+
+        - &L61 !!models.Equipo
+             Nombre: Perdedor del Partido 61
+             NombreCorto: PER 61
+             Abreviatura: L61
+
+        - &W61 !!models.Equipo
+             Nombre: Ganador del Partido 61
+             NombreCorto: Gan 61
+             Abreviatura: W61
+
         - &W50 !!models.Equipo
              Nombre: Ganador del Partido 50
              NombreCorto: Gan 50
@@ -324,4 +366,5 @@
              Nombre: Ganador del Partido 62
              NombreCorto: Gan 62
              Abreviatura: W62
-
+             
+    Porciones:

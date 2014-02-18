@@ -33,6 +33,6 @@ public class DefinicionResultado extends Model {
 		Equipo
 	}
 	
-	public Tipo Estado;
+	public Tipo Tipo;
 
 }

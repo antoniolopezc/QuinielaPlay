@@ -52,9 +52,6 @@ public class Torneo extends Model {
 	@ManyToMany 
 	public List<Regla> Reglas;
 	
-	@OneToMany(cascade={CascadeType.ALL})
-	public List<Partido> Partidos;
-	
 	/*
 	 * Representa las fases o agrupaciones de partidos del torneo
 	 */

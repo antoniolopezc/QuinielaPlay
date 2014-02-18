@@ -18,7 +18,6 @@ public class Global extends GlobalSettings {
 	    public void onStart(Application app) {
 	        // Check if the database is empty
 	        if (Torneo.find.findRowCount() == 0) {
-//	        	Ebean.save((List) Yaml.load("equipos.yml"));
 	            Ebean.save((List) Yaml.load("torneo.yml"));
 	        }
 	    }

@@ -49,9 +49,6 @@ public class Partido extends Model {
 	public Tiempo TiempoActual = Tiempo.NoIniciado;
 	
 	@ManyToOne
-	public Torneo Torneo;
-	
-	@ManyToOne
 	public Equipo EquipoA;
 	
 	@ManyToOne

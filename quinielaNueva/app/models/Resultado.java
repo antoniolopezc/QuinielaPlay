@@ -33,6 +33,9 @@ public class Resultado extends Model {
 	
 	public Estado Estado;
 	
-	public long Resultado;
+	public long Entero;
+	
+	@ManyToOne
+	public Equipo Equipo;
 
 }
