@@ -372,89 +372,193 @@
              Nombre: Grupo A
              NombreCorto: GA
              Abreviatura: A
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-B !!models.Porcion
              Nombre: Grupo B
              NombreCorto: GB
              Abreviatura: B
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-C !!models.Porcion
              Nombre: Grupo C
              NombreCorto: GC
              Abreviatura: C
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-D !!models.Porcion
              Nombre: Grupo D
              NombreCorto: GD
              Abreviatura: D
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-E !!models.Porcion
              Nombre: Grupo E
              NombreCorto: GE
              Abreviatura: E
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-F !!models.Porcion
              Nombre: Grupo F
              NombreCorto: GF
              Abreviatura: F
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-G !!models.Porcion
              Nombre: Grupo G
              NombreCorto: GG
              Abreviatura: G
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Grupo-H !!models.Porcion
              Nombre: Grupo H
              NombreCorto: GH
              Abreviatura: H
-             Inico: 2014-06-12
+             Inicio: 2014-06-12
              Fin: 2014-06-26
+             Resultados: 
+              - !!models.Resultado
+                  Definicion: *P1
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P2
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P3
+                  Estado: Nuevo
+              - !!models.Resultado
+                  Definicion: *P4
+                  Estado: Nuevo
 
         - &Directa-OCTAVOS !!models.Porcion
              Nombre: Directa OCTAVOS
              NombreCorto: GOCTAVOS
              Abreviatura: OCTAVOS
-             Inico: 2014-06-28
+             Inicio: 2014-06-28
              Fin: 2014-07-01
 
         - &Directa-CUARTOS !!models.Porcion
              Nombre: Directa CUARTOS
              NombreCorto: GCUARTOS
              Abreviatura: CUARTOS
-             Inico: 2014-07-04
+             Inicio: 2014-07-04
              Fin: 2014-07-05
 
         - &Directa-SEMIFINALES !!models.Porcion
              Nombre: Directa SEMIFINALES
              NombreCorto: GSEMIFINALES
              Abreviatura: SEMIFINALES
-             Inico: 2014-07-08
+             Inicio: 2014-07-08
              Fin: 2014-07-09
 
         - &Directa-TERCERO !!models.Porcion
              Nombre: Directa TERCERO
              NombreCorto: GTERCERO
              Abreviatura: TERCERO
-             Inico: 2014-07-12
+             Inicio: 2014-07-12
              Fin: 2014-07-12
 
         - &Directa-FINAL !!models.Porcion
              Nombre: Directa FINAL
              NombreCorto: GFINAL
              Abreviatura: FINAL
-             Inico: 2014-07-13
+             Inicio: 2014-07-13
              Fin: 2014-07-13
