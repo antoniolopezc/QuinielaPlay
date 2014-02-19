@@ -368,7 +368,7 @@
              Abreviatura: W62
              
     Porciones:
-        - &Grupo-A !!models.Porcion
+        - &GuA !!models.Porcion
              Nombre: Grupo A
              NombreCorto: GA
              Abreviatura: A
@@ -388,7 +388,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-B !!models.Porcion
+        - &GuB !!models.Porcion
              Nombre: Grupo B
              NombreCorto: GB
              Abreviatura: B
@@ -408,7 +408,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-C !!models.Porcion
+        - &GuC !!models.Porcion
              Nombre: Grupo C
              NombreCorto: GC
              Abreviatura: C
@@ -428,7 +428,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-D !!models.Porcion
+        - &GuD !!models.Porcion
              Nombre: Grupo D
              NombreCorto: GD
              Abreviatura: D
@@ -448,7 +448,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-E !!models.Porcion
+        - &GuE !!models.Porcion
              Nombre: Grupo E
              NombreCorto: GE
              Abreviatura: E
@@ -468,7 +468,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-F !!models.Porcion
+        - &GuF !!models.Porcion
              Nombre: Grupo F
              NombreCorto: GF
              Abreviatura: F
@@ -488,7 +488,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-G !!models.Porcion
+        - &GuG !!models.Porcion
              Nombre: Grupo G
              NombreCorto: GG
              Abreviatura: G
@@ -508,7 +508,7 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Grupo-H !!models.Porcion
+        - &GuH !!models.Porcion
              Nombre: Grupo H
              NombreCorto: GH
              Abreviatura: H
@@ -528,35 +528,35 @@
                   Definicion: *P4
                   Estado: Nuevo
 
-        - &Directa-OCTAVOS !!models.Porcion
+        - &OCTAVOS !!models.Porcion
              Nombre: Directa OCTAVOS
-             NombreCorto: GOCTAVOS
+             NombreCorto: OCTAVOS
              Abreviatura: OCTAVOS
              Inicio: 2014-06-28
              Fin: 2014-07-01
 
-        - &Directa-CUARTOS !!models.Porcion
+        - &CUARTOS !!models.Porcion
              Nombre: Directa CUARTOS
-             NombreCorto: GCUARTOS
+             NombreCorto: CUARTOS
              Abreviatura: CUARTOS
              Inicio: 2014-07-04
              Fin: 2014-07-05
 
-        - &Directa-SEMIFINALES !!models.Porcion
+        - &SEMIFINALES !!models.Porcion
              Nombre: Directa SEMIFINALES
-             NombreCorto: GSEMIFINALES
+             NombreCorto: SEMIFINALES
              Abreviatura: SEMIFINALES
              Inicio: 2014-07-08
              Fin: 2014-07-09
 
-        - &Directa-TERCERO !!models.Porcion
+        - &TERCERO !!models.Porcion
              Nombre: Directa TERCERO
              NombreCorto: GTERCERO
              Abreviatura: TERCERO
              Inicio: 2014-07-12
              Fin: 2014-07-12
 
-        - &Directa-FINAL !!models.Porcion
+        - &FINAL !!models.Porcion
              Nombre: Directa FINAL
              NombreCorto: GFINAL
              Abreviatura: FINAL
