@@ -4,10 +4,11 @@
 
 package models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
-import play.data.validation.*;
 
 
 /**
@@ -24,14 +25,8 @@ public class DetallePronostico extends Model {
 	@Id
 	public long id;
 	
-	@Constraints.Required
-	public String Nombre;
-
-	@ManyToOne
-	public Usuario Dueño;
-	
-	@ManyToOne
-	public Quiniela Quiniela;
+	@OneToMany(cascade={CascadeType.ALL})
+	public List<ResultadoPronostico> Resultados;
 	
 	
 	public static Finder<Long,DetallePronostico> find = new Finder<Long,DetallePronostico>(

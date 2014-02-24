@@ -45,10 +45,12 @@ public class Torneo extends Model {
 	@Lob
 	public byte[] Imagen;
 	
-	
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<Equipo> Equipos;
 	
+	@OneToMany(cascade={CascadeType.ALL})
+	public List<Partido> Partidos;
+
 	@ManyToMany 
 	public List<Regla> Reglas;
 	

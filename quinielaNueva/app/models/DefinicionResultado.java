@@ -6,6 +6,7 @@ package models;
 import javax.persistence.*;
 
 import play.db.ebean.*;
+import play.db.ebean.Model.Finder;
 
 /**
  * @author alopez1
@@ -34,5 +35,9 @@ public class DefinicionResultado extends Model {
 	}
 	
 	public Tipo Tipo;
+	
+	public static Finder<Long,DefinicionResultado> find = new Finder<Long,DefinicionResultado>(
+		    Long.class, DefinicionResultado.class
+		  );
 
 }

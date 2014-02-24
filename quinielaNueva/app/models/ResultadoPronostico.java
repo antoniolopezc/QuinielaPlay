@@ -13,7 +13,7 @@ import play.db.ebean.*;
  *
  */
 @Entity
-public class Resultado extends Model {
+public class ResultadoPronostico extends Model {
 	/**
 	 * Agregado por Eclipse no se si sirve para algo
 	 */
@@ -23,25 +23,17 @@ public class Resultado extends Model {
 	long Id;
 	
 	@ManyToOne
-	public DefinicionResultado Definicion;
-
-	enum Estado {
-		Nuevo,
-		Parcial,
-		Final
-	}
+	public Resultado Resultado;
 	
-	public Estado Estado;
 	
 	public long Entero;
 	
 	@ManyToOne
 	public Equipo Equipo;
 	
-	@ManyToOne
-	public Partido Partido;
-	
-	@ManyToOne
-	public Porcion Porcion;
+	public static Finder<Long,ResultadoPronostico> find = new Finder<Long,ResultadoPronostico>(
+		    Long.class, ResultadoPronostico.class
+		  );
+
 	
 }

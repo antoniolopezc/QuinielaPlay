@@ -4,11 +4,11 @@
 
 package models;
 
+import java.util.*;
 import javax.persistence.*;
 
 import play.db.ebean.*;
 import play.data.validation.*;
-
 
 /**
  * @author alopez1
@@ -32,6 +32,10 @@ public class Pronostico extends Model {
 	
 	@ManyToOne
 	public Quiniela Quiniela;
+	
+	@OneToMany(cascade={CascadeType.ALL})
+	public List<ResultadoPronostico> Resultados;
+
 	
 	
 	public static Finder<Long,Pronostico> find = new Finder<Long,Pronostico>(

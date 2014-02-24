@@ -1,3 +1,10 @@
+- &BI !!models.Regla
+  Nombre: Duplica todos los Resultados
+  NombreCorto: Duplica 
+  Abreviatura: BI
+  Descricion: Duplica todos los Resultados
+  Clase: reglas.DuplicarTorneo
+          
 - &GA !!models.DefinicionResultado
     Nombre: Goles de Equipo A
     NombreCorto: Goles A 
@@ -287,86 +294,1165 @@
              NombreCorto: 2G
              Abreviatura: 2G
 
-        - &W49 !!models.Equipo
+        - &G49 !!models.Equipo
              Nombre: Ganador del Partido 49
              NombreCorto: Gan 49
-             Abreviatura: W49
+             Abreviatura: G49
 
-        - &W53 !!models.Equipo
+        - &G53 !!models.Equipo
              Nombre: Ganador del Partido 53
              NombreCorto: Gan 53
-             Abreviatura: W53
+             Abreviatura: G53
 
-        - &W51 !!models.Equipo
+        - &G51 !!models.Equipo
              Nombre: Ganador del Partido 51
              NombreCorto: Gan 51
-             Abreviatura: W51
+             Abreviatura: G51
 
-        - &W55 !!models.Equipo
+        - &G55 !!models.Equipo
              Nombre: Ganador del Partido 55
              NombreCorto: Gan 55
-             Abreviatura: W55
+             Abreviatura: G55
 
-        - &W57 !!models.Equipo
+        - &G57 !!models.Equipo
              Nombre: Ganador del Partido 57
              NombreCorto: Gan 57
-             Abreviatura: W57
+             Abreviatura: G57
 
-        - &W59 !!models.Equipo
+        - &G59 !!models.Equipo
              Nombre: Ganador del Partido 59
              NombreCorto: Gan 59
-             Abreviatura: W59
+             Abreviatura: G59
 
-        - &L61 !!models.Equipo
+        - &P61 !!models.Equipo
              Nombre: Perdedor del Partido 61
              NombreCorto: PER 61
-             Abreviatura: L61
+             Abreviatura: P61
 
-        - &W61 !!models.Equipo
+        - &G61 !!models.Equipo
              Nombre: Ganador del Partido 61
              NombreCorto: Gan 61
-             Abreviatura: W61
+             Abreviatura: G61
 
-        - &W50 !!models.Equipo
+        - &G50 !!models.Equipo
              Nombre: Ganador del Partido 50
              NombreCorto: Gan 50
-             Abreviatura: W50
+             Abreviatura: G50
 
-        - &W54 !!models.Equipo
+        - &G54 !!models.Equipo
              Nombre: Ganador del Partido 54
              NombreCorto: Gan 54
-             Abreviatura: W54
+             Abreviatura: G54
 
-        - &W52 !!models.Equipo
+        - &G52 !!models.Equipo
              Nombre: Ganador del Partido 52
              NombreCorto: Gan 52
-             Abreviatura: W52
+             Abreviatura: G52
 
-        - &W56 !!models.Equipo
+        - &G56 !!models.Equipo
              Nombre: Ganador del Partido 56
              NombreCorto: Gan 56
-             Abreviatura: W56
+             Abreviatura: G56
 
-        - &W58 !!models.Equipo
+        - &G58 !!models.Equipo
              Nombre: Ganador del Partido 58
              NombreCorto: Gan 58
-             Abreviatura: W58
+             Abreviatura: G58
 
-        - &W60 !!models.Equipo
+        - &G60 !!models.Equipo
              Nombre: Ganador del Partido 60
              NombreCorto: Gan 60
-             Abreviatura: W60
+             Abreviatura: G60
 
-        - &L62 !!models.Equipo
+        - &P62 !!models.Equipo
              Nombre: Perdedor del Partido 62
              NombreCorto: PER 62
-             Abreviatura: L62
+             Abreviatura: P62
 
-        - &W62 !!models.Equipo
+        - &G62 !!models.Equipo
              Nombre: Ganador del Partido 62
              NombreCorto: Gan 62
-             Abreviatura: W62
-             
+             Abreviatura: G62
+    Partidos:
+        - &PA1 !!models.Partido
+             Nombre: Partido 1
+             NombreCorto: P1
+             Abreviatura: P1
+             Fecha: 2014-6-12 17:00:00
+             EquipoA: *BRA
+             EquipoB: *CRO
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+        - &PA2 !!models.Partido
+             Nombre: Partido 2
+             NombreCorto: P2
+             Abreviatura: P2
+             Fecha: 2014-6-13 13:00:00
+             EquipoA: *MEX
+             EquipoB: *CAM
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA3 !!models.Partido
+             Nombre: Partido 3
+             NombreCorto: P3
+             Abreviatura: P3
+             Fecha: 2014-6-17 16:00:00
+             EquipoA: *BRA
+             EquipoB: *MEX
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA4 !!models.Partido
+             Nombre: Partido 4
+             NombreCorto: P4
+             Abreviatura: P4
+             Fecha: 2014-6-18 18:00:00
+             EquipoA: *CAM
+             EquipoB: *CRO
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA5 !!models.Partido
+             Nombre: Partido 5
+             NombreCorto: P5
+             Abreviatura: P5
+             Fecha: 2014-6-23 17:00:00
+             EquipoA: *CAM
+             EquipoB: *BRA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA6 !!models.Partido
+             Nombre: Partido 6
+             NombreCorto: P6
+             Abreviatura: P6
+             Fecha: 2014-6-23 17:00:00
+             EquipoA: *CRO
+             EquipoB: *MEX
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA7 !!models.Partido
+             Nombre: Partido 7
+             NombreCorto: P7
+             Abreviatura: P7
+             Fecha: 2014-6-13 16:00:00
+             EquipoA: *ESP
+             EquipoB: *HOL
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA8 !!models.Partido
+             Nombre: Partido 8
+             NombreCorto: P8
+             Abreviatura: P8
+             Fecha: 2014-6-13 18:00:00
+             EquipoA: *CHI
+             EquipoB: *AUS
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA9 !!models.Partido
+             Nombre: Partido 9
+             NombreCorto: P9
+             Abreviatura: P9
+             Fecha: 2014-6-18 16:00:00
+             EquipoA: *ESP
+             EquipoB: *CHI
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA10 !!models.Partido
+             Nombre: Partido 10
+             NombreCorto: P10
+             Abreviatura: P10
+             Fecha: 2014-6-18 13:00:00
+             EquipoA: *AUS
+             EquipoB: *HOL
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA11 !!models.Partido
+             Nombre: Partido 11
+             NombreCorto: P11
+             Abreviatura: P11
+             Fecha: 2014-6-23 13:00:00
+             EquipoA: *AUS
+             EquipoB: *ESP
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA12 !!models.Partido
+             Nombre: Partido 12
+             NombreCorto: P12
+             Abreviatura: P12
+             Fecha: 2014-6-23 13:00:00
+             EquipoA: *HOL
+             EquipoB: *CHI
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA13 !!models.Partido
+             Nombre: Partido 13
+             NombreCorto: P13
+             Abreviatura: P13
+             Fecha: 2014-6-14 13:00:00
+             EquipoA: *COL
+             EquipoB: *GRE
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA14 !!models.Partido
+             Nombre: Partido 14
+             NombreCorto: P14
+             Abreviatura: P14
+             Fecha: 2014-6-14 22:00:00
+             EquipoA: *CMA
+             EquipoB: *JAP
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA15 !!models.Partido
+             Nombre: Partido 15
+             NombreCorto: P15
+             Abreviatura: P15
+             Fecha: 2014-6-19 13:00:00
+             EquipoA: *COL
+             EquipoB: *CMA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA16 !!models.Partido
+             Nombre: Partido 16
+             NombreCorto: P16
+             Abreviatura: P16
+             Fecha: 2014-6-19 19:00:00
+             EquipoA: *JAP
+             EquipoB: *GRE
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA17 !!models.Partido
+             Nombre: Partido 17
+             NombreCorto: P17
+             Abreviatura: P17
+             Fecha: 2014-6-24 16:00:00
+             EquipoA: *JAP
+             EquipoB: *COL
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA18 !!models.Partido
+             Nombre: Partido 18
+             NombreCorto: P18
+             Abreviatura: P18
+             Fecha: 2014-6-24 17:00:00
+             EquipoA: *GRE
+             EquipoB: *CMA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA19 !!models.Partido
+             Nombre: Partido 19
+             NombreCorto: P19
+             Abreviatura: P19
+             Fecha: 2014-6-14 16:00:00
+             EquipoA: *URU
+             EquipoB: *CTR
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA20 !!models.Partido
+             Nombre: Partido 20
+             NombreCorto: P20
+             Abreviatura: P20
+             Fecha: 2014-6-14 18:00:00
+             EquipoA: *ING
+             EquipoB: *ITA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA21 !!models.Partido
+             Nombre: Partido 21
+             NombreCorto: P21
+             Abreviatura: P21
+             Fecha: 2014-6-19 16:00:00
+             EquipoA: *URU
+             EquipoB: *ING
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA22 !!models.Partido
+             Nombre: Partido 22
+             NombreCorto: P22
+             Abreviatura: P22
+             Fecha: 2014-6-20 13:00:00
+             EquipoA: *ITA
+             EquipoB: *CTR
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA23 !!models.Partido
+             Nombre: Partido 23
+             NombreCorto: P23
+             Abreviatura: P23
+             Fecha: 2014-6-24 13:00:00
+             EquipoA: *ITA
+             EquipoB: *URU
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA24 !!models.Partido
+             Nombre: Partido 24
+             NombreCorto: P24
+             Abreviatura: P24
+             Fecha: 2014-6-24 13:00:00
+             EquipoA: *CTR
+             EquipoB: *ING
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA25 !!models.Partido
+             Nombre: Partido 25
+             NombreCorto: P25
+             Abreviatura: P25
+             Fecha: 2014-6-15 13:00:00
+             EquipoA: *SUI
+             EquipoB: *ECU
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA26 !!models.Partido
+             Nombre: Partido 26
+             NombreCorto: P26
+             Abreviatura: P26
+             Fecha: 2014-6-15 16:00:00
+             EquipoA: *FRA
+             EquipoB: *HON
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA27 !!models.Partido
+             Nombre: Partido 27
+             NombreCorto: P27
+             Abreviatura: P27
+             Fecha: 2014-6-20 16:00:00
+             EquipoA: *SUI
+             EquipoB: *FRA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA28 !!models.Partido
+             Nombre: Partido 28
+             NombreCorto: P28
+             Abreviatura: P28
+             Fecha: 2014-6-20 19:00:00
+             EquipoA: *HON
+             EquipoB: *ECU
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA29 !!models.Partido
+             Nombre: Partido 29
+             NombreCorto: P29
+             Abreviatura: P29
+             Fecha: 2014-6-25 16:00:00
+             EquipoA: *HON
+             EquipoB: *SUI
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA30 !!models.Partido
+             Nombre: Partido 30
+             NombreCorto: P30
+             Abreviatura: P30
+             Fecha: 2014-6-25 17:00:00
+             EquipoA: *ECU
+             EquipoB: *FRA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA31 !!models.Partido
+             Nombre: Partido 31
+             NombreCorto: P31
+             Abreviatura: P31
+             Fecha: 2014-6-15 19:00:00
+             EquipoA: *ARG
+             EquipoB: *BOS
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA32 !!models.Partido
+             Nombre: Partido 32
+             NombreCorto: P32
+             Abreviatura: P32
+             Fecha: 2014-6-16 16:00:00
+             EquipoA: *IRA
+             EquipoB: *NIG
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA33 !!models.Partido
+             Nombre: Partido 33
+             NombreCorto: P33
+             Abreviatura: P33
+             Fecha: 2014-6-21 13:00:00
+             EquipoA: *ARG
+             EquipoB: *IRA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA34 !!models.Partido
+             Nombre: Partido 34
+             NombreCorto: P34
+             Abreviatura: P34
+             Fecha: 2014-6-21 18:00:00
+             EquipoA: *NIG
+             EquipoB: *BOS
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA35 !!models.Partido
+             Nombre: Partido 35
+             NombreCorto: P35
+             Abreviatura: P35
+             Fecha: 2014-6-25 13:00:00
+             EquipoA: *NIG
+             EquipoB: *ARG
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA36 !!models.Partido
+             Nombre: Partido 36
+             NombreCorto: P36
+             Abreviatura: P36
+             Fecha: 2014-6-25 13:00:00
+             EquipoA: *BOS
+             EquipoB: *IRA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA37 !!models.Partido
+             Nombre: Partido 37
+             NombreCorto: P37
+             Abreviatura: P37
+             Fecha: 2014-6-16 13:00:00
+             EquipoA: *ALE
+             EquipoB: *POR
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA38 !!models.Partido
+             Nombre: Partido 38
+             NombreCorto: P38
+             Abreviatura: P38
+             Fecha: 2014-6-16 19:00:00
+             EquipoA: *GHA
+             EquipoB: *USA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA39 !!models.Partido
+             Nombre: Partido 39
+             NombreCorto: P39
+             Abreviatura: P39
+             Fecha: 2014-6-21 16:00:00
+             EquipoA: *ALE
+             EquipoB: *GHA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA40 !!models.Partido
+             Nombre: Partido 40
+             NombreCorto: P40
+             Abreviatura: P40
+             Fecha: 2014-6-22 18:00:00
+             EquipoA: *USA
+             EquipoB: *POR
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA41 !!models.Partido
+             Nombre: Partido 41
+             NombreCorto: P41
+             Abreviatura: P41
+             Fecha: 2014-6-26 13:00:00
+             EquipoA: *USA
+             EquipoB: *ALE
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA42 !!models.Partido
+             Nombre: Partido 42
+             NombreCorto: P42
+             Abreviatura: P42
+             Fecha: 2014-6-26 13:00:00
+             EquipoA: *POR
+             EquipoB: *GHA
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA43 !!models.Partido
+             Nombre: Partido 43
+             NombreCorto: P43
+             Abreviatura: P43
+             Fecha: 2014-6-17 13:00:00
+             EquipoA: *BEL
+             EquipoB: *ARL
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA44 !!models.Partido
+             Nombre: Partido 44
+             NombreCorto: P44
+             Abreviatura: P44
+             Fecha: 2014-6-17 18:00:00
+             EquipoA: *RUS
+             EquipoB: *COR
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA45 !!models.Partido
+             Nombre: Partido 45
+             NombreCorto: P45
+             Abreviatura: P45
+             Fecha: 2014-6-22 13:00:00
+             EquipoA: *BEL
+             EquipoB: *RUS
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA46 !!models.Partido
+             Nombre: Partido 46
+             NombreCorto: P46
+             Abreviatura: P46
+             Fecha: 2014-6-22 16:00:00
+             EquipoA: *COR
+             EquipoB: *ARL
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA47 !!models.Partido
+             Nombre: Partido 47
+             NombreCorto: P47
+             Abreviatura: P47
+             Fecha: 2014-6-26 17:00:00
+             EquipoA: *COR
+             EquipoB: *BEL
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA48 !!models.Partido
+             Nombre: Partido 48
+             NombreCorto: P48
+             Abreviatura: P48
+             Fecha: 2014-6-26 17:00:00
+             EquipoA: *ARL
+             EquipoB: *RUS
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+
+
+        - &PA49 !!models.Partido
+             Nombre: Partido 49
+             NombreCorto: P49
+             Abreviatura: P49
+             Fecha: 2014-6-28 13:00:00
+             EquipoA: *1A
+             EquipoB: *2B
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA50 !!models.Partido
+             Nombre: Partido 50
+             NombreCorto: P50
+             Abreviatura: P50
+             Fecha: 2014-6-28 17:00:00
+             EquipoA: *1C
+             EquipoB: *2D
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA51 !!models.Partido
+             Nombre: Partido 51
+             NombreCorto: P51
+             Abreviatura: P51
+             Fecha: 2014-6-29 13:00:00
+             EquipoA: *1B
+             EquipoB: *2A
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA52 !!models.Partido
+             Nombre: Partido 52
+             NombreCorto: P52
+             Abreviatura: P52
+             Fecha: 2014-6-29 17:00:00
+             EquipoA: *1D
+             EquipoB: *2C
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA53 !!models.Partido
+             Nombre: Partido 53
+             NombreCorto: P53
+             Abreviatura: P53
+             Fecha: 2014-6-30 13:00:00
+             EquipoA: *1E
+             EquipoB: *2F
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA54 !!models.Partido
+             Nombre: Partido 54
+             NombreCorto: P54
+             Abreviatura: P54
+             Fecha: 2014-6-30 17:00:00
+             EquipoA: *1G
+             EquipoB: *2H
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA55 !!models.Partido
+             Nombre: Partido 55
+             NombreCorto: P55
+             Abreviatura: P55
+             Fecha: 2014-7-1 13:00:00
+             EquipoA: *1F
+             EquipoB: *2E
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA56 !!models.Partido
+             Nombre: Partido 56
+             NombreCorto: P56
+             Abreviatura: P56
+             Fecha: 2014-7-1 17:00:00
+             EquipoA: *1H
+             EquipoB: *2G
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA57 !!models.Partido
+             Nombre: Partido 57
+             NombreCorto: P57
+             Abreviatura: P57
+             Fecha: 2014-7-4 17:00:00
+             EquipoA: *G49
+             EquipoB: *G50
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA58 !!models.Partido
+             Nombre: Partido 58
+             NombreCorto: P58
+             Abreviatura: P58
+             Fecha: 2014-7-4 13:00:00
+             EquipoA: *G53
+             EquipoB: *G54
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA59 !!models.Partido
+             Nombre: Partido 59
+             NombreCorto: P59
+             Abreviatura: P59
+             Fecha: 2014-7-5 17:00:00
+             EquipoA: *G51
+             EquipoB: *G52
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA60 !!models.Partido
+             Nombre: Partido 60
+             NombreCorto: P60
+             Abreviatura: P60
+             Fecha: 2014-7-5 13:00:00
+             EquipoA: *G55
+             EquipoB: *G56
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA61 !!models.Partido
+             Nombre: Partido 61
+             NombreCorto: P61
+             Abreviatura: P61
+             Fecha: 2014-7-8 17:00:00
+             EquipoA: *G57
+             EquipoB: *G58
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA62 !!models.Partido
+             Nombre: Partido 62
+             NombreCorto: P62
+             Abreviatura: P62
+             Fecha: 2014-7-9 17:00:00
+             EquipoA: *G59
+             EquipoB: *G60
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA63 !!models.Partido
+             Nombre: Partido 63
+             NombreCorto: P63
+             Abreviatura: P63
+             Fecha: 2014-7-12 17:00:00
+             EquipoA: *P61
+             EquipoB: *P62
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
+        - &PA64 !!models.Partido
+             Nombre: Partido 64
+             NombreCorto: P64
+             Abreviatura: P64
+             Fecha: 2014-7-13 16:00:00
+             EquipoA: *G61
+             EquipoB: *G62
+             Resultados:
+               - !!models.Resultado
+                   Definicion: *GA
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *GB
+                   Estado: Nuevo
+               - !!models.Resultado
+                   Definicion: *Paso
+                   Estado: Nuevo
+
+
     Porciones:
         - &GuA !!models.Porcion
              Nombre: Grupo A
@@ -387,7 +1473,14 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
-
+             Partidos:
+              - *PA1
+              - *PA2
+              - *PA3
+              - *PA4
+              - *PA5
+              - *PA6
+            
         - &GuB !!models.Porcion
              Nombre: Grupo B
              NombreCorto: GB
@@ -407,6 +1500,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA7
+              - *PA8
+              - *PA9
+              - *PA10
+              - *PA11
+              - *PA12
 
         - &GuC !!models.Porcion
              Nombre: Grupo C
@@ -427,6 +1527,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA13
+              - *PA14
+              - *PA15
+              - *PA16
+              - *PA17
+              - *PA18
 
         - &GuD !!models.Porcion
              Nombre: Grupo D
@@ -447,6 +1554,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA19
+              - *PA20
+              - *PA21
+              - *PA22
+              - *PA23
+              - *PA24
 
         - &GuE !!models.Porcion
              Nombre: Grupo E
@@ -467,6 +1581,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA25
+              - *PA26
+              - *PA27
+              - *PA28
+              - *PA29
+              - *PA30
 
         - &GuF !!models.Porcion
              Nombre: Grupo F
@@ -487,6 +1608,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA31
+              - *PA32
+              - *PA33
+              - *PA34
+              - *PA35
+              - *PA36
 
         - &GuG !!models.Porcion
              Nombre: Grupo G
@@ -507,6 +1635,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA37
+              - *PA38
+              - *PA39
+              - *PA40
+              - *PA41
+              - *PA42
 
         - &GuH !!models.Porcion
              Nombre: Grupo H
@@ -527,6 +1662,13 @@
               - !!models.Resultado
                   Definicion: *P4
                   Estado: Nuevo
+             Partidos:
+              - *PA43
+              - *PA44
+              - *PA45
+              - *PA46
+              - *PA47
+              - *PA48
 
         - &OCTAVOS !!models.Porcion
              Nombre: Directa OCTAVOS
@@ -534,6 +1676,15 @@
              Abreviatura: OCTAVOS
              Inicio: 2014-06-28
              Fin: 2014-07-01
+             Partidos:
+              - *PA49
+              - *PA50
+              - *PA51
+              - *PA52
+              - *PA53
+              - *PA54
+              - *PA55
+              - *PA56
 
         - &CUARTOS !!models.Porcion
              Nombre: Directa CUARTOS
@@ -541,6 +1692,11 @@
              Abreviatura: CUARTOS
              Inicio: 2014-07-04
              Fin: 2014-07-05
+             Partidos:
+              - *PA57
+              - *PA58
+              - *PA59
+              - *PA60
 
         - &SEMIFINALES !!models.Porcion
              Nombre: Directa SEMIFINALES
@@ -548,6 +1704,9 @@
              Abreviatura: SEMIFINALES
              Inicio: 2014-07-08
              Fin: 2014-07-09
+             Partidos:
+              - *PA61
+              - *PA62
 
         - &TERCERO !!models.Porcion
              Nombre: Directa TERCERO
@@ -555,6 +1714,8 @@
              Abreviatura: TERCERO
              Inicio: 2014-07-12
              Fin: 2014-07-12
+             Partidos:
+              - *PA63
 
         - &FINAL !!models.Porcion
              Nombre: Directa FINAL
@@ -562,3 +1723,17 @@
              Abreviatura: FINAL
              Inicio: 2014-07-13
              Fin: 2014-07-13
+             Partidos:
+              - *PA64
+- &Q2014 !!models.Quiniela
+    Nombre: Quiniela del Mudial 2014 Brasil
+    NombreCorto: Quiniela Mundial 
+    Abreviatura: QM2014
+    Descricion: Quiniela de Toño del Mudial 2014 Brasil
+    Inicio: 2014-06-01
+    Fin: 2014-07-13
+    Torneo: *Mudial2014
+    Reglas:
+      - *BI
+    
+             

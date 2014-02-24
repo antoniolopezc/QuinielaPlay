@@ -1,0 +1,8 @@
+@(Quinielas: List[models.Quiniela])
+
+@import helper._
+
+@base("Agregar Pronostico a que Quiniela") {
+	@Quinielas.map{Quiniela => @views.html.quiniela.Pronostico.EscogerQuiniela(Quiniela) }
+
+}

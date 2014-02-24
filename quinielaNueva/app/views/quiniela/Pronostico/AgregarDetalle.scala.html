@@ -1,0 +1,10 @@
+@(Quinielas: models.Quiniela,Pronostico: models.Pronostico,Forma: play.data.Form[models.Pronostico])
+
+@import helper._
+
+
+@base("Agregar Pronostico ") {
+	@for((key, value) <- Forma.data()) {
+		<lu>@key - @value</lu>
+	} 
+}

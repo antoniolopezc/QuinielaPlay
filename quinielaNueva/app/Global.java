@@ -4,8 +4,11 @@
 
 import play.*;
 import play.libs.*;
+
 import com.avaje.ebean.Ebean;
+
 import models.*;
+
 import java.util.*;
 
 /**
@@ -14,7 +17,8 @@ import java.util.*;
  */
 public class Global extends GlobalSettings {
 	
-	 @Override
+	@SuppressWarnings("rawtypes")
+	@Override
 	    public void onStart(Application app) {
 	        // Check if the database is empty
 	        if (Torneo.find.findRowCount() == 0) {

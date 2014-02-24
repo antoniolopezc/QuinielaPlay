@@ -8,7 +8,6 @@ import java.util.*;
 import javax.persistence.*;
 
 import play.db.ebean.*;
-import play.libs.*;
 
 /**
  * @author alopez1 
@@ -34,9 +33,7 @@ public class Partido extends Model {
 	
 	public String Lugar;
 	
-	public Date Fecha;
-	
-	public Time Hora;
+	public java.sql.Timestamp Fecha;
 	
 	public enum Tiempo {
 		NoIniciado,

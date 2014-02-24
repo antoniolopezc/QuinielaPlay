@@ -5,6 +5,7 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -45,7 +46,11 @@ public class Quiniela extends Model {
 	@Lob
 	public byte[] Imagen;
 	
+	@ManyToOne
 	public Torneo Torneo;
+	
+	@ManyToMany 
+	public List<Regla> Reglas;	
 	
 	@ManyToOne
 	public Usuario Dueño;
