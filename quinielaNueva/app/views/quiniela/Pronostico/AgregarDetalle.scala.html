@@ -4,7 +4,5 @@
 
 
 @base("Agregar Pronostico ") {
-	@for((key, value) <- Forma.data()) {
-		<lu>@key - @value</lu>
-	} 
+	@Pronostico.Resultados.size()
 }

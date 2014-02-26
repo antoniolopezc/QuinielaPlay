@@ -4,6 +4,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
+import com.avaje.ebean.Ebean;
+
 import play.mvc.*;
 import play.data.Form;
 import views.html.quiniela.Pronostico.*;
@@ -20,7 +22,9 @@ public class Pronostico extends Controller {
     		return ok(Agregar.render(Quinielas));
     	}
     	models.Quiniela Quiniela=models.Quiniela.find.byId(id);
+    	Ebean.refresh(Quiniela.Torneo);
     	models.Pronostico Pronostico=new models.Pronostico();
+    	Pronostico.Quiniela=Quiniela;
     	
     	for(models.Regla Regla: Quiniela.Reglas){
     		try {

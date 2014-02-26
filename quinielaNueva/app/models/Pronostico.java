@@ -34,7 +34,7 @@ public class Pronostico extends Model {
 	public Quiniela Quiniela;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<ResultadoPronostico> Resultados;
+	public List<ResultadoPronostico> Resultados= new ArrayList<ResultadoPronostico>();
 
 	
 	

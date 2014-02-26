@@ -40,7 +40,7 @@ GET		/logeado			controllers.Application.loggeado()
 GET		/rlogin				controllers.Application.rloggeado()
 
 # Refencias a Pronostico
-GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long ?= -1)
+GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long = -1)
 GET		/AgregarPronostico/:id						controllers.quiniela.Pronostico.agregar(id: Long)
 POST    /AgregarPronostico/guardar				controllers.quiniela.Pronostico.guardar()
 

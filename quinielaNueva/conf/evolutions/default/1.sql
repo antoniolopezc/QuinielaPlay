@@ -105,7 +105,7 @@ create table resultado (
 
 create table resultado_pronostico (
   id                        bigint not null,
-  detalle_pronostico_id     bigint not null,
+  pronostico_id             bigint not null,
   resultado_id              bigint,
   entero                    bigint,
   equipo_id                 bigint,
@@ -216,8 +216,8 @@ alter table resultado add constraint fk_resultado_Partido_13 foreign key (partid
 create index ix_resultado_Partido_13 on resultado (partido_id);
 alter table resultado add constraint fk_resultado_Porcion_14 foreign key (porcion_id) references porcion (id) on delete restrict on update restrict;
 create index ix_resultado_Porcion_14 on resultado (porcion_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_detal_15 foreign key (detalle_pronostico_id) references detalle_pronostico (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_detal_15 on resultado_pronostico (detalle_pronostico_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_prono_15 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_prono_15 on resultado_pronostico (pronostico_id);
 alter table resultado_pronostico add constraint fk_resultado_pronostico_Resul_16 foreign key (resultado_id) references resultado (id) on delete restrict on update restrict;
 create index ix_resultado_pronostico_Resul_16 on resultado_pronostico (resultado_id);
 alter table resultado_pronostico add constraint fk_resultado_pronostico_Equip_17 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
