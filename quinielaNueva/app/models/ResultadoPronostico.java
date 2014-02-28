@@ -20,7 +20,7 @@ public class ResultadoPronostico extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	long Id;
+	public long Id;
 	
 	@ManyToOne
 	public Resultado Resultado;

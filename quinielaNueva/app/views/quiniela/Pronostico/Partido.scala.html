@@ -1,0 +1,19 @@
+@(Partido: Partido, Id: Long)
+@import com.avaje.ebean.Ebean
+
+@Ebean.refresh(Partido.EquipoA)
+@Ebean.refresh(Partido.EquipoB)
+<tr id="Partido-@Partido.Id" class="Partido" >
+	<script type="text/javascript">var P=new Partido(@Partido.Id,@Partido.EquipoA.Id,@Partido.EquipoB.Id);</script>
+	<td class="Partido-Fecha">@Partido.Fecha.format("dd/MM hh:mm a")</td>
+	<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.EquipoA)</td>
+	<td class="Partido-EquipoB">@views.html.Equipo.Breve(Partido.EquipoB)</td>
+	@for(Resultado <- Partido.Resultados){
+		@Ebean.refresh(Resultado.Definicion)
+		<script type="text/javascript">P.AgregarResultado(@Resultado.Id , "@Resultado.Definicion.Abreviatura");</script>
+		<td class="Partido-Resultado">
+		@views.html.FormatoResultado.ResultadoMinimo(Resultado,Id)
+		</td>
+    }
+    <script type="text/javascript">Porciones[@Id].AgregarPartido(P);</script>
+</tr>

@@ -47,6 +47,12 @@ public abstract class ReglaBase {
 	 * devuelve un posible valor de error o 0 si esta todo correcto
 	 * */
 	public abstract long GenerarPronostico( Quiniela Quiniela, Pronostico Pronostico);
+	
+	/*Genera los resultados necesario para su futuro Caculo para un Pronostico 
+	 * devuelve un posible valor de error o 0 si esta todo correcto
+	 * */
+	public abstract String IncluirJS();
+	
 
 	/**
 	 * @return the parametros

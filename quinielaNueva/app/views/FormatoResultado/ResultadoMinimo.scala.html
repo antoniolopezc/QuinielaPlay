@@ -1,0 +1,17 @@
+@(Resultado: models.Resultado, Id: Long)	
+
+@Resultado.Definicion.Abreviatura match {
+	case "GA" => { 
+		<input type="number" class="GA" name="@Resultado.Id" min="0" onchange="CambioGol(@Id,@Resultado.Partido.Id,this)" >
+		}
+	case "GB" => { 
+		<input type="number" class="GB" name="@Resultado.Id" min="0" onchange="CambioGol(@Id,@Resultado.Partido.Id,this)" >
+		}
+	case "Paso" => {
+		<select class="Paso" disabled name="@Resultado.Id" >
+			<option selected disabled hidden value=""></option>
+			<option value="@Resultado.Partido.EquipoA.Id">@views.html.Equipo.Breve(Resultado.Partido.EquipoA)</option>
+			<option value="@Resultado.Partido.EquipoB.Id">@views.html.Equipo.Breve(Resultado.Partido.EquipoB)</option>
+		</select>	
+		}
+}

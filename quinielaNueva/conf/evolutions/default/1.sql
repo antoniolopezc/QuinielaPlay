@@ -13,11 +13,6 @@ create table definicion_resultado (
   constraint pk_definicion_resultado primary key (id))
 ;
 
-create table detalle_pronostico (
-  id                        bigint not null,
-  constraint pk_detalle_pronostico primary key (id))
-;
-
 create table equipo (
   id                        bigint not null,
   torneo_id                 bigint not null,
@@ -166,8 +161,6 @@ create table torneo_usuario (
 ;
 create sequence definicion_resultado_seq;
 
-create sequence detalle_pronostico_seq;
-
 create sequence equipo_seq;
 
 create sequence partido_seq;
@@ -253,8 +246,6 @@ SET REFERENTIAL_INTEGRITY FALSE;
 
 drop table if exists definicion_resultado;
 
-drop table if exists detalle_pronostico;
-
 drop table if exists equipo;
 
 drop table if exists partido;
@@ -288,8 +279,6 @@ drop table if exists usuario;
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists definicion_resultado_seq;
-
-drop sequence if exists detalle_pronostico_seq;
 
 drop sequence if exists equipo_seq;
 

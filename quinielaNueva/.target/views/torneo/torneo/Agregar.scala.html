@@ -1,4 +1,4 @@
-@(Torneo: Form[Torneo])
+@(Torneo: play.data.Form[Torneo])
 
 @import helper._
 
@@ -10,7 +10,7 @@
     }
 @form(action=controllers.torneo.routes.Torneo.guardar()){
 	<h1>Nuevo Torneo</h1>
- 		<h2>DescriciÃ³n:</h2>
+ 		<h2>Descrición:</h2>
 		@inputText(Torneo("Nombre"))
 		@inputText(Torneo("NombreCorto"))
 		@inputText(Torneo("Abreviatura"))

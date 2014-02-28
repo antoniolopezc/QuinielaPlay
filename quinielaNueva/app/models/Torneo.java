@@ -23,7 +23,7 @@ public class Torneo extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long id;
+	public long Id;
 	
 	@Constraints.Required
 	public String Nombre;

@@ -40,10 +40,9 @@ public class Pronostico extends Controller {
 				e.printStackTrace();
 			}
     	}
-    	Form<models.Pronostico> Forma=new Form<models.Pronostico>(models.Pronostico.class);
-    	Forma.fill(Pronostico);
+    	
 
-    	return ok(AgregarDetalle.render(Quiniela,Pronostico,Forma));
+    	return ok(AgregarDetalle.render(Pronostico));
     }
     
     /*

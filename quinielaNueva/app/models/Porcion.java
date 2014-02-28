@@ -21,7 +21,7 @@ public class Porcion extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long id;
+	public long Id;
 	
 	public String Nombre;
 	

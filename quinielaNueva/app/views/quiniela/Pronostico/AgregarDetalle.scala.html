@@ -1,8 +1,26 @@
-@(Quinielas: models.Quiniela,Pronostico: models.Pronostico,Forma: play.data.Form[models.Pronostico])
+@(Pronostico: models.Pronostico)
 
 @import helper._
 
+@css = {
+	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronostico.css")'>
+}
+@script= {
+	<script src='@routes.Assets.at("javascripts/EstructuraLocal.js")' type="text/javascript"></script>
+}
 
-@base("Agregar Pronostico ") {
-	@Pronostico.Resultados.size()
+@base("Agregar Pronostico ",css,script){
+	<script src='@routes.Assets.at("javascripts/Pasa.js")' type="text/javascript"></script>	
+	@for(Porcion <- Pronostico.Quiniela.Torneo.Porciones){
+		<div id="Porcion-@Porcion.Id" class="Procion">
+			<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
+			<h2>@Porcion.Nombre</h2>
+			<table>
+				<tbody>
+					@Porcion.Partidos.map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id)}
+				</tbody>
+			</table>
+		</div>
+	}
+
 }

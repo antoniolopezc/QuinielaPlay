@@ -55,4 +55,10 @@ public class DuplicarTorneo extends ReglaBase {
 		}
 		return 0;
 	}
+
+	@Override
+	public String IncluirJS() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
