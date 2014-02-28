@@ -9,7 +9,7 @@ $(".GB").change({Partido:P},CambioGol);
 */
 
 function CambioGol(Po,Pa,t){
- var Quien=$(t).attr('class').charAt(1);
+ var Quien=$(t).attr('class');
  var Resultados=Porciones[Po].Partidos[Pa].Resultados;
  var keys = Object.keys(Resultados);
  var Goles=($(t).val()?parseInt($(t).val()):null);
@@ -18,8 +18,7 @@ function CambioGol(Po,Pa,t){
 	 Resultados[Quien].Resultado=Goles;
 	 ActualizaPasa(Porciones[Po].Partidos[Pa]);
  } else {
-	 console.log(JSON.stringify({P: Porciones[Po].Partidos[Pa], Quien:Quien,Goles:Goles}))
-	 Porciones[Po].ActualizarPartido(Porciones[Po].Partidos[Pa],Quien,Goles);
+	 Porciones[Po].ActualizarPartido(Porciones[Po].Partidos[Pa],Quien.charAt(1),Goles);
 	 ActualizaPorcion(Porciones[Po]);
  }
   
