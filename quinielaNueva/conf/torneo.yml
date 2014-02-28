@@ -38,7 +38,7 @@
 - &P3 !!models.DefinicionResultado
     Nombre: Equipo que Quedo Tercero
     NombreCorto: Tercero 
-    Abreviatura: 4
+    Abreviatura: 3
     Tipo: Equipo
 
 - &P4 !!models.DefinicionResultado
