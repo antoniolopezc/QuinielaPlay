@@ -50,16 +50,16 @@ public class Quiniela extends Model {
 	public Torneo Torneo;
 	
 	@ManyToMany 
-	public List<Regla> Reglas;	
+	public List<Regla> Reglas=new ArrayList<Regla>();	
 	
 	@ManyToOne
 	public Usuario Dueño;
 	
 	@ManyToMany 
-	public List<Usuario> Administradores;
+	public List<Usuario> Administradores=new ArrayList<Usuario>();
 	
 	@ManyToMany 
-	public List<Usuario> Participantes;
+	public List<Usuario> Participantes=new ArrayList<Usuario>();
 	
 	public static Finder<Long,Quiniela> find = new Finder<Long,Quiniela>(
 			    Long.class, Quiniela.class

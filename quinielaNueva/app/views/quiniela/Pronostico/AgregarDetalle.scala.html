@@ -9,6 +9,7 @@
 	<script src='@routes.Assets.at("javascripts/EstructuraLocal.js")' type="text/javascript"></script>
 }
 
+<<<<<<< HEAD
 @base("Agregar Pronostico ",css,script){
 	<script src='@routes.Assets.at("javascripts/Pasa.js")' type="text/javascript"></script>	
 	@for(Porcion <- Pronostico.Quiniela.Torneo.Porciones){
@@ -23,4 +24,8 @@
 		</div>
 	}
 
+=======
+@base("Agregar Pronostico ") {
+<p>@Pronostico.Resultados.size()</p>
+>>>>>>> refs/remotes/Red/master
 }

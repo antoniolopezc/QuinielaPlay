@@ -36,9 +36,9 @@ public class Porcion extends Model {
 	public Date Fin;
 	
 	@ManyToMany
-	public List<Partido> Partidos;
+	public List<Partido> Partidos=new ArrayList<Partido>();
    	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Resultado> Resultados;
+	public List<Resultado> Resultados=new ArrayList<Resultado>();
 
 }

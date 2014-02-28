@@ -52,6 +52,6 @@ public class Partido extends Model {
 	public Equipo EquipoB;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Resultado> Resultados;
+	public List<Resultado> Resultados=new ArrayList<Resultado>();
 
 }

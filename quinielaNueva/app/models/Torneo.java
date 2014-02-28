@@ -5,6 +5,7 @@
 package models;
 
 import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -46,25 +47,25 @@ public class Torneo extends Model {
 	public byte[] Imagen;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Equipo> Equipos;
+	public List<Equipo> Equipos=new ArrayList<Equipo>();
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Partido> Partidos;
+	public List<Partido> Partidos=new ArrayList<Partido>();
 
 	@ManyToMany 
-	public List<Regla> Reglas;
+	public List<Regla> Reglas=new ArrayList<Regla>();
 	
 	/*
 	 * Representa las fases o agrupaciones de partidos del torneo
 	 */
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Porcion> Porciones;
+	public List<Porcion> Porciones=new ArrayList<Porcion>();
 	
 	@ManyToOne
 	public Usuario Dueño;
 	
 	@ManyToMany 
-	public List<Usuario> Administradores;
+	public List<Usuario> Administradores=new ArrayList<Usuario>();
 	
 	public static Finder<Long,Torneo> find = new Finder<Long,Torneo>(
 			    Long.class, Torneo.class
