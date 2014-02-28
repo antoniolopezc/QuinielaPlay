@@ -1,6 +1,6 @@
 @(Pronostico: models.Pronostico)
 
-@import helper._
+@import com.avaje.ebean.Ebean
 
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronostico.css")'>
@@ -21,6 +21,13 @@
 				</tbody>
 			</table>
 		</div>
+		@if(Porcion.Resultados.size()>0) {
+			@for(Resultado <- Porcion.Resultados){
+				@Ebean.refresh(Resultado.Definicion)
+				<script>Porciones[@Porcion.Id].AgregarResultado(@Resultado.Id , @Resultado.Definicion.Abreviatura)</script>
+			}
+			@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.Id)
+		}
 	}
 }
 
