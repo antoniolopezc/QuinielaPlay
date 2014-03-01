@@ -26,7 +26,7 @@ public class ResultadoPronostico extends Model {
 	public Resultado Resultado;
 	
 	
-	public long Entero;
+	public Long Entero;
 	
 	@ManyToOne
 	public Equipo Equipo;

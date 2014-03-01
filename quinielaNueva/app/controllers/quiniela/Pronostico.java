@@ -54,6 +54,8 @@ public class Pronostico extends Controller {
     public static Result guardar() {
     	DynamicForm  FormaLlena =Form.form().bindFromRequest();
     	models.Equipo  Equipo;
+    	String s;
+    	Long r;
     	models.Quiniela Quiniela=models.Quiniela.find.byId(Long.parseLong(FormaLlena.get("Quiniela")));
     	Ebean.refresh(Quiniela.Torneo);
     	models.Pronostico Pronostico=new models.Pronostico();
@@ -79,13 +81,15 @@ public class Pronostico extends Controller {
     	for(models.ResultadoPronostico Resultado: Pronostico.Resultados){
     		Ebean.refresh(Resultado.Resultado);
     		Ebean.refresh(Resultado.Resultado.Definicion);
+    		s=FormaLlena.get(Long.toString(Resultado.Resultado.Id));
+    		if(s=="") break;
+    		r=Long.parseLong(s);
     		switch(Resultado.Resultado.Definicion.Tipo) {
 				case Entero:
-					Resultado.Entero= Integer.parseInt(FormaLlena.get(Long.toString(Resultado.Resultado.Id)));
+					Resultado.Entero= r;
 					break;
 				case Equipo:
-					Equipo=models.Equipo.find.byId(Long.parseLong(FormaLlena.get(Long.toString(Resultado.Resultado.Id))));
-					Resultado.Equipo=Equipo; 					
+					Resultado.Equipo=models.Equipo.find.byId(r); 					
 					break;
 				default:
 					break;
