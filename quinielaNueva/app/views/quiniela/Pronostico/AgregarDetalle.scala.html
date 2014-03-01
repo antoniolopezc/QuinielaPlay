@@ -2,6 +2,7 @@
 
 @import com.avaje.ebean.Ebean
 
+
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronostico.css")'>
 }
@@ -11,24 +12,28 @@
 }
 
 @base("Agregar Pronostico ",css,script){
-	
-	@for(Porcion <- Pronostico.Quiniela.Torneo.Porciones){
-		<div id="Porcion-@Porcion.Id" class="Procion">
-			<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
-			<h2>@Porcion.Nombre</h2>
-			<table>
-				<tbody>
-					@Porcion.Partidos.map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id)}
-				</tbody>
-			</table>
-		</div>
-		@if(Porcion.Resultados.size()>0) {
-			@for(Resultado <- Porcion.Resultados){
-				@Ebean.refresh(Resultado.Definicion)
-				<script>Porciones[@Porcion.Id].AgregarResultado(@Resultado.Id , @Resultado.Definicion.Abreviatura)</script>
+	@helper.form(action = controllers.quiniela.routes.Pronostico.guardar()) {
+		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre"></input>
+		<input type="hidden" name="Quiniela" value="@Pronostico.Quiniela.Id"></input>
+		@for(Porcion <- Pronostico.Quiniela.Torneo.Porciones){
+			<div id="Porcion-@Porcion.Id" class="Procion">
+				<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
+				<h2>@Porcion.Nombre</h2>
+				<table>
+					<tbody>
+						@Porcion.Partidos.map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id)}
+					</tbody>
+				</table>
+			</div>
+			@if(Porcion.Resultados.size()>0) {
+				@for(Resultado <- Porcion.Resultados){
+					@Ebean.refresh(Resultado.Definicion)
+					<script>Porciones[@Porcion.Id].AgregarResultado(@Resultado.Id , @Resultado.Definicion.Abreviatura)</script>
+				}
+				@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.Id)
 			}
-			@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.Id)
 		}
+		<input type="submit" value="Guardar"></input>
 	}
 }
 

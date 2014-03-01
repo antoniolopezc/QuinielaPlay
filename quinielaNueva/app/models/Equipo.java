@@ -6,6 +6,7 @@ package models;
 import javax.persistence.*;
 
 import play.db.ebean.*;
+import play.db.ebean.Model.Finder;
 
 /**
  * @author alopez1
@@ -35,4 +36,10 @@ public class Equipo extends Model {
 	
 	@ManyToOne
 	public Equipo Final;
+	
+	public static Finder<Long,Equipo> find = new Finder<Long,Equipo>(
+		    Long.class, Equipo.class
+		  );
+
+	
 }

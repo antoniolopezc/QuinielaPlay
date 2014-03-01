@@ -29,12 +29,12 @@ public class DefinicionResultado extends Model {
 	
 	public String Abreviatura;
 	
-	enum Tipo {
+	public enum Tipos {
 		Entero,
 		Equipo
-	}
+	};
 	
-	public Tipo Tipo;
+	public Tipos Tipo;
 	
 	public static Finder<Long,DefinicionResultado> find = new Finder<Long,DefinicionResultado>(
 		    Long.class, DefinicionResultado.class
