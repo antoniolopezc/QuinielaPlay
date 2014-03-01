@@ -21,7 +21,7 @@ public class Porcion extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	public String Nombre;
 	
@@ -41,4 +41,7 @@ public class Porcion extends Model {
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<Resultado> Resultados=new ArrayList<Resultado>();
 
+	public static Finder<Long,Porcion> find = new Finder<Long,Porcion>(
+		    Long.class, Porcion.class
+		  );
 }

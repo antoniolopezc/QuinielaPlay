@@ -6,7 +6,7 @@ package models;
 import javax.persistence.*;
 
 import play.db.ebean.*;
-import play.db.ebean.Model.Finder;
+
 
 /**
  * @author alopez1
@@ -20,7 +20,7 @@ public class Equipo extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	public String Nombre;
 	

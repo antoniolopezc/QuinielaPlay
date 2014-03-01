@@ -22,7 +22,7 @@ public class Pronostico extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	@Constraints.Required
 	public String Nombre;
@@ -35,8 +35,6 @@ public class Pronostico extends Model {
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<ResultadoPronostico> Resultados= new ArrayList<ResultadoPronostico>();
-
-	
 	
 	public static Finder<Long,Pronostico> find = new Finder<Long,Pronostico>(
 			    Long.class, Pronostico.class

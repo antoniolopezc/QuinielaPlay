@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 import play.db.ebean.*;
 
+
 /**
  * @author alopez1
  * No tiene el resultado por que lo hay de varios tipos revisar 
@@ -20,7 +21,7 @@ public class Resultado extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	@ManyToOne
 	public DefinicionResultado Definicion;
@@ -33,7 +34,7 @@ public class Resultado extends Model {
 	
 	public Estado Estado;
 	
-	public long Entero;
+	public Long Entero;
 	
 	@ManyToOne
 	public Equipo Equipo;
@@ -43,5 +44,10 @@ public class Resultado extends Model {
 	
 	@ManyToOne
 	public Porcion Porcion;
+
+	public static Finder<Long,Resultado> find = new Finder<Long,Resultado>(
+		    Long.class, Resultado.class
+		  );
+	
 	
 }

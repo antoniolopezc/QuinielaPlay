@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 import play.db.ebean.*;
 
+
 /**
  * @author alopez1 
  *
@@ -21,7 +22,7 @@ public class Partido extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	public String Nombre;
 	
@@ -54,4 +55,7 @@ public class Partido extends Model {
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<Resultado> Resultados=new ArrayList<Resultado>();
 
+	public static Finder<Long,Partido> find = new Finder<Long,Partido>(
+		    Long.class, Partido.class
+		  );
 }

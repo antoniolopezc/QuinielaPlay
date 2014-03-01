@@ -9,6 +9,7 @@ import play.db.ebean.*;
 
 
 
+
 /**
  * @author alopez1
  *
@@ -21,7 +22,7 @@ public class Regla extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	public String Nombre;
 	
@@ -36,5 +37,9 @@ public class Regla extends Model {
 	
 	/*Texto en formato JSON*/
 	public String Parametros;
+
+	public static Finder<Long,Regla> find = new Finder<Long,Regla>(
+		    Long.class, Regla.class
+		  );
 
 }

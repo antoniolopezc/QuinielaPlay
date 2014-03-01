@@ -20,7 +20,7 @@ public class ResultadoPronostico extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public long Id;
+	public Long Id;
 	
 	@ManyToOne
 	public Resultado Resultado;
@@ -34,6 +34,4 @@ public class ResultadoPronostico extends Model {
 	public static Finder<Long,ResultadoPronostico> find = new Finder<Long,ResultadoPronostico>(
 		    Long.class, ResultadoPronostico.class
 		  );
-
-	
 }

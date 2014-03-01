@@ -6,7 +6,6 @@ package models;
 import javax.persistence.*;
 
 import play.db.ebean.*;
-import play.db.ebean.Model.Finder;
 
 /**
  * @author alopez1
@@ -21,7 +20,7 @@ public class DefinicionResultado extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	long Id;
+	Long Id;
 
 	public String Nombre;
 	
