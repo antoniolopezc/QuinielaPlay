@@ -12,6 +12,7 @@
 			<option selected disabled hidden value=""></option>
 			<option value="@Resultado.Partido.EquipoA.Id">@views.html.Equipo.Breve(Resultado.Partido.EquipoA)</option>
 			<option value="@Resultado.Partido.EquipoB.Id">@views.html.Equipo.Breve(Resultado.Partido.EquipoB)</option>
-		</select>	
+		</select>
+		<input type="hidden" name="@Resultado.Id" >	
 		}
 }

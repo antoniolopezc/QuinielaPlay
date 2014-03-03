@@ -27,7 +27,9 @@ function CambioGol(Po,Pa,t){
 function ActualizaPasa(Partido){
 	var Q=Partido.QuienGana();
 
-	$('[name="'+Partido.Resultados.Paso.Id+'"]').val((Q==-1?"":Q)).prop( "disabled", Q!=-1 );
+	$('[name="'+Partido.Resultados.Paso.Id+'"]').val((Q==-1?"":Q));
+	$('select[name="'+Partido.Resultados.Paso.Id+'"]').prop( "disabled", Q!=-1 );
+	
 };
 
 function ActualizaPorcion(Porcion){
@@ -40,9 +42,9 @@ function ActualizaPorcion(Porcion){
 	destino.empty();
 	for( i=1;i<=4;i++){
 		Actual=Porcion.Posiciones[i];
-		Equipo ='<select class="Resumen-Equipo" disabled name="'+Porcion.Resultados[i].Id+'" value='+Actual.EquipoId+'>';
-		Equipo+='  <option value="'+Actual.EquipoId+'">'+Actual.Equipo+'</option>';
-		Equipo+='</select>'
+		Equipo ='<input class="Resumen-Equipo" type="text" readonly value='+Actual.Equipo+'>';
+		Equipo +='<input class="Resumen-Equipo" type="hidden"  name="'+Porcion.Resultados[i].Id+'" value='+Actual.EquipoId+'>';
+			
 		fila=$("<tr>");
 		fila.append('<td class="Resumen-Celda-Clasificacion">'+Actual.Clasificacion+'</td>');
 		fila.append('<td class="Resumen-Celda-EQUIPOS">'+Equipo+'</td>');
