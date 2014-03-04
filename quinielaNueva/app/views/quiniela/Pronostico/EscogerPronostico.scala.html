@@ -1,0 +1,6 @@
+@(Pronosticos: List[Pronostico])
+@base("Actualziar Pronostico") {
+	@for(Pronostico <- Pronosticos) { 
+	<a href="/ActualizarPronostico/@Pronostico.Id" >@{Pronostico.Nombre}(@Pronostico.Quiniela.Nombre)</a>
+	} 
+}

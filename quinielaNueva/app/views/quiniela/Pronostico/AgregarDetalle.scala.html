@@ -8,13 +8,15 @@
 }
 @script= {
 	<script src='@routes.Assets.at("javascripts/EstructuraLocal.js")' type="text/javascript"></script>
-	<script src='@routes.Assets.at("javascripts/ProcesarCambioGol.js")' type="text/javascript"></script>	
+	<script src='@routes.Assets.at("javascripts/ProcesarCambioGol.js")' type="text/javascript"></script>
+	<script src='@routes.Assets.at("javascripts/Inicializar.js")' type="text/javascript"></script>	
 }
 
 @base("Agregar Pronostico ",css,script){
 	@helper.form(action = controllers.quiniela.routes.Pronostico.guardar()) {
-		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre"></input>
-		<input type="hidden" name="Quiniela" value="@Pronostico.Quiniela.Id"></input>
+		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre" value="@Pronostico.Nombre">
+		<input type="hidden" name="Id" value="@Pronostico.Id">
+		<input type="hidden" name="Quiniela" value="@Pronostico.Quiniela.Id">
 		@for(Porcion <- Pronostico.Quiniela.Torneo.Porciones){
 			<div id="Porcion-@Porcion.Id" class="Procion">
 				<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
@@ -34,6 +36,14 @@
 			}
 		}
 		<input type="submit" value="Guardar"></input>
+		<script>
+		@for(Resultado <- Pronostico.Resultados){
+			@Ebean.refresh(Resultado.Resultado)
+			@if(Option(Resultado.Entero).nonEmpty) {
+			AsignaValorResultado(@Resultado.Resultado.Id,@Resultado.Entero);
+			} 
+		}
+		</script>
 	}
 }
 

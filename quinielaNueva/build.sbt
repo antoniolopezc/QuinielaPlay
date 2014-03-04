@@ -6,7 +6,7 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean,
   cache,
-  "securesocial" %% "securesocial" % "2.1.2" withSources()
+  "ws.securesocial" %% "securesocial" % "2.1.3" withSources()
 )     
 
 resolvers += Resolver.url("sbt-plugin-releases", new URL("http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)

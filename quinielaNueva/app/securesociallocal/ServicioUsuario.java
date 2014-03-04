@@ -5,11 +5,11 @@
 package securesociallocal;
 
 import play.Application;
+//import scala.collection.immutable.List;
 import securesocial.core.Identity;
 import securesocial.core.IdentityId;
 import securesocial.core.java.BaseUserService;
 import securesocial.core.java.Token;
-
 import models.Usuario;
 
 
@@ -22,17 +22,18 @@ public class ServicioUsuario extends BaseUserService {
 
     @Override
     public Identity doSave(Identity user) {
-        int LU =  Usuario.find.where().eq("email",user.email().get()).findRowCount();
+        java.util.List<Usuario> LU =  Usuario.find.where().eq("email",user.email().get()).findList();
         
-    	if(LU==0) {
+    	if(LU.size()==0) {
     		// nuevo para guardar 
-    		Usuario U= new Usuario();
+    		Usuario U= new Usuario();	
     		U.email = user.email().get();
     		U.nombre = user.fullName();
     		U.Avatar = user.avatarUrl().get();
     		U.save();
+    		return U;
     	}
-       return user;
+       return LU.get(0);
     }
 
     @Override
@@ -42,10 +43,10 @@ public class ServicioUsuario extends BaseUserService {
 
     @Override
     public Identity doFind(IdentityId userId) {
-    	int LU =  Usuario.find.where().eq("email",((Identity)userId).email().get()).findRowCount();
-        
-    	if(LU> 0 )
-    		return  (Identity)userId; 
+    	Usuario U =  Usuario.find.byId(Long.parseLong(userId.userId()));
+    
+    	if(U!=null)
+    		return  (Identity)U; 
     	return null;
     }
 

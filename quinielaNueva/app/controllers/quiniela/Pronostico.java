@@ -9,6 +9,8 @@ import com.avaje.ebean.Ebean;
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
+import securesocial.core.Identity;
+import securesocial.core.java.SecureSocial;
 import views.html.quiniela.Pronostico.*;
 
 
@@ -16,15 +18,12 @@ import views.html.quiniela.Pronostico.*;
 public class Pronostico extends Controller {
     /**
      * Agregar un nuevo Pronostico
+     * @return 
      */
-    public static Result agregar(long id) throws ClassNotFoundException, NoSuchMethodException, SecurityException {
-    	if(id==-1) { 
-    		List<models.Quiniela> Quinielas = models.Quiniela.find.all();
-    		return ok(Agregar.render(Quinielas));
-    	}
-    	models.Quiniela Quiniela=models.Quiniela.find.byId(id);
+	static private boolean GeneraIndicadores(models.Pronostico Pronostico,Long  id){
+
+		models.Quiniela Quiniela=models.Quiniela.find.byId(id);
     	Ebean.refresh(Quiniela.Torneo);
-    	models.Pronostico Pronostico=new models.Pronostico();
     	Pronostico.Quiniela=Quiniela;
     	
     	for(models.Regla Regla: Quiniela.Reglas){
@@ -33,49 +32,68 @@ public class Pronostico extends Controller {
     			Object O=R.newInstance();
     			Method M=R.getMethod("GenerarPronostico",models.Quiniela.class,models.Pronostico.class); 
 				long error=(long) M.invoke(O, Quiniela,Pronostico);
-				if(error>0) return ok("<p>"+error+"</p>");
+				if(error>0) return false;
 				
 			} catch (IllegalAccessException | IllegalArgumentException
 					| InvocationTargetException |InstantiationException 
 					| ClassNotFoundException | NoSuchMethodException 
 					| SecurityException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
     	}
+		return true;
+	
+	}
+	
+	@SecureSocial.SecuredAction
+    public static Result agregar(Long id) {
+    	if(id==-1) { 
+    		List<models.Quiniela> Quinielas = models.Quiniela.find.all();
+    		return ok(Agregar.render(Quinielas));
+    	}
+    	models.Pronostico Pronostico=new models.Pronostico();
+    	if (!GeneraIndicadores(Pronostico,id))
+    		return ok("<p>Error</p>");
     	
-
+    	return ok(AgregarDetalle.render(Pronostico));
+    }
+    
+    @SecureSocial.SecuredAction
+    public static Result actualizar(Long id) {
+    	if(id==-1) { 
+    		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
+    		List<models.Pronostico> Pronosticos = models.Pronostico.find.where().eq("Dueño", (models.Usuario) Usuario).findList();
+    		return ok(EscogerPronostico.render(Pronosticos));
+    	}
+    	models.Pronostico Pronostico= models.Pronostico.find.byId(id);
+		Ebean.refresh(Pronostico.Quiniela);
+		Ebean.refresh(Pronostico.Quiniela.Torneo);    	
     	return ok(AgregarDetalle.render(Pronostico));
     }
     
     /*
      * Guarda un Pronostico
      */
+    @SecureSocial.SecuredAction
     public static Result guardar() {
     	DynamicForm  FormaLlena =Form.form().bindFromRequest();
     	String s;
-    	models.Quiniela Quiniela=models.Quiniela.find.byId(Long.parseLong(FormaLlena.get("Quiniela")));
-    	Ebean.refresh(Quiniela.Torneo);
-    	models.Pronostico Pronostico=new models.Pronostico();
-    	Pronostico.Quiniela=Quiniela;
-    	Pronostico.Nombre=FormaLlena.get("Nombre");
+    	models.Pronostico Pronostico;
     	
-    	for(models.Regla Regla: Quiniela.Reglas){
-    		try {
-    			Class<?> R=Class.forName(Regla.Clase);
-    			Object O=R.newInstance();
-    			Method M=R.getMethod("GenerarPronostico",models.Quiniela.class,models.Pronostico.class); 
-				long error=(long) M.invoke(O, Quiniela,Pronostico);
-				if(error>0) return ok("<p>"+error+"</p>");
-				
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException |InstantiationException 
-					| ClassNotFoundException | NoSuchMethodException 
-					| SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+    	if(FormaLlena.get("Id")=="") {
+    		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
+    		Pronostico=new models.Pronostico();
+    		Pronostico.Nombre=FormaLlena.get("Nombre");
+    		Pronostico.Dueño=(models.Usuario) Usuario;
+    		if (!GeneraIndicadores(Pronostico,Long.parseLong(FormaLlena.get("Quiniela"))))
+    			return ok("<p>Error</p>");
+    	} else {
+    		Pronostico= models.Pronostico.find.byId(Long.parseLong(FormaLlena.get("Id")));
+    		Ebean.refresh(Pronostico.Quiniela);
+    		Ebean.refresh(Pronostico.Quiniela.Torneo);
     	}
+
     	for(models.ResultadoPronostico Resultado: Pronostico.Resultados){
     		Ebean.refresh(Resultado.Resultado);
     		Ebean.refresh(Resultado.Resultado.Definicion);
@@ -94,7 +112,7 @@ public class Pronostico extends Controller {
     		}
     	}
     	Ebean.save(Pronostico);
-    	return ok();
+    	return ok(AgregarDetalle.render(Pronostico));
     }
 	
 }
