@@ -63,7 +63,7 @@ public class Pronostico extends Controller {
     public static Result actualizar(Long id) {
     	if(id==-1) { 
     		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
-    		List<models.Pronostico> Pronosticos = models.Pronostico.find.where().eq("Dueño", (models.Usuario) Usuario).findList();
+    		List<models.Pronostico> Pronosticos = models.Pronostico.find.where().eq("Propietario", (models.Usuario) Usuario).findList();
     		return ok(EscogerPronostico.render(Pronosticos));
     	}
     	models.Pronostico Pronostico= models.Pronostico.find.byId(id);
@@ -85,7 +85,7 @@ public class Pronostico extends Controller {
     		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
     		Pronostico=new models.Pronostico();
     		Pronostico.Nombre=FormaLlena.get("Nombre");
-    		Pronostico.Dueño=(models.Usuario) Usuario;
+    		Pronostico.Propietario=(models.Usuario) Usuario;
     		if (!GeneraIndicadores(Pronostico,Long.parseLong(FormaLlena.get("Quiniela"))))
     			return ok("<p>Error</p>");
     	} else {
@@ -114,5 +114,9 @@ public class Pronostico extends Controller {
     	Ebean.save(Pronostico);
     	return ok(AgregarDetalle.render(Pronostico));
     }
-	
+    @SecureSocial.UserAwareAction 
+    public static Result listar() {
+    	List<models.Pronostico> Pronosticos=models.Pronostico.find.all();
+    	return ok(Listar.render(Pronosticos));
+    }
 }

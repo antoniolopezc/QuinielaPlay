@@ -56,7 +56,7 @@ create table porcion (
 create table pronostico (
   id                        bigint not null,
   nombre                    varchar(255),
-  dueño_id                  bigint,
+  propietario_id            bigint,
   quiniela_id               bigint,
   constraint pk_pronostico primary key (id))
 ;
@@ -193,8 +193,8 @@ alter table partido add constraint fk_partido_EquipoB_5 foreign key (equipo_b_id
 create index ix_partido_EquipoB_5 on partido (equipo_b_id);
 alter table porcion add constraint fk_porcion_torneo_6 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;
 create index ix_porcion_torneo_6 on porcion (torneo_id);
-alter table pronostico add constraint fk_pronostico_Dueño_7 foreign key (dueño_id) references usuario (id) on delete restrict on update restrict;
-create index ix_pronostico_Dueño_7 on pronostico (dueño_id);
+alter table pronostico add constraint fk_pronostico_Propietario_7 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
+create index ix_pronostico_Propietario_7 on pronostico (propietario_id);
 alter table pronostico add constraint fk_pronostico_Quiniela_8 foreign key (quiniela_id) references quiniela (id) on delete restrict on update restrict;
 create index ix_pronostico_Quiniela_8 on pronostico (quiniela_id);
 alter table quiniela add constraint fk_quiniela_Torneo_9 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;

@@ -1,0 +1,15 @@
+@(Partido: Partido)
+@import com.avaje.ebean.Ebean
+
+@Ebean.refresh(Partido.EquipoA)
+@Ebean.refresh(Partido.EquipoB)
+<tr id="Partido-@Partido.Id" class="Partido" >
+	<td class="Partido-Fecha">@Partido.Fecha.format("dd/MM hh:mm a")</td>
+	<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.EquipoA)</td>
+	<td class="Partido-EquipoB">@views.html.Equipo.Breve(Partido.EquipoB)</td>
+	@for(Resultado <- Partido.Resultados){
+		<td class="Partido-Resultado">
+			<var id="Resultado-@Resultado.Id"> </var>
+		</td>
+    }
+</tr>

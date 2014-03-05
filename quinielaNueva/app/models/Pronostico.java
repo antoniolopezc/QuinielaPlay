@@ -28,7 +28,7 @@ public class Pronostico extends Model {
 	public String Nombre;
 
 	@ManyToOne
-	public Usuario Dueño;
+	public Usuario Propietario;
 	
 	@ManyToOne
 	public Quiniela Quiniela;

@@ -46,6 +46,7 @@ POST    /AgregarPronostico/guardar				controllers.quiniela.Pronostico.guardar()
 GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long = -1)
 GET		/ActualizarPronostico 						controllers.quiniela.Pronostico.actualizar(id: Long = -1)
 GET		/ActualizarPronostico/:id						controllers.quiniela.Pronostico.actualizar(id: Long)
+GET		/ListarPronostico 						controllers.quiniela.Pronostico.listar()
 
 
 # Map static resources from the /public folder to the /assets URL path
