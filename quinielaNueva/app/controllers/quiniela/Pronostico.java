@@ -1,12 +1,11 @@
 package controllers.quiniela;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
+import reglas.ReglaBase;
 import securesocial.core.Identity;
 import securesocial.core.java.SecureSocial;
 import views.html.quiniela.Pronostico.*;
@@ -27,14 +26,10 @@ public class Pronostico extends Controller {
     	for(models.Regla Regla: Quiniela.Reglas){
     		try {
     			Class<?> R=Class.forName(Regla.Clase);
-    			Object O=R.newInstance();
-    			Method M=R.getMethod("GenerarPronostico",models.Quiniela.class,models.Pronostico.class); 
-				long error=(long) M.invoke(O, Quiniela,Pronostico);
-				if(error>0) return false;
-				
-			} catch (IllegalAccessException | IllegalArgumentException
-					| InvocationTargetException |InstantiationException 
-					| ClassNotFoundException | NoSuchMethodException 
+    			reglas.ReglaBase O=(ReglaBase) R.newInstance();
+    			if(O.GenerarPronostico(Quiniela, Pronostico)!=0) return false; 
+			} catch (IllegalAccessException  | IllegalArgumentException
+					| InstantiationException | ClassNotFoundException  
 					| SecurityException e) {
 				e.printStackTrace();
 				return false;
@@ -92,13 +87,11 @@ public class Pronostico extends Controller {
     	}
     	
 		Pronostico.setNombre(FormaLlena.get("Nombre"));
-		List<models.ResultadoPronostico> Resultados=Pronostico.getResultados();
-    	for(models.ResultadoPronostico Resultado: Resultados){
-    		models.Resultado R=Resultado.getResultado();
-    		R.refresh();
-    		R.Definicion.refresh();
+    	for(models.ResultadoPronostico Resultado: Pronostico.Resultados){
+    		Resultado.Resultado.refresh();
+    		Resultado.Resultado.Definicion.refresh();
     		s=FormaLlena.get(Long.toString(Resultado.Resultado.Id));
-    		switch(R.Definicion.Tipo) {
+    		switch(Resultado.Resultado.Definicion.Tipo) {
 				case Entero:
 					Resultado.setEntero(s==null||s==""? null: Long.parseLong(s));
 					break;
