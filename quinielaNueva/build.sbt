@@ -4,7 +4,7 @@ version := "1.0-SNAPSHOT"
 
 libraryDependencies ++= Seq(
   javaJdbc,
-  javaEbean,
+  javaEbean  withSources(),
   cache,
   "ws.securesocial" %% "securesocial" % "2.1.3" withSources()
 )     

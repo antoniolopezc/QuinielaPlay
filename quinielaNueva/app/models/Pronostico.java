@@ -39,4 +39,44 @@ public class Pronostico extends Model {
 	public static Finder<Long,Pronostico> find = new Finder<Long,Pronostico>(
 			    Long.class, Pronostico.class
 			  );
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public Usuario getPropietario() {
+		return Propietario;
+	}
+
+	public void setPropietario(Usuario propietario) {
+		Propietario = propietario;
+	}
+
+	public Quiniela getQuiniela() {
+		return Quiniela;
+	}
+
+	public void setQuiniela(Quiniela quiniela) {
+		Quiniela = quiniela;
+	}
+
+	public List<ResultadoPronostico> getResultados() {
+		return Resultados;
+	}
+
+	public void setResultados(List<ResultadoPronostico> resultados) {
+		Resultados = resultados;
+	}
 }

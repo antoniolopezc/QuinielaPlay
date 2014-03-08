@@ -18,7 +18,11 @@
 	@for(Resultado <- Pronostico.Resultados){
 		@Ebean.refresh(Resultado.Resultado)
 		@if(Option(Resultado.Entero).nonEmpty) {
-		PublicarResultado(@Pronostico.Id,@Resultado.Resultado.Id,@Resultado.Entero);
+			PublicarResultado(@Pronostico.Id,@Resultado.Resultado.Id,@Resultado.Entero);
+		}
+		@if(Option(Resultado.Equipo).nonEmpty) {
+			@Ebean.refresh(Resultado.Equipo)	
+			PublicarResultado(@Pronostico.Id,@Resultado.Resultado.Id,"@Resultado.Equipo.Nombre");
 		} 
 	}
 </script>

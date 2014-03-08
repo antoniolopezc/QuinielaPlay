@@ -14,6 +14,7 @@ import play.db.ebean.*;
  */
 @Entity
 public class ResultadoPronostico extends Model {
+
 	/**
 	 * Agregado por Eclipse no se si sirve para algo
 	 */
@@ -34,4 +35,37 @@ public class ResultadoPronostico extends Model {
 	public static Finder<Long,ResultadoPronostico> find = new Finder<Long,ResultadoPronostico>(
 		    Long.class, ResultadoPronostico.class
 		  );
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public Resultado getResultado() {
+		return Resultado;
+	}
+
+	public void setResultado(Resultado resultado) {
+		Resultado = resultado;
+	}
+
+	public Long getEntero() {
+		return Entero;
+	}
+
+	public void setEntero(Long entero) {
+		Entero = entero;
+	}
+
+	public Equipo getEquipo() {
+		return Equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		Equipo = equipo;
+	}
+
 }

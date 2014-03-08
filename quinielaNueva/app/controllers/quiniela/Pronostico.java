@@ -4,8 +4,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import com.avaje.ebean.Ebean;
-
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -23,7 +21,7 @@ public class Pronostico extends Controller {
 	static private boolean GeneraIndicadores(models.Pronostico Pronostico,Long  id){
 
 		models.Quiniela Quiniela=models.Quiniela.find.byId(id);
-    	Ebean.refresh(Quiniela.Torneo);
+    	Quiniela.Torneo.refresh();
     	Pronostico.Quiniela=Quiniela;
     	
     	for(models.Regla Regla: Quiniela.Reglas){
@@ -67,8 +65,8 @@ public class Pronostico extends Controller {
     		return ok(EscogerPronostico.render(Pronosticos));
     	}
     	models.Pronostico Pronostico= models.Pronostico.find.byId(id);
-		Ebean.refresh(Pronostico.Quiniela);
-		Ebean.refresh(Pronostico.Quiniela.Torneo);    	
+		Pronostico.Quiniela.refresh();
+		Pronostico.Quiniela.Torneo.refresh();    	
     	return ok(AgregarDetalle.render(Pronostico));
     }
     
@@ -84,34 +82,34 @@ public class Pronostico extends Controller {
     	if(FormaLlena.get("Id")=="") {
     		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
     		Pronostico=new models.Pronostico();
-    		Pronostico.Nombre=FormaLlena.get("Nombre");
     		Pronostico.Propietario=(models.Usuario) Usuario;
     		if (!GeneraIndicadores(Pronostico,Long.parseLong(FormaLlena.get("Quiniela"))))
     			return ok("<p>Error</p>");
     	} else {
     		Pronostico= models.Pronostico.find.byId(Long.parseLong(FormaLlena.get("Id")));
-    		Ebean.refresh(Pronostico.Quiniela);
-    		Ebean.refresh(Pronostico.Quiniela.Torneo);
+    		Pronostico.Quiniela.refresh();
+    		Pronostico.Quiniela.Torneo.refresh();
     	}
-
-    	for(models.ResultadoPronostico Resultado: Pronostico.Resultados){
-    		Ebean.refresh(Resultado.Resultado);
-    		Ebean.refresh(Resultado.Resultado.Definicion);
+    	
+		Pronostico.setNombre(FormaLlena.get("Nombre"));
+		List<models.ResultadoPronostico> Resultados=Pronostico.getResultados();
+    	for(models.ResultadoPronostico Resultado: Resultados){
+    		models.Resultado R=Resultado.getResultado();
+    		R.refresh();
+    		R.Definicion.refresh();
     		s=FormaLlena.get(Long.toString(Resultado.Resultado.Id));
-    		if(s==""||s==null) 
-    			continue;
-    		switch(Resultado.Resultado.Definicion.Tipo) {
+    		switch(R.Definicion.Tipo) {
 				case Entero:
-					Resultado.Entero= Long.parseLong(s);
+					Resultado.setEntero(s==null||s==""? null: Long.parseLong(s));
 					break;
 				case Equipo:
-					Resultado.Equipo=models.Equipo.find.byId(Long.parseLong(s)); 					
+					Resultado.setEquipo(s==null||s==""? null: models.Equipo.find.byId(Long.parseLong(s))); 					
 					break;
 				default:
 					break;
     		}
     	}
-    	Ebean.save(Pronostico);
+       	Pronostico.save();
     	return ok(AgregarDetalle.render(Pronostico));
     }
     @SecureSocial.UserAwareAction 
