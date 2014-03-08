@@ -41,5 +41,61 @@ public class Equipo extends Model {
 		    Long.class, Equipo.class
 		  );
 
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public String getNombreCorto() {
+		return NombreCorto;
+	}
+
+	public void setNombreCorto(String nombreCorto) {
+		NombreCorto = nombreCorto;
+	}
+
+	public String getAbreviatura() {
+		return Abreviatura;
+	}
+
+	public void setAbreviatura(String abreviatura) {
+		Abreviatura = abreviatura;
+	}
+
+	public byte[] getEscudo() {
+		return Escudo;
+	}
+
+	public void setEscudo(byte[] escudo) {
+		Escudo = escudo;
+	}
+
+	public byte[] getBandera() {
+		return Bandera;
+	}
+
+	public void setBandera(byte[] bandera) {
+		Bandera = bandera;
+	}
+
+	public Equipo getFinal() {
+		return Final;
+	}
+
+	public void setFinal(Equipo final1) {
+		Final = final1;
+	}
+
 	
 }

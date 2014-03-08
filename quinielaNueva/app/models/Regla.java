@@ -42,4 +42,60 @@ public class Regla extends Model {
 		    Long.class, Regla.class
 		  );
 
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public String getNombreCorto() {
+		return NombreCorto;
+	}
+
+	public void setNombreCorto(String nombreCorto) {
+		NombreCorto = nombreCorto;
+	}
+
+	public String getAbreviatura() {
+		return Abreviatura;
+	}
+
+	public void setAbreviatura(String abreviatura) {
+		Abreviatura = abreviatura;
+	}
+
+	public String getDescricion() {
+		return Descricion;
+	}
+
+	public void setDescricion(String descricion) {
+		Descricion = descricion;
+	}
+
+	public String getClase() {
+		return Clase;
+	}
+
+	public void setClase(String clase) {
+		Clase = clase;
+	}
+
+	public String getParametros() {
+		return Parametros;
+	}
+
+	public void setParametros(String parametros) {
+		Parametros = parametros;
+	}
+
 }

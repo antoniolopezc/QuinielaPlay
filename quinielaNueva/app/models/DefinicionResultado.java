@@ -39,4 +39,44 @@ public class DefinicionResultado extends Model {
 		    Long.class, DefinicionResultado.class
 		  );
 
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public String getNombreCorto() {
+		return NombreCorto;
+	}
+
+	public void setNombreCorto(String nombreCorto) {
+		NombreCorto = nombreCorto;
+	}
+
+	public String getAbreviatura() {
+		return Abreviatura;
+	}
+
+	public void setAbreviatura(String abreviatura) {
+		Abreviatura = abreviatura;
+	}
+
+	public Tipos getTipo() {
+		return Tipo;
+	}
+
+	public void setTipo(Tipos tipo) {
+		Tipo = tipo;
+	}
+
 }

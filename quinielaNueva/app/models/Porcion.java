@@ -44,4 +44,76 @@ public class Porcion extends Model {
 	public static Finder<Long,Porcion> find = new Finder<Long,Porcion>(
 		    Long.class, Porcion.class
 		  );
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getNombre() {
+		return Nombre;
+	}
+
+	public void setNombre(String nombre) {
+		Nombre = nombre;
+	}
+
+	public String getNombreCorto() {
+		return NombreCorto;
+	}
+
+	public void setNombreCorto(String nombreCorto) {
+		NombreCorto = nombreCorto;
+	}
+
+	public String getAbreviatura() {
+		return Abreviatura;
+	}
+
+	public void setAbreviatura(String abreviatura) {
+		Abreviatura = abreviatura;
+	}
+
+	public String getDescricion() {
+		return Descricion;
+	}
+
+	public void setDescricion(String descricion) {
+		Descricion = descricion;
+	}
+
+	public Date getInicio() {
+		return Inicio;
+	}
+
+	public void setInicio(Date inicio) {
+		Inicio = inicio;
+	}
+
+	public Date getFin() {
+		return Fin;
+	}
+
+	public void setFin(Date fin) {
+		Fin = fin;
+	}
+
+	public List<Partido> getPartidos() {
+		return Partidos;
+	}
+
+	public void setPartidos(List<Partido> partidos) {
+		Partidos = partidos;
+	}
+
+	public List<Resultado> getResultados() {
+		return Resultados;
+	}
+
+	public void setResultados(List<Resultado> resultados) {
+		Resultados = resultados;
+	}
 }

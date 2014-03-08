@@ -48,6 +48,60 @@ public class Resultado extends Model {
 	public static Finder<Long,Resultado> find = new Finder<Long,Resultado>(
 		    Long.class, Resultado.class
 		  );
-	
-	
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public DefinicionResultado getDefinicion() {
+		return Definicion;
+	}
+
+	public void setDefinicion(DefinicionResultado definicion) {
+		Definicion = definicion;
+	}
+
+	public Estado getEstado() {
+		return Estado;
+	}
+
+	public void setEstado(Estado estado) {
+		Estado = estado;
+	}
+
+	public Long getEntero() {
+		return Entero;
+	}
+
+	public void setEntero(Long entero) {
+		Entero = entero;
+	}
+
+	public Equipo getEquipo() {
+		return Equipo;
+	}
+
+	public void setEquipo(Equipo equipo) {
+		Equipo = equipo;
+	}
+
+	public Partido getPartido() {
+		return Partido;
+	}
+
+	public void setPartido(Partido partido) {
+		Partido = partido;
+	}
+
+	public Porcion getPorcion() {
+		return Porcion;
+	}
+
+	public void setPorcion(Porcion porcion) {
+		Porcion = porcion;
+	}
 }
