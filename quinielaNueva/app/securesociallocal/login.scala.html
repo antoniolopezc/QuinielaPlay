@@ -4,6 +4,7 @@
 @import securesocial.core.Registry
 @import securesocial.core.providers.utils.RoutesHelper
 
+@base("Ingresar") {
 <div id="login">
 	@for((name,provider) <- Registry.providers.all) {
 		@defining( "securesocial/images/providers/%s.png".format(provider.id) ) { imageUrl =>
@@ -20,4 +21,4 @@
 		});
 	});
 </script>
-
+}

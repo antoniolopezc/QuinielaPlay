@@ -1,4 +1,4 @@
-@(Pronostico: models.Pronostico, Lectura: Boolean=false)
+@(Pronostico: models.Pronostico)
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronostico.css")'>
 }
@@ -13,30 +13,16 @@
 		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre" value="@Pronostico.Nombre">
 		<input type="hidden" name="Id" value="@Pronostico.Id">
 		<input type="hidden" name="Quiniela" value="@Pronostico.Quiniela.Id">
-		@for(Porcion <- Pronostico.Quiniela.Torneo.Porciones){
-			<div id="Porcion-@Porcion.Id" class="Procion">
-				<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
-				<h2>@Porcion.Nombre</h2>
-				<table>
-					<tbody>
-						@Porcion.Partidos.map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id,Lectura)}
-					</tbody>
-				</table>
-				@if(Porcion.Resultados.size()>0) {
-					@for(Resultado <- Porcion.Resultados){
-						@Resultado.Definicion.refresh()
-						<script>Porciones[@Porcion.Id].AgregarResultado(@Resultado.Id , @Resultado.Definicion.Abreviatura)</script>
-					}
-					@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.Id)
-				}
-			</div>
-		}
+		@Pronostico.Quiniela.Torneo.Porciones.map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,false)}
 		<input type="submit" value="Guardar"></input>
 		<script>
 		@for(Resultado <- Pronostico.Resultados){
 			@Resultado.Resultado.refresh()
 			@if(Option(Resultado.Entero).nonEmpty) {
 			AsignaValorResultado(@Resultado.Resultado.Id,@Resultado.Entero);
+			} 
+			@if(Option(Resultado.Equipo).nonEmpty) {
+			AsignaValorResultado(@Resultado.Resultado.Id,@Resultado.Equipo.Id);
 			} 
 		}
 		</script>

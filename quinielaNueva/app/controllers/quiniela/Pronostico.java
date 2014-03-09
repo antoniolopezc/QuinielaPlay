@@ -49,7 +49,7 @@ public class Pronostico extends Controller {
     	if (!GeneraIndicadores(Pronostico,id))
     		return ok("<p>Error</p>");
     	
-    	return ok(AgregarDetalle.render(Pronostico,false));
+    	return ok(AgregarDetalle.render(Pronostico));
     }
     
     @SecureSocial.SecuredAction
@@ -62,7 +62,7 @@ public class Pronostico extends Controller {
     	models.Pronostico Pronostico= models.Pronostico.find.byId(id);
 		Pronostico.Quiniela.refresh();
 		Pronostico.Quiniela.Torneo.refresh();    	
-    	return ok(AgregarDetalle.render(Pronostico,false));
+    	return ok(AgregarDetalle.render(Pronostico));
     }
     
     /*
@@ -100,10 +100,10 @@ public class Pronostico extends Controller {
 					break;
 				default:
 					break;
-    		}
+    		} 
     	}
        	Pronostico.save();
-    	return ok(AgregarDetalle.render(Pronostico,false));
+    	return ok(AgregarDetalle.render(Pronostico));
     }
     @SecureSocial.UserAwareAction 
     public static Result listar() {
