@@ -1,21 +1,27 @@
 @(Pronosticos: List[Pronostico])
-@import com.avaje.ebean.Ebean
+
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronosticoTab.css")'>
+		<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronostico.css")'>
 }
 @script= {
 	<script src='@routes.Assets.at("javascripts/PronosticoTab.js")' type="text/javascript"></script>
-	<script src='@routes.Assets.at("javascripts/ResultadoSoloLectura.js")' type="text/javascript"></script>
+	<script src='@routes.Assets.at("javascripts/EstructuraLocal.js")' type="text/javascript"></script>
+	<script src='@routes.Assets.at("javascripts/ProcesarCambioGol.js")' type="text/javascript"></script>
+	<script src='@routes.Assets.at("javascripts/Inicializar.js")' type="text/javascript"></script>	
 }
+
 @base("Listar Pronostico",css,script) {
 	<ul class="tabs"></ul>>
 	<div class="clr"></div>
 	<section class="block">
 	@for(Pronostico <- Pronosticos) {
-		@Ebean.refresh(Pronostico.Propietario)
+		@Pronostico.Propietario.refresh()
+		@Pronostico.Quiniela.refresh()
+		@Pronostico.Quiniela.Torneo.refresh()
 		<script>$("ul.tabs").append('<li><a href="#Pronostico-@Pronostico.Id">@{Pronostico.Nombre} (@Pronostico.Propietario.nombre)</a></li>')</script>
 		<article  id="Pronostico-@Pronostico.Id">
-			@views.html.quiniela.Pronostico.Detalle(Pronostico)
+			@views.html.quiniela.Pronostico.AgregarDetalle(Pronostico,true)
 		</article >
 	}
 	</section> 

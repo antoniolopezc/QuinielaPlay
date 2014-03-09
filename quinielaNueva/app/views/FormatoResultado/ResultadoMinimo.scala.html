@@ -1,11 +1,15 @@
-@(Resultado: models.Resultado, Id: Long)	
+@(Resultado: models.Resultado, Id: Long, Lectura: Boolean=false)	
+
+@tipo(Lectura: Boolean)={
+	@if(Lectura) {readonly}
+}
 
 @Resultado.Definicion.Abreviatura match {
 	case "GA" => { 
-		<input type="number" class="GA" name="@Resultado.Id" min="0" onchange="CambioGol(@Id,@Resultado.Partido.Id,this)" >
+		<input type="number" class="GA" name="@Resultado.Id" min="0" onchange="CambioGol(@Id,@Resultado.Partido.Id,this)" @tipo(Lectura)>
 		}
 	case "GB" => { 
-		<input type="number" class="GB" name="@Resultado.Id" min="0" onchange="CambioGol(@Id,@Resultado.Partido.Id,this)" >
+		<input type="number" class="GB" name="@Resultado.Id" min="0" onchange="CambioGol(@Id,@Resultado.Partido.Id,this)" @tipo(Lectura)>
 		}
 	case "Paso" => {
 		<select class="Paso" disabled name="@Resultado.Id" >

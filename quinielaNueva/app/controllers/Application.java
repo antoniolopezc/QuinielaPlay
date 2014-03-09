@@ -24,15 +24,8 @@ public class Application extends Controller {
 		if(Usuario==null){
 			return ok(logear.render());
 		}
-		
-		if(Usuario.fullName()==null) {
-			return ok(Logeado.render(Usuario.firstName()+" "+Usuario.lastName(), Usuario.avatarUrl().get()));
-		}
+
 		return ok(Logeado.render(Usuario.fullName(), Usuario.avatarUrl().get()));
 	}
 	
-	@SecureSocial.SecuredAction(ajaxCall = true)
-	public static Result rloggeado() {
-		return loggeado();
-	}
 }

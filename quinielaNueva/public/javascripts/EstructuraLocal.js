@@ -118,10 +118,6 @@ function Porcion(Id){
     		this.Equipos[P.EquipoB]=new Equipo(EquipoB,P.EquipoB,++this.NEquipos);
     		this.Posiciones[this.NEquipos]=this.Equipos[P.EquipoB];
     	}
-    	if(P.Completo()) {
-    		//TODO: Para actualizacion pensar si se puede.
-    	}
-  	
     }
     this.ActualizarPartido=function(P,Quien,Goles){
         var Dif=0;

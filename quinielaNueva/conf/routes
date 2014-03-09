@@ -37,7 +37,7 @@ GET		/torneo/:id					controllers.torneo.Torneo.breve(id:Long)
 
 # Refencias a Usuario
 GET		/logeado			controllers.Application.loggeado()
-GET		/rlogin				controllers.Application.rloggeado()
+#GET		/rlogin				controllers.Application.rloggeado()
 
 # Refencias a Pronostico
 GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long = -1)

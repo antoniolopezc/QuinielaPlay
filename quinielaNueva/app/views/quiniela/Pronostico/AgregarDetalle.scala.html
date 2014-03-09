@@ -1,8 +1,4 @@
-@(Pronostico: models.Pronostico)
-
-@import com.avaje.ebean.Ebean
-
-
+@(Pronostico: models.Pronostico, Lectura: Boolean=false)
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronostico.css")'>
 }
@@ -23,22 +19,22 @@
 				<h2>@Porcion.Nombre</h2>
 				<table>
 					<tbody>
-						@Porcion.Partidos.map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id)}
+						@Porcion.Partidos.map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id,Lectura)}
 					</tbody>
 				</table>
-			</div>
-			@if(Porcion.Resultados.size()>0) {
-				@for(Resultado <- Porcion.Resultados){
-					@Ebean.refresh(Resultado.Definicion)
-					<script>Porciones[@Porcion.Id].AgregarResultado(@Resultado.Id , @Resultado.Definicion.Abreviatura)</script>
+				@if(Porcion.Resultados.size()>0) {
+					@for(Resultado <- Porcion.Resultados){
+						@Resultado.Definicion.refresh()
+						<script>Porciones[@Porcion.Id].AgregarResultado(@Resultado.Id , @Resultado.Definicion.Abreviatura)</script>
+					}
+					@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.Id)
 				}
-				@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.Id)
-			}
+			</div>
 		}
 		<input type="submit" value="Guardar"></input>
 		<script>
 		@for(Resultado <- Pronostico.Resultados){
-			@Ebean.refresh(Resultado.Resultado)
+			@Resultado.Resultado.refresh()
 			@if(Option(Resultado.Entero).nonEmpty) {
 			AsignaValorResultado(@Resultado.Resultado.Id,@Resultado.Entero);
 			} 
