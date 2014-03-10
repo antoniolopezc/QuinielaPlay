@@ -1,5 +1,7 @@
 package controllers.quiniela;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import play.mvc.*;
@@ -26,11 +28,13 @@ public class Pronostico extends Controller {
     	for(models.Regla Regla: Quiniela.Reglas){
     		try {
     			Class<?> R=Class.forName(Regla.Clase);
-    			reglas.ReglaBase O=(ReglaBase) R.newInstance();
-    			if(O.GenerarPronostico(Quiniela, Pronostico)!=0) return false; 
+    			Constructor<?> C=R.getConstructor(String.class);
+    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.Parametros);
+    			if(O.Generar(Pronostico)!=0) return false; 
 			} catch (IllegalAccessException  | IllegalArgumentException
 					| InstantiationException | ClassNotFoundException  
-					| SecurityException e) {
+					| SecurityException      | NoSuchMethodException 
+					| InvocationTargetException e) {
 				e.printStackTrace();
 				return false;
 			}

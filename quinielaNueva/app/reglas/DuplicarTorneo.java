@@ -12,33 +12,19 @@ import models.*;
  */
 public class DuplicarTorneo extends ReglaBase {
 
-	/* (non-Javadoc)
-	 * @see reglas.ReglaBase#cacular(models.Porcion)
-	 */
-	@Override
-	public long cacular(Porcion Porcion) {
-		// TODO Auto-generated method stub
-		return -1;
-	}
 
-	/* (non-Javadoc)
-	 * @see reglas.ReglaBase#Generar(models.Porcion)
-	 */
-	@Override
-	public long Generar(Porcion P) {
-		// TODO Auto-generated method stub
-		return -1;
+	public DuplicarTorneo(String Parametro) {
+		super(Parametro);
 	}
 
 	@Override
 	public long cacular(Pronostico Pronostico) {
-		// TODO Auto-generated method stub
 		return -1;
 	}
 
 	@Override
-	public long GenerarPronostico(Quiniela Quiniela, Pronostico Pronostico) {
-		Torneo Torneo=Quiniela.Torneo;
+	public long Generar(Pronostico Pronostico) {
+		Torneo Torneo=Pronostico.Quiniela.Torneo;
 		for(Partido Partido: Torneo.Partidos) {
 			for(Resultado Resultado: Partido.Resultados){
 				ResultadoPronostico RP= new ResultadoPronostico();
@@ -58,7 +44,8 @@ public class DuplicarTorneo extends ReglaBase {
 
 	@Override
 	public String IncluirJS() {
-		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 }

@@ -36,6 +36,9 @@ public class Pronostico extends Model {
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<ResultadoPronostico> Resultados= new ArrayList<ResultadoPronostico>();
 	
+	@OneToMany(cascade={CascadeType.ALL})
+	public List<Punto> Puntos= new ArrayList<Punto>();
+	
 	public static Finder<Long,Pronostico> find = new Finder<Long,Pronostico>(
 			    Long.class, Pronostico.class
 			  );
@@ -78,5 +81,13 @@ public class Pronostico extends Model {
 
 	public void setResultados(List<ResultadoPronostico> resultados) {
 		Resultados = resultados;
+	}
+
+	public List<Punto> getPuntos() {
+		return Puntos;
+	}
+
+	public void setPuntos(List<Punto> puntos) {
+		Puntos = puntos;
 	}
 }
