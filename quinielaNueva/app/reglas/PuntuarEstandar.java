@@ -4,48 +4,34 @@
 package reglas;
 
 import java.util.ArrayList;
+import java.util.Map;
+
+import org.apache.commons.io.IOUtils;
 
 import models.*;
-import play.libs.Yaml;
-import reglas.PuntuarEstandar.Condicion;
+import play.libs.Classpath;
+
+import org.yaml.snakeyaml.*;
+import org.yaml.snakeyaml.constructor.*;
 
 /**
- * @author lopez
- * Esta Regla sirve para Generar un Pronostico en Base al Torneo de la quiniela para todos los resultados.
+ * @author lopez Esta Regla sirve para Generar un Pronostico en Base al Torneo
+ *         de la quiniela para todos los resultados.
  * 
  */
 public class PuntuarEstandar extends ReglaBase {
 
-	public class Condicion {
-		/*
-		 * 	String =reg exprsion que se compara con el Nombre de la Porcion
-		 */
-		String CondicionPorcion;
-		/*
-		 * 	String =reg exprsion que se compara con el Nombre de la Partido
-		 */
-		String CondicionPartido;
-		/*
-		 * 	String =reg exprsion que se compara con el Nombre de la Resultado
-		 */
-		String CondicionResultado;
-		/*
-		 * 	String =reg exprsion que se compara con los valores para verificar si suma
-		 */
-		String CondicionSuma;
-		/*
-		 * Los puntos a sumar
-		 */
-		Long Puntos;
-	}
-
-	ArrayList<Condicion> Condiciones;
+	Condicion Condiciones[];
 
 	public PuntuarEstandar(String Parametro) {
 		super(Parametro);
-		Condiciones=(ArrayList<Condicion>) Yaml.load(Parametro);
+		Yaml y = new org.yaml.snakeyaml.Yaml(new CustomClassLoaderConstructor(
+				play.Play.application().classloader()));
+		ArrayList<?> Temp = (ArrayList<?>) y.load(Parametro);
+		Condiciones = new Condicion[Temp.size()];
+		Condiciones = Temp.toArray(Condiciones);
 	}
-	
+
 	@Override
 	public long cacular(Pronostico Pronostico) {
 		// TODO Auto-generated method stub
@@ -54,17 +40,33 @@ public class PuntuarEstandar extends ReglaBase {
 
 	@Override
 	public long Generar(Pronostico Pronostico) {
-		Torneo Torneo=Pronostico.Quiniela.Torneo;
-		for(Condicion C: Condiciones) {		
-			for(Porcion Porcion: Torneo.Porciones) {
-				if(!Porcion.Nombre.matches(C.CondicionPorcion))
+		for (Integer i = 0; i < Condiciones.length; i++) {
+			Condicion C = Condiciones[i];
+			for (Porcion Porcion : Pronostico.getQuiniela().getTorneo()
+					.getPorciones()) {
+				if (!Porcion.getNombre().matches(C.CondicionPorcion))
 					continue;
-				for(Partido Partido: Porcion.Partidos) {
-					if(!Partido.Nombre.matches(C.CondicionPartido))
+				if (C.CondicionPartido == "" || C.CondicionPartido == null) {
+					Pronostico.Puntos.add(new Punto(i.toString(), null, null,
+							Porcion));
+					continue;
+				}
+				for (Partido Partido : Porcion.getPartidos()) {
+					if (!Partido.getNombre().matches(C.CondicionPartido))
 						continue;
-					for(Resultado Resultado: Partido.Resultados){
-						if(!Resultado.Definicion.Nombre.matches(C.CondicionPartido))
+					if (C.CondicionResultado == ""
+							|| C.CondicionResultado == null) {
+						Pronostico.Puntos.add(new Punto(i.toString(), null,
+								Partido, Porcion));
+						continue;
+					}
+
+					for (Resultado Resultado : Partido.getResultados()) {
+						if (!Resultado.getDefinicion().getNombre()
+								.matches(C.CondicionResultado))
 							continue;
+						Pronostico.Puntos.add(new Punto(i.toString(),
+								Resultado, Partido, Porcion));
 					}
 				}
 			}

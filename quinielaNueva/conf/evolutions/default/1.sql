@@ -65,6 +65,7 @@ create table punto (
   id                        bigint not null,
   pronostico_id             bigint not null,
   valor                     bigint,
+  referencia_regla          varchar(255),
   resultado_id              bigint,
   partido_id                bigint,
   porcion_id                bigint,
@@ -92,7 +93,7 @@ create table regla (
   abreviatura               varchar(255),
   descricion                varchar(255),
   clase                     varchar(255),
-  parametros                varchar(255),
+  parametros                clob,
   constraint pk_regla primary key (id))
 ;
 

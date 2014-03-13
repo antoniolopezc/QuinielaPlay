@@ -25,6 +25,12 @@ public class Punto extends Model {
 	
 	public Long Valor;
 	
+	/*
+	 * La regla que crea el registro de puntos puede usar este valor como referencia para
+	 * simplificar el futuro calculo.
+	 */
+	public String ReferenciaRegla;
+	
 	@ManyToOne
 	public Resultado Resultado;
 	
@@ -37,6 +43,21 @@ public class Punto extends Model {
 	public static Finder<Long,Punto> find = new Finder<Long,Punto>(
 		    Long.class, Punto.class
 		  );
+
+	/**
+	 * @param referenciaRegla
+	 * @param resultado
+	 * @param partido
+	 * @param porcion
+	 */
+	public Punto(String referenciaRegla, models.Resultado resultado,
+			models.Partido partido, models.Porcion porcion) {
+		super();
+		ReferenciaRegla = referenciaRegla;
+		Resultado = resultado;
+		Partido = partido;
+		Porcion = porcion;
+	}
 
 	public Long getId() {
 		return Id;

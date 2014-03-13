@@ -1,10 +1,35 @@
-- &BI !!models.Regla
+- &DR !!models.Regla
   Nombre: Duplica todos los Resultados
   NombreCorto: Duplica 
-  Abreviatura: BI
+  Abreviatura: DR
   Descricion: Duplica todos los Resultados
   Clase: reglas.DuplicarTorneo
-          
+  
+- &CB !!models.Regla
+  Nombre: Cacula comparaciones Basicas
+  NombreCorto: CondicioBasica 
+  Abreviatura: CB
+  Descricion: Cacula comparaciones Basicas
+  Clase: reglas.PuntuarEstandar
+  Parametros: |
+    - !!reglas.Condicion
+      CondicionPorcion: "Grupo.*"
+      CondicionPartido: ".*"
+      CondicionResultado: "Gol.*"
+      CondicionSuma: 
+      Puntos: 1
+    - !!reglas.Condicion
+      CondicionPorcion: ".*"
+      CondicionPartido: ".*"
+      CondicionResultado: "Pasa.*"
+      CondicionSuma: 
+      Puntos: 3
+    - !!reglas.Condicion
+      CondicionPorcion: ".*"
+      CondicionPartido: ".*"
+      CondicionResultado: 
+      CondicionSuma: 
+      Puntos: 3
 - &GA !!models.DefinicionResultado
     Nombre: Goles de Equipo A
     NombreCorto: Goles A 
@@ -1734,6 +1759,6 @@
     Fin: 2014-07-13
     Torneo: *Mudial2014
     Reglas:
-      - *BI
-    
+      - *DR
+      - *CB    
              

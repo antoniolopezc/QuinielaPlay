@@ -116,5 +116,41 @@ public class Torneo extends Model {
 	public void setFin(Date arg0) {
 		Fin=arg0;
 	}
+	/**
+	 * @return the partidos
+	 */
+	public List<Partido> getPartidos() {
+		return Partidos;
+	}
+	/**
+	 * @param partidos the partidos to set
+	 */
+	public void setPartidos(List<Partido> partidos) {
+		Partidos = partidos;
+	}
+	/**
+	 * @return the reglas
+	 */
+	public List<Regla> getReglas() {
+		return Reglas;
+	}
+	/**
+	 * @param reglas the reglas to set
+	 */
+	public void setReglas(List<Regla> reglas) {
+		Reglas = reglas;
+	}
+	/**
+	 * @return the porciones
+	 */
+	public List<Porcion> getPorciones() {
+		return Porciones;
+	}
+	/**
+	 * @param porciones the porciones to set
+	 */
+	public void setPorciones(List<Porcion> porciones) {
+		Porciones = porciones;
+	}
 
 }

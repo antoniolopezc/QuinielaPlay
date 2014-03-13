@@ -35,7 +35,8 @@ public class Regla extends Model {
 	/*Debe ser una clase que hereda de ReglaBase*/
 	public String Clase;
 	
-	/*Texto en formato JSON*/
+	/*Texto en formato YAML*/
+	@Lob
 	public String Parametros;
 
 	public static Finder<Long,Regla> find = new Finder<Long,Regla>(

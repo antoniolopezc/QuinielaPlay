@@ -29,7 +29,7 @@ public class Pronostico extends Controller {
     		try {
     			Class<?> R=Class.forName(Regla.Clase);
     			Constructor<?> C=R.getConstructor(String.class);
-    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.Parametros);
+    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
     			if(O.Generar(Pronostico)!=0) return false; 
 			} catch (IllegalAccessException  | IllegalArgumentException
 					| InstantiationException | ClassNotFoundException  
