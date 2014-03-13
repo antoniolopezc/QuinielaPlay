@@ -3,14 +3,10 @@
  */
 package reglas;
 
-import java.util.ArrayList;
 import java.util.Map;
-
-import org.apache.commons.io.IOUtils;
+import java.util.Map.Entry;
 
 import models.*;
-import play.libs.Classpath;
-
 import org.yaml.snakeyaml.*;
 import org.yaml.snakeyaml.constructor.*;
 
@@ -21,15 +17,14 @@ import org.yaml.snakeyaml.constructor.*;
  */
 public class PuntuarEstandar extends ReglaBase {
 
-	Condicion Condiciones[];
+	Map<String,Condicion> Condiciones;
 
 	public PuntuarEstandar(String Parametro) {
 		super(Parametro);
 		Yaml y = new org.yaml.snakeyaml.Yaml(new CustomClassLoaderConstructor(
 				play.Play.application().classloader()));
-		ArrayList<?> Temp = (ArrayList<?>) y.load(Parametro);
-		Condiciones = new Condicion[Temp.size()];
-		Condiciones = Temp.toArray(Condiciones);
+		Map<String,Condicion> Temp= (Map<String,Condicion>) y.load(Parametro);
+		 Condiciones=Temp;
 	}
 
 	@Override
@@ -40,14 +35,14 @@ public class PuntuarEstandar extends ReglaBase {
 
 	@Override
 	public long Generar(Pronostico Pronostico) {
-		for (Integer i = 0; i < Condiciones.length; i++) {
-			Condicion C = Condiciones[i];
+		for (Entry<String,Condicion> e:Condiciones.entrySet()) {
+			Condicion C = e.getValue();
 			for (Porcion Porcion : Pronostico.getQuiniela().getTorneo()
 					.getPorciones()) {
 				if (!Porcion.getNombre().matches(C.CondicionPorcion))
 					continue;
 				if (C.CondicionPartido == "" || C.CondicionPartido == null) {
-					Pronostico.Puntos.add(new Punto(i.toString(), null, null,
+					Pronostico.Puntos.add(new Punto(e.getKey(), null, null,
 							Porcion));
 					continue;
 				}
@@ -56,7 +51,7 @@ public class PuntuarEstandar extends ReglaBase {
 						continue;
 					if (C.CondicionResultado == ""
 							|| C.CondicionResultado == null) {
-						Pronostico.Puntos.add(new Punto(i.toString(), null,
+						Pronostico.Puntos.add(new Punto(e.getKey(), null,
 								Partido, Porcion));
 						continue;
 					}
@@ -65,7 +60,7 @@ public class PuntuarEstandar extends ReglaBase {
 						if (!Resultado.getDefinicion().getNombre()
 								.matches(C.CondicionResultado))
 							continue;
-						Pronostico.Puntos.add(new Punto(i.toString(),
+						Pronostico.Puntos.add(new Punto(e.getKey(),
 								Resultado, Partido, Porcion));
 					}
 				}

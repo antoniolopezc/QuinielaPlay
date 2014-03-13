@@ -12,24 +12,42 @@
   Descricion: Cacula comparaciones Basicas
   Clase: reglas.PuntuarEstandar
   Parametros: |
-    - !!reglas.Condicion
-      CondicionPorcion: "Grupo.*"
-      CondicionPartido: ".*"
-      CondicionResultado: "Gol.*"
-      CondicionSuma: 
-      Puntos: 1
-    - !!reglas.Condicion
-      CondicionPorcion: ".*"
-      CondicionPartido: ".*"
-      CondicionResultado: "Pasa.*"
-      CondicionSuma: 
-      Puntos: 3
-    - !!reglas.Condicion
-      CondicionPorcion: ".*"
-      CondicionPartido: ".*"
-      CondicionResultado: 
-      CondicionSuma: 
-      Puntos: 3
+    GolesGrupo:
+      !!reglas.Condicion
+        CondicionPorcion: "Grupo.*"
+        CondicionPartido: ".*"
+        CondicionResultado: "Gol.*"
+        CondicionSuma: 
+        Puntos: 1
+    GolesDirecta:
+      !!reglas.Condicion
+        CondicionPorcion: "Directa.*"
+        CondicionPartido: ".*"
+        CondicionResultado: "Gol.*"
+        CondicionSuma: 
+        Puntos: 2
+    Pasa: 
+      !!reglas.Condicion
+        CondicionPorcion: ".*"
+        CondicionPartido: ".*"
+        CondicionResultado: "Paso.*"
+        CondicionSuma: 
+        Puntos: 3
+    ResultadoGrupo:
+      !!reglas.Condicion
+        CondicionPorcion: "Grupo.*"
+        CondicionPartido: ".*"
+        CondicionResultado: 
+        CondicionSuma: 
+        Puntos: 3
+    ResultadoDirecta:
+      !!reglas.Condicion
+        CondicionPorcion: "Directa.*"
+        CondicionPartido: ".*"
+        CondicionResultado: 
+        CondicionSuma: 
+        Puntos: 6
+      
 - &GA !!models.DefinicionResultado
     Nombre: Goles de Equipo A
     NombreCorto: Goles A 
