@@ -22,6 +22,7 @@
 		<script>$("ul.tabs").append('<li><a href="#tabs-@Pronostico.Id">@{Pronostico.Nombre}(@Pronostico.Propietario.nombre)</a></li>')</script>
 		<article id="tabs-@Pronostico.Id">
 		<div>@Pronostico.Nombre de @views.html.Usuario.Usuario(Pronostico.Propietario)</div>
+		<div>Total de Puntos @{Pronostico.getPuntos().foldLeft(new Long(0))((total,Punto) =>Punto.getValor()+total)}</div>
 		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true)}
 		<script>
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"article#tabs-"+Pronostico.Id)}

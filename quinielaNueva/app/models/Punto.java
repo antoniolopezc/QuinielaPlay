@@ -57,6 +57,7 @@ public class Punto extends Model {
 		Resultado = resultado;
 		Partido = partido;
 		Porcion = porcion;
+		Valor = new Long(0);
 	}
 
 	public Long getId() {
