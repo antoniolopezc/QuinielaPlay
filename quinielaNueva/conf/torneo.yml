@@ -19,20 +19,6 @@
         CondicionResultado: "Gol.*"
         CondicionSuma: 
         Puntos: 1
-    GolesDirecta:
-      !!reglas.Condicion
-        CondicionPorcion: "Directa.*"
-        CondicionPartido: ".*"
-        CondicionResultado: "Gol.*"
-        CondicionSuma: 
-        Puntos: 2
-    Pasa: 
-      !!reglas.Condicion
-        CondicionPorcion: ".*"
-        CondicionPartido: ".*"
-        CondicionResultado: "Paso.*"
-        CondicionSuma: 
-        Puntos: 3
     ResultadoGrupo:
       !!reglas.Condicion
         CondicionPorcion: "Grupo.*"
@@ -40,13 +26,48 @@
         CondicionResultado: 
         CondicionSuma: 
         Puntos: 3
-    ResultadoDirecta:
+    GolesDirectaNoFinal:
       !!reglas.Condicion
-        CondicionPorcion: "Directa.*"
+        CondicionPorcion: "Directa [OCST].*"
+        CondicionPartido: ".*"
+        CondicionResultado: "Gol.*"
+        CondicionSuma: 
+        Puntos: 2
+    ResultadoDirectaNoFinal:
+      !!reglas.Condicion
+        CondicionPorcion: "Directa [OCST].*"
         CondicionPartido: ".*"
         CondicionResultado: 
         CondicionSuma: 
         Puntos: 6
+    PasaNoFinal: 
+      !!reglas.Condicion
+        CondicionPorcion: "Directa [OCST].*"
+        CondicionPartido: ".*"
+        CondicionResultado: ".*Paso"
+        CondicionSuma: 
+        Puntos: 6
+    GolesDirectaFinal:
+      !!reglas.Condicion
+        CondicionPorcion: "Directa FINAL"
+        CondicionPartido: ".*"
+        CondicionResultado: "Gol.*"
+        CondicionSuma: 
+        Puntos: 4
+    ResultadoDirectaFinal:
+      !!reglas.Condicion
+        CondicionPorcion: "Directa FINAL"
+        CondicionPartido: ".*"
+        CondicionResultado: 
+        CondicionSuma: 
+        Puntos: 12
+    PasaFinal: 
+      !!reglas.Condicion
+        CondicionPorcion: "Directa FINAL"
+        CondicionPartido: ".*"
+        CondicionResultado: ".*Paso"
+        CondicionSuma: 
+        Puntos: 12
       
 - &GA !!models.DefinicionResultado
     Nombre: Goles de Equipo A
