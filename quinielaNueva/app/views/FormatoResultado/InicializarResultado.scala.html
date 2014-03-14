@@ -1,8 +1,8 @@
-@(Resultado: ResultadoPronostico)	
+@(Resultado: ResultadoPronostico, Padre: String)	
 @Resultado.Resultado.refresh()
 @if(Option(Resultado.Entero).nonEmpty) {
-AsignaValorResultado(@Resultado.Resultado.Id,@Resultado.Entero);
+AsignaValorResultado("@Padre",@Resultado.Resultado.Id,@Resultado.Entero);
 } 
 @if(Option(Resultado.Equipo).nonEmpty) {
-AsignaValorResultado(@Resultado.Resultado.Id,@Resultado.Equipo.Id);
+AsignaValorResultado("@Padre",@Resultado.Resultado.Id,@Resultado.Equipo.Id);
 } 

@@ -16,7 +16,7 @@
 		@Pronostico.Quiniela.Torneo.Porciones.map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,false)}
 		<input type="submit" value="Guardar"></input>
 		<script>
-		@Pronostico.Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado) }
+		@Pronostico.Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
 		</script>
 	}
 }

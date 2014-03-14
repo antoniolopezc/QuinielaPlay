@@ -19,15 +19,12 @@
 	<section id="tabs">
 	<ul class="tabs"></ul>
 	@for(Pronostico <- Pronosticos) {
-		@Pronostico.Propietario.refresh()
-		@Pronostico.Quiniela.refresh()
-		@Pronostico.Quiniela.Torneo.refresh()
 		<script>$("ul.tabs").append('<li><a href="#tabs-@Pronostico.Id">@{Pronostico.Nombre}(@Pronostico.Propietario.nombre)</a></li>')</script>
 		<article id="tabs-@Pronostico.Id">
 		<div>@Pronostico.Nombre de @views.html.Usuario.Usuario(Pronostico.Propietario)</div>
-		@Pronostico.Quiniela.Torneo.Porciones.map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true)}
+		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true)}
 		<script>
-		@Pronostico.Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado) }
+		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"article#tabs-"+Pronostico.Id)}
 		</script>
 		</article>
 	}

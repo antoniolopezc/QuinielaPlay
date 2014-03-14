@@ -2,7 +2,8 @@
  * Funcion que asigna valor
  */
 
-function AsignaValorResultado(Id,Valor) {
-	$('[name="'+Id+'"]').val(Valor);
-	$('[name="'+Id+'"]').trigger("onchange");
+function AsignaValorResultado(padre,Id,Valor) {
+	
+	$(padre+' [name="'+Id+'"]').val(Valor);
+	$(padre+' [name="'+Id+'"]').trigger("onchange");
 }
