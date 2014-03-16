@@ -65,10 +65,13 @@ create table punto (
   id                        bigint not null,
   pronostico_id             bigint not null,
   valor                     bigint,
+  maximo                    bigint,
+  estado                    integer,
   referencia_regla          varchar(255),
   resultado_id              bigint,
   partido_id                bigint,
   porcion_id                bigint,
+  constraint ck_punto_estado check (estado in (0,1,2)),
   constraint pk_punto primary key (id))
 ;
 

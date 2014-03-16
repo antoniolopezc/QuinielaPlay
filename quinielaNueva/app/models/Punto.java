@@ -25,6 +25,16 @@ public class Punto extends Model {
 	
 	public Long Valor;
 	
+	public Long Maximo;
+	
+	public enum EstadoEnum {
+		Nuevo,
+		Parcial,
+		Final
+	}
+	
+	EstadoEnum Estado=EstadoEnum.Nuevo;
+	
 	/*
 	 * La regla que crea el registro de puntos puede usar este valor como referencia para
 	 * simplificar el futuro calculo.
@@ -51,12 +61,13 @@ public class Punto extends Model {
 	 * @param porcion
 	 */
 	public Punto(String referenciaRegla, models.Resultado resultado,
-			models.Partido partido, models.Porcion porcion) {
+			models.Partido partido, models.Porcion porcion, Long maximo) {
 		super();
 		ReferenciaRegla = referenciaRegla;
 		Resultado = resultado;
 		Partido = partido;
 		Porcion = porcion;
+		Maximo=maximo;
 		Valor = new Long(0);
 	}
 
@@ -98,6 +109,48 @@ public class Punto extends Model {
 
 	public void setPorcion(Porcion porcion) {
 		Porcion = porcion;
+	}
+
+	/**
+	 * @return the maximo
+	 */
+	public Long getMaximo() {
+		return Maximo;
+	}
+
+	/**
+	 * @param maximo the maximo to set
+	 */
+	public void setMaximo(Long maximo) {
+		Maximo = maximo;
+	}
+
+	/**
+	 * @return the referenciaRegla
+	 */
+	public String getReferenciaRegla() {
+		return ReferenciaRegla;
+	}
+
+	/**
+	 * @param referenciaRegla the referenciaRegla to set
+	 */
+	public void setReferenciaRegla(String referenciaRegla) {
+		ReferenciaRegla = referenciaRegla;
+	}
+
+	/**
+	 * @return the estado
+	 */
+	public EstadoEnum getEstado() {
+		return Estado;
+	}
+
+	/**
+	 * @param estado the estado to set
+	 */
+	public void setEstado(EstadoEnum estado) {
+		Estado = estado;
 	}
 
 }

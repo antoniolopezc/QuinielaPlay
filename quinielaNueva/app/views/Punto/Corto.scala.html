@@ -1,0 +1,12 @@
+@(Puntos: List[models.Punto])
+@defining(
+((new Long(0),new Long(0),new Long(0))/:Puntos)((Re,Punto)=>(
+			Punto.getEstado() match  {
+			case models.Punto.EstadoEnum.Nuevo => (Re._1, Re._2, Re._3+Punto.getMaximo())
+			case models.Punto.EstadoEnum.Parcial => (Re._1+Punto.getValor(), Re._2+Punto.getMaximo(), Re._3+Punto.getMaximo())
+			case models.Punto.EstadoEnum.Final => (Re._1+Punto.getValor(), Re._2+Punto.getMaximo(), Re._3+Punto.getMaximo())
+			}	
+			) )
+){ R => 
+ @R._1/@{R._2}(@R._3)
+}

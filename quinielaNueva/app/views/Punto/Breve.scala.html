@@ -1,0 +1,10 @@
+@(Puntos: List[models.Punto])
+@defining(
+(new Long(0)/:Puntos)((Re,Punto)=>(
+			Punto.getEstado() match  {
+			case models.Punto.EstadoEnum.Nuevo => Re
+			case models.Punto.EstadoEnum.Parcial => Re+Punto.getValor()
+			case models.Punto.EstadoEnum.Final => Re+Punto.getValor()
+			}	
+			) )
+){ R =>@R}

@@ -43,7 +43,7 @@ public class PuntuarEstandar extends ReglaBase {
 					continue;
 				if (C.CondicionPartido == "" || C.CondicionPartido == null) {
 					Pronostico.Puntos.add(new Punto(e.getKey(), null, null,
-							Porcion));
+							Porcion,C.Puntos));
 					continue;
 				}
 				for (Partido Partido : Porcion.getPartidos()) {
@@ -52,7 +52,7 @@ public class PuntuarEstandar extends ReglaBase {
 					if (C.CondicionResultado == ""
 							|| C.CondicionResultado == null) {
 						Pronostico.Puntos.add(new Punto(e.getKey(), null,
-								Partido, Porcion));
+								Partido, Porcion,C.Puntos));
 						continue;
 					}
 
@@ -61,7 +61,7 @@ public class PuntuarEstandar extends ReglaBase {
 								.matches(C.CondicionResultado))
 							continue;
 						Pronostico.Puntos.add(new Punto(e.getKey(),
-								Resultado, Partido, Porcion));
+								Resultado, Partido, Porcion,C.Puntos));
 					}
 				}
 			}
