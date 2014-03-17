@@ -30,14 +30,16 @@ GET     /not-authorized             securesocial.controllers.ProviderController.
 GET     /                           controllers.Application.index()
 
 # Refencias a Torneo
-GET		/torneo						controllers.torneo.Torneo.lista()
-POST    /torneo/guardar				controllers.torneo.Torneo.guardar()
-GET		/torneo/agregar				controllers.torneo.Torneo.agregar()
-GET		/torneo/:id					controllers.torneo.Torneo.breve(id:Long)
+#GET		/torneo						controllers.torneo.Torneo.lista()
+POST    /torneo/guardar					controllers.torneo.Torneo.guardar()
+#GET		/torneo/agregar				controllers.torneo.Torneo.agregar()
+#GET		/torneo/:id					controllers.torneo.Torneo.breve(id:Long)
+GET		/ActualizarResultado 			controllers.torneo.Torneo.ActualizarResultados(id: Long = -1)
+GET		/ActualizarResultado/:id		controllers.torneo.Torneo.ActualizarResultados(id: Long)
+GET		/GuadarResultado				controllers.torneo.Torneo.GuadarResultados()
 
 # Refencias a Usuario
 GET		/logeado			controllers.Application.loggeado()
-#GET		/rlogin				controllers.Application.rloggeado()
 
 # Refencias a Pronostico
 GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long = -1)

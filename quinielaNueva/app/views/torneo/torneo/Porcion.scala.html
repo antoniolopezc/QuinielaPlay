@@ -1,0 +1,16 @@
+@(Porcion: models.Porcion, Lectura: Boolean=false)
+<div id="Porcion-@Porcion.Id" class="Procion">
+	<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
+	<h2>@Porcion.getNombre()</h2>
+	<table>
+		<tbody>
+			@Porcion.getPartidos().map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.Id,Lectura)}
+		</tbody>
+	</table>
+	@if(Porcion.getResultados().size()>0) {
+		@for(Resultado <- Porcion.Resultados){
+			<script>Porciones[@Porcion.getId()].AgregarResultado(@Resultado.getId() , @Resultado.getDefinicion().getAbreviatura())</script>
+		}
+		@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.getId())
+	}
+</div>

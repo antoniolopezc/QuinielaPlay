@@ -130,7 +130,7 @@ create table torneo (
   inicio                    timestamp,
   fin                       timestamp,
   imagen                    blob,
-  dueño_id                  bigint,
+  propietario_id            bigint,
   constraint pk_torneo primary key (id))
 ;
 
@@ -239,8 +239,8 @@ alter table resultado_pronostico add constraint fk_resultado_pronostico_Resul_20
 create index ix_resultado_pronostico_Resul_20 on resultado_pronostico (resultado_id);
 alter table resultado_pronostico add constraint fk_resultado_pronostico_Equip_21 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
 create index ix_resultado_pronostico_Equip_21 on resultado_pronostico (equipo_id);
-alter table torneo add constraint fk_torneo_Dueño_22 foreign key (dueño_id) references usuario (id) on delete restrict on update restrict;
-create index ix_torneo_Dueño_22 on torneo (dueño_id);
+alter table torneo add constraint fk_torneo_Propietario_22 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
+create index ix_torneo_Propietario_22 on torneo (propietario_id);
 
 
 

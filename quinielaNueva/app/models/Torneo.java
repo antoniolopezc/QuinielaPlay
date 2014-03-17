@@ -62,7 +62,7 @@ public class Torneo extends Model {
 	public List<Porcion> Porciones=new ArrayList<Porcion>();
 	
 	@ManyToOne
-	public Usuario Dueño;
+	public Usuario Propietario;
 	
 	@ManyToMany 
 	public List<Usuario> Administradores=new ArrayList<Usuario>();
@@ -151,6 +151,36 @@ public class Torneo extends Model {
 	 */
 	public void setPorciones(List<Porcion> porciones) {
 		Porciones = porciones;
+	}
+	public Long getId() {
+		return Id;
+	}
+	public void setId(Long id) {
+		Id = id;
+	}
+	public byte[] getImagen() {
+		return Imagen;
+	}
+	public void setImagen(byte[] imagen) {
+		Imagen = imagen;
+	}
+	public List<Equipo> getEquipos() {
+		return Equipos;
+	}
+	public void setEquipos(List<Equipo> equipos) {
+		Equipos = equipos;
+	}
+	public Usuario getPropietario() {
+		return Propietario;
+	}
+	public void setPropietario(Usuario propietario) {
+		Propietario = propietario;
+	}
+	public List<Usuario> getAdministradores() {
+		return Administradores;
+	}
+	public void setAdministradores(List<Usuario> administradores) {
+		Administradores = administradores;
 	}
 
 }
