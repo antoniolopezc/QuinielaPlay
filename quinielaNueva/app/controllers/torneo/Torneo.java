@@ -71,8 +71,10 @@ public class Torneo extends Controller {
     		return ok(SelecionarTorneo.render(Torneos));
     	}
     	models.Torneo Torneo = models.Torneo.find.byId(id);
-    	
-    	return ok(ActualizarResultados.render(Torneo));
+    	List<models.Resultado> Resultados=models.Resultado.find.where()
+				.or(Expr.in("Porcion",Torneo.getPorciones()),
+					Expr.in("Partido",Torneo.getPartidos())).findList();
+    	return ok(ActualizarResultados.render(Torneo,Resultados));
 
     }
     /**
@@ -104,7 +106,7 @@ public class Torneo extends Controller {
     		}
     		Resultado.save();
     	}
-    	return ok(ActualizarResultados.render(Torneo));
+    	return ok(ActualizarResultados.render(Torneo,Resultados));
 
     }
 }

@@ -1,0 +1,8 @@
+@(Resultado: Resultado, Padre: String)	
+
+@if(Option(Resultado.Entero).nonEmpty) {
+AsignaValorResultado("@Padre",@Resultado.Id,@Resultado.Entero);
+} 
+@if(Option(Resultado.Equipo).nonEmpty) {
+AsignaValorResultado("@Padre",@Resultado.Id,@Resultado.Equipo.Id);
+} 

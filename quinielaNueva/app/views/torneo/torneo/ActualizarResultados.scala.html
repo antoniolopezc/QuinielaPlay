@@ -1,4 +1,4 @@
-@(Torneo: Torneo)
+@(Torneo: Torneo, Resultados: List[Resultado] )
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/ActualizarResultados.css")'>
 }
@@ -15,4 +15,8 @@
 		@Torneo.Porciones.map{Porcion=>@views.html.torneo.torneo.Porcion(Porcion,false)}
 		<input type="submit" value="Guardar"></input>
 	}
+	<script>
+	@Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultadoTorneo(Resultado,"form") }
+	</script>
+	
 }
