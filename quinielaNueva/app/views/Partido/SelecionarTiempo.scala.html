@@ -1,0 +1,18 @@
+@(Partido: Partido, Lectura: Boolean=false)	
+
+@tipo(Lectura: Boolean)={
+	@if(Lectura) {disabled}
+}
+@Selecionado(Valor: models.Partido.Tiempo)={
+	@if(Valor==Partido.getTiempoActual()) {selected}
+}
+
+<select class="TiempoActual" @tipo(Lectura) name="Tiempo-@Partido.getId()" >
+@for(opcion <- models.Partido.Tiempo.values()){
+	@if(opcion==Partido.getTiempoActual()) {
+ 	   	<option value="@opcion" selected>@opcion.name()</option>
+ 	} else {
+       	<option value="@opcion">@opcion.name()</option>
+    }
+}	
+</select>

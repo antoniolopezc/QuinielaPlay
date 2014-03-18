@@ -106,6 +106,11 @@ public class Torneo extends Controller {
     		}
     		Resultado.save();
     	}
+    	for(models.Partido Partido:Torneo.getPartidos()){
+    		s=FormaLlena.get("Tiempo-"+Long.toString(Partido.getId()));
+    		Partido.setTiempoActual(s);
+    		Partido.save();
+    	}
     	return ok(ActualizarResultados.render(Torneo,Resultados));
 
     }

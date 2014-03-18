@@ -42,7 +42,19 @@ public class Partido extends Model {
 		SegundoTiempo,
 		Prologa,
 		Penatil,
-		Final,
+		Final;
+		
+		public static Tiempo valueof2(String S) {
+			switch(S) {
+			case "0": return NoIniciado;
+			case "1": return PrimerTiempo;
+			case "2": return SegundoTiempo;
+			case "3": return Prologa;
+			case "4": return Penatil;
+			case "5": return Final;
+			default : return NoIniciado;
+			}
+		}
 	}
 	public Tiempo TiempoActual = Tiempo.NoIniciado;
 	
@@ -121,6 +133,10 @@ public class Partido extends Model {
 
 	public void setTiempoActual(Tiempo tiempoActual) {
 		TiempoActual = tiempoActual;
+	}
+	
+	public void setTiempoActual(String S) {
+		TiempoActual = Tiempo.valueOf(S);
 	}
 
 	public Equipo getEquipoA() {
