@@ -7,12 +7,21 @@ import models.*;
 
 /**
  * @author lopez
- * Esta Regla sirve para Generar un Pronostico en Base al Torneo de la quiniela para todos los resultados.
+ * Esta Regla sirve para cacular el Final de los equipo basado en la Abreviacion de Equipo
  * 
  */
 public class QuienPasa extends ReglaBase {
 
-
+	enum enumTipo {
+		Grupo,
+		PartidoGanador,
+		PartidoPerdido
+	}
+	class DependeDe {
+		enumTipo Tipo;
+		Long Dato;
+	}
+	
 	public QuienPasa(String Parametro) {
 		super(Parametro);
 	}
@@ -21,9 +30,20 @@ public class QuienPasa extends ReglaBase {
 	public long cacular(Pronostico Pronostico) {
 		return -1;
 	}
+	public DependeDe DependeDe(){
+		return null;
+		
+	}
 	@Override
 	public long cacular(Torneo Torneo) {
-		return -1;
+		for(Equipo Equipo: Torneo.getEquipos()){
+			if(Equipo.caculable) {
+				if(Equipo.Abreviatura.matches("")) {
+					
+				}
+			}
+		}
+		return 0;
 	}
 
 	@Override
