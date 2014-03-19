@@ -19,6 +19,7 @@ create table equipo (
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
+  caculable                 boolean,
   escudo                    blob,
   bandera                   blob,
   final_id                  bigint,

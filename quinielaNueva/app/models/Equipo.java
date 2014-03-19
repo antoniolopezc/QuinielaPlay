@@ -28,6 +28,8 @@ public class Equipo extends Model {
 	
 	public String Abreviatura;
 	
+	public boolean caculable;
+	
 	@Lob
 	public byte[] Escudo;
 	

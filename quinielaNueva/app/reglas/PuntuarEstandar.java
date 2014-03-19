@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import models.*;
+
 import org.yaml.snakeyaml.*;
 import org.yaml.snakeyaml.constructor.*;
 
@@ -73,5 +74,11 @@ public class PuntuarEstandar extends ReglaBase {
 	public String IncluirJS() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public long cacular(Torneo Torneo) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

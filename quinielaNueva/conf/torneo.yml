@@ -123,320 +123,386 @@
              Nombre: Alemania
              NombreCorto: Alemania
              Abreviatura: ALE
+             caculable: false
         
         - &ARL !!models.Equipo
              Nombre: Argelia
              NombreCorto: Argelia
              Abreviatura: ARL
+             caculable: false
         
         - &ARG !!models.Equipo
              Nombre: Argentina
              NombreCorto: Argentina
              Abreviatura: ARG
+             caculable: false
         
         - &AUS !!models.Equipo
              Nombre: Australia
              NombreCorto: Australia
              Abreviatura: AUS
+             caculable: false
         
         - &BEL !!models.Equipo
              Nombre: Bélgica
              NombreCorto: Bélgica
              Abreviatura: BEL
+             caculable: false
         
         - &BOS !!models.Equipo
              Nombre: Bosnia y Herzegovina
              NombreCorto: Bosnia
              Abreviatura: BOS
+             caculable: false
         
         - &BRA !!models.Equipo
              Nombre: Brasil
              NombreCorto: Brasil
              Abreviatura: BRA
+             caculable: false
         
         - &CAM !!models.Equipo
              Nombre: Camerún
              NombreCorto: Camerún
              Abreviatura: CAM
+             caculable: false
         
         - &CHI !!models.Equipo
              Nombre: Chile
              NombreCorto: Chile
              Abreviatura: CHI
+             caculable: false
         
         - &COL !!models.Equipo
              Nombre: Colombia
              NombreCorto: Colombia
              Abreviatura: COL
+             caculable: false
         
         - &CMA !!models.Equipo
              Nombre: Costa de Marfil
              NombreCorto: Cta Marfil
              Abreviatura: CMA
+             caculable: false
         
         - &CTR !!models.Equipo
              Nombre: Costa Rica
              NombreCorto: Cta Rica
              Abreviatura: CTR
+             caculable: false
         
         - &CRO !!models.Equipo
              Nombre: Croacia
              NombreCorto: Croacia
              Abreviatura: CRO
+             caculable: false
         
         - &ECU !!models.Equipo
              Nombre: Ecuador
              NombreCorto: Ecuador
              Abreviatura: ECU
+             caculable: false
         
         - &USA !!models.Equipo
              Nombre: EEUU
              NombreCorto: EEUU
              Abreviatura: USA
+             caculable: false
         
         - &ESP !!models.Equipo
              Nombre: España
              NombreCorto: España
              Abreviatura: ESP
+             caculable: false
         
         - &FRA !!models.Equipo
              Nombre: Francia
              NombreCorto: Francia
              Abreviatura: FRA
+             caculable: false
         
         - &GHA !!models.Equipo
              Nombre: Ghana
              NombreCorto: Ghana
              Abreviatura: GHA
+             caculable: false
         
         - &GRE !!models.Equipo
              Nombre: Grecia
              NombreCorto: Grecia
              Abreviatura: GRE
+             caculable: false
         
         - &HOL !!models.Equipo
              Nombre: Holanda
              NombreCorto: Holanda
              Abreviatura: HOL
+             caculable: false
         
         - &HON !!models.Equipo
              Nombre: Honduras
              NombreCorto: Honduras
              Abreviatura: HON
+             caculable: false
         
         - &ING !!models.Equipo
              Nombre: Inglaterra
              NombreCorto: Inglaterra
              Abreviatura: ING
+             caculable: false
         
         - &IRA !!models.Equipo
              Nombre: Irán
              NombreCorto: Irán
              Abreviatura: IRA
+             caculable: false
         
         - &ITA !!models.Equipo
              Nombre: Italia
              NombreCorto: Italia
              Abreviatura: ITA
+             caculable: false
         
         - &JAP !!models.Equipo
              Nombre: Japón
              NombreCorto: Japón
              Abreviatura: JAP
+             caculable: false
         
         - &MEX !!models.Equipo
              Nombre: México
              NombreCorto: México
              Abreviatura: MÉX
+             caculable: false
         
         - &NIG !!models.Equipo
              Nombre: Nigeria
              NombreCorto: Nigeria
              Abreviatura: NIG
+             caculable: false
         
         - &POR !!models.Equipo
              Nombre: Portugal
              NombreCorto: Portugal
              Abreviatura: POR
+             caculable: false
         
         - &COR !!models.Equipo
              Nombre: República de Corea
              NombreCorto: Corea
              Abreviatura: COR
+             caculable: false
         
         - &RUS !!models.Equipo
              Nombre: Rusia
              NombreCorto: Rusia
              Abreviatura: RUS
+             caculable: false
         
         - &SUI !!models.Equipo
              Nombre: Suiza
              NombreCorto: Suiza
              Abreviatura: SUI
+             caculable: false
         
         - &URU !!models.Equipo
              Nombre: Uruguay
              NombreCorto: Uruguay
              Abreviatura: URU
+             caculable: false
+             
         - &1A !!models.Equipo
              Nombre: Primero Grupo A
              NombreCorto: 1A
              Abreviatura: 1A
+             caculable: true
 
         - &1C !!models.Equipo
              Nombre: Primero Grupo C
              NombreCorto: 1C
              Abreviatura: 1C
+             caculable: true
 
         - &1B !!models.Equipo
              Nombre: Primero Grupo B
              NombreCorto: 1B
              Abreviatura: 1B
+             caculable: true
 
         - &1D !!models.Equipo
              Nombre: Primero Grupo D
              NombreCorto: 1D
              Abreviatura: 1D
+             caculable: true
 
         - &1E !!models.Equipo
              Nombre: Primero Grupo E
              NombreCorto: 1E
              Abreviatura: 1E
+             caculable: true
 
         - &1G !!models.Equipo
              Nombre: Primero Grupo G
              NombreCorto: 1G
              Abreviatura: 1G
+             caculable: true
 
         - &1F !!models.Equipo
              Nombre: Primero Grupo F
              NombreCorto: 1F
              Abreviatura: 1F
+             caculable: true
 
         - &1H !!models.Equipo
              Nombre: Primero Grupo H
              NombreCorto: 1H
              Abreviatura: 1H
+             caculable: true
 
         - &2B !!models.Equipo
              Nombre: Segundo Grupo B
              NombreCorto: 2B
              Abreviatura: 2B
+             caculable: true
 
         - &2D !!models.Equipo
              Nombre: Segundo Grupo D
              NombreCorto: 2D
              Abreviatura: 2D
+             caculable: true
 
         - &2A !!models.Equipo
              Nombre: Segundo Grupo A
              NombreCorto: 2A
              Abreviatura: 2A
+             caculable: true
 
         - &2C !!models.Equipo
              Nombre: Segundo Grupo C
              NombreCorto: 2C
              Abreviatura: 2C
+             caculable: true
 
         - &2F !!models.Equipo
              Nombre: Segundo Grupo F
              NombreCorto: 2F
              Abreviatura: 2F
+             caculable: true
 
         - &2H !!models.Equipo
              Nombre: Segundo Grupo H
              NombreCorto: 2H
              Abreviatura: 2H
+             caculable: true
 
         - &2E !!models.Equipo
              Nombre: Segundo Grupo E
              NombreCorto: 2E
              Abreviatura: 2E
+             caculable: true
 
         - &2G !!models.Equipo
              Nombre: Segundo Grupo G
              NombreCorto: 2G
              Abreviatura: 2G
+             caculable: true
 
         - &G49 !!models.Equipo
              Nombre: Ganador del Partido 49
              NombreCorto: Gan 49
              Abreviatura: G49
+             caculable: true
 
         - &G53 !!models.Equipo
              Nombre: Ganador del Partido 53
              NombreCorto: Gan 53
              Abreviatura: G53
+             caculable: true
 
         - &G51 !!models.Equipo
              Nombre: Ganador del Partido 51
              NombreCorto: Gan 51
              Abreviatura: G51
+             caculable: true
 
         - &G55 !!models.Equipo
              Nombre: Ganador del Partido 55
              NombreCorto: Gan 55
              Abreviatura: G55
+             caculable: true
 
         - &G57 !!models.Equipo
              Nombre: Ganador del Partido 57
              NombreCorto: Gan 57
              Abreviatura: G57
+             caculable: true
 
         - &G59 !!models.Equipo
              Nombre: Ganador del Partido 59
              NombreCorto: Gan 59
              Abreviatura: G59
+             caculable: true
 
         - &P61 !!models.Equipo
              Nombre: Perdedor del Partido 61
              NombreCorto: PER 61
              Abreviatura: P61
+             caculable: true
 
         - &G61 !!models.Equipo
              Nombre: Ganador del Partido 61
              NombreCorto: Gan 61
              Abreviatura: G61
+             caculable: true
 
         - &G50 !!models.Equipo
              Nombre: Ganador del Partido 50
              NombreCorto: Gan 50
              Abreviatura: G50
+             caculable: true
 
         - &G54 !!models.Equipo
              Nombre: Ganador del Partido 54
              NombreCorto: Gan 54
              Abreviatura: G54
+             caculable: true
 
         - &G52 !!models.Equipo
              Nombre: Ganador del Partido 52
              NombreCorto: Gan 52
              Abreviatura: G52
+             caculable: true
 
         - &G56 !!models.Equipo
              Nombre: Ganador del Partido 56
              NombreCorto: Gan 56
              Abreviatura: G56
+             caculable: true
 
         - &G58 !!models.Equipo
              Nombre: Ganador del Partido 58
              NombreCorto: Gan 58
              Abreviatura: G58
+             caculable: true
 
         - &G60 !!models.Equipo
              Nombre: Ganador del Partido 60
              NombreCorto: Gan 60
              Abreviatura: G60
+             caculable: true
 
         - &P62 !!models.Equipo
              Nombre: Perdedor del Partido 62
              NombreCorto: PER 62
              Abreviatura: P62
+             caculable: true
 
         - &G62 !!models.Equipo
              Nombre: Ganador del Partido 62
              NombreCorto: Gan 62
              Abreviatura: G62
+             caculable: true
+             
     Partidos:
         - &PA1 !!models.Partido
              Nombre: Partido 1

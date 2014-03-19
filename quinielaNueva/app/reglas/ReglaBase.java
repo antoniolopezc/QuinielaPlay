@@ -24,7 +24,11 @@ public abstract class ReglaBase {
 	 * */
 	public abstract long cacular( Pronostico Pronostico);
 	
-
+	/*Debe realizar los caculos necesario y actualizar los Resultados Pertinentes
+	 * devuelve un posible valor de error o 0 si esta todo correcto
+	 * */
+	public abstract long cacular(Torneo Torneo);
+	
 	/*Genera los resultados necesario para su futuro Caculo para un Pronostico 
 	 * devuelve un posible valor de error o 0 si esta todo correcto
 	 * */
@@ -34,6 +38,4 @@ public abstract class ReglaBase {
 	 * devuelve un posible valor de error o 0 si esta todo correcto
 	 * */
 	public abstract String IncluirJS();
-	
-
 }

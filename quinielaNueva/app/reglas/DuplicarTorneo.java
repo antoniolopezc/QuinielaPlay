@@ -47,5 +47,11 @@ public class DuplicarTorneo extends ReglaBase {
 		return null;
 	}
 
+	@Override
+	public long cacular(Torneo Torneo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }
