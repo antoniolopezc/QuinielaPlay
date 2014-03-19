@@ -67,9 +67,10 @@ public class Torneo extends Controller {
     public static Result ActualizarResultados(Long id) {
     	if(id==-1) {
     		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
-    		List<models.Torneo> Torneos = models.Torneo.find.where().eq("Propietario", (models.Usuario) Usuario).findList();
+    		List<models.Torneo> Torneos = models.Torneo.find.all();
     		return ok(SelecionarTorneo.render(Torneos));
     	}
+    	Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
     	models.Torneo Torneo = models.Torneo.find.byId(id);
     	List<models.Resultado> Resultados=models.Resultado.find.where()
 				.or(Expr.in("Porcion",Torneo.getPorciones()),
