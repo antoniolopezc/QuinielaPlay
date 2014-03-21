@@ -5,6 +5,13 @@
   Descricion: Duplica todos los Resultados
   Clase: reglas.DuplicarTorneo
   
+- &QP !!models.Regla
+  Nombre: Permite Validar Quien Pasa
+  NombreCorto: Quien Pasa 
+  Abreviatura: QP
+  Descricion: Permite Validar Quien Pasa
+  Clase: reglas.QuienPasa
+    
 - &CB !!models.Regla
   Nombre: Cacula comparaciones Basicas
   NombreCorto: CondicioBasica 
@@ -118,6 +125,8 @@
     Descricion: Mudial 2014 Brasil
     Inicio: 2014-06-12
     Fin: 2014-07-13
+    Reglas: 
+      - *QP
     Equipos:  
         - &ALE !!models.Equipo
              Nombre: Alemania

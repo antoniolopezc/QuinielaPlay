@@ -5,6 +5,8 @@ package controllers.torneo;
 
 
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import com.avaje.ebean.Expr;
@@ -12,6 +14,7 @@ import com.avaje.ebean.Expr;
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
+import reglas.ReglaBase;
 import securesocial.core.Identity;
 import securesocial.core.java.SecureSocial;
 
@@ -112,7 +115,32 @@ public class Torneo extends Controller {
     		Partido.setTiempoActual(s);
     		Partido.save();
     	}
-    	return ok(ActualizarResultados.render(Torneo,Resultados));
+    	if(CacularIndicadores(Torneo)) {
+    		Torneo.save();
+    		return ok(ActualizarResultados.render(Torneo,Resultados));
+    	} else 
+    		return ok("error");
 
     }
+    
+    static private boolean CacularIndicadores(models.Torneo Torneo){
+
+    	
+    	for(models.Regla Regla: Torneo.Reglas){
+    		try {
+    			Class<?> R=Class.forName(Regla.Clase);
+    			Constructor<?> C=R.getConstructor(String.class);
+    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
+    			if(O.cacular(Torneo)!=0) return false; 
+			} catch (IllegalAccessException  | IllegalArgumentException
+					| InstantiationException | ClassNotFoundException  
+					| SecurityException      | NoSuchMethodException 
+					| InvocationTargetException e) {
+				e.printStackTrace();
+				return false;
+			}
+    	}
+		return true;
+	
+	}
 }
