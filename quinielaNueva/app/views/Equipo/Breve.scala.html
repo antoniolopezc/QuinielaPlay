@@ -1,2 +1,2 @@
 @(Equipo: Equipo)
-@if(Equipo.getFinal()!= null){@Equipo.getFinal().getNombreCorto()}else{@Equipo.getNombreCorto()}
+@if(Equipo.getFinal()!= null){@views.html.Equipo.Breve(Equipo.getFinal())}else{@Equipo.getNombreCorto()}

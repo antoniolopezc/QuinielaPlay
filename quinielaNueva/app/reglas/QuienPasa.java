@@ -58,15 +58,15 @@ public class QuienPasa extends ReglaBase {
 			switch(DD.Tipo) {
 			case Grupo:
 				Grupo=BuscarPorcion(DD.Dato.substring(1));
-				Equipo.Final=ProcesarDatos(Grupo,DD.Dato.substring(0, 1));
+				Equipo.setFinal(ProcesarDatos(Grupo,DD.Dato.substring(0, 1)));
 				break;
 			case PartidoGanador:
 				Partido=BuscarPartido(DD.Dato);
-				Equipo.Final=ProcesarDatos(Partido,enumTipo.PartidoGanador);
+				Equipo.setFinal(ProcesarDatos(Partido,enumTipo.PartidoGanador));
 				break;
 			case PartidoPerdido:
 				Partido=BuscarPartido(DD.Dato);
-				Equipo.Final=ProcesarDatos(Partido,enumTipo.PartidoPerdido);
+				Equipo.setFinal(ProcesarDatos(Partido,enumTipo.PartidoPerdido));
 				break;
 			case NoAplica: //no se hace nada
 				break;
@@ -78,7 +78,7 @@ public class QuienPasa extends ReglaBase {
 	private models.Equipo ProcesarDatos(Partido partido, enumTipo Tipo) {
 		if(partido.getTiempoActual()==Partido.Tiempo.Final) {
 			for(Resultado R:partido.getResultados()){
-				if(R.getDefinicion().getNombreCorto()=="Paso") {
+				if(R.getDefinicion().getNombreCorto().compareTo("Paso")==0){
 					if(Tipo==enumTipo.PartidoGanador)
 						return R.getEquipo();
 					else if(Tipo==enumTipo.PartidoPerdido) {
