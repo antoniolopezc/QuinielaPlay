@@ -4,7 +4,7 @@
 # --- !Ups
 
 create table definicion_resultado (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
@@ -14,27 +14,27 @@ create table definicion_resultado (
 ;
 
 create table equipo (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   torneo_id                 bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
-  caculable                 tinyint(1) default 0,
-  escudo                    longblob,
-  bandera                   longblob,
+  caculable                 boolean,
+  escudo                    blob,
+  bandera                   blob,
   final_id                  bigint,
   constraint pk_equipo primary key (id))
 ;
 
 create table partido (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   torneo_id                 bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
   descricion                varchar(255),
   lugar                     varchar(255),
-  fecha                     datetime,
+  fecha                     timestamp,
   tiempo_actual             integer,
   equipo_a_id               bigint,
   equipo_b_id               bigint,
@@ -43,19 +43,19 @@ create table partido (
 ;
 
 create table porcion (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   torneo_id                 bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
   descricion                varchar(255),
-  inicio                    datetime,
-  fin                       datetime,
+  inicio                    timestamp,
+  fin                       timestamp,
   constraint pk_porcion primary key (id))
 ;
 
 create table pronostico (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   nombre                    varchar(255),
   propietario_id            bigint,
   quiniela_id               bigint,
@@ -63,7 +63,7 @@ create table pronostico (
 ;
 
 create table punto (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   pronostico_id             bigint not null,
   valor                     bigint,
   maximo                    bigint,
@@ -77,32 +77,32 @@ create table punto (
 ;
 
 create table quiniela (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
   descricion                varchar(255),
-  inicio                    datetime,
-  fin                       datetime,
-  imagen                    longblob,
+  inicio                    timestamp,
+  fin                       timestamp,
+  imagen                    blob,
   torneo_id                 bigint,
   dueño_id                  bigint,
   constraint pk_quiniela primary key (id))
 ;
 
 create table regla (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
   descricion                varchar(255),
   clase                     varchar(255),
-  parametros                longtext,
+  parametros                clob,
   constraint pk_regla primary key (id))
 ;
 
 create table resultado (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   definicion_id             bigint,
   estado                    integer,
   entero                    bigint,
@@ -114,7 +114,7 @@ create table resultado (
 ;
 
 create table resultado_pronostico (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   pronostico_id             bigint not null,
   resultado_id              bigint,
   entero                    bigint,
@@ -123,20 +123,20 @@ create table resultado_pronostico (
 ;
 
 create table torneo (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   nombre                    varchar(255),
   nombre_corto              varchar(255),
   abreviatura               varchar(255),
   descricion                varchar(255),
-  inicio                    datetime,
-  fin                       datetime,
-  imagen                    longblob,
+  inicio                    timestamp,
+  fin                       timestamp,
+  imagen                    blob,
   propietario_id            bigint,
   constraint pk_torneo primary key (id))
 ;
 
 create table usuario (
-  id                        bigint auto_increment not null,
+  id                        bigint not null,
   email                     varchar(255),
   nombre                    varchar(255),
   avatar                    varchar(255),
@@ -174,6 +174,30 @@ create table torneo_usuario (
   usuario_id                     bigint not null,
   constraint pk_torneo_usuario primary key (torneo_id, usuario_id))
 ;
+create sequence definicion_resultado_seq;
+
+create sequence equipo_seq;
+
+create sequence partido_seq;
+
+create sequence porcion_seq;
+
+create sequence pronostico_seq;
+
+create sequence punto_seq;
+
+create sequence quiniela_seq;
+
+create sequence regla_seq;
+
+create sequence resultado_seq;
+
+create sequence resultado_pronostico_seq;
+
+create sequence torneo_seq;
+
+create sequence usuario_seq;
+
 alter table equipo add constraint fk_equipo_torneo_1 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;
 create index ix_equipo_torneo_1 on equipo (torneo_id);
 alter table equipo add constraint fk_equipo_Final_2 foreign key (final_id) references equipo (id) on delete restrict on update restrict;
@@ -210,12 +234,12 @@ alter table resultado add constraint fk_resultado_Partido_17 foreign key (partid
 create index ix_resultado_Partido_17 on resultado (partido_id);
 alter table resultado add constraint fk_resultado_Porcion_18 foreign key (porcion_id) references porcion (id) on delete restrict on update restrict;
 create index ix_resultado_Porcion_18 on resultado (porcion_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_pronostico_19 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_pronostico_19 on resultado_pronostico (pronostico_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_Resultado_20 foreign key (resultado_id) references resultado (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_Resultado_20 on resultado_pronostico (resultado_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_Equipo_21 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_Equipo_21 on resultado_pronostico (equipo_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_prono_19 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_prono_19 on resultado_pronostico (pronostico_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_Resul_20 foreign key (resultado_id) references resultado (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_Resul_20 on resultado_pronostico (resultado_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_Equip_21 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_Equip_21 on resultado_pronostico (equipo_id);
 alter table torneo add constraint fk_torneo_Propietario_22 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
 create index ix_torneo_Propietario_22 on torneo (propietario_id);
 
@@ -243,41 +267,65 @@ alter table torneo_usuario add constraint fk_torneo_usuario_usuario_02 foreign k
 
 # --- !Downs
 
-SET FOREIGN_KEY_CHECKS=0;
+SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table definicion_resultado;
+drop table if exists definicion_resultado;
 
-drop table equipo;
+drop table if exists equipo;
 
-drop table partido;
+drop table if exists partido;
 
-drop table porcion;
+drop table if exists porcion;
 
-drop table porcion_partido;
+drop table if exists porcion_partido;
 
-drop table pronostico;
+drop table if exists pronostico;
 
-drop table punto;
+drop table if exists punto;
 
-drop table quiniela;
+drop table if exists quiniela;
 
-drop table quiniela_regla;
+drop table if exists quiniela_regla;
 
-drop table quiniela_usuario;
+drop table if exists quiniela_usuario;
 
-drop table regla;
+drop table if exists regla;
 
-drop table resultado;
+drop table if exists resultado;
 
-drop table resultado_pronostico;
+drop table if exists resultado_pronostico;
 
-drop table torneo;
+drop table if exists torneo;
 
-drop table torneo_regla;
+drop table if exists torneo_regla;
 
-drop table torneo_usuario;
+drop table if exists torneo_usuario;
 
-drop table usuario;
+drop table if exists usuario;
 
-SET FOREIGN_KEY_CHECKS=1;
+SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists definicion_resultado_seq;
+
+drop sequence if exists equipo_seq;
+
+drop sequence if exists partido_seq;
+
+drop sequence if exists porcion_seq;
+
+drop sequence if exists pronostico_seq;
+
+drop sequence if exists punto_seq;
+
+drop sequence if exists quiniela_seq;
+
+drop sequence if exists regla_seq;
+
+drop sequence if exists resultado_seq;
+
+drop sequence if exists resultado_pronostico_seq;
+
+drop sequence if exists torneo_seq;
+
+drop sequence if exists usuario_seq;
 

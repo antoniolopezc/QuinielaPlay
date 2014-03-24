@@ -104,7 +104,7 @@ public class QuienPasa extends ReglaBase {
 		}
 		//buscar el puesto buscado
 		for(Resultado R: grupo.getResultados()){
-			if(R.getDefinicion().getAbreviatura()==quien){
+			if(R.getDefinicion().getAbreviatura().compareTo(quien)==0){
 				return R.getEquipo();
 			}
 		}

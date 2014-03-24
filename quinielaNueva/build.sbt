@@ -6,7 +6,8 @@ libraryDependencies ++= Seq(
   javaJdbc,
   javaEbean  withSources(),
   cache,
-  "ws.securesocial" %% "securesocial" % "2.1.3" withSources()
+  "ws.securesocial" %% "securesocial" % "2.1.3" withSources(),
+  "mysql" % "mysql-connector-java" % "5.1.21"
 )     
 
 resolvers += Resolver.url("sbt-plugin-releases", new URL("http://repo.scala-sbt.org/scalasbt/sbt-plugin-releases/"))(Resolver.ivyStylePatterns)
