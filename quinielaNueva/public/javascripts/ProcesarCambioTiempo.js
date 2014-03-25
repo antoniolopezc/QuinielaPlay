@@ -23,7 +23,10 @@ function ObtenerQuienPasa(e) {
 	return P;
 }
 function SustituirAfectados(e,IdPartido,EquipoFinal) {
-	$("td[class^=Partido-EquipoA]:contains('"+IdPartido.substring(1)+"'),td[class^=Partido-EquipoB]:contains('"+IdPartido.substring(1)+"')").html(EquipoFinal);
+	$("td[class=Partido-EquipoA]:contains('"+IdPartido.substring(1)+"')" +
+	  ",td[class=Partido-EquipoB]:contains('"+IdPartido.substring(1)+"')" +
+	  ",option:contains('"+IdPartido.substring(1)+"')"
+	  ).empty().html(EquipoFinal);
 }
 function CambioTiempo(e){
 	if($(e.target).val()=="Final") {
