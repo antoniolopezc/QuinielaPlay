@@ -3,13 +3,18 @@
  */
 package reglas;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import models.*;
+import models.Punto.EstadoEnum;
 
 import org.yaml.snakeyaml.*;
 import org.yaml.snakeyaml.constructor.*;
+
+import scala.Tuple2;
 
 /**
  * @author lopez Esta Regla sirve para Generar un Pronostico en Base al Torneo
@@ -30,8 +35,78 @@ public class PuntuarEstandar extends ReglaBase {
 
 	@Override
 	public long cacular(Pronostico Pronostico) {
+		Condicion Condicion;
+		Tuple2<String,models.Punto.EstadoEnum> CondicionSuma;
+		for(Punto Punto:Pronostico.getPuntos()){
+			if(Punto.getEstado()!=models.Punto.EstadoEnum.Final){
+				Condicion=Condiciones.get(Punto.getReferenciaRegla());
+				CondicionSuma=GenerarCondicionSuma(Pronostico,Condicion);
+				if(CondicionSuma._1.matches(Condicion.CondicionSuma)){
+					Punto.setValor(Condicion.Puntos);
+					Punto.setEstado(CondicionSuma._2);
+				}
+			}
+		}
+		return 0;
+	}
+
+	private Tuple2<String, EstadoEnum> GenerarCondicionSuma(
+			Pronostico Pronostico, Condicion condicion) {
+		HashMap<Long,ResultadoPronostico> Resultados=new HashMap<Long,ResultadoPronostico>();
+		Resultados= GenerarResultados(Pronostico.Resultados);
+		Tuple2<String, EstadoEnum> Return=new Tuple2<String, EstadoEnum>(new String(), EstadoEnum.Parcial);
+		for (Porcion Porcion : Pronostico.getQuiniela().getTorneo()
+				.getPorciones()) {
+			if (!Porcion.getNombre().matches(condicion.CondicionPorcion))
+				continue;
+			for (Partido Partido : Porcion.getPartidos()) {
+				if(!(condicion.CondicionPartido == "" || condicion.CondicionPartido == null)) {
+					if (!Partido.getNombre().matches(condicion.CondicionPartido))
+						continue;
+				}
+				for (Resultado Resultado : Partido.getResultados()) {
+					if(!(condicion.CondicionResultado == ""
+							|| condicion.CondicionResultado == null)) {
+						if (!Resultado.getDefinicion().getNombre()
+								.matches(condicion.CondicionResultado))
+							continue;
+					}
+					switch(Resultado.getDefinicion().getTipo()) {
+					case Entero:
+						Return._1.concat(
+								String.format("[%s](T:%l,P:%l)",
+									Resultado.getDefinicion().Nombre,
+									Resultado.getEntero(),
+									Resultados.get(Resultado.getId()).Entero
+									));
+						break;
+					case Equipo:
+						break;
+					default:
+						break;
+					
+					}
+							
+							
+					
+				}
+			}
+			for (Resultado Resultado : Porcion.getResultados()) {
+				if(!(condicion.CondicionResultado == ""
+						|| condicion.CondicionResultado == null)) {
+					if (!Resultado.getDefinicion().getNombre()
+							.matches(condicion.CondicionResultado))
+						continue;
+				}
+			}
+		}
+		return null;
+	}
+
+	private HashMap<Long, ResultadoPronostico> GenerarResultados(
+			List<ResultadoPronostico> resultados) {
 		// TODO Auto-generated method stub
-		return -1;
+		return null;
 	}
 
 	@Override
@@ -65,6 +140,14 @@ public class PuntuarEstandar extends ReglaBase {
 								Resultado, Partido, Porcion,C.Puntos));
 					}
 				}
+				for (Resultado Resultado : Porcion.getResultados()) {
+					if (!Resultado.getDefinicion().getNombre()
+							.matches(C.CondicionResultado))
+						continue;
+					Pronostico.Puntos.add(new Punto(e.getKey(),
+							Resultado, null, Porcion,C.Puntos));
+				}
+
 			}
 		}
 		return 0;

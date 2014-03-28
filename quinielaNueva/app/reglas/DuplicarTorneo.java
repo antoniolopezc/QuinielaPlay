@@ -19,7 +19,7 @@ public class DuplicarTorneo extends ReglaBase {
 
 	@Override
 	public long cacular(Pronostico Pronostico) {
-		return -1;
+		return 0;
 	}
 
 	@Override

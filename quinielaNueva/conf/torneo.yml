@@ -33,6 +33,13 @@
         CondicionResultado: 
         CondicionSuma: 
         Puntos: 3
+    PosicionGrupo:
+      !!reglas.Condicion
+        CondicionPorcion: "Grupo.*"
+        CondicionPartido: 
+        CondicionResultado: "*.(Primero|Segundo)"
+        CondicionSuma: 
+        Puntos: 3
     GolesDirectaNoFinal:
       !!reglas.Condicion
         CondicionPorcion: "Directa [OCST].*"
