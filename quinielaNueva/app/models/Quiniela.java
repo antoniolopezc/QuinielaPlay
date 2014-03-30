@@ -4,12 +4,15 @@
 
 package models;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 import javax.persistence.*;
 
 import play.db.ebean.*;
 import play.data.validation.*;
+import reglas.ReglaBase;
 
 
 /**
@@ -53,7 +56,7 @@ public class Quiniela extends Model {
 	public List<Regla> Reglas=new ArrayList<Regla>();	
 	
 	@ManyToOne
-	public Usuario Dueño;
+	public Usuario Propietario;
 	
 	@ManyToMany 
 	public List<Usuario> Administradores=new ArrayList<Usuario>();
@@ -145,12 +148,12 @@ public class Quiniela extends Model {
 		Reglas = reglas;
 	}
 
-	public Usuario getDueño() {
-		return Dueño;
+	public Usuario getPropietario() {
+		return Propietario;
 	}
 
-	public void setDueño(Usuario dueño) {
-		Dueño = dueño;
+	public void setPropietario(Usuario propietario) {
+		Propietario = propietario;
 	}
 
 	public List<Usuario> getAdministradores() {
@@ -167,5 +170,26 @@ public class Quiniela extends Model {
 
 	public void setParticipantes(List<Usuario> participantes) {
 		Participantes = participantes;
+	}
+
+	public void calcular() {
+		List<Pronostico> Pronosticos=Pronostico.find.where().eq("Quiniela", this).findList();
+		for(Pronostico P: Pronosticos){
+			for(Regla Regla:this.getReglas()){
+				try {
+	    			Class<?> R=Class.forName(Regla.Clase);
+	    			Constructor<?> C=R.getConstructor(String.class);
+	    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
+	    			O.cacular(P);  
+				} catch (IllegalAccessException  | IllegalArgumentException
+						| InstantiationException | ClassNotFoundException  
+						| SecurityException      | NoSuchMethodException 
+						| InvocationTargetException e) {
+					e.printStackTrace();
+
+				}
+			}
+		}
+		
 	}
 }

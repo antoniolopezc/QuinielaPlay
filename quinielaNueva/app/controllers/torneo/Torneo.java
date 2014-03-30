@@ -9,15 +9,15 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
+import models.TipoEstado;
+
 import com.avaje.ebean.Expr;
 
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
 import reglas.ReglaBase;
-import securesocial.core.Identity;
 import securesocial.core.java.SecureSocial;
-
 import views.html.torneo.torneo.*;
 
 /**
@@ -69,17 +69,16 @@ public class Torneo extends Controller {
     @SecureSocial.SecuredAction
     public static Result ActualizarResultados(Long id) {
     	if(id==-1) {
-    		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
-    		List<models.Torneo> Torneos = models.Torneo.find.where().eq("Propietario", (models.Usuario) Usuario).findList();
+ //   		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
+    		List<models.Torneo> Torneos = models.Torneo.find.all(); //where().eq("Propietario", (models.Usuario) Usuario).findList();
     		return ok(SelecionarTorneo.render(Torneos));
     	}
-    	Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
+    	models.Usuario Usuario = (models.Usuario) ctx().args.get(SecureSocial.USER_KEY);
     	models.Torneo Torneo = models.Torneo.find.byId(id);
     	List<models.Resultado> Resultados=models.Resultado.find.where()
 				.or(Expr.in("Porcion",Torneo.getPorciones()),
 					Expr.in("Partido",Torneo.getPartidos())).findList();
-    	return ok(ActualizarResultados.render(Torneo,Resultados));
-
+    	return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(Torneo.Propietario.Id!=Usuario.Id)));
     }
     /**
      * Guadar los resultados actualizados torneo
@@ -88,15 +87,20 @@ public class Torneo extends Controller {
     public static Result GuadarResultados() {
     	DynamicForm  FormaLlena =Form.form().bindFromRequest();
     	String s;
+    	models.Usuario Usuario = (models.Usuario) ctx().args.get(SecureSocial.USER_KEY);
     	models.Torneo Torneo=models.Torneo.find.byId(Long.parseLong(FormaLlena.get("Id"))); 
     	List<models.Resultado> Resultados=models.Resultado.find.where()
     										.or(Expr.in("Porcion",Torneo.getPorciones()),
     											Expr.in("Partido",Torneo.getPartidos())).findList();
+    	if(Torneo.Propietario.Id!=Usuario.Id){
+    		return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(true)));
+    	}
     	for(models.Resultado Resultado: Resultados){
     		s=FormaLlena.get(Long.toString(Resultado.getId()));
     		if(s==null|| s.length()==0){
     			Resultado.setEntero(null);
     			Resultado.setEquipo(null);
+    			Resultado.setEstado(TipoEstado.Nuevo);
     		} else
     		switch(Resultado.getDefinicion().getTipo()) {
 			case Entero:
@@ -113,11 +117,32 @@ public class Torneo extends Controller {
     	for(models.Partido Partido:Torneo.getPartidos()){
     		s=FormaLlena.get("Tiempo-"+Long.toString(Partido.getId()));
     		Partido.setTiempoActual(s);
+    		switch(Partido.getTiempoActual()){
+			case Final:
+	    		for(models.Resultado Resultado: Resultados){
+	    			Resultado.setEstado(TipoEstado.Final);
+	    		}
+				break;
+			case NoIniciado:
+	    		for(models.Resultado Resultado: Resultados){
+	    			Resultado.setEstado(TipoEstado.Nuevo);
+	    		}
+				break;
+			default:
+	    		for(models.Resultado Resultado: Resultados){
+	    			Resultado.setEstado(TipoEstado.Parcial);
+	    		}
+				break;
+    		}
     		Partido.save();
-    	}
+    	} 
     	if(CacularIndicadores(Torneo)) {
     		Torneo.save();
-    		return ok(ActualizarResultados.render(Torneo,Resultados));
+    		List<models.Quiniela> Quinielas=models.Quiniela.find.where().eq("Torneo", Torneo).findList();
+    		for(models.Quiniela Q:Quinielas){
+    			Q.calcular();
+    		}
+    		return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(false)));
     	} else 
     		return ok("error");
 

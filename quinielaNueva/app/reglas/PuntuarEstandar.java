@@ -5,16 +5,12 @@ package reglas;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import models.*;
-import models.Punto.EstadoEnum;
 
 import org.yaml.snakeyaml.*;
 import org.yaml.snakeyaml.constructor.*;
-
-import scala.Tuple2;
 
 /**
  * @author lopez Esta Regla sirve para Generar un Pronostico en Base al Torneo
@@ -23,90 +19,99 @@ import scala.Tuple2;
  */
 public class PuntuarEstandar extends ReglaBase {
 
-	Map<String,Condicion> Condiciones;
+	HashMap<String,Condicion> Condiciones;
 
+	@SuppressWarnings("unchecked")
 	public PuntuarEstandar(String Parametro) {
 		super(Parametro);
 		Yaml y = new org.yaml.snakeyaml.Yaml(new CustomClassLoaderConstructor(
 				play.Play.application().classloader()));
-		Map<String,Condicion> Temp= (Map<String,Condicion>) y.load(Parametro);
-		 Condiciones=Temp;
+		
+		Condiciones= (HashMap<String,Condicion>) y.load(Parametro);
 	}
 
 	@Override
 	public long cacular(Pronostico Pronostico) {
 		Condicion Condicion;
-		Tuple2<String,models.Punto.EstadoEnum> CondicionSuma;
+		HashMap<Long,ResultadoPronostico> RPronostico=ConvertirMap(Pronostico.getResultados());
 		for(Punto Punto:Pronostico.getPuntos()){
-			if(Punto.getEstado()!=models.Punto.EstadoEnum.Final){
+			if(Punto.getEstado()!=TipoEstado.Final){
 				Condicion=Condiciones.get(Punto.getReferenciaRegla());
-				CondicionSuma=GenerarCondicionSuma(Pronostico,Condicion);
-				if(CondicionSuma._1.matches(Condicion.CondicionSuma)){
-					Punto.setValor(Condicion.Puntos);
-					Punto.setEstado(CondicionSuma._2);
+				switch(Condicion.CondicionSuma){
+					case "Igual":
+						ProcesarIgual(Punto,RPronostico);
+						break;
+					case "IgualPartido":
+						ProcesarIgualPartido(Punto,RPronostico);
+						break;
+					default:
+						return -1;
 				}
+				
 			}
 		}
 		return 0;
 	}
 
-	private Tuple2<String, EstadoEnum> GenerarCondicionSuma(
-			Pronostico Pronostico, Condicion condicion) {
-		HashMap<Long,ResultadoPronostico> Resultados=new HashMap<Long,ResultadoPronostico>();
-		Resultados= GenerarResultados(Pronostico.Resultados);
-		Tuple2<String, EstadoEnum> Return=new Tuple2<String, EstadoEnum>(new String(), EstadoEnum.Parcial);
-		for (Porcion Porcion : Pronostico.getQuiniela().getTorneo()
-				.getPorciones()) {
-			if (!Porcion.getNombre().matches(condicion.CondicionPorcion))
-				continue;
-			for (Partido Partido : Porcion.getPartidos()) {
-				if(!(condicion.CondicionPartido == "" || condicion.CondicionPartido == null)) {
-					if (!Partido.getNombre().matches(condicion.CondicionPartido))
-						continue;
-				}
-				for (Resultado Resultado : Partido.getResultados()) {
-					if(!(condicion.CondicionResultado == ""
-							|| condicion.CondicionResultado == null)) {
-						if (!Resultado.getDefinicion().getNombre()
-								.matches(condicion.CondicionResultado))
-							continue;
-					}
-					switch(Resultado.getDefinicion().getTipo()) {
-					case Entero:
-						Return._1.concat(
-								String.format("[%s](T:%l,P:%l)",
-									Resultado.getDefinicion().Nombre,
-									Resultado.getEntero(),
-									Resultados.get(Resultado.getId()).Entero
-									));
-						break;
-					case Equipo:
-						break;
-					default:
-						break;
-					
-					}
-							
-							
-					
+	private HashMap<Long, ResultadoPronostico> ConvertirMap(
+			List<ResultadoPronostico> resultados) {
+		HashMap<Long, ResultadoPronostico> Resultado=new HashMap<Long, ResultadoPronostico>();
+		for(ResultadoPronostico RP:resultados){
+			Resultado.put(RP.Resultado.Id, RP );
+		}
+		return Resultado;
+	}
+
+	private void ProcesarIgualPartido(Punto Punto,HashMap<Long,ResultadoPronostico> RPronostico) {
+		Long T=new Long(0);
+		Long P=new Long(0);
+		TipoEstado TE=TipoEstado.Final;
+		if(Punto.getPartido()!=null) {
+			for(Resultado R:Punto.getPartido().getResultados()) {
+				P=RPronostico.get(R.getId()).getEntero()-P;
+				T=R.getEntero()-T;
+				if(R.getEstado()!=TipoEstado.Final){
+					TE=R.getEstado();
 				}
 			}
-			for (Resultado Resultado : Porcion.getResultados()) {
-				if(!(condicion.CondicionResultado == ""
-						|| condicion.CondicionResultado == null)) {
-					if (!Resultado.getDefinicion().getNombre()
-							.matches(condicion.CondicionResultado))
-						continue;
+			Punto.setValor(Long.signum(P)==Long.signum(T)?Punto.getMaximo():0);
+			Punto.setEstado(TE);
+		}
+	}
+	/*
+	 * Todos los resultados involucrados son iguales.
+	 */
+	private void ProcesarIgual(Punto Punto,HashMap<Long,ResultadoPronostico> RPronostico) {
+		ResultadoPronostico P;
+		boolean B=true;
+		TipoEstado TE=TipoEstado.Final;
+		if(Punto.getResultado()!=null) {
+			Resultado R=Punto.getResultado();
+			P=RPronostico.get(R.getId());
+			B&=((R.getEntero()!=null&&R.getEntero()==P.getEntero())||
+			    (R.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
+			TE=R.getEstado();	
+		} else if(Punto.getPartido()!=null) {
+			for(Resultado R:Punto.getPartido().getResultados()) {
+				P=RPronostico.get(R.getId());
+				B&=((R.getEntero()!=null&&R.getEntero()==P.getEntero())||
+				    (R.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
+				if(R.getEstado()!=TipoEstado.Final){
+					TE=R.getEstado();
+				}
+			}
+		} else { //Porcion no puede ser nula
+			for(Resultado R:Punto.getPorcion().getResultados()) {
+				P=RPronostico.get(R.getId());
+				B&=((R.getEntero()!=null&&R.getEntero()==P.getEntero())||
+				    (R.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
+				if(R.getEstado()!=TipoEstado.Final){
+					TE=R.getEstado();
 				}
 			}
 		}
-		return null;
-	}
-
-	private HashMap<Long, ResultadoPronostico> GenerarResultados(
-			List<ResultadoPronostico> resultados) {
-		// TODO Auto-generated method stub
-		return null;
+		Punto.setValor(B?Punto.getMaximo():0);
+		Punto.setEstado(TE);
 	}
 
 	@Override
@@ -155,13 +160,11 @@ public class PuntuarEstandar extends ReglaBase {
 
 	@Override
 	public String IncluirJS() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public long cacular(Torneo Torneo) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }

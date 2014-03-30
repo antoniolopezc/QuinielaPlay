@@ -27,13 +27,7 @@ public class Punto extends Model {
 	
 	public Long Maximo;
 	
-	public enum EstadoEnum {
-		Nuevo,
-		Parcial,
-		Final
-	}
-	
-	EstadoEnum Estado=EstadoEnum.Nuevo;
+	TipoEstado Estado=TipoEstado.Nuevo;
 	
 	/*
 	 * La regla que crea el registro de puntos puede usar este valor como referencia para
@@ -142,14 +136,14 @@ public class Punto extends Model {
 	/**
 	 * @return the estado
 	 */
-	public EstadoEnum getEstado() {
+	public TipoEstado getEstado() {
 		return Estado;
 	}
 
 	/**
 	 * @param estado the estado to set
 	 */
-	public void setEstado(EstadoEnum estado) {
+	public void setEstado(TipoEstado estado) {
 		Estado = estado;
 	}
 

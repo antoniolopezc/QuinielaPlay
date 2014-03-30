@@ -1,4 +1,4 @@
-@(Torneo: Torneo, Resultados: List[Resultado] )
+@(Torneo: Torneo, Resultados: List[Resultado], Lectura: Boolean )
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/ActualizarResultados.css")'>
 }
@@ -13,7 +13,7 @@
 	@helper.form(action = controllers.torneo.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {
 		<div>@Torneo.Nombre</div>
 		<input type="hidden" name="Id" value="@Torneo.Id">
-		@Torneo.Porciones.map{Porcion=>@views.html.torneo.torneo.Porcion(Porcion,false)}
+		@Torneo.Porciones.map{Porcion=>@views.html.torneo.torneo.Porcion(Porcion,Lectura)}
 		<input type="submit" value="Guardar"></input>
 	}
 	<script>

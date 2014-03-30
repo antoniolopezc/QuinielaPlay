@@ -26,13 +26,8 @@ public class Resultado extends Model {
 	@ManyToOne
 	public DefinicionResultado Definicion;
 
-	enum Estado {
-		Nuevo,
-		Parcial,
-		Final
-	}
-	
-	public Estado Estado;
+		
+	public TipoEstado Estado=TipoEstado.Nuevo;
 	
 	public Long Entero;
 	
@@ -65,11 +60,11 @@ public class Resultado extends Model {
 		Definicion = definicion;
 	}
 
-	public Estado getEstado() {
+	public TipoEstado getEstado() {
 		return Estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(TipoEstado estado) {
 		Estado = estado;
 	}
 
