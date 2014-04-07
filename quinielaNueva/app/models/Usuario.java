@@ -102,5 +102,38 @@ public class Usuario extends Model implements Identity {
 		// No uso password interno
 		return null;
 	}
+
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getAvatar() {
+		return Avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		Avatar = avatar;
+	}
+
 	
 }

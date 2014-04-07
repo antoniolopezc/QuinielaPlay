@@ -4,8 +4,6 @@
 
 package models;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 
 import javax.persistence.*;
@@ -27,42 +25,42 @@ public class Quiniela extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public Long Id;
+	Long Id;
 	
 	@Constraints.Required
-	public String Nombre;
+	String Nombre;
 	
 	@Constraints.Required
-	public String NombreCorto;
+	String NombreCorto;
 	
 	@Constraints.Required
-	public String Abreviatura;
+	String Abreviatura;
 	
-	public String Descricion;
-	
-	@Constraints.Required
-	public Date Inicio;
+	String Descricion;
 	
 	@Constraints.Required
-	public Date Fin;
+	Date Inicio;
+	
+	@Constraints.Required
+	Date Fin;
 	
 	@Lob
-	public byte[] Imagen;
+	byte[] Imagen;
 	
 	@ManyToOne
-	public Torneo Torneo;
+	Torneo Torneo;
 	
 	@ManyToMany 
-	public List<Regla> Reglas=new ArrayList<Regla>();	
+	List<Regla> Reglas=new ArrayList<Regla>();	
 	
 	@ManyToOne
-	public Usuario Propietario;
+	Usuario Propietario;
 	
 	@ManyToMany 
-	public List<Usuario> Administradores=new ArrayList<Usuario>();
+	List<Usuario> Administradores=new ArrayList<Usuario>();
 	
 	@ManyToMany 
-	public List<Usuario> Participantes=new ArrayList<Usuario>();
+	List<Usuario> Participantes=new ArrayList<Usuario>();
 	
 	public static Finder<Long,Quiniela> find = new Finder<Long,Quiniela>(
 			    Long.class, Quiniela.class
@@ -176,20 +174,8 @@ public class Quiniela extends Model {
 		List<Pronostico> Pronosticos=Pronostico.find.where().eq("Quiniela", this).findList();
 		for(Pronostico P: Pronosticos){
 			for(Regla Regla:this.getReglas()){
-				try {
-	    			Class<?> R=Class.forName(Regla.Clase);
-	    			Constructor<?> C=R.getConstructor(String.class);
-	    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
-	    			O.cacular(P);  
-				} catch (IllegalAccessException  | IllegalArgumentException
-						| InstantiationException | ClassNotFoundException  
-						| SecurityException      | NoSuchMethodException 
-						| InvocationTargetException e) {
-					e.printStackTrace();
-
-				}
+				ReglaBase.cacular(Regla,P);
 			}
 		}
-		
 	}
 }

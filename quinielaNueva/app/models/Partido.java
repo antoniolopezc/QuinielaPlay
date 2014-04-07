@@ -22,19 +22,19 @@ public class Partido extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public Long Id;
+	Long Id;
 	
-	public String Nombre;
+	String Nombre;
 	
-	public String NombreCorto;
+	String NombreCorto;
 	
-	public String Abreviatura;
+	String Abreviatura;
 	
-	public String Descricion;
+	String Descricion;
 	
-	public String Lugar;
+	String Lugar;
 	
-	public java.sql.Timestamp Fecha;
+	java.sql.Timestamp Fecha;
 	
 	public enum Tiempo {
 		NoIniciado,
@@ -56,13 +56,13 @@ public class Partido extends Model {
 			}
 		}
 	}
-	public Tiempo TiempoActual = Tiempo.NoIniciado;
+	Tiempo TiempoActual = Tiempo.NoIniciado;
 	
 	@ManyToOne
-	public Equipo EquipoA;
+	Equipo EquipoA;
 	
 	@ManyToOne
-	public Equipo EquipoB;
+	Equipo EquipoB;
 	
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<Resultado> Resultados=new ArrayList<Resultado>();

@@ -10,13 +10,13 @@
 
 @base("Agregar Pronostico ",css,script){
 	@helper.form(action = controllers.quiniela.routes.Pronostico.guardar(),'class -> "ui-widget ui-widget-content ui-corner-all") {
-		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre" value="@Pronostico.Nombre">
-		<input type="hidden" name="Id" value="@Pronostico.Id">
-		<input type="hidden" name="Quiniela" value="@Pronostico.Quiniela.Id">
-		@Pronostico.Quiniela.Torneo.Porciones.map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,false)}
+		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre" value="@Pronostico.getNombre()">
+		<input type="hidden" name="Id" value="@Pronostico.getId()">
+		<input type="hidden" name="Quiniela" value="@Pronostico.getQuiniela().getId()">
+		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,false)}
 		<input type="submit" value="Guardar"></input>
 		<script>
-		@Pronostico.Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
+		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
 		</script>
 	}
 }

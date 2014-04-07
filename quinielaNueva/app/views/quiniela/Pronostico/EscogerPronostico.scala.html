@@ -1,7 +1,6 @@
 @(Pronosticos: List[Pronostico])
 @base("Actualziar Pronostico") {
 	@for(Pronostico <- Pronosticos) {
-	@com.avaje.ebean.Ebean.refresh(Pronostico.Quiniela) 
-	<a href="/ActualizarPronostico/@Pronostico.Id" >@{Pronostico.Nombre}(@Pronostico.Quiniela.Nombre)</a>
+	<a href="/ActualizarPronostico/@Pronostico.getId()" >@{Pronostico.getNombre()}(@Pronostico.getQuiniela().getNombre())</a>
 	} 
 }

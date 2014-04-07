@@ -1,6 +1,6 @@
 @(Torneo: Torneo)
-<h2>@Torneo.NombreCorto (@Torneo.Abreviatura [@Torneo.Id])</h2>
-<p>@Torneo.Nombre (@Torneo.Inicio a @Torneo.Fin)<p>
-<p>@Torneo.Descricion</p>
+<h2>@{Torneo.getNombreCorto()} (@Torneo.getAbreviatura() [@Torneo.getId()])</h2>
+<p>@{Torneo.getNombre()} (@Torneo.getInicio() a @Torneo.getFin())<p>
+<p>@Torneo.getDescricion()</p>
 
 <a href="/torneo">lista</a>

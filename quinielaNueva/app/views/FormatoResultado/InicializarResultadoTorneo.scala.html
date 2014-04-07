@@ -1,8 +1,8 @@
 @(Resultado: Resultado, Padre: String)	
 
-@if(Option(Resultado.Entero).nonEmpty) {
-AsignaValorResultado("@Padre",@Resultado.Id,@Resultado.Entero);
+@if(Option(Resultado.getEntero()).nonEmpty) {
+AsignaValorResultado("@Padre",@Resultado.getId(),@Resultado.getEntero());
 } 
-@if(Option(Resultado.Equipo).nonEmpty) {
-AsignaValorResultado("@Padre",@Resultado.Id,@Resultado.Equipo.Id);
+@if(Option(Resultado.getEquipo()).nonEmpty) {
+AsignaValorResultado("@Padre",@Resultado.getId(),@Resultado.getEquipo().getId());
 } 

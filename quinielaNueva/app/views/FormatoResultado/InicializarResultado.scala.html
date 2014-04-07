@@ -1,8 +1,7 @@
 @(Resultado: ResultadoPronostico, Padre: String)	
-@Resultado.Resultado.refresh()
-@if(Option(Resultado.Entero).nonEmpty) {
-AsignaValorResultado("@Padre",@Resultado.Resultado.Id,@Resultado.Entero);
+@if(Option(Resultado.getEntero()).nonEmpty) {
+AsignaValorResultado("@Padre",@Resultado.getResultado().getId(),@Resultado.getEntero());
 } 
-@if(Option(Resultado.Equipo).nonEmpty) {
-AsignaValorResultado("@Padre",@Resultado.Resultado.Id,@Resultado.Equipo.Id);
+@if(Option(Resultado.getEquipo()).nonEmpty) {
+AsignaValorResultado("@Padre",@Resultado.getResultado().getId(),@Resultado.getEquipo().getId());
 } 

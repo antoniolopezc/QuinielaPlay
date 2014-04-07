@@ -57,7 +57,7 @@ public class PuntuarEstandar extends ReglaBase {
 			List<ResultadoPronostico> resultados) {
 		HashMap<Long, ResultadoPronostico> Resultado=new HashMap<Long, ResultadoPronostico>();
 		for(ResultadoPronostico RP:resultados){
-			Resultado.put(RP.Resultado.Id, RP );
+			Resultado.put(RP.getResultado().getId(), RP );
 		}
 		return Resultado;
 	}
@@ -123,8 +123,19 @@ public class PuntuarEstandar extends ReglaBase {
 				if (!Porcion.getNombre().matches(C.CondicionPorcion))
 					continue;
 				if (C.CondicionPartido == "" || C.CondicionPartido == null) {
-					Pronostico.Puntos.add(new Punto(e.getKey(), null, null,
-							Porcion,C.Puntos));
+					if (C.CondicionResultado == ""
+							|| C.CondicionResultado == null) {
+						Pronostico.getPuntos().add(new Punto(e.getKey(), null, null,
+								Porcion,C.Puntos));
+					} else {
+						for (Resultado Resultado : Porcion.getResultados()) {
+							if (!Resultado.getDefinicion().getNombre()
+									.matches(C.CondicionResultado))
+								continue;
+							Pronostico.getPuntos().add(new Punto(e.getKey(),
+									Resultado, null, Porcion,C.Puntos));
+						}
+					}
 					continue;
 				}
 				for (Partido Partido : Porcion.getPartidos()) {
@@ -132,7 +143,7 @@ public class PuntuarEstandar extends ReglaBase {
 						continue;
 					if (C.CondicionResultado == ""
 							|| C.CondicionResultado == null) {
-						Pronostico.Puntos.add(new Punto(e.getKey(), null,
+						Pronostico.getPuntos().add(new Punto(e.getKey(), null,
 								Partido, Porcion,C.Puntos));
 						continue;
 					}
@@ -141,16 +152,9 @@ public class PuntuarEstandar extends ReglaBase {
 						if (!Resultado.getDefinicion().getNombre()
 								.matches(C.CondicionResultado))
 							continue;
-						Pronostico.Puntos.add(new Punto(e.getKey(),
+						Pronostico.getPuntos().add(new Punto(e.getKey(),
 								Resultado, Partido, Porcion,C.Puntos));
 					}
-				}
-				for (Resultado Resultado : Porcion.getResultados()) {
-					if (!Resultado.getDefinicion().getNombre()
-							.matches(C.CondicionResultado))
-						continue;
-					Pronostico.Puntos.add(new Punto(e.getKey(),
-							Resultado, null, Porcion,C.Puntos));
 				}
 
 			}

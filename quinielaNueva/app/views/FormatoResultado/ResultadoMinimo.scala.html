@@ -4,7 +4,7 @@
 	@if(Lectura) {readonly}
 }
 
-@Resultado.Definicion.Abreviatura match {
+@Resultado.getDefinicion().getAbreviatura() match {
 	case "GA" => { 
 		<input type="number" class="GA" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura)>
 		}
@@ -12,11 +12,11 @@
 		<input type="number" class="GB" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura)>
 		}
 	case "Paso" => {
-		<select class="Paso" disabled name="@Resultado.Id" >
+		<select class="Paso" disabled name="@Resultado.getId()" >
 			<option selected disabled hidden value=""></option>
 			<option value="@Resultado.getPartido().getEquipoA().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
 			<option value="@Resultado.getPartido().getEquipoB().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
 		</select>
-		<input type="hidden" name="@Resultado.Id" >	
+		<input type="hidden" name="@Resultado.getId()" >	
 		}
 }

@@ -22,22 +22,22 @@ public class Pronostico extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public Long Id;
+	Long Id;
 	
 	@Constraints.Required
-	public String Nombre;
+	String Nombre;
 
 	@ManyToOne
-	public Usuario Propietario;
+	Usuario Propietario;
 	
 	@ManyToOne
-	public Quiniela Quiniela;
+	Quiniela Quiniela;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<ResultadoPronostico> Resultados= new ArrayList<ResultadoPronostico>();
+	List<ResultadoPronostico> Resultados= new ArrayList<ResultadoPronostico>();
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Punto> Puntos= new ArrayList<Punto>();
+	List<Punto> Puntos= new ArrayList<Punto>();
 	
 	public static Finder<Long,Pronostico> find = new Finder<Long,Pronostico>(
 			    Long.class, Pronostico.class

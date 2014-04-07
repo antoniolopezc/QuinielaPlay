@@ -1,14 +1,14 @@
 @(Porcion: models.Porcion, Lectura: Boolean=false)
-<div id="Porcion-@Porcion.Id" class="Procion">
-	<script type="text/javascript">Porciones[@Porcion.Id]=new Porcion(@Porcion.Id);</script>
+<div id="Porcion-@Porcion.getId()" class="Procion">
+	<script type="text/javascript">Porciones[@Porcion.getId()]=new Porcion(@Porcion.getId());</script>
 	<h2>@Porcion.getNombre()</h2>
 	<table>
 		<tbody>
-			@Porcion.getPartidos().map{Partido => @views.html.torneo.torneo.Partido(Partido,Porcion.Id,Lectura)}
+			@Porcion.getPartidos().map{Partido => @views.html.torneo.torneo.Partido(Partido,Porcion.getId(),Lectura)}
 		</tbody>
 	</table>
 	@if(Porcion.getResultados().size()>0) {
-		@for(Resultado <- Porcion.Resultados){
+		@for(Resultado <- Porcion.getResultados()){
 			<script>Porciones[@Porcion.getId()].AgregarResultado(@Resultado.getId() , @Resultado.getDefinicion().getAbreviatura())</script>
 		}
 		@views.html.torneo.torneo.PorcionGrupo(Porcion.getId())

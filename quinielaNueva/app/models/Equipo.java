@@ -20,24 +20,24 @@ public class Equipo extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public Long Id;
+	Long Id;
 	
-	public String Nombre;
+	String Nombre;
 	
-	public String NombreCorto;
+	String NombreCorto;
 	
-	public String Abreviatura;
+	String Abreviatura;
 	
-	public boolean caculable;
-	
-	@Lob
-	public byte[] Escudo;
+	boolean caculable;
 	
 	@Lob
-	public byte[] Bandera;
+	byte[] Escudo;
+	
+	@Lob
+	byte[] Bandera;
 	
 	@ManyToOne
-	public Equipo Final;
+	Equipo Final;
 	
 	public static Finder<Long,Equipo> find = new Finder<Long,Equipo>(
 		    Long.class, Equipo.class
@@ -98,6 +98,16 @@ public class Equipo extends Model {
 	public void setFinal(Equipo final1) {
 		Final = final1;
 	}
+
+	public boolean isCaculable() {
+		return caculable;
+	}
+
+	public void setCaculable(boolean caculable) {
+		this.caculable = caculable;
+	}
+
+	
 
 	
 }

@@ -34,16 +34,16 @@ public class QuienPasa extends ReglaBase {
 	public DependeDe DependeDe(Equipo Equipo){
 		DependeDe Resultado= new DependeDe();
 		Resultado.Tipo=enumTipo.NoAplica;
-		if(Equipo.caculable) {
-			if(Equipo.Abreviatura.charAt(0)=='G') {
+		if(Equipo.isCaculable()) {
+			if(Equipo.getAbreviatura().charAt(0)=='G') {
 				Resultado.Tipo=enumTipo.PartidoGanador;
-				Resultado.Dato=Equipo.Abreviatura.substring(1);		
-			} else if(Equipo.Abreviatura.charAt(0)=='P') { 
+				Resultado.Dato=Equipo.getAbreviatura().substring(1);		
+			} else if(Equipo.getAbreviatura().charAt(0)=='P') { 
 				Resultado.Tipo=enumTipo.PartidoPerdido;
-				Resultado.Dato=Equipo.Abreviatura.substring(1);		
+				Resultado.Dato=Equipo.getAbreviatura().substring(1);		
 			} else { 
 				Resultado.Tipo=enumTipo.Grupo;
-				Resultado.Dato=Equipo.Abreviatura;		
+				Resultado.Dato=Equipo.getAbreviatura();		
 			}
 		}
 		return Resultado;

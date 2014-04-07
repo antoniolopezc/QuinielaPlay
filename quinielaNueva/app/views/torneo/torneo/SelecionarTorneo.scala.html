@@ -1,5 +1,5 @@
 @(Torneos: List[Torneo])
 
 @base("Torneos") {
-	@Torneos.map{Torneo => <a href="/ActualizarResultado/@Torneo.Id" >@Torneo.Nombre (@Torneo.Id)</a> }
+	@Torneos.map{Torneo => <a href="/ActualizarResultado/@Torneo.getId()" >@{Torneo.getNombre()}(@Torneo.getId())</a>}
 }

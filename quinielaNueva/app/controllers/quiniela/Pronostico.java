@@ -1,7 +1,5 @@
 package controllers.quiniela;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -28,25 +26,12 @@ public class Pronostico extends Controller {
 	static private boolean GeneraIndicadores(models.Pronostico Pronostico,Long  id){
 
 		models.Quiniela Quiniela=models.Quiniela.find.byId(id);
-    	Quiniela.Torneo.refresh();
-    	Pronostico.Quiniela=Quiniela;
+    	Pronostico.setQuiniela(Quiniela);
     	
-    	for(models.Regla Regla: Quiniela.Reglas){
-    		try {
-    			Class<?> R=Class.forName(Regla.Clase);
-    			Constructor<?> C=R.getConstructor(String.class);
-    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
-    			if(O.Generar(Pronostico)!=0) return false; 
-			} catch (IllegalAccessException  | IllegalArgumentException
-					| InstantiationException | ClassNotFoundException  
-					| SecurityException      | NoSuchMethodException 
-					| InvocationTargetException e) {
-				e.printStackTrace();
-				return false;
-			}
+    	for(models.Regla Regla: Quiniela.getReglas()){
+     		if(ReglaBase.generar(Regla, Pronostico)!=0) return false; 
     	}
 		return true;
-	
 	}
 	
 	@SecureSocial.SecuredAction
@@ -70,8 +55,6 @@ public class Pronostico extends Controller {
     		return ok(EscogerPronostico.render(Pronosticos));
     	}
     	models.Pronostico Pronostico= models.Pronostico.find.byId(id);
-		Pronostico.Quiniela.refresh();
-		Pronostico.Quiniela.Torneo.refresh();    	
     	return ok(AgregarDetalle.render(Pronostico));
     }
     
@@ -87,21 +70,17 @@ public class Pronostico extends Controller {
     	if(FormaLlena.get("Id")=="") {
     		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
     		Pronostico=new models.Pronostico();
-    		Pronostico.Propietario=(models.Usuario) Usuario;
+    		Pronostico.setPropietario((models.Usuario) Usuario);
     		if (!GeneraIndicadores(Pronostico,Long.parseLong(FormaLlena.get("Quiniela"))))
     			return ok("<p>Error</p>");
     	} else {
     		Pronostico= models.Pronostico.find.byId(Long.parseLong(FormaLlena.get("Id")));
-    		Pronostico.Quiniela.refresh();
-    		Pronostico.Quiniela.Torneo.refresh();
-    	}
+     	}
     	
 		Pronostico.setNombre(FormaLlena.get("Nombre"));
-    	for(models.ResultadoPronostico Resultado: Pronostico.Resultados){
-    		Resultado.Resultado.refresh();
-    		Resultado.Resultado.Definicion.refresh();
-    		s=FormaLlena.get(Long.toString(Resultado.Resultado.Id));
-    		switch(Resultado.Resultado.Definicion.Tipo) {
+    	for(models.ResultadoPronostico Resultado: Pronostico.getResultados()){
+    		s=FormaLlena.get(Long.toString(Resultado.getResultado().getId()));
+    		switch(Resultado.getResultado().getDefinicion().getTipo()) {
 				case Entero:
 					Resultado.setEntero(s==null||s==""? null: Long.parseLong(s));
 					break;

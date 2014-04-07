@@ -1,20 +1,17 @@
 @(Partido: Partido, Id: Long, Lectura: Boolean=false)
 
 
-@Partido.EquipoA.refresh()
-@Partido.EquipoB.refresh()
-<tr id="Partido-@Partido.Id" class="Partido" >
-	<script type="text/javascript">var P=new Partido(@Partido.Id,@Partido.EquipoA.Id,@Partido.EquipoB.Id);</script>
-	<td class="Partido-Id">@Partido.NombreCorto</td>
-	<td class="Partido-Fecha">@Partido.Fecha.format("dd/MM hh:mm a")</td>
-	<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.EquipoA)</td>
-	<td class="Partido-EquipoB">@views.html.Equipo.Breve(Partido.EquipoB)</td>
-	@for(Resultado <- Partido.Resultados){
-		@Resultado.Definicion.refresh()
-		<script type="text/javascript">P.AgregarResultado(@Resultado.Id , "@Resultado.Definicion.Abreviatura");</script>
+<tr id="Partido-@Partido.getId()" class="Partido" >
+	<script type="text/javascript">var P=new Partido(@Partido.getId(),@Partido.getEquipoA().getId(),@Partido.getEquipoB().getId());</script>
+	<td class="Partido-Id">@Partido.getNombreCorto()</td>
+	<td class="Partido-Fecha">@Partido.getFecha().format("dd/MM hh:mm a")</td>
+	<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.getEquipoA())</td>
+	<td class="Partido-EquipoB">@views.html.Equipo.Breve(Partido.getEquipoB())</td>
+	@for(Resultado <- Partido.getResultados()){
+		<script type="text/javascript">P.AgregarResultado(@Resultado.getId() , "@Resultado.getDefinicion().getAbreviatura()");</script>
 		<td class="Partido-Resultado">
 		@views.html.FormatoResultado.ResultadoMinimo(Resultado,Id,Lectura)
 		</td>
     }
-    <script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.EquipoA.NombreCorto","@Partido.EquipoB.NombreCorto");</script>
+    <script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()");</script>
 </tr>

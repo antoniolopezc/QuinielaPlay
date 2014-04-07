@@ -24,48 +24,48 @@ public class Torneo extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public Long Id;
+	Long Id;
 	
 	@Constraints.Required
-	public String Nombre;
+	String Nombre;
 	
 	@Constraints.Required
-	public String NombreCorto;
+	String NombreCorto;
 	
 	@Constraints.Required
-	public String Abreviatura;
+	String Abreviatura;
 	
-	public String Descricion;
-	
-	@Constraints.Required
-	public Date Inicio;
+	String Descricion;
 	
 	@Constraints.Required
-	public Date Fin;
+	Date Inicio;
+	
+	@Constraints.Required
+	Date Fin;
 	
 	@Lob
-	public byte[] Imagen;
+	byte[] Imagen;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Equipo> Equipos=new ArrayList<Equipo>();
+	List<Equipo> Equipos=new ArrayList<Equipo>();
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Partido> Partidos=new ArrayList<Partido>();
+	List<Partido> Partidos=new ArrayList<Partido>();
 
 	@ManyToMany 
-	public List<Regla> Reglas=new ArrayList<Regla>();
+	List<Regla> Reglas=new ArrayList<Regla>();
 	
 	/*
 	 * Representa las fases o agrupaciones de partidos del torneo
 	 */
 	@OneToMany(cascade={CascadeType.ALL})
-	public List<Porcion> Porciones=new ArrayList<Porcion>();
+	List<Porcion> Porciones=new ArrayList<Porcion>();
 	
 	@ManyToOne
-	public Usuario Propietario;
+	Usuario Propietario;
 	
 	@ManyToMany 
-	public List<Usuario> Administradores=new ArrayList<Usuario>();
+	List<Usuario> Administradores=new ArrayList<Usuario>();
 	
 	public static Finder<Long,Torneo> find = new Finder<Long,Torneo>(
 			    Long.class, Torneo.class

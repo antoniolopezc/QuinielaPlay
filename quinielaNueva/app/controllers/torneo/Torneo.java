@@ -5,8 +5,6 @@ package controllers.torneo;
 
 
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 import models.TipoEstado;
@@ -78,7 +76,7 @@ public class Torneo extends Controller {
     	List<models.Resultado> Resultados=models.Resultado.find.where()
 				.or(Expr.in("Porcion",Torneo.getPorciones()),
 					Expr.in("Partido",Torneo.getPartidos())).findList();
-    	return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(Torneo.Propietario.Id!=Usuario.Id)));
+    	return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(Torneo.getPropietario().getId()!=Usuario.Id)));
     }
     /**
      * Guadar los resultados actualizados torneo
@@ -92,7 +90,7 @@ public class Torneo extends Controller {
     	List<models.Resultado> Resultados=models.Resultado.find.where()
     										.or(Expr.in("Porcion",Torneo.getPorciones()),
     											Expr.in("Partido",Torneo.getPartidos())).findList();
-    	if(Torneo.Propietario.Id!=Usuario.Id){
+    	if(Torneo.getPropietario().getId()!=Usuario.Id){
     		return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(true)));
     	}
     	for(models.Resultado Resultado: Resultados){
@@ -151,21 +149,9 @@ public class Torneo extends Controller {
     static private boolean CacularIndicadores(models.Torneo Torneo){
 
     	
-    	for(models.Regla Regla: Torneo.Reglas){
-    		try {
-    			Class<?> R=Class.forName(Regla.Clase);
-    			Constructor<?> C=R.getConstructor(String.class);
-    			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
-    			if(O.cacular(Torneo)!=0) return false; 
-			} catch (IllegalAccessException  | IllegalArgumentException
-					| InstantiationException | ClassNotFoundException  
-					| SecurityException      | NoSuchMethodException 
-					| InvocationTargetException e) {
-				e.printStackTrace();
-				return false;
-			}
+    	for(models.Regla Regla: Torneo.getReglas()){
+    			if(ReglaBase.cacular(Regla,Torneo)!=0) return false; 
     	}
 		return true;
-	
 	}
 }

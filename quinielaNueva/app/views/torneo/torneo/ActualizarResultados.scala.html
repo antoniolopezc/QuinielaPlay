@@ -8,16 +8,14 @@
 	<script src='@routes.Assets.at("javascripts/Inicializar.js")' type="text/javascript"></script>
 	<script src='@routes.Assets.at("javascripts/ProcesarCambioTiempo.js")' type="text/javascript"></script>	
 }
-
 @base("Actualizar Resultados ",css,script){
 	@helper.form(action = controllers.torneo.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {
-		<div>@Torneo.Nombre</div>
-		<input type="hidden" name="Id" value="@Torneo.Id">
-		@Torneo.Porciones.map{Porcion=>@views.html.torneo.torneo.Porcion(Porcion,Lectura)}
+		<div>@Torneo.getNombre()</div>
+		<input type="hidden" name="Id" value="@Torneo.getId()">
+		@Torneo.getPorciones().map{Porcion=>@views.html.torneo.torneo.Porcion(Porcion,Lectura)}
 		<input type="submit" value="Guardar"></input>
 	}
 	<script>
 	@Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultadoTorneo(Resultado,"form") }
 	</script>
-	
 }

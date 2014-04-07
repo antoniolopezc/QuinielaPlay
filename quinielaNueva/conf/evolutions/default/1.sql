@@ -86,7 +86,7 @@ create table quiniela (
   fin                       timestamp,
   imagen                    blob,
   torneo_id                 bigint,
-  dueño_id                  bigint,
+  propietario_id            bigint,
   constraint pk_quiniela primary key (id))
 ;
 
@@ -224,8 +224,8 @@ alter table punto add constraint fk_punto_Porcion_12 foreign key (porcion_id) re
 create index ix_punto_Porcion_12 on punto (porcion_id);
 alter table quiniela add constraint fk_quiniela_Torneo_13 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;
 create index ix_quiniela_Torneo_13 on quiniela (torneo_id);
-alter table quiniela add constraint fk_quiniela_Dueño_14 foreign key (dueño_id) references usuario (id) on delete restrict on update restrict;
-create index ix_quiniela_Dueño_14 on quiniela (dueño_id);
+alter table quiniela add constraint fk_quiniela_Propietario_14 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
+create index ix_quiniela_Propietario_14 on quiniela (propietario_id);
 alter table resultado add constraint fk_resultado_Definicion_15 foreign key (definicion_id) references definicion_resultado (id) on delete restrict on update restrict;
 create index ix_resultado_Definicion_15 on resultado (definicion_id);
 alter table resultado add constraint fk_resultado_Equipo_16 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;

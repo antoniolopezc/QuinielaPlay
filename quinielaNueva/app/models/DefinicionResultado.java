@@ -22,18 +22,18 @@ public class DefinicionResultado extends Model {
 	@Id
 	Long Id;
 
-	public String Nombre;
+	String Nombre;
 	
-	public String NombreCorto;
+	String NombreCorto;
 	
-	public String Abreviatura;
+	String Abreviatura;
 	
 	public enum Tipos {
 		Entero,
 		Equipo
 	};
 	
-	public Tipos Tipo;
+	Tipos Tipo;
 	
 	public static Finder<Long,DefinicionResultado> find = new Finder<Long,DefinicionResultado>(
 		    Long.class, DefinicionResultado.class

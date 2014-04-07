@@ -37,7 +37,7 @@
       !!reglas.Condicion
         CondicionPorcion: "Grupo.*"
         CondicionPartido: 
-        CondicionResultado: "*.(Primero|Segundo)"
+        CondicionResultado: ".*(Primero|Segundo)"
         CondicionSuma: 
         Puntos: 3
     GolesDirectaNoFinal:

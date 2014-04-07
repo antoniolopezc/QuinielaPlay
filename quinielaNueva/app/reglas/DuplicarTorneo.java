@@ -24,19 +24,19 @@ public class DuplicarTorneo extends ReglaBase {
 
 	@Override
 	public long Generar(Pronostico Pronostico) {
-		Torneo Torneo=Pronostico.Quiniela.Torneo;
-		for(Partido Partido: Torneo.Partidos) {
-			for(Resultado Resultado: Partido.Resultados){
+		Torneo Torneo=Pronostico.getQuiniela().getTorneo();
+		for(Partido Partido: Torneo.getPartidos()) {
+			for(Resultado Resultado: Partido.getResultados()){
 				ResultadoPronostico RP= new ResultadoPronostico();
-				RP.Resultado=Resultado;
-				Pronostico.Resultados.add(RP);
+				RP.setResultado(Resultado);
+				Pronostico.getResultados().add(RP);
 			}
 		}
-		for(Porcion Porcion: Torneo.Porciones) {
-			for(Resultado Resultado: Porcion.Resultados){
+		for(Porcion Porcion: Torneo.getPorciones()) {
+			for(Resultado Resultado: Porcion.getResultados()){
 				ResultadoPronostico RP= new ResultadoPronostico();
-				RP.Resultado=Resultado;
-				Pronostico.Resultados.add(RP);
+				RP.setResultado(Resultado);
+				Pronostico.getResultados().add(RP);
 			}
 		}
 		return 0;

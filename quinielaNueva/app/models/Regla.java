@@ -22,22 +22,22 @@ public class Regla extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	public Long Id;
+	Long Id;
 	
-	public String Nombre;
+	String Nombre;
 	
-	public String NombreCorto;
+	String NombreCorto;
 	
-	public String Abreviatura;
+	String Abreviatura;
 	
-	public String Descricion;
+	String Descricion;
 	
 	/*Debe ser una clase que hereda de ReglaBase*/
-	public String Clase;
+	String Clase;
 	
 	/*Texto en formato YAML*/
 	@Lob
-	public String Parametros;
+	String Parametros;
 
 	public static Finder<Long,Regla> find = new Finder<Long,Regla>(
 		    Long.class, Regla.class
