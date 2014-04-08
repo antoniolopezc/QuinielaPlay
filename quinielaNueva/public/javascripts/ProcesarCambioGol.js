@@ -19,7 +19,7 @@ function CambioGol(Po,Pa,t){
 	 ActualizaPasa(Porciones[Po].Partidos[Pa]);
  } else {
 	 Porciones[Po].ActualizarPartido(Porciones[Po].Partidos[Pa],Quien.charAt(1),Goles);
-	 ActualizaPorcion(Porciones[Po]);
+	 ActualizaPorcion(Porciones[Po],$(t).parent().parent().nextAll("table#P-"+Porcion.Id).children());
  }
   
 };
@@ -32,8 +32,8 @@ function ActualizaPasa(Partido){
 	
 };
 
-function ActualizaPorcion(Porcion){
-	var destino=$("table#P-"+Porcion.Id+" > tbody");
+function ActualizaPorcion(Porcion, destino){
+//	var destino=$("table#P-"+Porcion.Id+" > tbody");
 	var fila;
 	var Actual;
 	var i;
