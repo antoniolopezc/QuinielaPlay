@@ -21,25 +21,25 @@ public class Porcion extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
-	String Nombre;
+	public String Nombre;
 	
-	String NombreCorto;
+	public String NombreCorto;
 	
-	String Abreviatura;
+	public String Abreviatura;
 	
-	String Descricion;
+	public String Descricion;
 	
-	Date Inicio;
+	public Date Inicio;
 	
-	Date Fin;
+	public Date Fin;
 	
 	@ManyToMany
-	List<Partido> Partidos=new ArrayList<Partido>();
+	public List<Partido> Partidos=new ArrayList<Partido>();
    	
 	@OneToMany(cascade={CascadeType.ALL})
-	List<Resultado> Resultados=new ArrayList<Resultado>();
+	public List<Resultado> Resultados=new ArrayList<Resultado>();
 
 	public static Finder<Long,Porcion> find = new Finder<Long,Porcion>(
 		    Long.class, Porcion.class

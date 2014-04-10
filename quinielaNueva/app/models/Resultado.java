@@ -21,24 +21,24 @@ public class Resultado extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
 	@ManyToOne
-	DefinicionResultado Definicion;
+	public DefinicionResultado Definicion;
 
 		
-	TipoEstado Estado=TipoEstado.Nuevo;
+	public TipoEstado Estado=TipoEstado.Nuevo;
 	
-	Long Entero;
-	
-	@ManyToOne
-	Equipo Equipo;
+	public Long Entero;
 	
 	@ManyToOne
-	Partido Partido;
+	public Equipo Equipo;
 	
 	@ManyToOne
-	Porcion Porcion;
+	public Partido Partido;
+	
+	@ManyToOne
+	public Porcion Porcion;
 
 	public static Finder<Long,Resultado> find = new Finder<Long,Resultado>(
 		    Long.class, Resultado.class

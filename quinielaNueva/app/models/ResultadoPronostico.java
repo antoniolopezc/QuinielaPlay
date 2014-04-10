@@ -21,16 +21,16 @@ public class ResultadoPronostico extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
 	@ManyToOne
-	Resultado Resultado;
+	public Resultado Resultado;
 	
 	
-	Long Entero;
+	public Long Entero;
 	
 	@ManyToOne
-	Equipo Equipo;
+	public Equipo Equipo;
 	
 	public static Finder<Long,ResultadoPronostico> find = new Finder<Long,ResultadoPronostico>(
 		    Long.class, ResultadoPronostico.class

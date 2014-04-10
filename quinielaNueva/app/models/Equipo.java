@@ -20,13 +20,13 @@ public class Equipo extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
-	String Nombre;
+	public String Nombre;
 	
-	String NombreCorto;
+	public String NombreCorto;
 	
-	String Abreviatura;
+	public String Abreviatura;
 	
 	boolean caculable;
 	

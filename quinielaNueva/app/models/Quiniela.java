@@ -25,42 +25,42 @@ public class Quiniela extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
 	@Constraints.Required
-	String Nombre;
+	public String Nombre;
 	
 	@Constraints.Required
-	String NombreCorto;
+	public String NombreCorto;
 	
 	@Constraints.Required
-	String Abreviatura;
+	public String Abreviatura;
 	
-	String Descricion;
-	
-	@Constraints.Required
-	Date Inicio;
+	public String Descricion;
 	
 	@Constraints.Required
-	Date Fin;
+	public Date Inicio;
+	
+	@Constraints.Required
+	public Date Fin;
 	
 	@Lob
-	byte[] Imagen;
+	public byte[] Imagen;
 	
 	@ManyToOne
-	Torneo Torneo;
+	public Torneo Torneo;
 	
 	@ManyToMany 
-	List<Regla> Reglas=new ArrayList<Regla>();	
+	public List<Regla> Reglas=new ArrayList<Regla>();	
 	
 	@ManyToOne
-	Usuario Propietario;
+	public Usuario Propietario;
 	
 	@ManyToMany 
-	List<Usuario> Administradores=new ArrayList<Usuario>();
+	public List<Usuario> Administradores=new ArrayList<Usuario>();
 	
 	@ManyToMany 
-	List<Usuario> Participantes=new ArrayList<Usuario>();
+	public List<Usuario> Participantes=new ArrayList<Usuario>();
 	
 	public static Finder<Long,Quiniela> find = new Finder<Long,Quiniela>(
 			    Long.class, Quiniela.class

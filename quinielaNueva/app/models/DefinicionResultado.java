@@ -20,20 +20,20 @@ public class DefinicionResultado extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 
-	String Nombre;
+	public String Nombre;
 	
-	String NombreCorto;
+	public String NombreCorto;
 	
-	String Abreviatura;
+	public String Abreviatura;
 	
 	public enum Tipos {
 		Entero,
 		Equipo
 	};
 	
-	Tipos Tipo;
+	public Tipos Tipo;
 	
 	public static Finder<Long,DefinicionResultado> find = new Finder<Long,DefinicionResultado>(
 		    Long.class, DefinicionResultado.class

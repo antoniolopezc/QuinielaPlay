@@ -24,45 +24,45 @@ public class Torneo extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
 	@Constraints.Required
-	String Nombre;
+	public String Nombre;
 	
 	@Constraints.Required
-	String NombreCorto;
+	public String NombreCorto;
 	
 	@Constraints.Required
-	String Abreviatura;
+	public String Abreviatura;
 	
-	String Descricion;
-	
-	@Constraints.Required
-	Date Inicio;
+	public String Descricion;
 	
 	@Constraints.Required
-	Date Fin;
+	public Date Inicio;
+	
+	@Constraints.Required
+	public Date Fin;
 	
 	@Lob
-	byte[] Imagen;
+	public byte[] Imagen;
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	List<Equipo> Equipos=new ArrayList<Equipo>();
+	public List<Equipo> Equipos=new ArrayList<Equipo>();
 	
 	@OneToMany(cascade={CascadeType.ALL})
-	List<Partido> Partidos=new ArrayList<Partido>();
+	public List<Partido> Partidos=new ArrayList<Partido>();
 
 	@ManyToMany 
-	List<Regla> Reglas=new ArrayList<Regla>();
+	public List<Regla> Reglas=new ArrayList<Regla>();
 	
 	/*
 	 * Representa las fases o agrupaciones de partidos del torneo
 	 */
 	@OneToMany(cascade={CascadeType.ALL})
-	List<Porcion> Porciones=new ArrayList<Porcion>();
+	public List<Porcion> Porciones=new ArrayList<Porcion>();
 	
 	@ManyToOne
-	Usuario Propietario;
+	public Usuario Propietario;
 	
 	@ManyToMany 
 	List<Usuario> Administradores=new ArrayList<Usuario>();

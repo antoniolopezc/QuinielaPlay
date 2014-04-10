@@ -21,28 +21,28 @@ public class Punto extends Model {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	Long Id;
+	public Long Id;
 	
-	Long Valor;
+	public Long Valor;
 	
-	Long Maximo;
+	public Long Maximo;
 	
-	TipoEstado Estado=TipoEstado.Nuevo;
+	public TipoEstado Estado=TipoEstado.Nuevo;
 	
 	/*
 	 * La regla que crea el registro de puntos puede usar este valor como referencia para
 	 * simplificar el futuro calculo.
 	 */
-	String ReferenciaRegla;
+	public String ReferenciaRegla;
 	
 	@ManyToOne
-	Resultado Resultado;
+	public Resultado Resultado;
 	
 	@ManyToOne
-	Partido Partido;
+	public Partido Partido;
 	
 	@ManyToOne
-	Porcion Porcion;
+	public Porcion Porcion;
 
 	public static Finder<Long,Punto> find = new Finder<Long,Punto>(
 		    Long.class, Punto.class
