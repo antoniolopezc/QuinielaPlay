@@ -43,6 +43,9 @@ public class Punto extends Model {
 	
 	@ManyToOne
 	public Porcion Porcion;
+	
+	@ManyToOne
+	public Pronostico Pronostico;
 
 	public static Finder<Long,Punto> find = new Finder<Long,Punto>(
 		    Long.class, Punto.class
@@ -145,6 +148,14 @@ public class Punto extends Model {
 	 */
 	public void setEstado(TipoEstado estado) {
 		Estado = estado;
+	}
+
+	public Pronostico getPronostico() {
+		return Pronostico;
+	}
+
+	public void setPronostico(Pronostico pronostico) {
+		Pronostico = pronostico;
 	}
 
 }

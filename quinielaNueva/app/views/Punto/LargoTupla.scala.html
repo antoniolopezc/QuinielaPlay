@@ -1,2 +1,2 @@
-@(Puntos: HashMap[Tuple3[Long,Long,Long],Tuple3[Long,Long,Long]],k:Tuple3[Long,Long,Long] )
-@defining(Puntos.get(k)){ R => Total de Puntos @R._1 de @R._2 jugados faltan @{R._3-R._2}}
+@(Punto: Tuple4[Long,Long,Long,Long])
+Total de Puntos @{Punto._1}(@Punto._2)  de @Punto._3 jugados faltan @{Punto._4-Punto._3}

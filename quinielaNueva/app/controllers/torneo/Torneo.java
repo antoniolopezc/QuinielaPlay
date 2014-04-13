@@ -114,22 +114,25 @@ public class Torneo extends Controller {
     	}
     	for(models.Partido Partido:Torneo.getPartidos()){
     		s=FormaLlena.get("Tiempo-"+Long.toString(Partido.getId()));
-    		if(s==null) continue;
-    		Partido.setTiempoActual(s);
+    		if(s!=null) 
+    			Partido.setTiempoActual(s);
     		switch(Partido.getTiempoActual()){
 			case Final:
-	    		for(models.Resultado Resultado: Resultados){
+	    		for(models.Resultado Resultado: Partido.getResultados()){
 	    			Resultado.setEstado(TipoEstado.Final);
+	    			Resultado.save();
 	    		}
 				break;
 			case NoIniciado:
-	    		for(models.Resultado Resultado: Resultados){
+	    		for(models.Resultado Resultado: Partido.getResultados()){
 	    			Resultado.setEstado(TipoEstado.Nuevo);
+	    			Resultado.save();
 	    		}
 				break;
 			default:
-	    		for(models.Resultado Resultado: Resultados){
+	    		for(models.Resultado Resultado: Partido.getResultados()){
 	    			Resultado.setEstado(TipoEstado.Parcial);
+	    			Resultado.save();
 	    		}
 				break;
     		}

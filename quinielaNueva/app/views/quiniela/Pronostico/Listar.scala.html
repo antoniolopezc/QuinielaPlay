@@ -1,4 +1,4 @@
-@(Pronosticos: List[Pronostico], Puntos: HashMap[Tuple3[Long,Long,Long],Tuple3[Long,Long,Long]])
+@(Pronosticos: List[Pronostico], Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]])
 
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/QuinielaPronosticoTab.css")'>
@@ -22,8 +22,8 @@
 		<script>$("ul.tabs").append('<li><a href="#tabs-@Pronostico.getId()">@{Pronostico.getNombre()}(@Pronostico.getPropietario().getNombre())</a></li>')</script>
 		<article id="tabs-@Pronostico.getId()">
 		<div>@Pronostico.getNombre() de @views.html.Usuario.Usuario(Pronostico.getPropietario())</div>
-		<div class="Punto-Pronostico">@views.html.Punto.LargoTupla(Puntos,(Pronostico.getId(),null,null))</div>
-		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true)}
+		<div class="Punto-Pronostico">@views.html.Punto.LargoTupla(Puntos.get(new Tuple3[Long,Long,Long](Pronostico.getId(),null,null)))</div>
+		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true,Puntos)}
 		<script>
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"article#tabs-"+Pronostico.getId())}
 		</script>

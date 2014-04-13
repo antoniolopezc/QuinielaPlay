@@ -51,6 +51,7 @@ create table porcion (
   descricion                varchar(255),
   inicio                    timestamp,
   fin                       timestamp,
+  pronostico_id             bigint,
   constraint pk_porcion primary key (id))
 ;
 
@@ -64,7 +65,6 @@ create table pronostico (
 
 create table punto (
   id                        bigint not null,
-  pronostico_id             bigint not null,
   valor                     bigint,
   maximo                    bigint,
   estado                    integer,
@@ -72,6 +72,7 @@ create table punto (
   resultado_id              bigint,
   partido_id                bigint,
   porcion_id                bigint,
+  pronostico_id             bigint,
   constraint ck_punto_estado check (estado in (0,1,2)),
   constraint pk_punto primary key (id))
 ;
@@ -210,38 +211,40 @@ alter table partido add constraint fk_partido_EquipoB_5 foreign key (equipo_b_id
 create index ix_partido_EquipoB_5 on partido (equipo_b_id);
 alter table porcion add constraint fk_porcion_torneo_6 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;
 create index ix_porcion_torneo_6 on porcion (torneo_id);
-alter table pronostico add constraint fk_pronostico_Propietario_7 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
-create index ix_pronostico_Propietario_7 on pronostico (propietario_id);
-alter table pronostico add constraint fk_pronostico_Quiniela_8 foreign key (quiniela_id) references quiniela (id) on delete restrict on update restrict;
-create index ix_pronostico_Quiniela_8 on pronostico (quiniela_id);
-alter table punto add constraint fk_punto_pronostico_9 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
-create index ix_punto_pronostico_9 on punto (pronostico_id);
+alter table porcion add constraint fk_porcion_Pronostico_7 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
+create index ix_porcion_Pronostico_7 on porcion (pronostico_id);
+alter table pronostico add constraint fk_pronostico_Propietario_8 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
+create index ix_pronostico_Propietario_8 on pronostico (propietario_id);
+alter table pronostico add constraint fk_pronostico_Quiniela_9 foreign key (quiniela_id) references quiniela (id) on delete restrict on update restrict;
+create index ix_pronostico_Quiniela_9 on pronostico (quiniela_id);
 alter table punto add constraint fk_punto_Resultado_10 foreign key (resultado_id) references resultado (id) on delete restrict on update restrict;
 create index ix_punto_Resultado_10 on punto (resultado_id);
 alter table punto add constraint fk_punto_Partido_11 foreign key (partido_id) references partido (id) on delete restrict on update restrict;
 create index ix_punto_Partido_11 on punto (partido_id);
 alter table punto add constraint fk_punto_Porcion_12 foreign key (porcion_id) references porcion (id) on delete restrict on update restrict;
 create index ix_punto_Porcion_12 on punto (porcion_id);
-alter table quiniela add constraint fk_quiniela_Torneo_13 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;
-create index ix_quiniela_Torneo_13 on quiniela (torneo_id);
-alter table quiniela add constraint fk_quiniela_Propietario_14 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
-create index ix_quiniela_Propietario_14 on quiniela (propietario_id);
-alter table resultado add constraint fk_resultado_Definicion_15 foreign key (definicion_id) references definicion_resultado (id) on delete restrict on update restrict;
-create index ix_resultado_Definicion_15 on resultado (definicion_id);
-alter table resultado add constraint fk_resultado_Equipo_16 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
-create index ix_resultado_Equipo_16 on resultado (equipo_id);
-alter table resultado add constraint fk_resultado_Partido_17 foreign key (partido_id) references partido (id) on delete restrict on update restrict;
-create index ix_resultado_Partido_17 on resultado (partido_id);
-alter table resultado add constraint fk_resultado_Porcion_18 foreign key (porcion_id) references porcion (id) on delete restrict on update restrict;
-create index ix_resultado_Porcion_18 on resultado (porcion_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_prono_19 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_prono_19 on resultado_pronostico (pronostico_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_Resul_20 foreign key (resultado_id) references resultado (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_Resul_20 on resultado_pronostico (resultado_id);
-alter table resultado_pronostico add constraint fk_resultado_pronostico_Equip_21 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
-create index ix_resultado_pronostico_Equip_21 on resultado_pronostico (equipo_id);
-alter table torneo add constraint fk_torneo_Propietario_22 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
-create index ix_torneo_Propietario_22 on torneo (propietario_id);
+alter table punto add constraint fk_punto_Pronostico_13 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
+create index ix_punto_Pronostico_13 on punto (pronostico_id);
+alter table quiniela add constraint fk_quiniela_Torneo_14 foreign key (torneo_id) references torneo (id) on delete restrict on update restrict;
+create index ix_quiniela_Torneo_14 on quiniela (torneo_id);
+alter table quiniela add constraint fk_quiniela_Propietario_15 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
+create index ix_quiniela_Propietario_15 on quiniela (propietario_id);
+alter table resultado add constraint fk_resultado_Definicion_16 foreign key (definicion_id) references definicion_resultado (id) on delete restrict on update restrict;
+create index ix_resultado_Definicion_16 on resultado (definicion_id);
+alter table resultado add constraint fk_resultado_Equipo_17 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
+create index ix_resultado_Equipo_17 on resultado (equipo_id);
+alter table resultado add constraint fk_resultado_Partido_18 foreign key (partido_id) references partido (id) on delete restrict on update restrict;
+create index ix_resultado_Partido_18 on resultado (partido_id);
+alter table resultado add constraint fk_resultado_Porcion_19 foreign key (porcion_id) references porcion (id) on delete restrict on update restrict;
+create index ix_resultado_Porcion_19 on resultado (porcion_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_prono_20 foreign key (pronostico_id) references pronostico (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_prono_20 on resultado_pronostico (pronostico_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_Resul_21 foreign key (resultado_id) references resultado (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_Resul_21 on resultado_pronostico (resultado_id);
+alter table resultado_pronostico add constraint fk_resultado_pronostico_Equip_22 foreign key (equipo_id) references equipo (id) on delete restrict on update restrict;
+create index ix_resultado_pronostico_Equip_22 on resultado_pronostico (equipo_id);
+alter table torneo add constraint fk_torneo_Propietario_23 foreign key (propietario_id) references usuario (id) on delete restrict on update restrict;
+create index ix_torneo_Propietario_23 on torneo (propietario_id);
 
 
 
