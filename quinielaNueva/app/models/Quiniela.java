@@ -176,6 +176,7 @@ public class Quiniela extends Model {
 			for(Regla Regla:this.getReglas()){
 				ReglaBase.cacular(Regla,P);
 			}
+			P.save();
 		}
 	}
 }

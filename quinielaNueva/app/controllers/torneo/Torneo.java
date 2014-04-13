@@ -76,7 +76,7 @@ public class Torneo extends Controller {
     	List<models.Resultado> Resultados=models.Resultado.find.where()
 				.or(Expr.in("Porcion",Torneo.getPorciones()),
 					Expr.in("Partido",Torneo.getPartidos())).findList();
-    	return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(Torneo.getPropietario().getId()!=Usuario.Id)));
+    	return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(Torneo.getPropietario().getId()!=Usuario.getId())));
     }
     /**
      * Guadar los resultados actualizados torneo
@@ -114,6 +114,7 @@ public class Torneo extends Controller {
     	}
     	for(models.Partido Partido:Torneo.getPartidos()){
     		s=FormaLlena.get("Tiempo-"+Long.toString(Partido.getId()));
+    		if(s==null) continue;
     		Partido.setTiempoActual(s);
     		switch(Partido.getTiempoActual()){
 			case Final:

@@ -24,63 +24,63 @@
         CondicionPorcion: "Grupo.*"
         CondicionPartido: ".*"
         CondicionResultado: "Gol.*"
-        CondicionSuma: 
+        CondicionSuma: Igual
         Puntos: 1
     ResultadoGrupo:
       !!reglas.Condicion
         CondicionPorcion: "Grupo.*"
         CondicionPartido: ".*"
         CondicionResultado: 
-        CondicionSuma: 
+        CondicionSuma: IgualPartido
         Puntos: 3
     PosicionGrupo:
       !!reglas.Condicion
         CondicionPorcion: "Grupo.*"
         CondicionPartido: 
         CondicionResultado: ".*(Primero|Segundo)"
-        CondicionSuma: 
+        CondicionSuma: Igual
         Puntos: 3
     GolesDirectaNoFinal:
       !!reglas.Condicion
         CondicionPorcion: "Directa [OCST].*"
         CondicionPartido: ".*"
         CondicionResultado: "Gol.*"
-        CondicionSuma: 
+        CondicionSuma: Igual
         Puntos: 2
     ResultadoDirectaNoFinal:
       !!reglas.Condicion
         CondicionPorcion: "Directa [OCST].*"
         CondicionPartido: ".*"
         CondicionResultado: 
-        CondicionSuma: 
+        CondicionSuma: IgualPartido
         Puntos: 6
     PasaNoFinal: 
       !!reglas.Condicion
         CondicionPorcion: "Directa [OCST].*"
         CondicionPartido: ".*"
         CondicionResultado: ".*Paso"
-        CondicionSuma: 
+        CondicionSuma: Igual
         Puntos: 6
     GolesDirectaFinal:
       !!reglas.Condicion
         CondicionPorcion: "Directa FINAL"
         CondicionPartido: ".*"
         CondicionResultado: "Gol.*"
-        CondicionSuma: 
+        CondicionSuma: Igual
         Puntos: 4
     ResultadoDirectaFinal:
       !!reglas.Condicion
         CondicionPorcion: "Directa FINAL"
         CondicionPartido: ".*"
         CondicionResultado: 
-        CondicionSuma: 
+        CondicionSuma: IgualPartido
         Puntos: 12
     PasaFinal: 
       !!reglas.Condicion
         CondicionPorcion: "Directa FINAL"
         CondicionPartido: ".*"
         CondicionResultado: ".*Paso"
-        CondicionSuma: 
+        CondicionSuma: Igual
         Puntos: 12
       
 - &GA !!models.DefinicionResultado

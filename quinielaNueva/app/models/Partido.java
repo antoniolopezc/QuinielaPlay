@@ -43,19 +43,8 @@ public class Partido extends Model {
 		Prologa,
 		Penatil,
 		Final;
-		
-		public static Tiempo valueof2(String S) {
-			switch(S) {
-			case "0": return NoIniciado;
-			case "1": return PrimerTiempo;
-			case "2": return SegundoTiempo;
-			case "3": return Prologa;
-			case "4": return Penatil;
-			case "5": return Final;
-			default : return NoIniciado;
-			}
-		}
 	}
+	
 	public Tiempo TiempoActual = Tiempo.NoIniciado;
 	
 	@ManyToOne

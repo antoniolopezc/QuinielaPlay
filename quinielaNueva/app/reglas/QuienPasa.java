@@ -99,6 +99,10 @@ public class QuienPasa extends ReglaBase {
 		// Validar que el grupo Termino
 		for(Partido P:grupo.getPartidos()) {
 			if(P.getTiempoActual()!=Partido.Tiempo.Final) {
+				for(Resultado R: grupo.getResultados()){
+					R.setEquipo(null);
+					R.save();
+				}
 				return null;
 			}
 		}

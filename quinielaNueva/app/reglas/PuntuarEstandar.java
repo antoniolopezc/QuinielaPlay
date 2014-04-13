@@ -61,15 +61,23 @@ public class PuntuarEstandar extends ReglaBase {
 		}
 		return Resultado;
 	}
-
 	private void ProcesarIgualPartido(Punto Punto,HashMap<Long,ResultadoPronostico> RPronostico) {
 		Long T=new Long(0);
 		Long P=new Long(0);
+		Long TP;
+		Long TT;
 		TipoEstado TE=TipoEstado.Final;
 		if(Punto.getPartido()!=null) {
 			for(Resultado R:Punto.getPartido().getResultados()) {
-				P=RPronostico.get(R.getId()).getEntero()-P;
-				T=R.getEntero()-T;
+				TP=RPronostico.get(R.getId()).getEntero();
+				TT=R.getEntero();
+				if(TP==null||TT==null) {
+					Punto.setValor(new Long(0));
+					Punto.setEstado(TipoEstado.Nuevo);
+					return;
+				}
+				P= TP-P;
+				T=TT-T;
 				if(R.getEstado()!=TipoEstado.Final){
 					TE=R.getEstado();
 				}
