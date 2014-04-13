@@ -40,10 +40,7 @@ public class Porcion extends Model {
    	
 	@OneToMany(cascade={CascadeType.ALL})
 	public List<Resultado> Resultados=new ArrayList<Resultado>();
-	
-	@ManyToOne
-	public Pronostico Pronostico;
-
+		
 	public static Finder<Long,Porcion> find = new Finder<Long,Porcion>(
 		    Long.class, Porcion.class
 		  );
@@ -118,13 +115,5 @@ public class Porcion extends Model {
 
 	public void setResultados(List<Resultado> resultados) {
 		Resultados = resultados;
-	}
-
-	public Pronostico getPronostico() {
-		return Pronostico;
-	}
-
-	public void setPronostico(Pronostico pronostico) {
-		Pronostico = pronostico;
 	}
 }

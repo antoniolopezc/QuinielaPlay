@@ -162,27 +162,6 @@ public class Pronostico extends Controller {
     @SecureSocial.UserAwareAction 
     public static Result listar() {
     	List<models.Pronostico> Pronosticos=models.Pronostico.find.all();
-    	
-   /* 	final String sql="SELECT PronOSTICO_ID,PorCION_ID ,PARTIDO_ID, sum(Valor) as Valor, sum(decode(Estado,0,0,Maximo)) as jugados  , sum(Maximo) as Maximo "
-    		      +"FROM PUNTO "
-    		      +"group by PronOSTICO_ID,PorCION_ID ,PARTIDO_ID "
-    		      +"union "
-    		      +"SELECT PronOSTICO_ID,PorCION_ID ,null, sum(Valor) as Valor, sum(decode(Estado,0,0,Maximo))  , sum(Maximo) as Maximo "
-    		      +"FROM PUNTO "
-    		      +"group by PronOSTICO_ID,PorCION_ID "
-    		      +"union "
-    		      +"SELECT PronOSTICO_ID,null ,null, sum(Valor) as Valor, sum(decode(Estado,0,0,Maximo))  , sum(Maximo) as Maximo "
-    		      +"FROM PUNTO "
-    		      +"group by PronOSTICO_ID "
-    		      +"order by 1 ,2 NULLS FIRST, 3 NULLS FIRST ";
-    	
-    	final Set<SqlRow> Q = Ebean.createSqlQuery(sql).findSet();
-    	HashMap<Tuple3<Long,Long,Long>,Tuple3<Long,Long,Long>> Puntos=new HashMap<Tuple3<Long,Long,Long>,Tuple3<Long,Long,Long>>();
-    	for(SqlRow SR:Q){
-    		Tuple3<Long,Long,Long> K=new Tuple3<Long,Long,Long>(SR.getLong("PronOSTICO_ID"), SR.getLong("PorCION_ID"), SR.getLong("PARTIDO_ID")); 
-    		Tuple3<Long,Long,Long> V=new Tuple3<Long,Long,Long>(SR.getLong("Valor"), SR.getLong("jugados"), SR.getLong("Maximo"));;
-    		Puntos.put(K, V);
-    	} */
     	HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Puntos=obtenerPuntos();
     	
     	return ok(Listar.render(Pronosticos,Puntos));

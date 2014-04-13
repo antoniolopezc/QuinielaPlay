@@ -23,7 +23,7 @@
 		<article id="tabs-@Pronostico.getId()">
 		<div>@Pronostico.getNombre() de @views.html.Usuario.Usuario(Pronostico.getPropietario())</div>
 		<div class="Punto-Pronostico">@views.html.Punto.LargoTupla(Puntos.get(new Tuple3[Long,Long,Long](Pronostico.getId(),null,null)))</div>
-		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true,Puntos)}
+		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true,Puntos,Pronostico.getId())}
 		<script>
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"article#tabs-"+Pronostico.getId())}
 		</script>

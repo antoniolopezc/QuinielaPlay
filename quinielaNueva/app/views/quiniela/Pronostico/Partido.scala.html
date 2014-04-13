@@ -1,4 +1,4 @@
-@(Partido: Partido, Id: Long, Lectura: Boolean=false, Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]]=null)
+@(Partido: Partido, Id: Long, Lectura: Boolean=false,Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]]=null,PronosticoId: Long=null,PorcionId: Long=null)
 
 
 <tr id="Partido-@Partido.getId()" class="Partido" >
@@ -12,6 +12,11 @@
 		<td class="Partido-Resultado">
 		@views.html.FormatoResultado.ResultadoMinimo(Resultado,Id,Lectura)
 		</td>
+    }
+    @if(Puntos!=null) {
+ 	<td class="Puntos">
+		 @defining(Puntos.get(new Tuple3[Long,Long,Long](PronosticoId,PorcionId,Partido.getId()))){P =>@if(P!=null) {@{P._1}(@P._2)/@{P._3}(@P._4)}}
+	</td>
     }
     <script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()");</script>
 </tr>
