@@ -33,13 +33,20 @@
         CondicionResultado: 
         CondicionSuma: IgualPartido
         Puntos: 3
-    PosicionGrupo:
+    PosicionGrupo12:
       !!reglas.Condicion
         CondicionPorcion: "Grupo.*"
         CondicionPartido: 
         CondicionResultado: ".*(Primero|Segundo)"
         CondicionSuma: Igual
         Puntos: 3
+    PosicionGrupo34:
+      !!reglas.Condicion
+        CondicionPorcion: "Grupo.*"
+        CondicionPartido: 
+        CondicionResultado: ".*(Tercero|Cuarto)"
+        CondicionSuma: Igual
+        Puntos: 1
     GolesDirectaNoFinal:
       !!reglas.Condicion
         CondicionPorcion: "Directa [OCST].*"
@@ -1604,8 +1611,8 @@
              Nombre: Grupo A
              NombreCorto: GA
              Abreviatura: A
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1631,8 +1638,8 @@
              Nombre: Grupo B
              NombreCorto: GB
              Abreviatura: B
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1658,8 +1665,8 @@
              Nombre: Grupo C
              NombreCorto: GC
              Abreviatura: C
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1685,8 +1692,8 @@
              Nombre: Grupo D
              NombreCorto: GD
              Abreviatura: D
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1712,8 +1719,8 @@
              Nombre: Grupo E
              NombreCorto: GE
              Abreviatura: E
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1739,8 +1746,8 @@
              Nombre: Grupo F
              NombreCorto: GF
              Abreviatura: F
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1766,8 +1773,8 @@
              Nombre: Grupo G
              NombreCorto: GG
              Abreviatura: G
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1793,8 +1800,8 @@
              Nombre: Grupo H
              NombreCorto: GH
              Abreviatura: H
-             Inicio: 2014-06-12
-             Fin: 2014-06-26
+             Inicio: 2014-06-12 00:30:00 -4
+             Fin: 2014-06-26 00:30:00 -4
              Resultados: 
               - !!models.Resultado
                   Definicion: *P1
@@ -1820,8 +1827,8 @@
              Nombre: Directa OCTAVOS
              NombreCorto: OCTAVOS
              Abreviatura: OCTAVOS
-             Inicio: 2014-06-28
-             Fin: 2014-07-01
+             Inicio: 2014-06-28 00:30:00 -4
+             Fin: 2014-07-01 00:30:00 -4
              Partidos:
               - *PA49
               - *PA50
@@ -1836,8 +1843,8 @@
              Nombre: Directa CUARTOS
              NombreCorto: CUARTOS
              Abreviatura: CUARTOS
-             Inicio: 2014-07-04
-             Fin: 2014-07-05
+             Inicio: 2014-07-04 00:30:00 -4
+             Fin: 2014-07-05 00:30:00 -4
              Partidos:
               - *PA57
               - *PA58
@@ -1848,27 +1855,27 @@
              Nombre: Directa SEMIFINALES
              NombreCorto: SEMIFINALES
              Abreviatura: SEMIFINALES
-             Inicio: 2014-07-08
-             Fin: 2014-07-09
+             Inicio: 2014-07-08 00:30:00 -4
+             Fin: 2014-07-09 00:30:00 -4
              Partidos:
               - *PA61
               - *PA62
 
         - &TERCERO !!models.Porcion
              Nombre: Directa TERCERO
-             NombreCorto: GTERCERO
+             NombreCorto: TERCERO
              Abreviatura: TERCERO
-             Inicio: 2014-07-12
-             Fin: 2014-07-12
+             Inicio: 2014-07-12 00:30:00 -4
+             Fin: 2014-07-12 00:30:00 -4
              Partidos:
               - *PA63
 
         - &FINAL !!models.Porcion
              Nombre: Directa FINAL
-             NombreCorto: GFINAL
+             NombreCorto: FINAL
              Abreviatura: FINAL
-             Inicio: 2014-07-13
-             Fin: 2014-07-13
+             Inicio: 2014-07-13 00:30:00 -4
+             Fin: 2014-07-13 00:30:00 -4
              Partidos:
               - *PA64
 - &Q2014 !!models.Quiniela

@@ -9,7 +9,9 @@
 	}
 	<table>
 		<tbody>
-			@Porcion.getPartidos().map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.getId(),Lectura,Puntos,PronosticoId,Porcion.getId())}
+			@defining(Lectura||Porcion.getInicio().before(Calendar.getInstance().getTime())){L=>
+			@Porcion.getPartidos().map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.getId(),L,Puntos,PronosticoId,Porcion.getId())}
+			}
 		</tbody>
 	</table>
 	@if(Porcion.getResultados().size()>0) {
