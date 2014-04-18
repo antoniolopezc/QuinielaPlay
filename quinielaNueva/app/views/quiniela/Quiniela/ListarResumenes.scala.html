@@ -1,6 +1,10 @@
 @(Quiniela: Quiniela,Resumenes: List[utilitario.Resumen])
 @base("Resumen de @Quiniela.getNombre()") {
 <h2>@Quiniela.getNombre()</h2>
+ <div>Hay @Resumenes.size() Quinielas</div>
+ @defining(Resumenes.get(0)){Primero=> 
+ <div>Se han Jugando @{"%.0f".format(Primero.getPunto()/Primero.getPorcentajeTotal())} de @Primero.getTotalMaximo()</div>
+ }
  <table>
  	<thead>
 		<tr>
@@ -19,7 +23,7 @@
 			<td class="Resumen-Posicion">@Resumen.getPosicion()</td>
      		<td class="Resumen-Usuario">@views.html.Usuario.Usuario(Resumen.getJugador())@Resumen.getJugador().getNombre()</td>
      		<td class="Resumen-Punto">@Resumen.getPunto()</td>
-     		<td class="Resumen-PorcentajeTotal">@Resumen.getPorcentajeTotal()</td>
+     		<td class="Resumen-PorcentajeTotal">@("%1.0f".format(Resumen.getPorcentajeTotal()*100))%</td>
      		<td class="Resumen-Maximo">@Resumen.getMaximo()</td>
      		<td class="Resumen-Premio">@Resumen.getPremio</td>
      		<td class="Resumen-Participa">@if(Resumen.getParticipa()){Si}else{No}</td>

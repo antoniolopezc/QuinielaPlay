@@ -15,7 +15,7 @@ public class Resumen implements Comparable<Resumen> {
 	
 	Long Punto;
 	
-	Long PorcentajeTotal;
+	Float PorcentajeTotal;
 	
 	Long Maximo;
 	
@@ -54,11 +54,11 @@ public class Resumen implements Comparable<Resumen> {
 		Punto = punto;
 	}
 
-	public Long getPorcentajeTotal() {
+	public Float getPorcentajeTotal() {
 		return PorcentajeTotal;
 	}
 
-	public void setPorcentajeTotal(Long porcentajeTotal) {
+	public void setPorcentajeTotal(Float porcentajeTotal) {
 		PorcentajeTotal = porcentajeTotal;
 	}
 

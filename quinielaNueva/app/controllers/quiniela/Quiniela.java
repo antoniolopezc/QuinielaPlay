@@ -45,7 +45,7 @@ public class Quiniela extends Controller {
 	}
 
 	private static void Totalizar(Resumen r, List<Punto> puntos) {
-		Long Total=new Long(0);
+		Float Total=new Float(0);
 		Long TotalMaximo=new Long(0);
 		r.setMaximo(new Long(0));
 		r.setPunto(new Long(0));
@@ -65,7 +65,7 @@ public class Quiniela extends Controller {
 			TotalMaximo+=P.getMaximo();
 		}
 		if(Total==0)
-			r.setPorcentajeTotal(new Long(0));
+			r.setPorcentajeTotal(new Float(0));
 		else
 			r.setPorcentajeTotal(r.getPunto()/Total);
 		r.setTotalMaximo(TotalMaximo);
