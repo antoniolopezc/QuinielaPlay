@@ -1,0 +1,5 @@
+@(Quinielas: List[Quiniela],Ruta: String)
+@base("Escoja Quiniela Para el Resumen") {
+<div>Escoja Quiniela:</div>
+@Quinielas.map{Q =><a href="/@Ruta/@Q.getId()" >@Q.getNombre()</a>}
+} 

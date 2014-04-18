@@ -29,7 +29,7 @@ GET     /not-authorized             securesocial.controllers.ProviderController.
 # Home page
 GET     /                           controllers.Application.index()
 
-# Refencias a Torneo
+# Referencias a Torneo
 #GET		/torneo						controllers.torneo.Torneo.lista()
 POST    /torneo/guardar					controllers.torneo.Torneo.guardar()
 #GET		/torneo/agregar				controllers.torneo.Torneo.agregar()
@@ -38,18 +38,20 @@ GET		/ActualizarResultado 			controllers.torneo.Torneo.ActualizarResultados(id: 
 GET		/ActualizarResultado/:id		controllers.torneo.Torneo.ActualizarResultados(id: Long)
 GET		/GuadarResultado				controllers.torneo.Torneo.GuadarResultados()
 
-# Refencias a Usuario
+# Referencias a Usuario
 GET		/logeado			controllers.Application.loggeado()
 
-# Refencias a Pronostico
+# Referencias a Pronostico
 GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long = -1)
 GET		/AgregarPronostico/:id						controllers.quiniela.Pronostico.agregar(id: Long)
 POST    /AgregarPronostico/guardar				controllers.quiniela.Pronostico.guardar()
-GET		/AgregarPronostico 						controllers.quiniela.Pronostico.agregar(id: Long = -1)
 GET		/ActualizarPronostico 						controllers.quiniela.Pronostico.actualizar(id: Long = -1)
 GET		/ActualizarPronostico/:id						controllers.quiniela.Pronostico.actualizar(id: Long)
 GET		/ListarPronostico 						controllers.quiniela.Pronostico.listar()
 
+#Referencias a Quiniela
+GET		/Resumen								controllers.quiniela.Quiniela.resumen(Id: Long=-1)
+GET		/Resumen/:Id							controllers.quiniela.Quiniela.resumen(Id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

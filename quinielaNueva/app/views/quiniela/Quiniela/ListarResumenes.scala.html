@@ -1,0 +1,30 @@
+@(Quiniela: Quiniela,Resumenes: List[utilitario.Resumen])
+@base("Resumen de @Quiniela.getNombre()") {
+<h2>@Quiniela.getNombre()</h2>
+ <table>
+ 	<thead>
+		<tr>
+		<th class="Resumen-Posicion">Posicion</th>
+     	<th class="Resumen-Usuario">Jugador</th>
+     	<th class="Resumen-Punto">Puntos</th>
+     	<th class="Resumen-PorcentajeTotal">%Total</th>
+     	<th class="Resumen-Maximo">Max</th>
+     	<th class="Resumen-Premio">Premio</th>
+     	<th class="Resumen-Participa">Participa</th>
+     	</tr>
+	</thead>
+ 	<tbody>
+     	@Resumenes.map{Resumen =>
+     		<tr>
+			<td class="Resumen-Posicion">@Resumen.getPosicion()</td>
+     		<td class="Resumen-Usuario">@views.html.Usuario.Usuario(Resumen.getJugador())@Resumen.getJugador().getNombre()</td>
+     		<td class="Resumen-Punto">@Resumen.getPunto()</td>
+     		<td class="Resumen-PorcentajeTotal">@Resumen.getPorcentajeTotal()</td>
+     		<td class="Resumen-Maximo">@Resumen.getMaximo()</td>
+     		<td class="Resumen-Premio">@Resumen.getPremio</td>
+     		<td class="Resumen-Participa">@if(Resumen.getParticipa()){Si}else{No}</td>
+     		</tr>
+     	}
+ 	</tbody>
+ </table>
+}
