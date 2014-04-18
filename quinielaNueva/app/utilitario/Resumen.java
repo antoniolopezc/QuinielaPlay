@@ -19,8 +19,6 @@ public class Resumen implements Comparable<Resumen> {
 	
 	Long Maximo;
 	
-	Long Premio;
-	
 	Long TotalMaximo;
 	
 	Boolean Participa;
@@ -68,14 +66,6 @@ public class Resumen implements Comparable<Resumen> {
 
 	public void setMaximo(Long maximo) {
 		Maximo = maximo;
-	}
-
-	public Long getPremio() {
-		return Premio;
-	}
-
-	public void setPremio(Long premio) {
-		Premio = premio;
 	}
 
 	public Boolean getParticipa() {

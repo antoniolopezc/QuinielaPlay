@@ -32,7 +32,6 @@ public class Quiniela extends Controller {
 			Totalizar(R,P.getPuntos());
 			R.setParticipa(true);
 			R.setPosicion(new Long(0));
-			R.setPremio(new Long(0));
 			Resumenes.add(R);
 		}
 		Collections.sort(Resumenes);
