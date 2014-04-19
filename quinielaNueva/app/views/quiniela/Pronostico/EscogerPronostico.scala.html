@@ -1,6 +1,0 @@
-@(Pronosticos: List[Pronostico])
-@base("Actualziar Pronostico") {
-	@for(Pronostico <- Pronosticos) {
-	<a href="/ActualizarPronostico/@Pronostico.getId()" >@{Pronostico.getNombre()}(@Pronostico.getQuiniela().getNombre())</a>
-	} 
-}

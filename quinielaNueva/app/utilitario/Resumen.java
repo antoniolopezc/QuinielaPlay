@@ -13,6 +13,8 @@ public class Resumen implements Comparable<Resumen> {
 	
 	models.Usuario Jugador;
 	
+	models.Pronostico Pronostico;
+	
 	Long Punto;
 	
 	Float PorcentajeTotal;
@@ -82,6 +84,14 @@ public class Resumen implements Comparable<Resumen> {
 
 	public void setTotalMaximo(Long totalMaximo) {
 		TotalMaximo = totalMaximo;
+	}
+
+	public models.Pronostico getPronostico() {
+		return Pronostico;
+	}
+
+	public void setPronostico(models.Pronostico pronostico) {
+		Pronostico = pronostico;
 	}
 
 

@@ -10,6 +10,7 @@
 		<tr>
 		<th class="Resumen-Posicion">Posicion</th>
      	<th class="Resumen-Usuario">Jugador</th>
+     	<th class="Resumen-Pronostico">Pronostico</th>
      	<th class="Resumen-Punto">Puntos</th>
      	<th class="Resumen-PorcentajeTotal">%Total</th>
      	<th class="Resumen-Maximo">Max</th>
@@ -22,6 +23,7 @@
      		<tr>
 			<td class="Resumen-Posicion">@Resumen.getPosicion()</td>
      		<td class="Resumen-Usuario">@views.html.Usuario.Usuario(Resumen.getJugador())@Resumen.getJugador().getNombre()</td>
+     		<th class="Resumen-Pronostico"><a href="/Pronostico/Lista/@Resumen.getPronostico().getId()">@Resumen.getPronostico().getNombre()</a></th>
      		<td class="Resumen-Punto">@Resumen.getPunto()</td>
      		<td class="Resumen-PorcentajeTotal">@("%1.0f".format(Resumen.getPorcentajeTotal()*100))%</td>
      		<td class="Resumen-Maximo">@Resumen.getMaximo()</td>

@@ -13,7 +13,7 @@ public class Quiniela extends Controller {
 	public static Result resumen(Long Id) {
 		if(Id==-1) {
 			List<models.Quiniela> Quinielas=models.Quiniela.find.all();
-			return ok(Escoger.render(Quinielas,"Resumen"));
+			return ok(Elegir.render(Quinielas,"Elija Quiniela para ver el Resumen","/Quiniela/Resumen"));
 		}
 		models.Quiniela Quiniela=models.Quiniela.find.byId(Id);
 		List<utilitario.Resumen> Resumenes= GenerarResumen(Quiniela);
@@ -29,6 +29,7 @@ public class Quiniela extends Controller {
 		for(models.Pronostico P: Pronosticos) {
 			Resumen R=new Resumen();
 			R.setJugador(P.getPropietario());
+			R.setPronostico(P);
 			Totalizar(R,P.getPuntos());
 			R.setParticipa(true);
 			R.setPosicion(new Long(0));
