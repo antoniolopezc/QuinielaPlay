@@ -160,9 +160,15 @@ public class Pronostico extends Controller {
     
     @SecureSocial.UserAwareAction 
     public static Result listar(Long Id) {
-    	List<models.Pronostico> Pronosticos=models.Pronostico.find.all();
-    	HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Puntos=obtenerPuntos();
+    	if(Id==-1) {
+    		List<models.Pronostico> Pronosticos=models.Pronostico.find.all();
+    		HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Puntos=obtenerPuntos();
     	
-    	return ok(Listar.render(Pronosticos,Puntos));
+    		return ok(Listar.render(Pronosticos,Puntos));
+    	} else {
+    		models.Pronostico Pronostico=models.Pronostico.find.byId(Id);
+    		HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Puntos=obtenerPuntos();
+    		return ok(ListarUno.render(Pronostico,Puntos));
+    	}
     }
 }
