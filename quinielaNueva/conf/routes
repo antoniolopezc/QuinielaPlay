@@ -33,6 +33,7 @@ GET     /                           controllers.Application.index()
 GET		/Torneo/Resultado/Actualizar		controllers.Torneo.ActualizarResultados(id: Long = -1)
 GET		/Torneo/Resultado/Actualizar/:id	controllers.Torneo.ActualizarResultados(id: Long)
 GET		/Torneo/Resultado/Guadar			controllers.Torneo.GuadarResultados()
+GET		/Torneo/Listar/:id					controllers.Torneo.Listar(id: Long)
 
 # Referencias a Usuario
 GET		/logeado			controllers.Application.loggeado()

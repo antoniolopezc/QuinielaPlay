@@ -2,7 +2,7 @@
 
 <h2>@Pronostico.getNombre() de @views.html.Usuario.Usuario(Pronostico.getPropietario())</h2>
 <div class="Punto-Pronostico">@views.html.Punto.LargoTupla(Puntos.get(new Tuple3[Long,Long,Long](Pronostico.getId(),null,null)))</div>
-<div id="Pronostico-"+@Pronostico.getId()>
+<div id="Pronostico-@Pronostico.getId()">
 @Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,true,Puntos,Pronostico.getId())}
 </div>
 <script>

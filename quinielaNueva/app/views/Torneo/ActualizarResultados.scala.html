@@ -10,12 +10,7 @@
 }
 @base("Actualizar Resultados ",css,script){
 	@helper.form(action = controllers.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {
-		<div>@Torneo.getNombre()</div>
-		<input type="hidden" name="Id" value="@Torneo.getId()">
-		@Torneo.getPorciones().map{Porcion=>@views.html.Torneo.Porcion(Porcion,Lectura)}
-		<input type="submit" value="Guardar"></input>
+	@views.html.Torneo.Torneo(Torneo,Resultados,Lectura)
+	<input type="submit" value="Guardar"></input>
 	}
-	<script>
-	@Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultadoTorneo(Resultado,"form") }
-	</script>
 }
