@@ -10,7 +10,7 @@
 	<table>
 		<tbody>
 			@defining(Lectura||Porcion.getInicio().before(Calendar.getInstance().getTime())){L=>
-			@Porcion.getPartidos().map{Partido => @views.html.quiniela.Pronostico.Partido(Partido,Porcion.getId(),L,Puntos,PronosticoId,Porcion.getId())}
+			@Porcion.getPartidos().map{Partido => @views.html.Pronostico.Partido(Partido,Porcion.getId(),L,Puntos,PronosticoId,Porcion.getId())}
 			}
 		</tbody>
 	</table>
@@ -18,6 +18,6 @@
 		@for(Resultado <- Porcion.getResultados()){
 			<script>Porciones[@Porcion.getId()].AgregarResultado(@Resultado.getId() , @Resultado.getDefinicion().getAbreviatura())</script>
 		}
-		@views.html.quiniela.Pronostico.PorcionGrupo(Porcion.getId())
+		@views.html.Pronostico.PorcionGrupo(Porcion.getId())
 	}
 </div>

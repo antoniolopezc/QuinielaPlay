@@ -1,7 +1,7 @@
 /**
  * 
  */
-package controllers.torneo;
+package controllers;
 
 
 
@@ -16,7 +16,7 @@ import play.data.DynamicForm;
 import play.data.Form;
 import reglas.ReglaBase;
 import securesocial.core.java.SecureSocial;
-import views.html.torneo.torneo.*;
+import views.html.Torneo.*;
 
 /**
  * @author alopez1

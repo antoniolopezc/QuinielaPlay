@@ -1,4 +1,4 @@
-@(Quinielas: List[Quiniela],Mesanje: String,Ruta: String)
+@(Quinielas: List[models.Quiniela],Mesanje: String,Ruta: String)
 @base(Mesanje) {
 <h3>@Mesanje</h3>
 @Quinielas.map{Q =><a href="@Ruta/@Q.getId()" >@Q.getNombre()</a>}

@@ -1,11 +1,11 @@
-package controllers.quiniela;
+package controllers;
 
 import java.util.*;
 
 import models.*;
 import play.mvc.*;
 import utilitario.Resumen;
-import views.html.quiniela.Quiniela.*;
+import views.html.Quiniela.*;
 
 
 public class Quiniela extends Controller {

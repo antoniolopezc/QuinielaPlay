@@ -1,4 +1,4 @@
-package controllers.quiniela;
+package controllers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +13,7 @@ import scala.Tuple4;
 import securesocial.core.Identity;
 import securesocial.core.java.SecureSocial;
 
-import views.html.quiniela.Pronostico.*;
+import views.html.Pronostico.*;
 
 public class Pronostico extends Controller {
     /**
@@ -35,7 +35,7 @@ public class Pronostico extends Controller {
     public static Result agregar(Long id) {
     	if(id==-1) { 
     		List<models.Quiniela> Quinielas = models.Quiniela.find.all();    		
-    		return ok(views.html.quiniela.Quiniela.Elegir.render(Quinielas,"Eliga Quiniela sobre la que crear el Pronostico","/Pronostico/Agregar"));
+    		return ok(views.html.Quiniela.Elegir.render(Quinielas,"Eliga Quiniela sobre la que crear el Pronostico","/Pronostico/Agregar"));
     	}
     	models.Pronostico Pronostico=new models.Pronostico();
     	if (!GeneraIndicadores(Pronostico,id))

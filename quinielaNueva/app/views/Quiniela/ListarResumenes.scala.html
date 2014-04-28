@@ -1,4 +1,4 @@
-@(Quiniela: Quiniela,Resumenes: List[utilitario.Resumen])
+@(Quiniela: models.Quiniela,Resumenes: List[utilitario.Resumen])
 @base("Resumen de @Quiniela.getNombre()") {
 <h2>@Quiniela.getNombre()</h2>
  <div>Hay @Resumenes.size() Quinielas</div>

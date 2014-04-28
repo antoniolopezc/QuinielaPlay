@@ -30,25 +30,25 @@ GET     /not-authorized             securesocial.controllers.ProviderController.
 GET     /                           controllers.Application.index()
 
 # Referencias a Torneo
-GET		/Torneo/Resultado/Actualizar		controllers.torneo.Torneo.ActualizarResultados(id: Long = -1)
-GET		/Torneo/Resultado/Actualizar/:id	controllers.torneo.Torneo.ActualizarResultados(id: Long)
-GET		/Torneo/Resultado/Guadar			controllers.torneo.Torneo.GuadarResultados()
+GET		/Torneo/Resultado/Actualizar		controllers.Torneo.ActualizarResultados(id: Long = -1)
+GET		/Torneo/Resultado/Actualizar/:id	controllers.Torneo.ActualizarResultados(id: Long)
+GET		/Torneo/Resultado/Guadar			controllers.Torneo.GuadarResultados()
 
 # Referencias a Usuario
 GET		/logeado			controllers.Application.loggeado()
 
 # Referencias a Pronostico
-GET		/Pronostico/Agregar 		controllers.quiniela.Pronostico.agregar(id: Long = -1)
-GET		/Pronostico/Agregar/:id		controllers.quiniela.Pronostico.agregar(id: Long)
-POST    /Pronostico/Agregar/guardar	controllers.quiniela.Pronostico.guardar()
-GET		/Pronostico/Actualizar 		controllers.quiniela.Pronostico.actualizar(id: Long = -1)
-GET		/Pronostico/Actualizar/:id	controllers.quiniela.Pronostico.actualizar(id: Long)
-GET		/Pronostico/Listar 			controllers.quiniela.Pronostico.listar(id: Long=-1)
-GET		/Pronostico/Listar/:id 		controllers.quiniela.Pronostico.listar(id: Long)
+GET		/Pronostico/Agregar 		controllers.Pronostico.agregar(id: Long = -1)
+GET		/Pronostico/Agregar/:id		controllers.Pronostico.agregar(id: Long)
+POST    /Pronostico/Agregar/guardar	controllers.Pronostico.guardar()
+GET		/Pronostico/Actualizar 		controllers.Pronostico.actualizar(id: Long = -1)
+GET		/Pronostico/Actualizar/:id	controllers.Pronostico.actualizar(id: Long)
+GET		/Pronostico/Listar 			controllers.Pronostico.listar(id: Long=-1)
+GET		/Pronostico/Listar/:id 		controllers.Pronostico.listar(id: Long)
 
 #Referencias a Quiniela
-GET		/Quiniela/Resumen								controllers.quiniela.Quiniela.resumen(Id: Long=-1)
-GET		/Quiniela/Resumen/:Id							controllers.quiniela.Quiniela.resumen(Id: Long)
+GET		/Quiniela/Resumen			controllers.Quiniela.resumen(Id: Long=-1)
+GET		/Quiniela/Resumen/:Id		controllers.Quiniela.resumen(Id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -4,13 +4,13 @@
 	<h2>@Porcion.getNombre()</h2>
 	<table>
 		<tbody>
-			@Porcion.getPartidos().map{Partido => @views.html.torneo.torneo.Partido(Partido,Porcion.getId(),Lectura)}
+			@Porcion.getPartidos().map{Partido => @views.html.Torneo.Partido(Partido,Porcion.getId(),Lectura)}
 		</tbody>
 	</table>
 	@if(Porcion.getResultados().size()>0) {
 		@for(Resultado <- Porcion.getResultados()){
 			<script>Porciones[@Porcion.getId()].AgregarResultado(@Resultado.getId() , @Resultado.getDefinicion().getAbreviatura())</script>
 		}
-		@views.html.torneo.torneo.PorcionGrupo(Porcion.getId())
+		@views.html.Torneo.PorcionGrupo(Porcion.getId())
 	}
 </div>

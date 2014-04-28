@@ -1,9 +1,9 @@
-@(Pronostico: Pronostico, Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]])
+@(Pronostico: models.Pronostico, Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]])
 
 <h2>@Pronostico.getNombre() de @views.html.Usuario.Usuario(Pronostico.getPropietario())</h2>
 <div class="Punto-Pronostico">@views.html.Punto.LargoTupla(Puntos.get(new Tuple3[Long,Long,Long](Pronostico.getId(),null,null)))</div>
 <div id="Pronostico-"+@Pronostico.getId()>
-@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.quiniela.Pronostico.Porcion(Porcion,true,Puntos,Pronostico.getId())}
+@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,true,Puntos,Pronostico.getId())}
 </div>
 <script>
 @Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"div#Pronostico-"+Pronostico.getId())}

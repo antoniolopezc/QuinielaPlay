@@ -1,4 +1,4 @@
-@(Torneo: Torneo, Resultados: List[Resultado], Lectura: Boolean )
+@(Torneo: models.Torneo, Resultados: List[Resultado], Lectura: Boolean )
 @css = {
 	<link rel="stylesheet" media='screen' href='@routes.Assets.at("stylesheets/ActualizarResultados.css")'>
 }
@@ -9,10 +9,10 @@
 	<script src='@routes.Assets.at("javascripts/ProcesarCambioTiempo.js")' type="text/javascript"></script>	
 }
 @base("Actualizar Resultados ",css,script){
-	@helper.form(action = controllers.torneo.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {
+	@helper.form(action = controllers.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {
 		<div>@Torneo.getNombre()</div>
 		<input type="hidden" name="Id" value="@Torneo.getId()">
-		@Torneo.getPorciones().map{Porcion=>@views.html.torneo.torneo.Porcion(Porcion,Lectura)}
+		@Torneo.getPorciones().map{Porcion=>@views.html.Torneo.Porcion(Porcion,Lectura)}
 		<input type="submit" value="Guardar"></input>
 	}
 	<script>
