@@ -36,10 +36,7 @@ public class Torneo extends Controller {
     	}
     	models.Usuario Usuario = (models.Usuario) ctx().args.get(SecureSocial.USER_KEY);
     	models.Torneo Torneo = models.Torneo.find.byId(id);
-    	List<models.Resultado> Resultados=models.Resultado.find.where()
-				.or(Expr.in("Porcion",Torneo.getPorciones()),
-					Expr.in("Partido",Torneo.getPartidos())).findList();
-    	return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(Torneo.getPropietario().getId()!=Usuario.getId())));
+    	return ok(ActualizarResultados.render(Torneo,new Boolean(Torneo.getPropietario().getId()!=Usuario.getId())));
     }
     /**
      * Guadar los resultados actualizados torneo
@@ -54,7 +51,7 @@ public class Torneo extends Controller {
     										.or(Expr.in("Porcion",Torneo.getPorciones()),
     											Expr.in("Partido",Torneo.getPartidos())).findList();
     	if(Torneo.getPropietario().getId()!=Usuario.Id){
-    		return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(true)));
+    		return ok(ActualizarResultados.render(Torneo,new Boolean(true)));
     	}
     	for(models.Resultado Resultado: Resultados){
     		s=FormaLlena.get(Long.toString(Resultado.getId()));
@@ -107,7 +104,7 @@ public class Torneo extends Controller {
     		for(models.Quiniela Q:Quinielas){
     			Q.calcular();
     		}
-    		return ok(ActualizarResultados.render(Torneo,Resultados,new Boolean(false)));
+    		return ok(ActualizarResultados.render(Torneo,new Boolean(false)));
     	} else 
     		return ok("error");
 
@@ -126,6 +123,6 @@ public class Torneo extends Controller {
     	List<models.Resultado> Resultados=models.Resultado.find.where()
 				.or(Expr.in("Porcion",Torneo.getPorciones()),
 					Expr.in("Partido",Torneo.getPartidos())).findList();
-    	return ok(views.html.Torneo.Torneo.render(Torneo,Resultados,true));
+    	return ok(views.html.Torneo.Torneo.render(Torneo,true));
     }
 }

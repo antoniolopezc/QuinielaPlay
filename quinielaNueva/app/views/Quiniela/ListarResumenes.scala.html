@@ -63,13 +63,12 @@
 		</table>
 	</article>
 	<article id="Resultados">
-	 <div id="Torneo"></div>
+	 @views.html.Torneo.Torneo(Quiniela.getTorneo(),true)
 	</article>	
 </section>
 <script>
 	$(function() {
 		$("#tabs").tabs();
-		$("#Resultados").load("/Torneo/Listar/@Quiniela.Torneo.Id")
 	});
 </script>
 }

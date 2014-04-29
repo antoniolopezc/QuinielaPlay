@@ -1,10 +1,6 @@
-@(Torneo: models.Torneo, Resultados: List[Resultado], Lectura: Boolean )
+@(Torneo: models.Torneo, Lectura: Boolean )
 <div id="Torneo-@Torneo.getId()">
 <div>@Torneo.getNombre()</div>
 <input type="hidden" name="Id" value="@Torneo.getId()">
 @Torneo.getPorciones().map{Porcion=>@views.html.Torneo.Porcion(Porcion,Lectura)}
 </div>
-@* <script>
-@Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultadoTorneo(Resultado,"#Torneo-"+Torneo.getId())}
-</script>
-*@
