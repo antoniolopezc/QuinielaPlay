@@ -4,6 +4,7 @@
 <input type="hidden" name="Id" value="@Torneo.getId()">
 @Torneo.getPorciones().map{Porcion=>@views.html.Torneo.Porcion(Porcion,Lectura)}
 </div>
-<script>
+@* <script>
 @Resultados.map{Resultado=>@views.html.FormatoResultado.InicializarResultadoTorneo(Resultado,"#Torneo-"+Torneo.getId())}
 </script>
+*@

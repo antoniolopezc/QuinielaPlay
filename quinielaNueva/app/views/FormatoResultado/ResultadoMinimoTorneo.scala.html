@@ -1,0 +1,35 @@
+@(Resultado: models.Resultado, Id: Long, Lectura: Boolean=false)	
+
+@tipo(Lectura: Boolean)={
+	@if(Lectura) {readonly}
+}
+@selecionado(Option: Long,Valor: Long)={
+	@if(Option==Valor) {selected}
+}
+
+@Resultado.getDefinicion().getAbreviatura() match {
+	case "GA" => { 
+		<input type="number" class="GA" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura) value="@Resultado.getEntero()">
+		}
+	case "GB" => { 
+		<input type="number" class="GB" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura) value="@Resultado.getEntero()">
+		}
+	case "Paso" => {
+		@if(Resultado.Equipo==null) {
+		<select class="Paso" disabled name="@Resultado.getId()" >
+			<option selected disabled hidden value=""></option>
+			<option value="@Resultado.getPartido().getEquipoA().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
+			<option value="@Resultado.getPartido().getEquipoB().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
+		</select>
+		<input type="hidden" name="@Resultado.getId()" >	
+		} else {
+		<select class="Paso" disabled name="@Resultado.getId()" >
+			<option value="@Resultado.getPartido().getEquipoA().getId()"
+					@selecionado(Resultado.getPartido().getEquipoA().getId(),Resultado.getEquipo().getId())>@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
+			<option value="@Resultado.getPartido().getEquipoB().getId()"
+					@selecionado(Resultado.getPartido().getEquipoB().getId(),Resultado.getEquipo().getId())>@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
+		</select>
+		<input type="hidden" name="@Resultado.getId()" value="@Resultado.getEquipo()" >	
+		}
+		}
+}

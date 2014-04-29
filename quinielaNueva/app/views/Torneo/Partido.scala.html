@@ -8,7 +8,7 @@
 	@for(Resultado <- Partido.getResultados()){
 		<script type="text/javascript">P.AgregarResultado(@Resultado.getId() , "@Resultado.getDefinicion().getAbreviatura()");</script>
 		<td class="Partido-Resultado">
-		@views.html.FormatoResultado.ResultadoMinimo(Resultado,Id,Lectura||Partido.getTiempoActual()==models.Partido.Tiempo.Final)
+		@views.html.FormatoResultado.ResultadoMinimoTorneo(Resultado,Id,Lectura||Partido.getTiempoActual()==models.Partido.Tiempo.Final)
 		</td>
     }
     <td class="Partido-Tiempo">@views.html.Partido.SelecionarTiempo(Partido,Lectura||Partido.getTiempoActual()==models.Partido.Tiempo.Final)</td>
