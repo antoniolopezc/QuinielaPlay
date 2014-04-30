@@ -10,9 +10,15 @@
 @Resultado.getDefinicion().getAbreviatura() match {
 	case "GA" => { 
 		<input type="number" class="GA" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura) value="@Resultado.getEntero()">
+		@if(Resultado.getEntero()!=null) {
+			<script>Porciones[@Id].ActualizarPartido(Porciones[@Id].Partidos[@Resultado.getPartido().getId()],"A",@Resultado.getEntero());</script>
+		}
 		}
 	case "GB" => { 
 		<input type="number" class="GB" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura) value="@Resultado.getEntero()">
+		@if(Resultado.getEntero()!=null) {
+			<script>Porciones[@Id].ActualizarPartido(Porciones[@Id].Partidos[@Resultado.getPartido().getId()],"B",@Resultado.getEntero());</script>
+		}
 		}
 	case "Paso" => {
 		@if(Resultado.Equipo==null) {
@@ -29,7 +35,7 @@
 			<option value="@Resultado.getPartido().getEquipoB().getId()"
 					@selecionado(Resultado.getPartido().getEquipoB().getId(),Resultado.getEquipo().getId())>@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
 		</select>
-		<input type="hidden" name="@Resultado.getId()" value="@Resultado.getEquipo()" >	
+		<input type="hidden" name="@Resultado.getId()" value="@Resultado.getEquipo().getId()" >	
 		}
 		}
 }

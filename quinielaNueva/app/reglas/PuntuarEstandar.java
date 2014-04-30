@@ -96,14 +96,14 @@ public class PuntuarEstandar extends ReglaBase {
 		if(Punto.getResultado()!=null) {
 			Resultado R=Punto.getResultado();
 			P=RPronostico.get(R.getId());
-			B&=((R.getEntero()!=null&&R.getEntero()==P.getEntero())||
-			    (R.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
+			B&=((R.getEntero()!=null&&P.getEntero()!=null&&R.getEntero()==P.getEntero())||
+			    (R.getEquipo()!=null&&P.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
 			TE=R.getEstado();	
 		} else if(Punto.getPartido()!=null) {
 			for(Resultado R:Punto.getPartido().getResultados()) {
 				P=RPronostico.get(R.getId());
-				B&=((R.getEntero()!=null&&R.getEntero()==P.getEntero())||
-				    (R.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
+				B&=((R.getEntero()!=null&&P.getEntero()!=null&&R.getEntero()==P.getEntero())||
+				    (R.getEquipo()!=null&&P.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
 				if(R.getEstado()!=TipoEstado.Final){
 					TE=R.getEstado();
 				}
@@ -111,8 +111,8 @@ public class PuntuarEstandar extends ReglaBase {
 		} else { //Porcion no puede ser nula
 			for(Resultado R:Punto.getPorcion().getResultados()) {
 				P=RPronostico.get(R.getId());
-				B&=((R.getEntero()!=null&&R.getEntero()==P.getEntero())||
-				    (R.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
+				B&=((R.getEntero()!=null&&P.getEntero()!=null&&R.getEntero()==P.getEntero())||
+				    (R.getEquipo()!=null&&P.getEquipo()!=null&&R.getEquipo().getId()==P.getEquipo().getId()));
 				if(R.getEstado()!=TipoEstado.Final){
 					TE=R.getEstado();
 				}
