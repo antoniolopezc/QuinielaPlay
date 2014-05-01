@@ -258,7 +258,7 @@
              Nombre: Francia
              NombreCorto: Francia
              Abreviatura: FRA
-             Bandera: "images/Banderas/Flag_of_Francia.svg.png"
+             Bandera: "images/Banderas/Flag_of_France.svg.png"
              caculable: false
         
         - &GHA !!models.Equipo
