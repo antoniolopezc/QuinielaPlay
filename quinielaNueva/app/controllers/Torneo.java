@@ -120,9 +120,6 @@ public class Torneo extends Controller {
 	}
     public static Result Listar(Long id) {
     	models.Torneo Torneo = models.Torneo.find.byId(id);
-    	List<models.Resultado> Resultados=models.Resultado.find.where()
-				.or(Expr.in("Porcion",Torneo.getPorciones()),
-					Expr.in("Partido",Torneo.getPartidos())).findList();
     	return ok(views.html.Torneo.Torneo.render(Torneo,true));
     }
 }

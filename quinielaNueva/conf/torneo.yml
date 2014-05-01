@@ -146,192 +146,224 @@
              Nombre: Alemania
              NombreCorto: Alemania
              Abreviatura: ALE
+             Bandera: "images/Banderas/Flag_of_Germany.svg.png"
              caculable: false
         
         - &ARL !!models.Equipo
              Nombre: Argelia
              NombreCorto: Argelia
              Abreviatura: ARL
+             Bandera: "images/Banderas/Flag_of_Algeria.svg.png"
              caculable: false
         
         - &ARG !!models.Equipo
              Nombre: Argentina
              NombreCorto: Argentina
              Abreviatura: ARG
+             Bandera: "images/Banderas/Flag_of_Argentina.svg.png"
              caculable: false
         
         - &AUS !!models.Equipo
              Nombre: Australia
              NombreCorto: Australia
              Abreviatura: AUS
+             Bandera: "images/Banderas/Flag_of_Australia.svg.png"
              caculable: false
         
         - &BEL !!models.Equipo
              Nombre: Bélgica
              NombreCorto: Bélgica
              Abreviatura: BEL
+             Bandera: "images/Banderas/Flag_of_Belgium.svg.png"
              caculable: false
         
         - &BOS !!models.Equipo
              Nombre: Bosnia y Herzegovina
              NombreCorto: Bosnia
              Abreviatura: BOS
+             Bandera: "images/Banderas/Flag_of_Bosnia_and_Herzegovina.svg.png"
              caculable: false
         
         - &BRA !!models.Equipo
              Nombre: Brasil
              NombreCorto: Brasil
              Abreviatura: BRA
+             Bandera: "images/Banderas/Flag_of_Brazil.svg.png"
              caculable: false
         
         - &CAM !!models.Equipo
              Nombre: Camerún
              NombreCorto: Camerún
              Abreviatura: CAM
+             Bandera: "images/Banderas/Flag_of_Cameroon.svg.png"
              caculable: false
         
         - &CHI !!models.Equipo
              Nombre: Chile
              NombreCorto: Chile
              Abreviatura: CHI
+             Bandera: "images/Banderas/Flag_of_Chile.svg.png"
              caculable: false
         
         - &COL !!models.Equipo
              Nombre: Colombia
              NombreCorto: Colombia
              Abreviatura: COL
+             Bandera: "images/Banderas/Flag_of_Colombia.svg.png"
              caculable: false
         
         - &CMA !!models.Equipo
              Nombre: Costa de Marfil
              NombreCorto: Cta Marfil
              Abreviatura: CMA
+             Bandera: "images/Banderas/Flag_of_Cote_d'Ivoire.svg.png"
              caculable: false
         
         - &CTR !!models.Equipo
              Nombre: Costa Rica
              NombreCorto: Cta Rica
              Abreviatura: CTR
+             Bandera: "images/Banderas/Flag_of_Costa_Rica.svg.png"
              caculable: false
         
         - &CRO !!models.Equipo
              Nombre: Croacia
              NombreCorto: Croacia
              Abreviatura: CRO
+             Bandera: "images/Banderas/Flag_of_Croatia.svg.png"
              caculable: false
         
         - &ECU !!models.Equipo
              Nombre: Ecuador
              NombreCorto: Ecuador
              Abreviatura: ECU
+             Bandera: "images/Banderas/Flag_of_Ecuador.svg.png"
              caculable: false
         
         - &USA !!models.Equipo
              Nombre: EEUU
              NombreCorto: EEUU
              Abreviatura: USA
+             Bandera: "images/Banderas/Flag_of_the_United_States.svg.png"
              caculable: false
         
         - &ESP !!models.Equipo
              Nombre: España
              NombreCorto: España
              Abreviatura: ESP
+             Bandera: "images/Banderas/Flag_of_Spain.svg.png"
              caculable: false
         
         - &FRA !!models.Equipo
              Nombre: Francia
              NombreCorto: Francia
              Abreviatura: FRA
+             Bandera: "images/Banderas/Flag_of_Francia.svg.png"
              caculable: false
         
         - &GHA !!models.Equipo
              Nombre: Ghana
              NombreCorto: Ghana
              Abreviatura: GHA
+             Bandera: "images/Banderas/Flag_of_Ghana.svg.png"
              caculable: false
         
         - &GRE !!models.Equipo
              Nombre: Grecia
              NombreCorto: Grecia
              Abreviatura: GRE
+             Bandera: "images/Banderas/Flag_of_Greece.svg.png"
              caculable: false
         
         - &HOL !!models.Equipo
              Nombre: Holanda
              NombreCorto: Holanda
              Abreviatura: HOL
+             Bandera: "images/Banderas/Flag_of_the_Netherlands.svg.png"
              caculable: false
         
         - &HON !!models.Equipo
              Nombre: Honduras
              NombreCorto: Honduras
              Abreviatura: HON
+             Bandera: "images/Banderas/Flag_of_Honduras.svg.png"
              caculable: false
         
         - &ING !!models.Equipo
              Nombre: Inglaterra
              NombreCorto: Inglaterra
              Abreviatura: ING
+             Bandera: "images/Banderas/Flag_of_the_United_Kingdom.svg.png"
              caculable: false
         
         - &IRA !!models.Equipo
              Nombre: Irán
              NombreCorto: Irán
              Abreviatura: IRA
+             Bandera: "images/Banderas/Flag_of_Iran.svg.png"
              caculable: false
         
         - &ITA !!models.Equipo
              Nombre: Italia
              NombreCorto: Italia
              Abreviatura: ITA
+             Bandera: "images/Banderas/Flag_of_Italy.svg.png"
              caculable: false
         
         - &JAP !!models.Equipo
              Nombre: Japón
              NombreCorto: Japón
              Abreviatura: JAP
+             Bandera: "images/Banderas/Flag_of_Japan.svg.png"
              caculable: false
         
         - &MEX !!models.Equipo
              Nombre: México
              NombreCorto: México
              Abreviatura: MÉX
+             Bandera: "images/Banderas/Flag_of_Mexico.svg.png"
              caculable: false
         
         - &NIG !!models.Equipo
              Nombre: Nigeria
              NombreCorto: Nigeria
              Abreviatura: NIG
+             Bandera: "images/Banderas/Flag_of_Nigeria.svg.png"
              caculable: false
         
         - &POR !!models.Equipo
              Nombre: Portugal
              NombreCorto: Portugal
              Abreviatura: POR
+             Bandera: "images/Banderas/Flag_of_Portugal.svg.png"
              caculable: false
         
         - &COR !!models.Equipo
-             Nombre: República de Corea
+             Nombre: Rep. de Corea del Sur
              NombreCorto: Corea
              Abreviatura: COR
+             Bandera: "images/Banderas/Flag_of_South_Korea.svg.png"
              caculable: false
         
         - &RUS !!models.Equipo
              Nombre: Rusia
              NombreCorto: Rusia
              Abreviatura: RUS
+             Bandera: "images/Banderas/Flag_of_Russia.svg.png"
              caculable: false
         
         - &SUI !!models.Equipo
              Nombre: Suiza
              NombreCorto: Suiza
              Abreviatura: SUI
+             Bandera: "images/Banderas/Flag_of_Switzerland.svg.png"
              caculable: false
         
         - &URU !!models.Equipo
              Nombre: Uruguay
              NombreCorto: Uruguay
              Abreviatura: URU
+             Bandera: "images/Banderas/Flag_of_Uruguay.svg.png"
              caculable: false
              
         - &1A !!models.Equipo

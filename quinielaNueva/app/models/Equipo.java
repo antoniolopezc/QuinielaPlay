@@ -29,12 +29,10 @@ public class Equipo extends Model {
 	public String Abreviatura;
 	
 	boolean caculable;
+		
+	public String Escudo;
 	
-	@Lob
-	byte[] Escudo;
-	
-	@Lob
-	byte[] Bandera;
+	public String Bandera;
 	
 	@ManyToOne
 	Equipo Final;
@@ -75,19 +73,19 @@ public class Equipo extends Model {
 		Abreviatura = abreviatura;
 	}
 
-	public byte[] getEscudo() {
+	public String getEscudo() {
 		return Escudo;
 	}
 
-	public void setEscudo(byte[] escudo) {
+	public void setEscudo(String escudo) {
 		Escudo = escudo;
 	}
 
-	public byte[] getBandera() {
+	public String getBandera() {
 		return Bandera;
 	}
 
-	public void setBandera(byte[] bandera) {
+	public void setBandera(String bandera) {
 		Bandera = bandera;
 	}
 
