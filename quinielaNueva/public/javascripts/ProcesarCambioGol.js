@@ -42,7 +42,7 @@ function ActualizaPorcion(Porcion, destino){
 	destino.empty();
 	for( i=1;i<=4;i++){
 		Actual=Porcion.Posiciones[i];
-		Equipo ='<input class="Resumen-Equipo" type="text" readonly value='+Actual.Equipo+'>';
+		Equipo ='<input class="Resumen-Equipo" type="text" readonly value="'+Actual.Equipo+'">';
 		Equipo +='<input class="Resumen-Equipo" type="hidden"  name="'+Porcion.Resultados[i].Id+'" value='+Actual.EquipoId+'>';
 			
 		fila=$("<tr>");
