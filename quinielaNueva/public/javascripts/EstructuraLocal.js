@@ -52,9 +52,10 @@ function Partido(Id,EquipoA,EquipoB){
     
 }
 
-function Equipo(Equipo,EquipoId,C) {
+function Equipo(Equipo,EquipoId,C,Bandera) {
 	  this.Clasificacion = C;
 	  this.Equipo=Equipo;
+	  this.Bandera=Bandera;
 	  this.EquipoId=EquipoId;
 	  this.jg=0;
 	  this.je=0;
@@ -108,14 +109,14 @@ function Porcion(Id){
     this.AgregarResultado= function(Id,Definicion) {
     	this.Resultados[Definicion]=new Resultado(Id,Definicion);
     }
-    this.AgregarPartido= function(P,EquipoA,EquipoB) {
+    this.AgregarPartido= function(P,EquipoA,EquipoB,BanderaA,BanderaB) {
     	this.Partidos[P.Id]=P;
     	if(this.Equipos[P.EquipoA]==null) {
-    		this.Equipos[P.EquipoA]=new Equipo(EquipoA,P.EquipoA,++this.NEquipos);
+    		this.Equipos[P.EquipoA]=new Equipo(EquipoA,P.EquipoA,++this.NEquipos,BanderaA);
     		this.Posiciones[this.NEquipos]=this.Equipos[P.EquipoA];
     	}
     	if(this.Equipos[P.EquipoB]==null) {
-    		this.Equipos[P.EquipoB]=new Equipo(EquipoB,P.EquipoB,++this.NEquipos);
+    		this.Equipos[P.EquipoB]=new Equipo(EquipoB,P.EquipoB,++this.NEquipos,BanderaB);
     		this.Posiciones[this.NEquipos]=this.Equipos[P.EquipoB];
     	}
     }

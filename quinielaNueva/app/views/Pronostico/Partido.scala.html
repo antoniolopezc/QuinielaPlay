@@ -1,8 +1,7 @@
 @(Partido: Partido, Id: Long, Lectura: Boolean=false,Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]]=null,PronosticoId: Long=null,PorcionId: Long=null)
-
-
 <tr id="Partido-@Partido.getId()" class="Partido" >
 	<script type="text/javascript">var P=new Partido(@Partido.getId(),@Partido.getEquipoA().getId(),@Partido.getEquipoB().getId());</script>
+	<script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()","@routes.Assets.at(Partido.getEquipoA().getBandera())","@routes.Assets.at(Partido.getEquipoB().getBandera())");</script>
 	<td class="Partido-Id">@Partido.getNombreCorto()</td>
 	<td class="Partido-Fecha">@Partido.getFecha().format("dd/MM hh:mm a")</td>
 	<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.getEquipoA())</td>
@@ -18,5 +17,4 @@
 		 @defining(Puntos.get(new Tuple3[Long,Long,Long](PronosticoId,PorcionId,Partido.getId()))){P =>@if(P!=null) {@{P._1}(@P._2)/@{P._3}(@P._4)}}
 	</td>
     }
-    <script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()");</script>
 </tr>

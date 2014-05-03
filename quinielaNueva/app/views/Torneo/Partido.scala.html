@@ -1,7 +1,7 @@
 @(Partido: Partido, Id: Long, Lectura: Boolean=false)
 <tr id="Partido-@Partido.getId()" class="Partido" >
 	<script type="text/javascript">var P=new Partido(@Partido.getId(),@Partido.getEquipoA().getId(),@Partido.getEquipoB().getId());</script>
-    <script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()");</script>
+	<script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()","@routes.Assets.at(Partido.getEquipoA().getBandera())","@routes.Assets.at(Partido.getEquipoB().getBandera())");</script>
 	<td class="Partido-Id">@Partido.getNombreCorto()</td>
 	<td class="Partido-Fecha">@Partido.getFecha().format("dd/MM hh:mm a")</td>
 	<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.getEquipoA())</td>
@@ -13,5 +13,4 @@
 		</td>
     }
     <td class="Partido-Tiempo">@views.html.Partido.SelecionarTiempo(Partido,Lectura||Partido.getTiempoActual()==models.Partido.Tiempo.Final)</td>
-
 </tr>

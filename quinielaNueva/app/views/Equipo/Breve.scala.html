@@ -1,5 +1,4 @@
 @(Equipo: Equipo)
 @if(Equipo.getFinal()!= null){@views.html.Equipo.Breve(Equipo.getFinal())}else{
-	@if(Equipo.getBandera()!= null){<img class="Bandera" src=@routes.Assets.at(Equipo.getBandera()) height="20" width="30" >}
-	@Equipo.getNombreCorto()
+	@if(Equipo.getBandera()!= null){<img class="Bandera" src=@routes.Assets.at(Equipo.getBandera()) height="20" width="30" >}@Equipo.getNombreCorto()
 }
