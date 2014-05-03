@@ -14,7 +14,7 @@
 		<input type="hidden" name="Id" value="@Pronostico.getId()">
 		<input type="hidden" name="Quiniela" value="@Pronostico.getQuiniela().getId()">
 		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,false)}
-		<input type="submit" value="Guardar"></input>
+		<input class="Guardar" type="submit" value="Guardar"></input>
 		<script>
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
 		</script>

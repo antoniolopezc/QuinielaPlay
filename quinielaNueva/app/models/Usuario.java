@@ -19,7 +19,7 @@ import securesocial.core.PasswordInfo;
 
 /**
  * @author alopez1
- * Contiene los equipos que participan en un torneo
+ * Contiene los Usuario que se Logearon a traves de Facebook o Google
  */
 @Entity
 public class Usuario extends Model implements Identity {
@@ -45,19 +45,17 @@ public class Usuario extends Model implements Identity {
 
 	@Override
 	public AuthenticationMethod authMethod() {
-		// TODO Auto-generated method stub
+		// No voy a tener usuarios propios
 		return null;
 	}
 
 	@Override
 	public Option<String> avatarUrl() {
-		// TODO Auto-generated method stub
 		return Scala.Option(Avatar);
 	}
 
 	@Override
 	public Option<String> email() {
-		// TODO Auto-generated method stub
 		return Scala.Option(email);
 	}
 
@@ -69,7 +67,6 @@ public class Usuario extends Model implements Identity {
 
 	@Override
 	public String fullName() {
-		// TODO Auto-generated method stub
 		return nombre;
 	}
 
@@ -87,19 +84,19 @@ public class Usuario extends Model implements Identity {
 
 	@Override
 	public Option<OAuth1Info> oAuth1Info() {
-		// TODO Auto-generated method stub
+		// No voy a tener usuarios propios
 		return null;
 	}
 
 	@Override
 	public Option<OAuth2Info> oAuth2Info() {
-		// TODO Auto-generated method stub
+		// No voy a tener usuarios propios
 		return null;
 	}
 
 	@Override
 	public Option<PasswordInfo> passwordInfo() {
-		// No uso password interno
+		// No voy a tener usuarios propios
 		return null;
 	}
 
@@ -134,6 +131,4 @@ public class Usuario extends Model implements Identity {
 	public void setAvatar(String avatar) {
 		Avatar = avatar;
 	}
-
-	
 }

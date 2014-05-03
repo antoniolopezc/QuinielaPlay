@@ -10,6 +10,6 @@
 @base("Actualizar Resultados ",css,script){
 	@helper.form(action = controllers.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {
 	@views.html.Torneo.Torneo(Torneo,Lectura)
-	<input type="submit" value="Guardar"></input>
+	<input class="Guardar" type="submit" value="Guardar"></input>
 	}
 }
