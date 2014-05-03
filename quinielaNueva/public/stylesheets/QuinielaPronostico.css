@@ -1,5 +1,26 @@
-
-
 .GA , .GB {
 	width:3em;
+}
+
+.Guardar {
+	position:fixed;
+	left:750px;
+	top:110px;
+}
+
+img {
+	border:1px solid black;
+	margin:0px 1px 0px 1px;
+}
+
+table.Porciones {
+	margin:2ex 0px 0px 0px;
+}
+
+table.Porciones{
+	text-align:center;
+}
+
+td.Resumen-Celda-EQUIPOS {
+	text-align:left;
 }

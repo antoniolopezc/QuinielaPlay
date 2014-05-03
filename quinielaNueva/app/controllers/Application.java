@@ -3,7 +3,6 @@
  * Pagina de Logeo unicamente
  * TODO: Actualizar en JAvaScript Quien Pasa Tanto en Torneo Como en Pronostico
  * TODO: Formato de los Puntos en Pronostico
- * TODO: Poner Flotante el Boton Guardar para que siempre Aparezca
  * TODO: Refactorizar JAvascript que aparece en las hojas.
  * 
  */
