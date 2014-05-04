@@ -44,8 +44,8 @@ function ActualizaPorcion(Porcion, destino){
 		Actual=Porcion.Posiciones[i];
 		Equipo ='<img class="Bandera" src="'+Actual.Bandera+'" height="20" width="30" >';
 		Equipo +=Actual.Equipo;
+		CambioTiempo(String.fromCharCode('A'.charCodeAt(0)+Porcion.Id-1),i,Equipo);
 		Equipo +='<input class="Resumen-Equipo" type="hidden"  name="'+Porcion.Resultados[i].Id+'" value='+Actual.EquipoId+'>';
-			
 		fila=$("<tr>");
 		fila.append('<td class="Resumen-Celda-Clasificacion">'+Actual.Clasificacion+'</td>');
 		fila.append('<td class="Resumen-Celda-EQUIPOS">'+Equipo+'</td>');
@@ -58,5 +58,6 @@ function ActualizaPorcion(Porcion, destino){
 		fila.append('<td class="Resumen-Celda-GD">'+Actual.gd()+'</td>');
 		fila.append('<td class="Resumen-Celda-Pts">'+Actual.Pts()+'</td>');
 		destino.append(fila);
+		
 	};
 };
