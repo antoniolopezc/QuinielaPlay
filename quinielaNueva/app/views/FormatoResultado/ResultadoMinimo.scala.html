@@ -12,7 +12,7 @@
 		<input type="number" class="GB" name="@Resultado.getId()" min="0" onchange="CambioGol(@Id,@Resultado.getPartido().getId(),this)" @tipo(Lectura)>
 		}
 	case "Paso" => {
-		<select class="Paso" disabled name="@Resultado.getId()" >
+		<select class="Paso" disabled name="@Resultado.getId()" onchange="CambioSelect(this,@Resultado.getPartido().getId())" >
 			<option selected disabled hidden value=""></option>
 			<option value="@Resultado.getPartido().getEquipoA().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
 			<option value="@Resultado.getPartido().getEquipoB().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>

@@ -29,7 +29,12 @@ function ActualizaPasa(Partido){
 
 	$('[name="'+Partido.Resultados.Paso.Id+'"]').val((Q==-1?"":Q));
 	$('select[name="'+Partido.Resultados.Paso.Id+'"]').prop( "disabled", Q!=-1 );
-	
+	if(Q==-1||Q==null) {
+		var Nuevo="Gan "+Partido.Id;
+	} else {
+		var Nuevo=$('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value="'+Q+'"]').html()
+	}
+	PasaPartido(Partido.Id,Nuevo);
 };
 
 function ActualizaPorcion(Porcion, destino){
@@ -44,7 +49,7 @@ function ActualizaPorcion(Porcion, destino){
 		Actual=Porcion.Posiciones[i];
 		Equipo ='<img class="Bandera" src="'+Actual.Bandera+'" height="20" width="30" >';
 		Equipo +=Actual.Equipo;
-		CambioTiempo(String.fromCharCode('A'.charCodeAt(0)+Porcion.Id-1),i,Equipo);
+		CambioGrupo(String.fromCharCode('A'.charCodeAt(0)+Porcion.Id-1),i,Equipo);
 		Equipo +='<input class="Resumen-Equipo" type="hidden"  name="'+Porcion.Resultados[i].Id+'" value='+Actual.EquipoId+'>';
 		fila=$("<tr>");
 		fila.append('<td class="Resumen-Celda-Clasificacion">'+Actual.Clasificacion+'</td>');
