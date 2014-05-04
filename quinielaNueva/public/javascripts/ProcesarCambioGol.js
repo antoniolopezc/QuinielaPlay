@@ -26,15 +26,19 @@ function CambioGol(Po,Pa,t){
 
 function ActualizaPasa(Partido){
 	var Q=Partido.QuienGana();
-
+	var Nuevo;
+	var Pierde;
 	$('[name="'+Partido.Resultados.Paso.Id+'"]').val((Q==-1?"":Q));
 	$('select[name="'+Partido.Resultados.Paso.Id+'"]').prop( "disabled", Q!=-1 );
 	if(Q==-1||Q==null) {
-		var Nuevo="Gan "+Partido.Id;
+		Nuevo="Gan "+Partido.Id;
+		Pierde="PER "+Partido.Id;
 	} else {
-		var Nuevo=$('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value="'+Q+'"]').html()
+		Nuevo=$('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value="'+Q+'"]').html()
+		Pierde=$('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value!="'+Q+'"][value!=""]').html()
 	}
 	PasaPartido(Partido.Id,Nuevo);
+	PierdePartido(Partido.Id,Pierde);
 };
 
 function ActualizaPorcion(Porcion, destino){

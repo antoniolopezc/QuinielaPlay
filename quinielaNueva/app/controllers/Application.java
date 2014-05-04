@@ -1,7 +1,7 @@
 /**
  * @author alopez1
  * Pagina de Logeo unicamente
- * TODO: Actualizar en JAvaScript Quien Pasa Tanto en Torneo y El caso de PER en ambos
+ * TODO: Actualizar en JavaScript Quien Pasa en Torneo basado en lo hecho en pronostico
  * TODO: Formato de los Puntos en Pronostico
  * TODO: Refactorizar JAvascript que aparece en las hojas.
  * 
