@@ -23,11 +23,15 @@ function PierdePartido(Partido,Nuevo) {
 
 function CambioSelect(Aqui,Partido) 
 {
-	var Nuevo=Aqui.options[Aqui.selectedIndex].innerHTML;
-	PasaPartido(Partido,Nuevo);
-	if(Aqui.selectedIndex==1) 
-		Nuevo=Aqui.options[2].innerHTML;
-	else 
-		Nuevo=Aqui.options[1].innerHTML;
-	PierdePartido(Partido,Nuevo)
+	var Gana;
+	var Pierde;
+	if(Aqui.selectedIndex==1) { 
+		Gana = $(Aqui).parent().prevAll(".Partido-EquipoA").html();
+	 	Pierde= $(Aqui).parent().prevAll(".Partido-EquipoB").html();
+	} else { 
+		Gana = $(Aqui).parent().prevAll(".Partido-EquipoB").html();
+ 		Pierde= $(Aqui).parent().prevAll(".Partido-EquipoA").html();
+	}
+	PasaPartido(Partido,Gana);
+	PierdePartido(Partido,Pierde)
 }

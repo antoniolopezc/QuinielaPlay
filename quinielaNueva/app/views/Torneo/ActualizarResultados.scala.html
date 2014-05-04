@@ -3,7 +3,8 @@
 @script= {
 	<script src='@routes.Assets.at("javascripts/EstructuraLocal.js")' type="text/javascript"></script>
 	<script src='@routes.Assets.at("javascripts/ProcesarCambioGol.js")' type="text/javascript"></script>
-	<script src='@routes.Assets.at("javascripts/ProcesarCambioTiempo.js")' type="text/javascript"></script>	
+	<script src='@routes.Assets.at("javascripts/ProcesarCambioTiempo.js")' type="text/javascript"></script>
+	<script src='@routes.Assets.at("javascripts/ProcesarQuienPasa.js")' type="text/javascript"></script>
 }
 @base("Actualizar Resultados ",css,script){
 	@helper.form(action = controllers.routes.Torneo.GuadarResultados(),'class -> "ui-widget ui-widget-content ui-corner-all") {

@@ -4,8 +4,8 @@
 	<script type="text/javascript">Porciones[@Id].AgregarPartido(P,"@Partido.getEquipoA().getNombreCorto()","@Partido.getEquipoB().getNombreCorto()","@routes.Assets.at(Partido.getEquipoA().getBandera())","@routes.Assets.at(Partido.getEquipoB().getBandera())");</script>
 	<td class="Partido-Id">@Partido.getNombreCorto()</td>
 	<td class="Partido-Fecha">@Partido.getFecha().format("dd/MM hh:mm a")</td>
-	<td class="Partido-EquipoA" original="@Partido.getEquipoA().getAbreviatura()">@views.html.Equipo.Breve(Partido.getEquipoA())</td>
-	<td class="Partido-EquipoB" original="@Partido.getEquipoB().getAbreviatura()">@views.html.Equipo.Breve(Partido.getEquipoB())</td>
+	<td class="Partido-EquipoA" original="@views.html.Equipo.Abreviatura(Partido.getEquipoA())">@views.html.Equipo.Breve(Partido.getEquipoA())</td>
+	<td class="Partido-EquipoB" original="@views.html.Equipo.Abreviatura(Partido.getEquipoB())">@views.html.Equipo.Breve(Partido.getEquipoB())</td>
 	@for(Resultado <- Partido.getResultados()){
 		<script type="text/javascript">P.AgregarResultado(@Resultado.getId() , "@Resultado.getDefinicion().getAbreviatura()");</script>
 		<td class="Partido-Resultado">

@@ -24,15 +24,15 @@
 		@if(Resultado.Equipo==null) {
 		<select class="Paso" disabled name="@Resultado.getId()" >
 			<option selected disabled hidden value=""></option>
-			<option value="@Resultado.getPartido().getEquipoA().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
-			<option value="@Resultado.getPartido().getEquipoB().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
+			<option value="@Resultado.getPartido().getEquipoA().getId()" original="@views.html.Equipo.Abreviatura(Resultado.getPartido().getEquipoA())">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
+			<option value="@Resultado.getPartido().getEquipoB().getId()" original="@views.html.Equipo.Abreviatura(Resultado.getPartido().getEquipoB())">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
 		</select>
 		<input type="hidden" name="@Resultado.getId()" >	
 		} else {
 		<select class="Paso" disabled name="@Resultado.getId()" >
-			<option value="@Resultado.getPartido().getEquipoA().getId()"
+			<option value="@Resultado.getPartido().getEquipoA().getId()" original="@views.html.Equipo.Abreviatura(Resultado.getPartido().getEquipoA())"
 					@selecionado(Resultado.getPartido().getEquipoA().getId(),Resultado.getEquipo().getId())>@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
-			<option value="@Resultado.getPartido().getEquipoB().getId()"
+			<option value="@Resultado.getPartido().getEquipoB().getId()" original="@views.html.Equipo.Abreviatura(Resultado.getPartido().getEquipoB())"
 					@selecionado(Resultado.getPartido().getEquipoB().getId(),Resultado.getEquipo().getId())>@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
 		</select>
 		<input type="hidden" name="@Resultado.getId()" value="@Resultado.getEquipo().getId()" >	
