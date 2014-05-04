@@ -14,8 +14,8 @@
 	case "Paso" => {
 		<select class="Paso" disabled name="@Resultado.getId()" onchange="CambioSelect(this,@Resultado.getPartido().getId())" >
 			<option selected disabled hidden value=""></option>
-			<option value="@Resultado.getPartido().getEquipoA().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
-			<option value="@Resultado.getPartido().getEquipoB().getId()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
+			<option value="@Resultado.getPartido().getEquipoA().getId()" original="@Resultado.getPartido().getEquipoA().getAbreviatura()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoA())</option>
+			<option value="@Resultado.getPartido().getEquipoB().getId()" original="@Resultado.getPartido().getEquipoB().getAbreviatura()">@views.html.Equipo.Breve(Resultado.getPartido().getEquipoB())</option>
 		</select>
 		<input type="hidden" name="@Resultado.getId()" >	
 		}

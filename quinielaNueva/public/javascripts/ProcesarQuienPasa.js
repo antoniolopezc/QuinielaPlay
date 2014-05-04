@@ -9,31 +9,16 @@ $(".GA").change({Partido:P},CambioGol);
 
 
 function CambioGrupo(Grupo,Puesto,Nuevo){
-	// Caso EquipoA 
-	$('script:contains(P,"'+Puesto+Grupo+'") ~td.Partido-EquipoA').empty().html(Nuevo);
-	$('script:contains(P,"'+Puesto+Grupo+'") ~td.Partido-Resultado > select > option:nth-child(2)').empty().html(Nuevo);
-	// Caso EquipoB 
-	$('script:contains(\'","'+Puesto+Grupo+'"\') ~td.Partido-EquipoB').empty().html(Nuevo);
-	$('script:contains(\'","'+Puesto+Grupo+'"\') ~td.Partido-Resultado > select > option:nth-child(3)').empty().html(Nuevo);
-	
+	$('[original="'+Puesto+Grupo+'"]').empty().html(Nuevo);
 }
 
 function PasaPartido(Partido,Nuevo) {
-	// Caso EquipoA  
-	$('script:contains(P,"Gan '+Partido+'") ~td.Partido-EquipoA').empty().html(Nuevo);
-	$('script:contains(P,"Gan '+Partido+'") ~td.Partido-Resultado > select > option:nth-child(2)').empty().html(Nuevo);
-	// Caso EquipoB 
-	$('script:contains(\'","Gan '+Partido+'"\') ~td.Partido-EquipoB').empty().html(Nuevo);
-	$('script:contains(\'","Gan '+Partido+'"\') ~td.Partido-Resultado > select > option:nth-child(3)').empty().html(Nuevo);
+	$('[original="G'+Partido+'"]').empty().html(Nuevo);
 }
 
 function PierdePartido(Partido,Nuevo) {
 // Caso EquipoA  
-$('script:contains(P,"PER '+Partido+'") ~td.Partido-EquipoA').empty().html(Nuevo);
-$('script:contains(P,"PER '+Partido+'") ~td.Partido-Resultado > select > option:nth-child(2)').empty().html(Nuevo);
-// Caso EquipoB 
-$('script:contains(\'","PER '+Partido+'"\') ~td.Partido-EquipoB').empty().html(Nuevo);
-$('script:contains(\'","PER '+Partido+'"\') ~td.Partido-Resultado > select > option:nth-child(3)').empty().html(Nuevo);
+	$('[original="P'+Partido+'"]').empty().html(Nuevo);
 }
 
 function CambioSelect(Aqui,Partido) 
