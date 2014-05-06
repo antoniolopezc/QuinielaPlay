@@ -5,19 +5,32 @@
 	<script src='@routes.Assets.at("javascripts/ProcesarCambioGol.js")' type="text/javascript"></script>
 	<script src='@routes.Assets.at("javascripts/Inicializar.js")' type="text/javascript"></script>
 	<script src='@routes.Assets.at("javascripts/ProcesarQuienPasa.js")' type="text/javascript"></script>
+	<script src='@routes.Assets.at("javascripts/GuardarMensaje.js")' type="text/javascript"></script>
 }
 
 @base("Agregar Pronostico ",css,script){
-	@helper.form(action = controllers.routes.Pronostico.guardar(),'class -> "ui-widget ui-widget-content ui-corner-all") {
+	<form action="" class="ui-widget ui-widget-content ui-corner-all">
 		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre" value="@Pronostico.getNombre()">
 		<input type="hidden" name="Id" value="@Pronostico.getId()">
 		<input type="hidden" name="Quiniela" value="@Pronostico.getQuiniela().getId()">
 		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,false)}
 		<input class="Guardar" type="submit" value="Guardar"></input>
-		<script>
+		<div id="Mensaje"></div>
+		<script type="text/javascript">
+		
+	$("#Mensaje").dialog({
+	autoOpen : false,
+	buttons : [ {
+		text : "Ok",
+		click : function() {
+			$(this).dialog("close");
+		}
+	} ]
+});
+	$( "form" ).submit(enviar);
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
 		</script>
-	}
+	</form> 
 }
 
 

@@ -1,0 +1,15 @@
+@(Pronostico: models.Pronostico )
+<div>Guardado con Exito</div>
+<div>Puede Modificar :</div>
+<table>
+ <thead>
+	<tr><th>Fase/Grupo</th><th>Hasta</th></tr>
+ </thead>
+<tbody>
+@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=> 
+	@if(Porcion.getInicio().after(Calendar.getInstance().getTime())) {
+		<tr><td>@Porcion.getNombre()</td><td>@Porcion.getInicio().format("dd/MM")</td></tr>
+	}
+}
+</tbody>
+</table>

@@ -89,7 +89,7 @@ public class Pronostico extends Controller {
     		} 
     	}
        	Pronostico.save();
-    	return ok(Agregar.render(Pronostico));
+    	return ok(Mensaje.render(Pronostico));
     }
     private static HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> obtenerPuntos() {
     	List<models.Punto> Puntos=Punto.find.all();

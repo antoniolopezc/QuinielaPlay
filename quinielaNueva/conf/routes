@@ -41,7 +41,7 @@ GET		/logeado			controllers.Application.loggeado()
 # Referencias a Pronostico
 GET		/Pronostico/Agregar 		controllers.Pronostico.agregar(id: Long = -1)
 GET		/Pronostico/Agregar/:id		controllers.Pronostico.agregar(id: Long)
-POST    /Pronostico/Agregar/guardar	controllers.Pronostico.guardar()
+POST    /Pronostico/guardar			controllers.Pronostico.guardar()
 GET		/Pronostico/Actualizar 		controllers.Pronostico.actualizar(id: Long = -1)
 GET		/Pronostico/Actualizar/:id	controllers.Pronostico.actualizar(id: Long)
 GET		/Pronostico/Listar 			controllers.Pronostico.listar(id: Long=-1)
