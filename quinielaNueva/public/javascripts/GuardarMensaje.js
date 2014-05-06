@@ -18,7 +18,7 @@ function enviar(e) {
 		 * controllers.routes.Pronostico.guardar() esta es la accion no se si
 		 * vale la pena implementar javascript route
 		 */
-		url : "/Pronostico/guardar",
+		url : $("form").attr("action"),
 		data : $("form").serialize(),
 		success : mostrarMensaje
 	});
@@ -30,6 +30,7 @@ $(function() {
 		appendTo:"form", 
 		title: "Guardado",
 		hide: { effect: "explode", delay:1000, duration:500 },
+		width: 100
 	});
 	$("form").submit(enviar);
 	$("input.Guardar").hide();

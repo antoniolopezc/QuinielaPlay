@@ -9,7 +9,7 @@
 }
 
 @base("Agregar Pronostico ",css,script){
-	<form action="" class="ui-widget ui-widget-content ui-corner-all">
+	@helper.form(action = controllers.routes.Pronostico.guardar(), 'class -> "ui-widget ui-widget-content ui-corner-all"){
 		<label for="Nombre">Nombre</label><input type="text" id="Nombre" name="Nombre" value="@Pronostico.getNombre()">
 		<input type="hidden" name="Id" value="@Pronostico.getId()">
 		<input type="hidden" name="Quiniela" value="@Pronostico.getQuiniela().getId()">
@@ -19,7 +19,7 @@
 		<script type="text/javascript">
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
 		</script>
-	</form> 
+	}
 }
 
 
