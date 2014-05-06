@@ -14,20 +14,9 @@
 		<input type="hidden" name="Id" value="@Pronostico.getId()">
 		<input type="hidden" name="Quiniela" value="@Pronostico.getQuiniela().getId()">
 		@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,false)}
-		<input class="Guardar" type="submit" value="Guardar"></input>
+		<input class="Guardar ui-corner-all" type="submit" value="Guardar"></input>
 		<div id="Mensaje"></div>
 		<script type="text/javascript">
-		
-	$("#Mensaje").dialog({
-	autoOpen : false,
-	buttons : [ {
-		text : "Ok",
-		click : function() {
-			$(this).dialog("close");
-		}
-	} ]
-});
-	$( "form" ).submit(enviar);
 		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
 		</script>
 	</form> 

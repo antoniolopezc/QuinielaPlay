@@ -6,8 +6,10 @@
 function mostrarMensaje(data) {
 	$("#Mensaje").html(data);
 	$("#Mensaje").dialog("open");
-	
+	$("#Mensaje").dialog("close");
+	$("input.Guardar").hide();
 };
+
 function enviar(e) {
 	e.preventDefault();
 	$.ajax({
@@ -21,3 +23,17 @@ function enviar(e) {
 		success : mostrarMensaje
 	});
 };
+/* Inicializacion */
+$(function() {
+	$("#Mensaje").dialog({
+		autoOpen : false,
+		appendTo:"form", 
+		title: "Guardado",
+		hide: { effect: "explode", delay:1000, duration:500 },
+	});
+	$("form").submit(enviar);
+	$("input.Guardar").hide();
+	$("form").change(function(){
+		$("input.Guardar").fadeIn();
+	})
+});
