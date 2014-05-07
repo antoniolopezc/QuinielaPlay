@@ -1,0 +1,12 @@
+@(Pronosticos: List[models.Pronostico]) 
+@css = {}
+@script = {
+} 
+@base("Por Aprobar",css,script) {
+@helper.form(action = controllers.routes.Pronostico.Aprobados(),'class -> "ui-widget ui-widget-content ui-corner-all"){
+	@Pronosticos.map{Pronostico =>
+		<div class="Pronostico">@views.html.Usuario.Usuario(Pronostico.getPropietario()) - @Pronostico.getNombre()</div>
+		<input type="checkbox" name="@Pronostico.getId()" value="True"><br>
+	}
+	}
+}

@@ -20,12 +20,8 @@ public class Pronostico extends Controller {
      * Agregar un nuevo Pronostico
      * @return 
      */
-	static private boolean GeneraIndicadores(models.Pronostico Pronostico,Long  id){
-
-		models.Quiniela Quiniela=models.Quiniela.find.byId(id);
-    	Pronostico.setQuiniela(Quiniela);
-    	
-    	for(models.Regla Regla: Quiniela.getReglas()){
+	static private boolean GeneraIndicadores(models.Pronostico Pronostico){
+    	for(models.Regla Regla: Pronostico.getQuiniela().getReglas()){
      		if(ReglaBase.generar(Regla, Pronostico)!=0) return false; 
     	}
 		return true;
@@ -37,13 +33,19 @@ public class Pronostico extends Controller {
     		List<models.Quiniela> Quinielas = models.Quiniela.find.all();    		
     		return ok(views.html.Quiniela.Elegir.render(Quinielas,"Eliga Quiniela sobre la que crear el Pronostico","/Pronostico/Agregar"));
     	}
+		models.Quiniela Quiniela=models.Quiniela.find.byId(id);
     	models.Pronostico Pronostico=new models.Pronostico();
-    	if (!GeneraIndicadores(Pronostico,id))
+    	Pronostico.setQuiniela(Quiniela);
+    	
+    	if (!GeneraIndicadores(Pronostico))
     		return ok("<p>Error</p>");
     	
     	return ok(Agregar.render(Pronostico));
     }
-    
+	
+    /*
+     * Actauliza el Pronsotico o solicita elegir uno 
+     */
     @SecureSocial.SecuredAction
     public static Result actualizar(Long id) {
     	if(id==-1) { 
@@ -54,7 +56,26 @@ public class Pronostico extends Controller {
     	models.Pronostico Pronostico= models.Pronostico.find.byId(id);
     	return ok(Agregar.render(Pronostico));
     }
-    
+	
+    /*
+     * Muestra los pronostico que falta aprobar 
+     */
+    @SecureSocial.SecuredAction
+    public static Result Aprobar() {
+    	
+    	Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
+    	List<models.Quiniela> Quinielas =models.Quiniela.find.where().eq("Propietario", (models.Usuario) Usuario).findList();
+    	List<models.Pronostico> Pronosticos = models.Pronostico.find.where().in("Quiniela", Quinielas).findList();
+    	return ok(Aprobar.render(Pronosticos));
+    }
+    /*
+     * Guarda Aprobaciones
+     */
+    @SecureSocial.SecuredAction
+    public static Result Aprobados() {
+    	DynamicForm  FormaLlena =Form.form().bindFromRequest();
+      	return ok("<div>Aprobados</div>");
+    }
     /*
      * Guarda un Pronostico
      */
@@ -66,10 +87,14 @@ public class Pronostico extends Controller {
     	
     	if(FormaLlena.get("Id")=="") {
     		Identity Usuario = (Identity) ctx().args.get(SecureSocial.USER_KEY);
+    		models.Quiniela Quiniela=models.Quiniela.find.byId(Long.parseLong(FormaLlena.get("Quiniela")));
     		Pronostico=new models.Pronostico();
+        	Pronostico.setQuiniela(Quiniela);
     		Pronostico.setPropietario((models.Usuario) Usuario);
-    		if (!GeneraIndicadores(Pronostico,Long.parseLong(FormaLlena.get("Quiniela"))))
+    		Quiniela.agregarParticipante((models.Usuario) Usuario);
+    		if (!GeneraIndicadores(Pronostico))
     			return ok("<p>Error</p>");
+    		Quiniela.save();	
     	} else {
     		Pronostico= models.Pronostico.find.byId(Long.parseLong(FormaLlena.get("Id")));
      	}
