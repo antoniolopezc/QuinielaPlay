@@ -57,6 +57,7 @@ create table porcion (
 create table pronostico (
   id                        bigint not null,
   nombre                    varchar(255),
+  aprobado                  boolean,
   propietario_id            bigint,
   quiniela_id               bigint,
   constraint pk_pronostico primary key (id))

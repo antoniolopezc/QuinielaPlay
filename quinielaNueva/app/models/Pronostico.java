@@ -26,6 +26,8 @@ public class Pronostico extends Model {
 	
 	@Constraints.Required
 	public String Nombre;
+	
+	public boolean Aprobado=false;
 
 	@ManyToOne
 	public Usuario Propietario;
@@ -89,5 +91,13 @@ public class Pronostico extends Model {
 
 	public void setPuntos(List<Punto> puntos) {
 		Puntos = puntos;
+	}
+
+	public boolean isAprobado() {
+		return Aprobado;
+	}
+
+	public void setAprobado(boolean aprobado) {
+		Aprobado = aprobado;
 	}
 }

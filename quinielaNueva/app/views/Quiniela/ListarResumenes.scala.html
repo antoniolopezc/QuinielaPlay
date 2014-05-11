@@ -44,7 +44,7 @@
 				@Resumenes.map{Resumen =>
 				<tr>
 					<td class="Resumen-Posicion">@Resumen.getPosicion()</td>
-					<td class="Resumen-Usuario">@views.html.Usuario.Usuario(Resumen.getJugador())@Resumen.getJugador().getNombre()</td>
+					<td class="Resumen-Usuario">@views.html.Usuario.Usuario(Resumen.getJugador())</td>
 					<th class="Resumen-Pronostico"><a
 						href="javascript: MostrarPronostico(@Resumen.getPronostico().getId(),'@Resumen.getPronostico().getNombre()');">@Resumen.getPronostico().getNombre()</a></th>
 					<td class="Resumen-Punto">@Resumen.getPunto()</td>

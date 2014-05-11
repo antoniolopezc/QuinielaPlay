@@ -179,4 +179,11 @@ public class Quiniela extends Model {
 			P.save();
 		}
 	}
+
+	public void agregarParticipante(Usuario usuario) {
+		if(!this.Participantes.contains(usuario)){
+			this.Participantes.add(usuario);
+		}
+		
+	}
 }

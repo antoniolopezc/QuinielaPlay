@@ -47,7 +47,7 @@ GET		/Pronostico/Actualizar/:id	controllers.Pronostico.actualizar(id: Long)
 GET		/Pronostico/Listar 			controllers.Pronostico.listar(id: Long=-1)
 GET		/Pronostico/Listar/:id 		controllers.Pronostico.listar(id: Long)
 GET		/Pronostico/PorAprobar 		controllers.Pronostico.Aprobar()
-GET		/Pronostico/Aprobados 		controllers.Pronostico.Aprobados()
+POST	/Pronostico/Aprobados 		controllers.Pronostico.Aprobados()
 
 #Referencias a Quiniela
 GET		/Quiniela/Resumen			controllers.Quiniela.resumen(Id: Long=-1)

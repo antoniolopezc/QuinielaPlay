@@ -1,12 +1,24 @@
 @(Pronosticos: List[models.Pronostico]) 
 @css = {}
 @script = {
+	<script src='@routes.Assets.at("javascripts/GuardarMensaje.js")' type="text/javascript"></script>
 } 
+@ValorSi(Lectura: Boolean)={
+	@if(Lectura) {checked}
+}
+@ValorNo(Lectura: Boolean)={
+	@if(!Lectura) {checked}
+}
 @base("Por Aprobar",css,script) {
-@helper.form(action = controllers.routes.Pronostico.Aprobados(),'class -> "ui-widget ui-widget-content ui-corner-all"){
-	@Pronosticos.map{Pronostico =>
-		<div class="Pronostico">@views.html.Usuario.Usuario(Pronostico.getPropietario()) - @Pronostico.getNombre()</div>
-		<input type="checkbox" name="@Pronostico.getId()" value="True"><br>
-	}
+	@helper.form(action = controllers.routes.Pronostico.Aprobados(),'class -> "ui-widget ui-widget-content ui-corner-all"){
+		<div>Aprobar</div><input class="Guardar ui-corner-all" type="submit" value="Guardar"></input><div id="Mensaje"></div> 
+		@Pronosticos.map{Pronostico =>
+			<div class="Pronostico">
+				<input type="radio" @ValorSi(Pronostico.isAprobado()) name="@Pronostico.getId()" value="Si">Si
+				<input type="radio" name="@Pronostico.getId()" value="No">No =>
+				@views.html.Usuario.Usuario(Pronostico.getPropietario()) - @Pronostico.getNombre()
+			</div>
+			
+		}
 	}
 }
