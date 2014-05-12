@@ -15,7 +15,7 @@
 		@Pronosticos.map{Pronostico =>
 			<div class="Pronostico">
 				<input type="radio" @ValorSi(Pronostico.isAprobado()) name="@Pronostico.getId()" value="Si">Si
-				<input type="radio" name="@Pronostico.getId()" value="No">No =>
+				<input type="radio" @ValorNo(Pronostico.isAprobado()) name="@Pronostico.getId()" value="No">No =>
 				@views.html.Usuario.Usuario(Pronostico.getPropietario()) - @Pronostico.getNombre()
 			</div>
 			

@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import models.Punto;
 import play.mvc.*;
@@ -74,6 +75,12 @@ public class Pronostico extends Controller {
     @SecureSocial.SecuredAction
     public static Result Aprobados() {
     	DynamicForm  FormaLlena =Form.form().bindFromRequest();
+    	
+    	for(Entry<String, String> P:FormaLlena.data().entrySet()) {
+    		models.Pronostico Pronostico=models.Pronostico.find.byId(Long.parseLong(P.getKey()));
+    		Pronostico.setAprobado(P.getValue().equals("Si"));
+    		Pronostico.save();
+    	}
       	return ok("<div>Aprobados</div>");
     }
     /*

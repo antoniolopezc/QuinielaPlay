@@ -5,9 +5,9 @@
  * TODO: Refactorizar JAvascript que aparece en las hojas.
  * TODO: Comprimir resultados para html mas pequeño
  * TODO: Mejorar mensaje del salvado
- * TODO: Aprobacion de Quinielas
  * TODO: Mensaje automatico de Correo Para Aprobacion
  * TODO: Mensaje automatico de Nuevos Resultados
+ * TODO: Ver doble funcionamiento de  configuración google.
  * 
  */
 package controllers;
