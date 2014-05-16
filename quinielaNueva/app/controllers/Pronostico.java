@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+import com.avaje.ebean.ExpressionList;
+
 import models.Punto;
 import play.mvc.*;
 import play.data.DynamicForm;
@@ -123,61 +125,57 @@ public class Pronostico extends Controller {
        	Pronostico.save();
     	return ok(Mensaje.render(Pronostico));
     }
-    private static HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> obtenerPuntos() {
-    	List<models.Punto> Puntos=Punto.find.all();
-    	HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Resultado= 
-    			new HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>>();
+    
+    /* Genera la información para mostrar los puntos*/
+    private static HashMap<Tuple3<Long,Long,Long>,Long> obtenerPuntos(models.Pronostico Pronostico) {
+    	List<models.Punto> Puntos;
+    	HashMap<Tuple3<Long,Long,Long>,Long> Resultado= 
+    			new HashMap<Tuple3<Long,Long,Long>,Long>();
     	Tuple3<Long,Long,Long> PrClave;
     	Tuple3<Long,Long,Long> PoClave;
     	Tuple3<Long,Long,Long> PaClave;
-    	Tuple4<Long,Long,Long,Long> PrValor;
-    	Tuple4<Long,Long,Long,Long> PoValor;
-    	Tuple4<Long,Long,Long,Long> PaValor;
-    	
+    	Long PrValor;
+    	Long PoValor;
+    	Long PaValor;
+
+    	if(Pronostico==null) {
+    		Puntos=Punto.find.all();
+    	} else {
+     		Puntos=Punto.find.where().select("Pronostico,Porcion,Partido,Estado,Valor").findList();
+    	}
     	for(models.Punto P:Puntos){
     		PaValor=null;
     		PaClave=null;
     		//Obtener Valor Pronostico
     		PrClave =new Tuple3<Long,Long,Long>(P.Pronostico.Id,null,null);
     		PrValor =Resultado.remove(PrClave);
-    		if(PrValor==null){ //si no existe Pronostico no existe ninguno
-    			PrValor=new Tuple4<Long,Long,Long,Long>(new Long(0),new Long(0),new Long(0),new Long(0));
+    		if(PrValor==null){ 
+    			PrValor=new Long(0);
     		}
     		PoClave =new Tuple3<Long,Long,Long>(P.Pronostico.Id,P.Porcion.Id,null);
     		PoValor =Resultado.remove(PoClave);
-    		if(PoValor==null){ //si no existe Porcion no existe Partido
-    			PoValor=new Tuple4<Long,Long,Long,Long>(new Long(0),new Long(0),new Long(0),new Long(0));
+    		if(PoValor==null){ 
+    			PoValor=new Long(0);
     		}
     		if(P.Partido!=null) {
     			PaClave =new Tuple3<Long,Long,Long>(P.Pronostico.Id,P.Porcion.Id,P.Partido.Id);
         		PaValor =Resultado.remove(PaClave);
         		if(PaValor==null){ 
-        			PaValor=new Tuple4<Long,Long,Long,Long>(new Long(0),new Long(0),new Long(0),new Long(0));
+        			PaValor=new Long(0);
         		}	
     		}
 
     		switch(P.Estado) {
 			case Final:
-    			PrValor=new Tuple4<Long,Long,Long,Long>(PrValor._1()+P.getValor(),PrValor._2()+P.getValor(),PrValor._3()+P.getMaximo(),PrValor._4()+P.getMaximo());
-    			PoValor=new Tuple4<Long,Long,Long,Long>(PoValor._1()+P.getValor(),PoValor._2()+P.getValor(),PoValor._3()+P.getMaximo(),PoValor._4()+P.getMaximo());
+    			PrValor+=P.getValor();
+    			PoValor+=P.getValor();
     			if(PaValor!=null) {
-    				PaValor=new Tuple4<Long,Long,Long,Long>(PaValor._1()+P.getValor(),PaValor._2()+P.getValor(),PaValor._3()+P.getMaximo(),PaValor._4()+P.getMaximo());
+    				PaValor+=P.getValor();
     			}
 				break;
 			case Nuevo:
-    			PrValor=new Tuple4<Long,Long,Long,Long>(PrValor._1(),PrValor._2(),PrValor._3(),PrValor._4()+P.getMaximo());
-    			PoValor=new Tuple4<Long,Long,Long,Long>(PoValor._1(),PoValor._2(),PoValor._3(),PoValor._4()+P.getMaximo());
-    			if(PaValor!=null) {
-    				PaValor=new Tuple4<Long,Long,Long,Long>(PaValor._1(),PaValor._2(),PaValor._3(),PaValor._4()+P.getMaximo());
-    			}
-				break;
 			case Parcial:
 			default:
-				PrValor=new Tuple4<Long,Long,Long,Long>(PrValor._1(),PrValor._2()+P.getValor(),PrValor._3(),PrValor._4()+P.getMaximo());
-    			PoValor=new Tuple4<Long,Long,Long,Long>(PoValor._1(),PoValor._2()+P.getValor(),PoValor._3(),PoValor._4()+P.getMaximo());
-    			if(PaValor!=null) {
-    				PaValor=new Tuple4<Long,Long,Long,Long>(PaValor._1(),PaValor._2()+P.getValor(),PaValor._3(),PaValor._4()+P.getMaximo());
-    			}
 				break;
     		}
     		Resultado.put(PrClave, PrValor);
@@ -194,13 +192,13 @@ public class Pronostico extends Controller {
     public static Result listar(Long Id) {
     	if(Id==-1) {
     		List<models.Pronostico> Pronosticos=models.Pronostico.find.all();
-    		HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Puntos=obtenerPuntos();
+    		HashMap<Tuple3<Long,Long,Long>,Long> Puntos=obtenerPuntos(null);
     	
     		return ok(Listar.render(Pronosticos,Puntos));
     	} else {
     		models.Pronostico Pronostico=models.Pronostico.find.byId(Id);
-    		HashMap<Tuple3<Long,Long,Long>,Tuple4<Long,Long,Long,Long>> Puntos=obtenerPuntos();
-    		return ok(ListarUno.render(Pronostico,Puntos));
+    		HashMap<Tuple3<Long,Long,Long>,Long> Puntos=obtenerPuntos(Pronostico);
+    		return ok(ListarUno.render(Pronostico,Puntos,null));
     	}
     }
 }
