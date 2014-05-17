@@ -1,16 +1,14 @@
-@(Porcion: models.Porcion, Lectura: Boolean=false,Puntos: HashMap[Tuple3[Long,Long,Long],Tuple4[Long,Long,Long,Long]]=null,PronosticoId: Long=null)
-<div id="Porcion-@Porcion.getId()" class="Procion">
+@(Porcion: models.Porcion, Lectura: Boolean=false,PronosticoId: Long=null)
+<div id="Porcion-@Porcion.getId()" class="Porcion">
 	<script type="text/javascript">Porciones[@Porcion.getId()]=new Porcion(@Porcion.getId());</script>
-	<h2>@Porcion.getNombre()</h2>
-	@if(Puntos!=null) {
-		<div class="Puntos">
-		 @defining(Puntos.get(new Tuple3[Long,Long,Long](PronosticoId,Porcion.getId(),null))){P =>@if(P!=null) {@{P._1}(@P._2)/@{P._3}(@P._4)}}
-		</div>
-	}
 	<table>
+		<thead><tr>
+		<th  colspan="6">@Porcion.getNombre()</td>
+		<th  colspan="2" class="Puntos"></td>
+		</tr></thead>
 		<tbody>
 			@defining(Lectura||Porcion.getInicio().before(Calendar.getInstance().getTime())){L=>
-			@Porcion.getPartidos().map{Partido => @views.html.Pronostico.Partido(Partido,Porcion.getId(),L,Puntos,PronosticoId,Porcion.getId())}
+			@Porcion.getPartidos().map{Partido => @views.html.Pronostico.Partido(Partido,Porcion.getId(),L)}
 			}
 		</tbody>
 	</table>

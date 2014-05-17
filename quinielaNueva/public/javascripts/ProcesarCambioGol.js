@@ -55,7 +55,7 @@ function ActualizaPorcion(Porcion, destino){
 		Equipo +=Actual.Equipo;
 		CambioGrupo(String.fromCharCode('A'.charCodeAt(0)+Porcion.Id-1),i,Equipo);
 		Equipo +='<input class="Resumen-Equipo" type="hidden"  name="'+Porcion.Resultados[i].Id+'" value='+Actual.EquipoId+'>';
-		fila=$("<tr>");
+		fila=$('<tr id="R-'+Porcion.Resultados[i].Id+'">');
 		fila.append('<td class="Resumen-Celda-Clasificacion">'+Actual.Clasificacion+'</td>');
 		fila.append('<td class="Resumen-Celda-EQUIPOS">'+Equipo+'</td>');
 		fila.append('<td class="Resumen-Celda-JJ">'+Actual.jj()+'</td>');
@@ -66,6 +66,7 @@ function ActualizaPorcion(Porcion, destino){
 		fila.append('<td class="Resumen-Celda-GC">'+Actual.gc+'</td>');
 		fila.append('<td class="Resumen-Celda-GD">'+Actual.gd()+'</td>');
 		fila.append('<td class="Resumen-Celda-Pts">'+Actual.Pts()+'</td>');
+		fila.append('<td class="Resumen-Celda-Puntos"></td>');
 		destino.append(fila);
 		
 	};

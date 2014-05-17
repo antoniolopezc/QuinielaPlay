@@ -192,13 +192,10 @@ public class Pronostico extends Controller {
     public static Result listar(Long Id) {
     	if(Id==-1) {
     		List<models.Pronostico> Pronosticos=models.Pronostico.find.all();
-    		HashMap<Tuple3<Long,Long,Long>,Long> Puntos=obtenerPuntos(null);
-    	
-    		return ok(Listar.render(Pronosticos,Puntos));
+    		return ok(Listar.render(Pronosticos));
     	} else {
     		models.Pronostico Pronostico=models.Pronostico.find.byId(Id);
-    		HashMap<Tuple3<Long,Long,Long>,Long> Puntos=obtenerPuntos(Pronostico);
-    		return ok(ListarUno.render(Pronostico,Puntos,null));
+    		return ok(ListarUno.render(Pronostico));
     	}
     }
 }
