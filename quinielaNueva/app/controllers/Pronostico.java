@@ -1,18 +1,11 @@
 package controllers;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
-
-import com.avaje.ebean.ExpressionList;
-
-import models.Punto;
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
 import reglas.ReglaBase;
-import scala.Tuple3;
-import scala.Tuple4;
 import securesocial.core.Identity;
 import securesocial.core.java.SecureSocial;
 
@@ -125,68 +118,6 @@ public class Pronostico extends Controller {
        	Pronostico.save();
     	return ok(Mensaje.render(Pronostico));
     }
-    
-    /* Genera la información para mostrar los puntos*/
-    private static HashMap<Tuple3<Long,Long,Long>,Long> obtenerPuntos(models.Pronostico Pronostico) {
-    	List<models.Punto> Puntos;
-    	HashMap<Tuple3<Long,Long,Long>,Long> Resultado= 
-    			new HashMap<Tuple3<Long,Long,Long>,Long>();
-    	Tuple3<Long,Long,Long> PrClave;
-    	Tuple3<Long,Long,Long> PoClave;
-    	Tuple3<Long,Long,Long> PaClave;
-    	Long PrValor;
-    	Long PoValor;
-    	Long PaValor;
-
-    	if(Pronostico==null) {
-    		Puntos=Punto.find.all();
-    	} else {
-     		Puntos=Punto.find.where().select("Pronostico,Porcion,Partido,Estado,Valor").findList();
-    	}
-    	for(models.Punto P:Puntos){
-    		PaValor=null;
-    		PaClave=null;
-    		//Obtener Valor Pronostico
-    		PrClave =new Tuple3<Long,Long,Long>(P.Pronostico.Id,null,null);
-    		PrValor =Resultado.remove(PrClave);
-    		if(PrValor==null){ 
-    			PrValor=new Long(0);
-    		}
-    		PoClave =new Tuple3<Long,Long,Long>(P.Pronostico.Id,P.Porcion.Id,null);
-    		PoValor =Resultado.remove(PoClave);
-    		if(PoValor==null){ 
-    			PoValor=new Long(0);
-    		}
-    		if(P.Partido!=null) {
-    			PaClave =new Tuple3<Long,Long,Long>(P.Pronostico.Id,P.Porcion.Id,P.Partido.Id);
-        		PaValor =Resultado.remove(PaClave);
-        		if(PaValor==null){ 
-        			PaValor=new Long(0);
-        		}	
-    		}
-
-    		switch(P.Estado) {
-			case Final:
-    			PrValor+=P.getValor();
-    			PoValor+=P.getValor();
-    			if(PaValor!=null) {
-    				PaValor+=P.getValor();
-    			}
-				break;
-			case Nuevo:
-			case Parcial:
-			default:
-				break;
-    		}
-    		Resultado.put(PrClave, PrValor);
-    		Resultado.put(PoClave, PoValor);
-			if(PaValor!=null&& PaClave!=null) {
-				Resultado.put(PaClave, PaValor);
-			}
-    	}
-		return Resultado;
-    }
-    
     
     @SecureSocial.UserAwareAction 
     public static Result listar(Long Id) {

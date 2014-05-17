@@ -1,0 +1,10 @@
+@(Pronostico: models.Pronostico)
+<script>
+$(function() {
+@Pronostico.getPuntos().map{ Punto =>
+		@if(Punto.getPartido()!=null){ActualizarPuntoPartido(@Pronostico.getId(),@Punto.getPartido().getId(),@Punto.getValor(),@Punto.getMaximo());
+		}else{ActualizarPuntoResultado(@Pronostico.getId(),@Punto.getPorcion().getId(),@Punto.getResultado().getId(),@Punto.getValor(),@Punto.getMaximo());}
+		@if(Punto.getPorcion()!=null){ActualizarPuntoPorcion(@Pronostico.getId(),@Punto.getPorcion().getId(),@Punto.getValor(),@Punto.getMaximo());} 
+	}
+});
+</script>
