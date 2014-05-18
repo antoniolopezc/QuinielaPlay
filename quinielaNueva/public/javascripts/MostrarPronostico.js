@@ -13,9 +13,9 @@
             "<li><a href='#Pronostico" + id + "'>"+nombre+"</a></li>"
         );
   		$("#tabs").append(
-            "<article id='Pronostico" + id + "'><div id='Pronostico'></div></article>"
+            "<article id='Pronostico" + id + "'></article>"
         );
-  		$("#Pronostico").load("/Pronostico/Listar/"+id);
+  		$("#Pronostico" + id).load("/Pronostico/Listar/"+id);
         $("#tabs").tabs("refresh");
 	  } else {
 		  num_tabs = a.parent().prevAll().length; 

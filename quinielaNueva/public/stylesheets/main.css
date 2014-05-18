@@ -52,6 +52,7 @@ div.Porcion th:nth-child(1) {
 }
 th.Puntos {
 	text-align:right;
+	padding-top: 2em;
 }
 
 .Partido-EquipoA ,.Partido-EquipoB , .Paso {
