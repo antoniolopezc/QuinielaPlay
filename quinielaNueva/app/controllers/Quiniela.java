@@ -31,7 +31,7 @@ public class Quiniela extends Controller {
 			R.setJugador(P.getPropietario());
 			R.setPronostico(P);
 			Totalizar(R,P.getPuntos());
-			R.setParticipa(true);
+			R.setParticipa(P.isAprobado());
 			R.setPosicion(new Long(0));
 			Resumenes.add(R);
 		}

@@ -27,7 +27,8 @@ public class Resumen implements Comparable<Resumen> {
 	
 	@Override
 	public int compareTo(Resumen o) {
-		return this.Punto.compareTo(o.Punto);
+		//Para orden inverso 
+		return -this.Punto.compareTo(o.Punto);
 	}
 
 	public Long getPosicion() {
