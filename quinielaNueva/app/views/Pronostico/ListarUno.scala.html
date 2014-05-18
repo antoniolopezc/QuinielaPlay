@@ -1,7 +1,7 @@
 @(Pronostico: models.Pronostico)
 <div id="Pronostico-@Pronostico.getId()">
 	<h2>@Pronostico.getNombre() de @views.html.Usuario.Usuario(Pronostico.getPropietario())</h2>
-	@*<div class="Punto-Pronostico">@views.html.Punto.LargoTupla(Puntos.get(new Tuple3[Long,Long,Long](Pronostico.getId(),null,null)))</div>*@
+	<div class="Punto-Pronostico">LLeva <span id='Puntos-Tiene-@Pronostico.getId()'>0</span> de <span id='Puntos-Jugados-@Pronostico.getId()'>0</span> faltan <span id='Puntos-Faltan-@Pronostico.getId()'>0</span></div>
 	@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,true,Pronostico.getId())}
 </div>
 <script>

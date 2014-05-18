@@ -40,3 +40,12 @@ function ActualizarPuntoResultado(PronosticoId,PorcionId,ResultadoId,Valor,Maxim
 		P.html(Valor+"/"+Maximo);
 	}
 }
+
+function ActualizarPuntoPronostico(PronosticoId,Tiene,Jugados,Faltan) {
+	var STiene=$("span#Puntos-Tiene-"+PronosticoId );
+	var SJugados=$("span#Puntos-Jugados-"+PronosticoId );
+	var SFaltan=$("span#Puntos-Faltan-"+PronosticoId );
+	STiene.html(parseInt(STiene.html())+Tiene)
+	SJugados.html(parseInt(SJugados.html())+Jugados)
+	SFaltan.html(parseInt(SFaltan.html())+Faltan)
+}

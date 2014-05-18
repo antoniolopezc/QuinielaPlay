@@ -4,7 +4,12 @@ $(function() {
 @Pronostico.getPuntos().map{ Punto =>
 		@if(Punto.getPartido()!=null){ActualizarPuntoPartido(@Pronostico.getId(),@Punto.getPartido().getId(),@Punto.getValor(),@Punto.getMaximo());
 		}else{ActualizarPuntoResultado(@Pronostico.getId(),@Punto.getPorcion().getId(),@Punto.getResultado().getId(),@Punto.getValor(),@Punto.getMaximo());}
-		@if(Punto.getPorcion()!=null){ActualizarPuntoPorcion(@Pronostico.getId(),@Punto.getPorcion().getId(),@Punto.getValor(),@Punto.getMaximo());} 
+		@if(Punto.getPorcion()!=null){ActualizarPuntoPorcion(@Pronostico.getId(),@Punto.getPorcion().getId(),@Punto.getValor(),@Punto.getMaximo());}
+		@Punto.getEstado() match {
+		 case TipoEstado.Final => {ActualizarPuntoPronostico(@Pronostico.getId(),@Punto.getValor(),@Punto.getMaximo(),0)}
+		 case TipoEstado.Nuevo => {ActualizarPuntoPronostico(@Pronostico.getId(),0,0,@Punto.getMaximo())}
+		 case TipoEstado.Parcial => {ActualizarPuntoPronostico(@Pronostico.getId(),0,0,@Punto.getMaximo())}
+		}
 	}
 });
 </script>
