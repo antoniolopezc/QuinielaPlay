@@ -44,6 +44,10 @@ table.Porciones {
 td.Resumen-Celda-EQUIPOS {
 	text-align:left;
 }
+td.Partido-Id {
+	width:31px;
+}
+
 
 div.Porcion th:nth-child(1) {
 	text-align:left;
@@ -54,7 +58,29 @@ th.Puntos {
 	text-align:right;
 	padding-top: 2em;
 }
+td.Puntos {
+	text-align:right;
+}
+td.Resumen-Celda-Puntos {
+	text-align:right;
+	width:222px;
+}
 
 .Partido-EquipoA ,.Partido-EquipoB , .Paso {
-	min-width: 112px
+	min-width: 112px;
 } 
+
+.Final {
+	color:Green;
+}
+
+.PrimerTiempo,
+.SegundoTiempo,
+.Prologa,
+.Penatil {
+	color:Orange;
+}
+	
+.NoIniciado {
+	color:Black;
+}

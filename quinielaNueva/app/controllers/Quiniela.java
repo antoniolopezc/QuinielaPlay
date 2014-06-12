@@ -23,7 +23,7 @@ public class Quiniela extends Controller {
 	private static List<Resumen> GenerarResumen(models.Quiniela quiniela) {
 		List<utilitario.Resumen> Resumenes=new ArrayList<utilitario.Resumen>();
 		List<models.Pronostico> Pronosticos=models.Pronostico.find.where().eq("Quiniela", quiniela).findList();
-		Long Posicion=new Long(1);
+		Long Posicion=new Long(0);
 		Long Anterior=Long.MAX_VALUE;
 		
 		for(models.Pronostico P: Pronosticos) {
@@ -37,8 +37,8 @@ public class Quiniela extends Controller {
 		}
 		Collections.sort(Resumenes);
 		for(Resumen R:Resumenes){
-			R.setPosicion(Posicion);
 			Posicion+=(Anterior==R.getPunto()?0:1);
+			R.setPosicion(Posicion);
 			Anterior=R.getPunto();
 		}
 		return Resumenes;
