@@ -1,0 +1,15 @@
+@(Quiniela: models.Quiniela)
+@css = {}
+@script= {}
+
+@base("Selecionar Partido",css,script){
+	<h1> Selecione Partido</h1>
+	@Quiniela.getTorneo().getPartidos().map{Partido=>
+	<div class="Partido @Partido.getTiempoActual()">
+	<a href="/Pronostico/ListarPartido/@Quiniela.getId()/@Partido.getId()"><span class="Partido-Id">@Partido.getNombreCorto()</span></a>
+	<span class="Partido-Fecha">@Partido.getFecha().format("dd/MM hh:mm a")</span>
+	<span class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.getEquipoA())</span>
+	<span class="Partido-EquipoB">@views.html.Equipo.Breve(Partido.getEquipoB())</span>
+	</div>
+	}
+}

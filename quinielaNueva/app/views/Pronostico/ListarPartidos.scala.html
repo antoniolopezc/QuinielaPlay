@@ -1,0 +1,44 @@
+@(Partido: models.Partido,Pronosticos: List[models.Pronostico],ResultadosPronostico: List[models.ResultadoPronostico],Puntos: List[models.Punto])
+@resultados={ @Partido.getResultados().map{ Resultado =><td class="Partido-Resultado">@views.html.FormatoResultado.ResultadoMinimoListarPartidos(Resultado)</td>}}
+@css = {}
+@script= {
+	<script src='@routes.Assets.at("javascripts/ColocarDatosListarPartido.js")' type="text/javascript"></script>	
+}
+
+@base("Listar Partido",css,script) {
+<div id="PartidoResumen-@Partido.getId()" class="ui-widget ui-widget-content ui-corner-all PartidoResumen">
+<table>
+	<tbody>
+		<tr class="Partido @Partido.getTiempoActual()">
+			<td class="Partido-Id">@Partido.getNombreCorto()</td>
+			<td class="Partido-Fecha">@Partido.getFecha().format("dd/MM hh:mm a")</td>
+			<td class="Partido-EquipoA">@views.html.Equipo.Breve(Partido.getEquipoA())</td>
+			<td class="Partido-EquipoB" >@views.html.Equipo.Breve(Partido.getEquipoB())</td>
+			@resultados
+		    <td class="Partido-Tiempo">@Partido.getTiempoActual()</td>
+		</tr>
+	@Pronosticos.map{ Pronostico=>
+		<tr class="Partido @Partido.getTiempoActual()" id="Pronostico-@Pronostico.getId()">
+			<td colspan = "2" class="Nombre">@Pronostico.getNombre()</td>
+			<td colspan = "2" class="Usuario">@views.html.Usuario.Usuario(Pronostico.getPropietario())</td>
+			@resultados
+			<td class="Puntos"></td>
+		</tr>	
+	}
+	</tbody>
+</table>
+<script>
+@ResultadosPronostico.map{ R=>
+	@if(Option(R.getEntero()).nonEmpty) {
+	ActualizarResultadosPartido(@R.getPronostico().getId(),@Partido.getId(),@R.getResultado().getId(),@R.getEntero());
+	}
+	@if(Option(R.getEquipo()).nonEmpty) {
+	ActualizarResultadosPartidoEquipo(@R.getPronostico().getId(),@Partido.getId(),@R.getResultado().getId(),"@R.getEquipo().getNombreCorto()");
+	}
+}
+@Puntos.map{Punto=>
+	ActualizarPuntoPartido(@Punto.getPronostico.getId(),@Punto.getPartido().getId(),@Punto.getValor(),@Punto.getMaximo());
+}
+</script>
+</div>
+}

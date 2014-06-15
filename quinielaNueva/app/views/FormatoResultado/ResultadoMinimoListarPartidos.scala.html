@@ -1,0 +1,13 @@
+@(Resultado: models.Resultado)	
+
+@Resultado.getDefinicion().getAbreviatura() match {
+	case "GA" => { 
+		<input type="number" class="GA" name="@Resultado.getId()"  readonly value="@Resultado.getEntero()">
+		}
+	case "GB" => { 
+		<input type="number" class="GB" name="@Resultado.getId()"  readonly value="@Resultado.getEntero()">
+		}
+	case "Paso" => {
+		<span id="Resultado-@Resultado.getId()"></span>
+	}
+}
