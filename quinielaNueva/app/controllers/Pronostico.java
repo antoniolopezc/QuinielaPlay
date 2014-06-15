@@ -2,13 +2,13 @@ package controllers;
 
 import java.util.List;
 import java.util.Map.Entry;
+
 import play.mvc.*;
 import play.data.DynamicForm;
 import play.data.Form;
 import reglas.ReglaBase;
 import securesocial.core.Identity;
 import securesocial.core.java.SecureSocial;
-
 import views.html.Pronostico.*;
 
 public class Pronostico extends Controller {
@@ -129,4 +129,23 @@ public class Pronostico extends Controller {
     		return ok(ListarUno.render(Pronostico));
     	}
     }
+    
+    public static Result listarPartidos(Long QuinielaID, Long PartidoID){
+    	if(QuinielaID==-1){
+       		List<models.Quiniela> Quinielas = models.Quiniela.find.all();    		
+    		return ok(views.html.Quiniela.Elegir.render(Quinielas,"Eliga Quiniela Para Ver Los Partidos","/Pronostico/ListarPartido"));
+     	}
+    	if(PartidoID==-1){
+    		models.Quiniela Quiniela= models.Quiniela.find.byId(QuinielaID);    		
+    		return ok(SelecionarPartido.render(Quiniela));
+     	}
+    	models.Quiniela Quiniela= models.Quiniela.find.byId(QuinielaID);
+     	models.Partido Partido=models.Partido.find.byId(PartidoID);
+    	List<models.Pronostico> Pronosticos=models.Pronostico.find.where().eq("Quiniela",Quiniela).findList();
+    	List<models.ResultadoPronostico> ResultadosPronostico=models.ResultadoPronostico.find.where().in("Resultado",Partido.getResultados()).findList();
+    	List<models.Punto> Puntos=models.Punto.find.where().eq("Partido",Partido).findList();
+    	return ok(ListarPartidos.render(Partido,Pronosticos,ResultadosPronostico,Puntos));
+    }
+
+	
 }

@@ -44,10 +44,10 @@ table.Porciones {
 td.Resumen-Celda-EQUIPOS {
 	text-align:left;
 }
-td.Partido-Id {
+.Partido-Id {
+	display: inline-block;
 	width:31px;
 }
-
 
 div.Porcion th:nth-child(1) {
 	text-align:left;
@@ -67,6 +67,11 @@ td.Resumen-Celda-Puntos {
 }
 
 .Partido-EquipoA ,.Partido-EquipoB , .Paso {
+	display: inline-block;
+	min-width: 112px;
+} 
+.Partido-Fecha {
+	display: inline-block;
 	min-width: 112px;
 } 
 

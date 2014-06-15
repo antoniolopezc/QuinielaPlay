@@ -32,6 +32,9 @@ public class ResultadoPronostico extends Model {
 	@ManyToOne
 	public Equipo Equipo;
 	
+	@ManyToOne
+	public Pronostico Pronostico;
+	
 	public static Finder<Long,ResultadoPronostico> find = new Finder<Long,ResultadoPronostico>(
 		    Long.class, ResultadoPronostico.class
 		  );
@@ -66,6 +69,14 @@ public class ResultadoPronostico extends Model {
 
 	public void setEquipo(Equipo equipo) {
 		Equipo = equipo;
+	}
+
+	public Pronostico getPronostico() {
+		return Pronostico;
+	}
+
+	public void setPronostico(Pronostico pronostico) {
+		Pronostico = pronostico;
 	}
 
 }

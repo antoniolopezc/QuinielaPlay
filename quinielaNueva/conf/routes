@@ -48,6 +48,9 @@ GET		/Pronostico/Listar 			controllers.Pronostico.listar(id: Long=-1)
 GET		/Pronostico/Listar/:id 		controllers.Pronostico.listar(id: Long)
 GET		/Pronostico/PorAprobar 		controllers.Pronostico.Aprobar()
 POST	/Pronostico/Aprobados 		controllers.Pronostico.Aprobados()
+GET 	/Pronostico/ListarPartido	controllers.Pronostico.listarPartidos(Quiniela: Long=-1,Partido:Long=-1)
+GET 	/Pronostico/ListarPartido/:Quiniela controllers.Pronostico.listarPartidos(Quiniela: Long,Partido:Long=-1)
+GET 	/Pronostico/ListarPartido/:Quiniela/:Partido controllers.Pronostico.listarPartidos(Quiniela: Long,Partido:Long)
 
 #Referencias a Quiniela
 GET		/Quiniela/Resumen			controllers.Quiniela.resumen(Id: Long=-1)
