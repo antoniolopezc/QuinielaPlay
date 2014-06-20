@@ -35,19 +35,16 @@ public class PuntuarEstandar extends ReglaBase {
 		Condicion Condicion;
 		HashMap<Long,ResultadoPronostico> RPronostico=ConvertirMap(Pronostico.getResultados());
 		for(Punto Punto:Pronostico.getPuntos()){
-			if(Punto.getEstado()!=TipoEstado.Final){
-				Condicion=Condiciones.get(Punto.getReferenciaRegla());
-				switch(Condicion.CondicionSuma){
-					case "Igual":
-						ProcesarIgual(Punto,RPronostico);
-						break;
-					case "IgualPartido":
-						ProcesarIgualPartido(Punto,RPronostico);
-						break;
-					default:
-						return -1;
-				}
-				
+			Condicion=Condiciones.get(Punto.getReferenciaRegla());
+			switch(Condicion.CondicionSuma){
+				case "Igual":
+					ProcesarIgual(Punto,RPronostico);
+					break;
+				case "IgualPartido":
+					ProcesarIgualPartido(Punto,RPronostico);
+					break;
+				default:
+					return -1;
 			}
 		}
 		return 0;

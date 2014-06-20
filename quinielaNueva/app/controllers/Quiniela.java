@@ -24,6 +24,7 @@ public class Quiniela extends Controller {
 		List<utilitario.Resumen> Resumenes=new ArrayList<utilitario.Resumen>();
 		List<models.Pronostico> Pronosticos=models.Pronostico.find.where().eq("Quiniela", quiniela).findList();
 		Long Posicion=new Long(0);
+		Long PosicionSig=new Long(1);
 		Long Anterior=Long.MAX_VALUE;
 		
 		for(models.Pronostico P: Pronosticos) {
@@ -37,7 +38,8 @@ public class Quiniela extends Controller {
 		}
 		Collections.sort(Resumenes);
 		for(Resumen R:Resumenes){
-			Posicion+=(Anterior==R.getPunto()?0:1);
+			Posicion=(Anterior==R.getPunto()?Posicion:PosicionSig);
+			PosicionSig++;
 			R.setPosicion(Posicion);
 			Anterior=R.getPunto();
 		}
@@ -56,6 +58,7 @@ public class Quiniela extends Controller {
 				r.setPunto(r.getPunto()+P.getValor());
 				r.setMaximo(r.getMaximo()+P.getValor());
 				r.setJugados(r.getJugados()+P.getMaximo());
+				Total+=P.getMaximo();
 				break;
 			case Nuevo:
 			case Parcial:
