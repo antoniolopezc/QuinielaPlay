@@ -49,12 +49,13 @@ public class Quiniela extends Controller {
 		Long TotalMaximo=new Long(0);
 		r.setMaximo(new Long(0));
 		r.setPunto(new Long(0));
+		r.setJugados(new Long(0));
 		for(Punto P:puntos){
 			switch(P.getEstado()) {
 			case Final:
 				r.setPunto(r.getPunto()+P.getValor());
 				r.setMaximo(r.getMaximo()+P.getValor());
-				Total+=P.getMaximo();
+				r.setJugados(r.getJugados()+P.getMaximo());
 				break;
 			case Nuevo:
 			case Parcial:

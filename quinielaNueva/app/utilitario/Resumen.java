@@ -23,6 +23,8 @@ public class Resumen implements Comparable<Resumen> {
 	
 	Long TotalMaximo;
 	
+	Long Jugados;
+	
 	Boolean Participa;
 	
 	@Override
@@ -93,6 +95,14 @@ public class Resumen implements Comparable<Resumen> {
 
 	public void setPronostico(models.Pronostico pronostico) {
 		Pronostico = pronostico;
+	}
+
+	public Long getJugados() {
+		return Jugados;
+	}
+
+	public void setJugados(Long jugados) {
+		Jugados = jugados;
 	}
 
 

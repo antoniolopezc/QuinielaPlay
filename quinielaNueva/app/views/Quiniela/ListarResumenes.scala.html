@@ -24,9 +24,7 @@
 	<article id="Resumen">
 		<div>Hay @Resumenes.size() Quinielas</div>
 		@defining(Resumenes.get(0)){Primero=>
-		<div>Se han Jugando
-			@if(Primero.getPorcentajeTotal()==0){0}else{@{"%.0f".format(Primero.getPunto()/Primero.getPorcentajeTotal())}} de
-			@Primero.getTotalMaximo()</div>
+		<div>Se han Jugando	@Primero.getJugados() de @Primero.getTotalMaximo()</div>
 		}
 		<table>
 			<thead>
