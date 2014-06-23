@@ -1,5 +1,5 @@
 @(Torneos: List[models.Torneo],Ruta: String)
 
 @base("Torneos") {
-	@Torneos.map{Torneo => <a href="@Ruta/@Torneo.getId()" >@{Torneo.getNombre()}(@Torneo.getId())</a>}
+	@Torneos.map{Torneo =><div><a href="@Ruta/@Torneo.getId()" >@{Torneo.getNombre()}(@Torneo.getId())</a></div> }
 }
