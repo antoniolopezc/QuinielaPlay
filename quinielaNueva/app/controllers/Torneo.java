@@ -7,6 +7,7 @@ package controllers;
 
 import java.util.List;
 
+import models.Porcion;
 import models.TipoEstado;
 
 import com.avaje.ebean.Expr;
@@ -45,6 +46,7 @@ public class Torneo extends Controller {
     public static Result GuadarResultados() {
     	DynamicForm  FormaLlena =Form.form().bindFromRequest();
     	String s;
+    	models.TipoEstado TE=models.TipoEstado.Final;
     	models.Usuario Usuario = (models.Usuario) ctx().args.get(SecureSocial.USER_KEY);
     	models.Torneo Torneo=models.Torneo.find.byId(Long.parseLong(FormaLlena.get("Id"))); 
     	List<models.Resultado> Resultados=models.Resultado.find.where()
@@ -97,7 +99,17 @@ public class Torneo extends Controller {
 				break;
     		}
     		Partido.save();
-    	} 
+    	}
+    	
+    	for(models.Porcion Porcion:Torneo.getPorciones()){
+    		TE=obtenerEstado(Porcion);
+    		for(models.Resultado Resultado: Porcion.getResultados()){
+    			Resultado.setEstado(TE);
+    			Resultado.save();
+    		}
+    		Porcion.save();
+    	}
+    	
     	if(CacularIndicadores(Torneo)) {
     		Torneo.save();
     		List<models.Quiniela> Quinielas=models.Quiniela.find.where().eq("Torneo", Torneo).findList();
@@ -110,7 +122,21 @@ public class Torneo extends Controller {
 
     }
     
-    static private boolean CacularIndicadores(models.Torneo Torneo){
+    private static TipoEstado obtenerEstado(Porcion Porcion) {
+		for(models.Partido Partido:Porcion.getPartidos()) {
+			switch(Partido.getTiempoActual()){
+			case Final:
+				break;
+			case NoIniciado:
+				return TipoEstado.Nuevo;
+			default:
+				return TipoEstado.Parcial;
+			}
+		}
+		return TipoEstado.Final;
+    }
+		
+	static private boolean CacularIndicadores(models.Torneo Torneo){
 
     	
     	for(models.Regla Regla: Torneo.getReglas()){
