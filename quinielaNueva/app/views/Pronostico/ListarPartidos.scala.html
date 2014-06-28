@@ -33,7 +33,7 @@
 	ActualizarResultadosPartido(@R.getPronostico().getId(),@Partido.getId(),@R.getResultado().getId(),@R.getEntero());
 	}
 	@if(Option(R.getEquipo()).nonEmpty) {
-	ActualizarResultadosPartidoEquipo(@R.getPronostico().getId(),@Partido.getId(),@R.getResultado().getId(),"@R.getEquipo().getNombreCorto()");
+	ActualizarResultadosPartidoEquipo(@R.getPronostico().getId(),@Partido.getId(),@R.getResultado().getId(),'@views.html.Equipo.Breve(R.getEquipo())');
 	}
 }
 @Puntos.map{Punto=>
