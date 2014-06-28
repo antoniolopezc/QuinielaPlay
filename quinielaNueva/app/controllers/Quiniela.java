@@ -38,7 +38,7 @@ public class Quiniela extends Controller {
 		}
 		Collections.sort(Resumenes);
 		for(Resumen R:Resumenes){
-			Posicion=(Anterior==R.getPunto()?Posicion:PosicionSig);
+			Posicion=(Anterior.equals(R.getPunto())?Posicion:PosicionSig);
 			PosicionSig++;
 			R.setPosicion(Posicion);
 			Anterior=R.getPunto();
