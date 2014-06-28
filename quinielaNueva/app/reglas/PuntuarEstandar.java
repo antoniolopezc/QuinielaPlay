@@ -66,17 +66,19 @@ public class PuntuarEstandar extends ReglaBase {
 		TipoEstado TE=TipoEstado.Final;
 		if(Punto.getPartido()!=null) {
 			for(Resultado R:Punto.getPartido().getResultados()) {
-				TP=RPronostico.get(R.getId()).getEntero();
-				TT=R.getEntero();
-				if(TP==null||TT==null) {
-					Punto.setValor(new Long(0));
-					Punto.setEstado(TipoEstado.Nuevo);
-					return;
-				}
-				P= TP-P;
-				T=TT-T;
-				if(R.getEstado()!=TipoEstado.Final){
-					TE=R.getEstado();
+				if(R.getDefinicion().getAbreviatura().startsWith("G")) {
+					TP=RPronostico.get(R.getId()).getEntero();
+					TT=R.getEntero();
+					if(TP==null||TT==null) {
+						Punto.setValor(new Long(0));
+						Punto.setEstado(TipoEstado.Nuevo);
+						return;
+					}
+					P= TP-P;
+					T=TT-T;
+					if(R.getEstado()!=TipoEstado.Final){
+						TE=R.getEstado();
+					}
 				}
 			}
 			Punto.setValor(Long.signum(P)==Long.signum(T)?Punto.getMaximo():0);
