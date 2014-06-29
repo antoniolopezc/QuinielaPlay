@@ -10,6 +10,6 @@ function AsignaValorResultado(padre,Id,Valor) {
 
 function DesabilitarSelect(padre,Id) {
 	
-	$(padre+' [name="'+Id+'"]').prop( "disabled",true);
+	$(padre+' select[name="'+Id+'"]').prop( "disabled",true);
 	
 }
