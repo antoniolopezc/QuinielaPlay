@@ -8,6 +8,6 @@
 		<input type="number" class="GB" name="@Resultado.getId()"  readonly value="@Resultado.getEntero()">
 		}
 	case "Paso" => {
-		<span id="Resultado-@Resultado.getId()">@views.html.Equipo.Breve(Resultado.getEquipo())</span>
+		<span id="Resultado-@Resultado.getId()">@if(Option(Resultado.getEquipo()).nonEmpty){@views.html.Equipo.Breve(Resultado.getEquipo())}</span>
 	}
 }
