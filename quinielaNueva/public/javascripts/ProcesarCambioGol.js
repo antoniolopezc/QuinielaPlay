@@ -13,10 +13,10 @@ function CambioGol(Po,Pa,t){
  var Resultados=Porciones[Po].Partidos[Pa].Resultados;
  var keys = Object.keys(Resultados);
  var Goles=($(t).val()?parseInt($(t).val()):null);
- 
+ var Padre= $(t).parents("div[id^='Pronostico']");
  if(keys.length==3) {
 	 Resultados[Quien].Resultado=Goles;
-	 ActualizaPasa(Porciones[Po].Partidos[Pa]);
+	 ActualizaPasa(Padre,Porciones[Po].Partidos[Pa]);
  } else {
 	 Porciones[Po].ActualizarPartido(Porciones[Po].Partidos[Pa],Quien.charAt(1),Goles);
 	 ActualizaPorcion(Porciones[Po],$(t).parents("table").nextAll("table#P-"+Po).children("tbody"));
@@ -24,21 +24,21 @@ function CambioGol(Po,Pa,t){
   
 };
 
-function ActualizaPasa(Partido){
+function ActualizaPasa(Padre,Partido){
 	var Q=Partido.QuienGana();
 	var Nuevo;
 	var Pierde;
-	$('[name="'+Partido.Resultados.Paso.Id+'"]').val((Q==-1?"":Q));
-	$('select[name="'+Partido.Resultados.Paso.Id+'"]').prop( "disabled", Q!=-1 );
+	Padre.find('[name="'+Partido.Resultados.Paso.Id+'"]').val((Q==-1?"":Q));
+	Padre.find('select[name="'+Partido.Resultados.Paso.Id+'"]').prop( "disabled", Q!=-1 );
 	if(Q==-1||Q==null) {
 		Nuevo="Gan "+Partido.Id;
 		Pierde="PER "+Partido.Id;
 	} else {
-		Nuevo=$('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value="'+Q+'"]').html()
-		Pierde=$('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value!="'+Q+'"][value!=""]').html()
+		Nuevo=Padre.children('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value="'+Q+'"]').html()
+		Pierde=Padre.children('select[name="'+Partido.Resultados.Paso.Id+'"] > option[value!="'+Q+'"][value!=""]').html()
 	}
-	PasaPartido(Partido.Id,Nuevo);
-	PierdePartido(Partido.Id,Pierde);
+	PasaPartido(Partido.Id,Nuevo,Padre);
+	PierdePartido(Partido.Id,Pierde,Padre);
 };
 
 function ActualizaPorcion(Porcion, destino){

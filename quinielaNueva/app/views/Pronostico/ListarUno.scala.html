@@ -5,6 +5,6 @@
 	@Pronostico.getQuiniela().getTorneo().getPorciones().map{Porcion=>@views.html.Pronostico.Porcion(Porcion,true,Pronostico.getId())}
 </div>
 <script>
-@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"div#Pronostico-"+Pronostico.getId())}
+@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"div#Pronostico-"+Pronostico.getId(),true)}
 </script>
 @views.html.Punto.ColocarPuntosPronostico(Pronostico)
