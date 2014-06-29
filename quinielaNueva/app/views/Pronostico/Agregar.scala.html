@@ -18,7 +18,7 @@
 		<input class="Guardar ui-corner-all" type="submit" value="Guardar"></input>
 		<div id="Mensaje"></div>
 		<script type="text/javascript">
-		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form") }
+		@Pronostico.getResultados().map{Resultado=>@views.html.FormatoResultado.InicializarResultado(Resultado,"form",true) }
 		</script>
 		</div>
 	}

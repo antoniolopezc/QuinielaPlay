@@ -1,10 +1,5 @@
 @(Resultado: ResultadoPronostico, Padre: String, Lectura: Boolean=false)	
-@if(Option(Resultado.getEntero()).nonEmpty) {
-AsignaValorResultado("@Padre",@Resultado.getResultado().getId(),@Resultado.getEntero());
-} 
-@if(Option(Resultado.getEquipo()).nonEmpty) {
-AsignaValorResultado("@Padre",@Resultado.getResultado().getId(),@Resultado.getEquipo().getId());
-@if(Lectura){
-	DesabilitarSelect("@Padre",@Resultado.getResultado().getId());
-}
+@if(Option(Resultado.getEntero()).nonEmpty) {AsignaValorResultado("@Padre",@Resultado.getResultado().getId(),@Resultado.getEntero());} 
+@if(Option(Resultado.getEquipo()).nonEmpty) {AsignaValorResultado("@Padre",@Resultado.getResultado().getId(),@Resultado.getEquipo().getId());
+	@if(Lectura){DesabilitarSelect("@Padre",@Resultado.getResultado().getId());}
 } 
