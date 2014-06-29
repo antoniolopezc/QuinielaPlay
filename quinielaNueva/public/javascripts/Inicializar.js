@@ -1,7 +1,7 @@
 /**
  * Funcion que asigna valor
  */
-
+ 
 function AsignaValorResultado(padre,Id,Valor) {
 	
 	$(padre+' [name="'+Id+'"]').val(Valor);
