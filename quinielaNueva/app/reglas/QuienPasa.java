@@ -132,6 +132,11 @@ public class QuienPasa extends ReglaBase {
 	public String IncluirJS() {
 		return null;
 	}
+	
+	@Override
+	public Long comparar(Pronostico Pronostico, Pronostico Pronostico2) {
+		return new Long(0);
+	}
 
 
 }

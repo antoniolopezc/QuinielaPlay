@@ -53,8 +53,11 @@ GET 	/Pronostico/ListarPartido/:Quiniela controllers.Pronostico.listarPartidos(Q
 GET 	/Pronostico/ListarPartido/:Quiniela/:Partido controllers.Pronostico.listarPartidos(Quiniela: Long,Partido:Long)
 
 #Referencias a Quiniela
-GET		/Quiniela/Resumen			controllers.Quiniela.resumen(Id: Long=-1)
-GET		/Quiniela/Resumen/:Id		controllers.Quiniela.resumen(Id: Long)
+GET		/Quiniela/Resumen						controllers.Quiniela.resumen(Id: Long=-1)
+GET		/Quiniela/Resumen/:Id					controllers.Quiniela.resumen(Id: Long)
+GET		/Quiniela/Comparar						controllers.Quiniela.comparar(Id: Long=-1,IdPronostico: Long=-1)
+GET		/Quiniela/Comparar/:Id					controllers.Quiniela.comparar(Id: Long,IdPronostico: Long=-1)
+GET		/Quiniela/Comparar/:Id/:IdPronostico	controllers.Quiniela.comparar(Id: Long,IdPronostico: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

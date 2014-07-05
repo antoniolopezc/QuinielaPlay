@@ -21,7 +21,11 @@ public abstract class ReglaBase {
 	 */
 	public ReglaBase(String Parametro) {
 	}
-
+	
+	/*Debe realizar los caculos necesario y 
+	 * devolver los puntos de diferencia entre las dos quienielas
+	 * */
+	public abstract Long comparar(Pronostico Pronostico, Pronostico Pronostico2);
 	/*Debe realizar los caculos necesario y actualizar los Resultados Pertinentes
 	 * devuelve un posible valor de error o 0 si esta todo correcto
 	 * */
@@ -41,6 +45,21 @@ public abstract class ReglaBase {
 	 * devuelve un posible valor de error o 0 si esta todo correcto
 	 * */
 	public abstract String IncluirJS();
+	
+	public final static Long comparar(Regla Regla,Pronostico Pronostico, Pronostico Pronostico2){
+		try {
+			Class<?> R=Class.forName(Regla.getClase());
+			Constructor<?> C=R.getConstructor(String.class);
+			reglas.ReglaBase O=(ReglaBase) C.newInstance(Regla.getParametros());
+			return O.comparar(Pronostico,Pronostico2);  
+		} catch (IllegalAccessException  | IllegalArgumentException
+				| InstantiationException | ClassNotFoundException  
+				| SecurityException      | NoSuchMethodException 
+				| InvocationTargetException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	public final static long cacular(Regla Regla,Pronostico Pronostico){
 		try {

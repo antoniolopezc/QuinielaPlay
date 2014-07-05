@@ -52,5 +52,10 @@ public class DuplicarTorneo extends ReglaBase {
 		return 0;
 	}
 
+	@Override
+	public Long comparar(Pronostico Pronostico, Pronostico Pronostico2) {
+		return new Long(0);
+	}
+
 
 }

@@ -29,6 +29,81 @@ public class PuntuarEstandar extends ReglaBase {
 		
 		Condiciones= (HashMap<String,Condicion>) y.load(Parametro);
 	}
+	@Override
+	public Long comparar(Pronostico Pronostico, Pronostico Pronostico2) {
+		Condicion Condicion;
+		HashMap<Long,ResultadoPronostico> RPronostico=ConvertirMap(Pronostico.getResultados());
+		HashMap<Long,ResultadoPronostico> RPronostico2=ConvertirMap(Pronostico2.getResultados());
+		Long resultado=new Long(0); 
+		for(Punto Punto:Pronostico.getPuntos()){
+			if(Punto.getEstado()!=models.TipoEstado.Final) {
+			Condicion=Condiciones.get(Punto.getReferenciaRegla());
+			switch(Condicion.CondicionSuma){
+				case "Igual":
+					resultado+=ProcesarIgual(Punto,RPronostico,RPronostico2);
+					break;
+				case "IgualPartido":
+					resultado+=ProcesarIgualPartido(Punto,RPronostico,RPronostico2);
+					break;
+				default:
+					return null;
+				}
+			}
+		}
+		return resultado;
+	}
+	
+	private Long ProcesarIgualPartido(Punto Punto,
+			HashMap<Long, ResultadoPronostico> RPronostico,
+			HashMap<Long, ResultadoPronostico> RPronostico2) {
+		Long T=new Long(0);
+		Long P=new Long(0);
+		Long TP;
+		Long TT;
+		if(Punto.getPartido()!=null) {
+			for(Resultado R:Punto.getPartido().getResultados()) {
+				if(R.getDefinicion().getAbreviatura().startsWith("G")) {
+					TP=RPronostico.get(R.getId()).getEntero();
+					TT=RPronostico2.get(R.getId()).getEntero();
+					if(TP==null||TT==null) {
+						return new Long(0);
+					}
+					P= TP-P;
+					T=TT-T;
+				}
+			}
+		}
+		return Long.signum(P)==Long.signum(T)?Punto.getMaximo():new Long(0);
+	}
+
+	private Long ProcesarIgual(Punto Punto,
+			HashMap<Long, ResultadoPronostico> RPronostico,
+			HashMap<Long, ResultadoPronostico> RPronostico2) {
+		ResultadoPronostico P;
+		ResultadoPronostico P2;
+		boolean B=true;
+		if(Punto.getResultado()!=null) {
+			P=RPronostico.get(Punto.getResultado().getId());
+			P2=RPronostico2.get(Punto.getResultado().getId());
+			B&=((P2.getEntero()!=null&&P.getEntero()!=null&&P2.getEntero()==P.getEntero())||
+			    (P2.getEquipo()!=null&&P.getEquipo()!=null&&P2.getEquipo().getId()==P.getEquipo().getId()));
+		} else if(Punto.getPartido()!=null) {
+			for(Resultado R:Punto.getPartido().getResultados()) {
+				P=RPronostico.get(R.getId());
+				P2=RPronostico2.get(R.getId());
+				B&=((P2.getEntero()!=null&&P.getEntero()!=null&&P2.getEntero()==P.getEntero())||
+				    (P2.getEquipo()!=null&&P.getEquipo()!=null&&P2.getEquipo().getId()==P.getEquipo().getId()));
+			}
+		} else { //Porcion no puede ser nula
+			for(Resultado R:Punto.getPorcion().getResultados()) {
+				P=RPronostico.get(R.getId());
+				P2=RPronostico2.get(R.getId());
+				B&=((P2.getEntero()!=null&&P.getEntero()!=null&&P2.getEntero()==P.getEntero())||
+				    (P2.getEquipo()!=null&&P.getEquipo()!=null&&P2.getEquipo().getId()==P.getEquipo().getId()));
+				}
+			}
+		return B?Punto.getMaximo():new Long(0);
+	}
 
 	@Override
 	public long cacular(Pronostico Pronostico) {

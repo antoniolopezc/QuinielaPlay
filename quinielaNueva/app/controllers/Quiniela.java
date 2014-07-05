@@ -3,7 +3,9 @@ package controllers;
 import java.util.*;
 
 import models.*;
+import models.Pronostico;
 import play.mvc.*;
+import reglas.ReglaBase;
 import utilitario.Resumen;
 import views.html.Quiniela.*;
 
@@ -74,4 +76,46 @@ public class Quiniela extends Controller {
 			r.setPorcentajeTotal(r.getPunto()/Total);
 		r.setTotalMaximo(TotalMaximo);
 	}
+	
+	public static Result comparar(Long Id, Long IdPronostico) {
+		if(Id==-1) {
+			List<models.Quiniela> Quinielas=models.Quiniela.find.all();
+			return ok(Elegir.render(Quinielas,"Elija Quiniela para ver pronosticos","/Quiniela/Comparar"));
+		}
+		if(IdPronostico==-1) {
+			List<models.Pronostico> Pronosticos=models.Pronostico.find.where().eq("quiniela_id", Id).findList();
+			return ok(views.html.Pronostico.Elegir.render(Pronosticos,"Elija Quiniela para ver pronosticos","/Quiniela/Comparar/"+Id.toString()));
+		}
+		models.Quiniela Quiniela=models.Quiniela.find.byId(Id);
+		models.Pronostico Pronostico=models.Pronostico.find.byId(IdPronostico);
+		List<utilitario.Resumen> Resumenes= GenerarResumen(Quiniela);
+		ActualizarResumen(Resumenes,Pronostico,Quiniela);
+		return ok(Comparar.render(Quiniela,Resumenes));
+    }
+
+	private static void ActualizarResumen(List<Resumen> Resumenes,
+			Pronostico Pronostico,models.Quiniela Quiniela) {
+		Long Posicion=new Long(0);
+		Long PosicionSig=new Long(1);
+		Long Anterior=Long.MAX_VALUE;
+		
+		for(Resumen R: Resumenes) {
+			if(R.getPronostico().getId()==Pronostico.getId()) {
+				R.setPunto(R.getMaximo());
+			}
+			else 
+				for(Regla Rg:Quiniela.getReglas()){
+					R.setPunto(R.getPunto()+ReglaBase.comparar(Rg, Pronostico, R.getPronostico()));
+				}
+		}
+		Collections.sort(Resumenes);
+		for(Resumen R:Resumenes){
+			Posicion=(Anterior.equals(R.getPunto())?Posicion:PosicionSig);
+			PosicionSig++;
+			R.setPosicion(Posicion);
+			Anterior=R.getPunto();
+		}
+		
+	}
+
 }
