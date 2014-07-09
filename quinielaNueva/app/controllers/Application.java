@@ -9,6 +9,11 @@
  * TODO: Mensaje automatico de Nuevos Resultados
  * TODO: Ver doble funcionamiento de  configuración google.
  * TODO: Generar Respaldo Excel, o PDF para usuarios
+ * TODO: Error en ver partido para resultados en blanco
+ * TODO: Mejoras en el formato del comparador
+ * TODO: Mejoras en el Menu
+ * TODO: Uso de Cokie o otra cosa para guardar Quiniela actual y otros datos para facilitar navegacion
+ * TODO: Mejora para Quitar las quinielas que ya no pueden crearse elementos
  * 
  */
 package controllers;
