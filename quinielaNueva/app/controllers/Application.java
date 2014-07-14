@@ -14,6 +14,10 @@
  * TODO: Mejoras en el Menu
  * TODO: Uso de Cokie o otra cosa para guardar Quiniela actual y otros datos para facilitar navegacion
  * TODO: Mejora para Quitar las quinielas que ya no pueden crearse elementos
+ * TODO: Eviatar que hasta que se cierre la fase de llenados otros puedan ver los resultados de los partidos
+ * TODO: Colocar una funcion que le indiquen al administrador quien no ha llenado la quiniela
+ * TODO: Colocar validacion para ver hasta cuando se pueden crear nuevas quinielas
+ * TODO: Colocar funcion de desactivar la quiniela de todas partes
  * 
  */
 package controllers;
